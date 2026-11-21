@@ -35,9 +35,16 @@ if command -v node >/dev/null 2>&1; then
 fi
 if [ "$NODE_MAJOR" -lt 18 ]; then
   apt-get update -y
-  apt-get install -y curl ca-certificates
-  curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
-  apt-get install -y nodejs
+  apt-get install -y curl ca-certificates xz-utils
+  if ! (curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y nodejs); then
+    echo "    NodeSource 安装失败，改用 npmmirror 二进制包"
+    ARCH="x64"
+    [ "$(uname -m)" = "aarch64" ] && ARCH="arm64"
+    NODE_VER="v20.18.1"
+    curl -fsSL "https://npmmirror.com/mirrors/node/${NODE_VER}/node-${NODE_VER}-linux-${ARCH}.tar.xz" -o /tmp/node.tar.xz
+    tar -xJf /tmp/node.tar.xz -C /usr/local --strip-components=1
+    rm -f /tmp/node.tar.xz
+  fi
 fi
 NODE_BIN="$(command -v node)"
 echo "    node: $NODE_BIN ($("$NODE_BIN" --version))"
