@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/menu/menu",
+    "pages/dish/dish",
+    "pages/queue/queue"
+  ],
+  "window": {
+    "navigationBarTitleText": "食刻 · 农大智慧餐厅",
+    "navigationBarBackgroundColor": "#173f35",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f4f5ef",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#77837c",
+    "selectedColor": "#173f35",
+    "backgroundColor": "#fffef9",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "首页" },
+      { "pagePath": "pages/menu/menu", "text": "菜单" },
+      { "pagePath": "pages/queue/queue", "text": "排队" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

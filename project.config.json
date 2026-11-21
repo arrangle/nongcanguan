@@ -1,0 +1,18 @@
+{
+  "description": "食刻 · 农大智慧餐厅（微信小程序）",
+  "miniprogramRoot": "miniprogram/",
+  "compileType": "miniprogram",
+  "appid": "touristappid",
+  "projectname": "shike-cau-food",
+  "libVersion": "3.6.0",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "uglifyFileName": false,
+    "compileHotReLoad": true
+  },
+  "condition": {}
+}

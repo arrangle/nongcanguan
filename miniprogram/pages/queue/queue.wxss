@@ -1,0 +1,56 @@
+.head-card { padding-bottom: 22rpx; }
+.qcard { padding: 24rpx; }
+.qname { color: #173f35; font-size: 26rpx; font-weight: 600; }
+.qmid { margin-top: 10rpx; }
+.qnum { color: #173f35; font-family: Georgia, serif; font-size: 42rpx; }
+.report-btn { margin-top: 16rpx; width: 100%; }
+.foot-note { padding: 4rpx 8rpx 20rpx; font-size: 20rpx; }
+
+.mask {
+  position: fixed;
+  left: 0; right: 0; top: 0; bottom: 0;
+  background: rgba(10, 30, 25, .45);
+  z-index: 100;
+}
+.sheet {
+  position: fixed;
+  left: 24rpx; right: 24rpx; bottom: 24rpx;
+  padding: 34rpx 30rpx 26rpx;
+  border-radius: 32rpx;
+  background: #fffef9;
+  box-shadow: 0 -10rpx 40rpx rgba(20, 40, 30, .18);
+  z-index: 101;
+}
+.sheet-title { margin: 8rpx 0 6rpx; color: #173f35; font-size: 32rpx; font-weight: 700; }
+
+.stepper { justify-content: center; margin: 24rpx 0 6rpx; }
+.step-btn {
+  width: 76rpx; height: 76rpx;
+  display: flex; align-items: center; justify-content: center;
+  border: 1rpx solid #e0e5db; border-radius: 20rpx;
+  background: #f8f9f3; color: #173f35; font-size: 40rpx;
+}
+.step-value {
+  min-width: 120rpx;
+  text-align: center;
+  color: #173f35;
+  font-family: Georgia, serif;
+  font-size: 72rpx;
+  line-height: 1;
+}
+.step-unit { color: #77837c; font-size: 24rpx; margin-right: 20rpx; }
+
+.presets { justify-content: center; margin-top: 16rpx; }
+.preset {
+  padding: 10rpx 22rpx;
+  margin: 8rpx;
+  border: 1rpx solid #e0e5db;
+  border-radius: 999rpx;
+  background: #f8f9f3;
+  color: #77837c;
+  font-size: 22rpx;
+}
+.preset.on { background: #173f35; border-color: #173f35; color: #ffffff; }
+
+.sheet-submit { margin-top: 22rpx; width: 100%; }
+.sheet-cancel { margin-top: 14rpx; text-align: center; color: #77837c; font-size: 24rpx; padding: 8rpx; }

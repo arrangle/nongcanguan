@@ -1,0 +1,68 @@
+<view class="container">
+  <view wx:if="{{error}}" class="card error">
+    <view class="title">加载失败</view>
+    <view class="muted">{{error}}</view>
+  </view>
+
+  <block wx:else>
+    <scroll-view scroll-x class="windows" enhanced show-scrollbar="{{false}}">
+      <view
+        class="win {{activeId === item.id ? 'on' : ''}}"
+        wx:for="{{windows}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="onWindow"
+      >
+        <view class="win-num">{{item.number}}</view>
+        <view class="win-name">{{item.name}}</view>
+      </view>
+    </scroll-view>
+
+    <view class="search-row">
+      <input
+        class="search"
+        placeholder="搜索菜品，如 肠粉"
+        placeholder-class="search-ph"
+        value="{{query}}"
+        confirm-type="search"
+        bindinput="onSearch"
+      />
+    </view>
+
+    <scroll-view scroll-x class="filters" enhanced show-scrollbar="{{false}}">
+      <view
+        class="chip {{filter === item.key ? 'on' : ''}}"
+        wx:for="{{filters}}"
+        wx:key="key"
+        data-key="{{item.key}}"
+        bindtap="onFilter"
+      >{{item.label}}</view>
+    </scroll-view>
+
+    <view class="row between sortbar">
+      <view class="muted">{{resultText}}</view>
+      <picker range="{{sortLabels}}" value="{{sortIndex}}" bindchange="onSort">
+        <view class="link">{{sortLabels[sortIndex]}} ▾</view>
+      </picker>
+    </view>
+
+    <view class="dish" wx:for="{{dishes}}" wx:key="id" bindtap="openDish" data-id="{{item.id}}">
+      <view class="row between">
+        <view class="dish-name">{{item.name}}</view>
+        <view class="price">{{item.priceText}}</view>
+      </view>
+      <view class="muted">{{item.windowNumber}} 号 · {{item.windowName}} · {{item.source}}</view>
+      <view class="nutrition">
+        <text class="kcal">{{item.kcal}}</text><text class="muted"> kcal/100g · 蛋白 {{item.protein}}g · 脂肪 {{item.fat}}g</text>
+      </view>
+      <view class="row between">
+        <view class="row wrap grow">
+          <view class="tag" wx:for="{{item.labels}}" wx:for-item="label" wx:key="*this">{{label}}</view>
+        </view>
+        <view class="rating" wx:if="{{item.rating}}">★ {{item.rating}} · {{item.reviewCount}}</view>
+      </view>
+    </view>
+
+    <view wx:if="{{!dishes.length && !loading}}" class="empty">没有找到菜品，换个关键词或筛选试试</view>
+  </block>
+</view>

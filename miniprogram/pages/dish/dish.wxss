@@ -1,0 +1,66 @@
+.head { margin: 8rpx 0 4rpx; }
+.name { color: #173f35; font-size: 40rpx; font-weight: 700; }
+.price { color: #e97548; font-size: 28rpx; font-weight: 600; }
+.source { background: #f3f1eb; color: #8d8a7c; }
+.desc { margin-top: 14rpx; color: #263b34; font-size: 24rpx; line-height: 1.8; }
+
+.per100 { margin-top: 16rpx; }
+.cell { flex: 1; text-align: center; }
+.cell-num { color: #173f35; font-family: Georgia, serif; font-size: 32rpx; }
+.portion-title { margin-top: 24rpx; color: #77837c; font-size: 22rpx; }
+.portions { margin-top: 10rpx; }
+.portion {
+  flex: 1;
+  margin-right: 12rpx;
+  padding: 16rpx 0;
+  text-align: center;
+  border: 1rpx solid #e0e5db;
+  border-radius: 16rpx;
+  background: #f8f9f3;
+  color: #77837c;
+  font-size: 24rpx;
+}
+.portion:last-child { margin-right: 0; }
+.portion.on { background: #173f35; border-color: #173f35; color: #ffffff; }
+.portion-result { margin-top: 16rpx; }
+.big { color: #173f35; font-family: Georgia, serif; font-size: 44rpx; }
+
+.queue-line { margin-top: 12rpx; }
+.qnum { color: #173f35; font-family: Georgia, serif; font-size: 40rpx; }
+.queue-btn { margin-top: 16rpx; }
+
+.score { color: #173f35; font-family: Georgia, serif; font-size: 30rpx; }
+.review { padding: 18rpx 0; border-bottom: 1rpx solid #eef1e9; }
+.review:last-of-type { border-bottom: none; }
+.review-author { color: #173f35; font-size: 24rpx; font-weight: 600; }
+.stars { color: #dcae51; font-size: 22rpx; letter-spacing: 2rpx; }
+.review-text { margin: 6rpx 0; color: #263b34; font-size: 24rpx; line-height: 1.7; }
+.review-empty { margin-top: 16rpx; }
+
+.form { margin-top: 20rpx; padding-top: 20rpx; border-top: 1rpx dashed #e0e5db; }
+.form-title { color: #173f35; font-size: 24rpx; font-weight: 600; }
+.stars-picker { margin-top: 10rpx; }
+.star { color: #d4d9cf; font-size: 46rpx; margin-right: 8rpx; line-height: 1; }
+.star.on { color: #dcae51; }
+.textarea {
+  width: 100%;
+  height: 160rpx;
+  margin-top: 12rpx;
+  padding: 16rpx;
+  border: 1rpx solid #e0e5db;
+  border-radius: 16rpx;
+  background: #f8f9f3;
+  font-size: 24rpx;
+  box-sizing: border-box;
+}
+.form-foot { margin-top: 12rpx; }
+.nickname {
+  flex: 1;
+  height: 66rpx;
+  margin-right: 12rpx;
+  padding: 0 16rpx;
+  border: 1rpx solid #e0e5db;
+  border-radius: 14rpx;
+  background: #f8f9f3;
+  font-size: 24rpx;
+}

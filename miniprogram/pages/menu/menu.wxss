@@ -1,0 +1,63 @@
+.windows { white-space: nowrap; margin-bottom: 18rpx; }
+.win {
+  display: inline-block;
+  width: 180rpx;
+  padding: 18rpx;
+  margin-right: 12rpx;
+  border: 1rpx solid #e0e5db;
+  border-radius: 22rpx;
+  background: #fffef9;
+  vertical-align: top;
+}
+.win.on { background: #173f35; border-color: #173f35; }
+.win-num { color: #a3b0a5; font-family: Georgia, serif; font-size: 30rpx; }
+.win.on .win-num { color: #e3edb5; }
+.win-name {
+  color: #365047;
+  font-size: 22rpx;
+  font-weight: 600;
+  margin-top: 4rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.win.on .win-name { color: #ffffff; }
+
+.search-row { margin-bottom: 16rpx; }
+.search {
+  height: 78rpx;
+  padding: 0 24rpx;
+  border: 1rpx solid #e0e5db;
+  border-radius: 18rpx;
+  background: #fffef9;
+  font-size: 24rpx;
+}
+.search-ph { color: #a0aaa3; }
+
+.filters { white-space: nowrap; margin-bottom: 10rpx; }
+.chip {
+  display: inline-block;
+  padding: 10rpx 22rpx;
+  margin-right: 10rpx;
+  border: 1rpx solid #e0e5db;
+  border-radius: 999rpx;
+  background: #f8f9f3;
+  color: #77837c;
+  font-size: 22rpx;
+}
+.chip.on { background: #173f35; border-color: #173f35; color: #ffffff; }
+
+.sortbar { margin: 12rpx 4rpx 16rpx; }
+
+.dish {
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+  border: 1rpx solid #e0e5db;
+  border-radius: 24rpx;
+  background: #fffef9;
+}
+.dish-name { color: #173f35; font-size: 30rpx; font-weight: 600; }
+.price { color: #e97548; font-size: 24rpx; font-weight: 600; }
+.nutrition { margin: 8rpx 0; }
+.kcal { color: #173f35; font-family: Georgia, serif; font-size: 34rpx; }
+.rating { color: #a87818; font-size: 22rpx; white-space: nowrap; }

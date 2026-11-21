@@ -1,0 +1,80 @@
+page {
+  background: #f4f5ef;
+  color: #263b34;
+  font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: 26rpx;
+  line-height: 1.6;
+}
+
+.container { padding: 24rpx 24rpx 40rpx; }
+
+.card {
+  background: #fffef9;
+  border: 1rpx solid #e0e5db;
+  border-radius: 28rpx;
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 10rpx 34rpx rgba(30, 58, 45, .05);
+}
+
+.row { display: flex; align-items: center; }
+.between { justify-content: space-between; }
+.wrap { flex-wrap: wrap; }
+.grow { flex: 1; min-width: 0; }
+
+.title { color: #173f35; font-size: 32rpx; font-weight: 600; letter-spacing: 1rpx; }
+.subtitle { color: #77837c; font-size: 22rpx; }
+.muted { color: #77837c; font-size: 22rpx; }
+.eyebrow { color: #2c6651; font-size: 18rpx; font-weight: 700; letter-spacing: 3rpx; }
+.num { color: #173f35; font-family: Georgia, "Times New Roman", serif; font-size: 44rpx; font-weight: 500; }
+.unit { font-family: -apple-system, "PingFang SC", sans-serif; font-size: 20rpx; margin-left: 2rpx; }
+.link { color: #2c6651; font-size: 22rpx; padding: 8rpx 4rpx; }
+
+.btn {
+  margin: 0;
+  padding: 0 28rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 18rpx;
+  font-size: 24rpx;
+  font-weight: 600;
+  background: #fffef9;
+  color: #2c6651;
+  border: 1rpx solid #e0e5db;
+}
+.btn::after { border: none; }
+.btn-primary { background: #173f35; color: #ffffff; border-color: #173f35; }
+.btn-primary.btn-hover { background: #225647; }
+.btn.small { height: 60rpx; line-height: 60rpx; font-size: 22rpx; padding: 0 22rpx; }
+
+.tag {
+  display: inline-block;
+  padding: 4rpx 12rpx;
+  margin: 8rpx 8rpx 0 0;
+  border-radius: 8rpx;
+  background: #e6eee5;
+  color: #2c6651;
+  font-size: 18rpx;
+}
+
+.state {
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+  font-size: 18rpx;
+  font-weight: 700;
+  background: #eef0e9;
+  color: #8a948d;
+}
+.state.low { background: #e6eee5; color: #2c6651; }
+.state.mid { background: #fff0e8; color: #b05a2e; }
+.state.high { background: #fbe7e1; color: #a33a2a; }
+
+.error { border-color: #e7c9bf; }
+.empty {
+  padding: 60rpx 20rpx;
+  text-align: center;
+  color: #98a29b;
+  font-size: 24rpx;
+}
+
+input, textarea { font-size: 26rpx; }

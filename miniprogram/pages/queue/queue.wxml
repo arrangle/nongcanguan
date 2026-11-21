@@ -1,0 +1,59 @@
+<view class="container">
+  <view class="card head-card">
+    <view class="row between">
+      <view>
+        <view class="eyebrow">LIVE QUEUE</view>
+        <view class="title">排队雷达</view>
+      </view>
+      <view class="link" bindtap="refresh">刷新</view>
+    </view>
+    <view class="muted">{{updatedText}} · 20 分钟内的上报取中位数</view>
+  </view>
+
+  <view wx:if="{{error}}" class="card error">
+    <view class="title">加载失败</view>
+    <view class="muted">{{error}}</view>
+  </view>
+
+  <view class="card qcard" wx:for="{{items}}" wx:key="id">
+    <view class="row between">
+      <view class="qname">{{item.number}} 号 · {{item.name}}</view>
+      <view class="state {{item.stateCls}}">{{item.state}}</view>
+    </view>
+    <view class="row between qmid">
+      <view><text class="qnum">{{item.people}}</text><text class="muted"> 人</text></view>
+      <view class="muted">{{item.wait}}</view>
+    </view>
+    <view class="muted">{{item.age}}</view>
+    <button class="btn small report-btn" data-id="{{item.id}}" bindtap="openReport">报一下排队</button>
+  </view>
+
+  <view class="muted foot-note">同一窗口 3 分钟内只能上报一次；请按现场实际情况填写。</view>
+</view>
+
+<view wx:if="{{modalOpen}}" class="mask" bindtap="closeReport"></view>
+<view wx:if="{{modalOpen}}" class="sheet" catchtap="noop">
+  <view class="eyebrow">QUEUE REPORT</view>
+  <view class="sheet-title">{{targetName}}</view>
+  <view class="muted">窗口前大约有几个人？</view>
+
+  <view class="row stepper">
+    <view class="step-btn" data-d="-1" bindtap="step">−</view>
+    <view class="step-value">{{people}}</view>
+    <view class="step-unit">人</view>
+    <view class="step-btn" data-d="1" bindtap="step">+</view>
+  </view>
+
+  <view class="row wrap presets">
+    <view
+      wx:for="{{presets}}"
+      wx:key="*this"
+      class="preset {{people === item ? 'on' : ''}}"
+      data-n="{{item}}"
+      bindtap="preset"
+    >{{item}} 人</view>
+  </view>
+
+  <button class="btn btn-primary sheet-submit" bindtap="submit" disabled="{{submitting}}">提交上报</button>
+  <view class="sheet-cancel" bindtap="closeReport">取消</view>
+</view>

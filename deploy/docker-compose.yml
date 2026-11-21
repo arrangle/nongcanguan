@@ -1,0 +1,23 @@
+services:
+  shike:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    container_name: shike
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DB_FILE=/app/runtime/db.json
+      # - ADMIN_CODE=change-me-before-public
+    volumes:
+      - shike-data:/app/runtime
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/api/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+
+volumes:
+  shike-data:

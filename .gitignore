@@ -5,3 +5,5 @@ data/*.tmp
 *.log
 *.zip
 .test-server*.log
+project.private.config.json
+.idea/

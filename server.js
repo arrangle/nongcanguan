@@ -15,8 +15,9 @@ const crypto = require('crypto');
 const ROOT = __dirname;
 const PUBLIC_DIR = path.join(ROOT, 'public');
 const DATA_DIR = path.join(ROOT, 'data');
-const MENU_FILE = path.join(DATA_DIR, 'menu.json');
-const DB_FILE = path.join(DATA_DIR, 'db.json');
+const MENU_FILE = process.env.MENU_FILE ? path.resolve(process.env.MENU_FILE) : path.join(DATA_DIR, 'menu.json');
+const DB_FILE = process.env.DB_FILE ? path.resolve(process.env.DB_FILE) : path.join(DATA_DIR, 'db.json');
+if (process.env.DB_FILE || process.env.MENU_FILE) fs.mkdirSync(path.dirname(DB_FILE), { recursive: true });
 const PORT = Number(process.env.PORT) || 3000;
 const ADMIN_CODE = process.env.ADMIN_CODE || '';
 

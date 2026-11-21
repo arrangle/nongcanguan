@@ -1,0 +1,49 @@
+.top { margin: 8rpx 4rpx 22rpx; }
+.brand { color: #173f35; font-size: 46rpx; font-weight: 700; letter-spacing: 6rpx; }
+.brand-en { margin-left: 12rpx; color: #77837c; font-size: 16rpx; font-weight: 600; letter-spacing: 2rpx; }
+.brand-sub { color: #77837c; font-size: 20rpx; margin-top: 2rpx; }
+.gear {
+  width: 68rpx; height: 68rpx;
+  display: flex; align-items: center; justify-content: center;
+  border: 1rpx solid #e0e5db; border-radius: 18rpx; background: #fffef9; color: #2c6651; font-size: 30rpx;
+}
+
+.hero { background: #173f35; border-color: #173f35; }
+.hero-title { color: #ffffff; font-size: 52rpx; font-weight: 700; letter-spacing: -1rpx; }
+.hl { color: #e3edb5; }
+.hero .muted { color: rgba(255, 255, 255, .6); margin-top: 10rpx; }
+.stats { margin-top: 26rpx; }
+.stat { flex: 1; }
+.hero .num { color: #e3edb5; }
+.hero .muted { color: rgba(255, 255, 255, .55); }
+
+.qitem { padding: 20rpx 0; border-bottom: 1rpx solid #eef1e9; }
+.qitem:last-child { border-bottom: none; padding-bottom: 0; }
+.qname { color: #173f35; font-size: 26rpx; font-weight: 600; }
+.qmeta { margin-top: 6rpx; }
+.qnum { color: #173f35; font-family: Georgia, serif; font-size: 38rpx; }
+
+.goals { white-space: nowrap; margin-top: 16rpx; }
+.goal {
+  display: inline-block;
+  padding: 10rpx 22rpx;
+  margin-right: 10rpx;
+  border: 1rpx solid #e0e5db;
+  border-radius: 999rpx;
+  background: #f8f9f3;
+  color: #77837c;
+  font-size: 22rpx;
+}
+.goal.on { background: #173f35; border-color: #173f35; color: #ffffff; }
+
+.meal { margin-top: 16rpx; }
+.meal-item {
+  padding: 18rpx;
+  margin-bottom: 12rpx;
+  border: 1rpx solid #e0e5db;
+  border-radius: 20rpx;
+  background: #f8f9f3;
+}
+.meal-name { color: #173f35; font-size: 28rpx; font-weight: 600; margin: 4rpx 0; }
+.meal-total { margin-top: 12rpx; padding-top: 16rpx; border-top: 1rpx dashed #e0e5db; }
+.config-btn { margin-top: 18rpx; }

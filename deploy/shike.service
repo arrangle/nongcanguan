@@ -1,0 +1,19 @@
+[Unit]
+Description=Shike CAU Food API
+Documentation=https://github.com/
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/shike
+ExecStart=/usr/local/bin/node /opt/shike/server.js
+Environment=PORT=3000
+Environment=DB_FILE=/var/lib/shike/db.json
+Restart=always
+RestartSec=3
+ReadWritePaths=/var/lib/shike
+
+[Install]
+WantedBy=multi-user.target

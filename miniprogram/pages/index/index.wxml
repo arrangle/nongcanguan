@@ -1,0 +1,108 @@
+<view class="container">
+  <view class="row between top">
+    <view>
+      <view class="brand">食刻<text class="brand-en">CAU FOOD GUIDE</text></view>
+      <view class="brand-sub">中国农业大学 · 公一食堂</view>
+    </view>
+    <view class="gear" bindtap="onConfig">⚙</view>
+  </view>
+
+  <view class="hero card">
+    <view class="hero-title">今天，也要<text class="hl">好好吃饭。</text></view>
+    <view class="muted">现场菜单数字化 · {{menu.dataDate}} 采集</view>
+    <view class="row stats">
+      <view class="stat">
+        <view class="num">{{menu.windows.length}}</view>
+        <view class="muted">精选窗口</view>
+      </view>
+      <view class="stat">
+        <view class="num">{{dishTotal}}</view>
+        <view class="muted">已录入菜品</view>
+      </view>
+      <view class="stat">
+        <view class="num">100<text class="unit">g</text></view>
+        <view class="muted">营养口径</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{error}}" class="card error">
+    <view class="title">加载失败</view>
+    <view class="muted">{{error}}</view>
+    <view class="muted">当前服务器：{{apiBase}}</view>
+    <button class="btn btn-primary config-btn" bindtap="onConfig">设置服务器地址</button>
+  </view>
+
+  <block wx:else>
+    <view class="card">
+      <view class="row between">
+        <view>
+          <view class="eyebrow">LIVE QUEUE</view>
+          <view class="title">排队雷达</view>
+        </view>
+        <view class="link" bindtap="goQueue">全部 ›</view>
+      </view>
+      <view class="qitem" wx:for="{{queues}}" wx:key="id" bindtap="goQueue">
+        <view class="row between">
+          <view class="qname">{{item.number}} 号 · {{item.name}}</view>
+          <view class="state {{item.stateCls}}">{{item.state}}</view>
+        </view>
+        <view class="row between qmeta">
+          <view><text class="qnum">{{item.people}}</text><text class="muted"> 人</text></view>
+          <view class="muted">{{item.wait}}</view>
+        </view>
+        <view class="muted">{{item.age}}</view>
+      </view>
+      <view wx:if="{{!queues.length}}" class="muted">正在读取窗口数据…</view>
+    </view>
+
+    <view class="card">
+      <view class="row between">
+        <view>
+          <view class="eyebrow">SMART MEAL</view>
+          <view class="title">今天怎么吃</view>
+        </view>
+        <view class="link" bindtap="reroll">换一餐</view>
+      </view>
+      <scroll-view scroll-x class="goals">
+        <view
+          wx:for="{{goals}}"
+          wx:key="key"
+          class="goal {{goal === item.key ? 'on' : ''}}"
+          data-key="{{item.key}}"
+          bindtap="onGoal"
+        >{{item.label}}</view>
+      </scroll-view>
+      <view class="meal">
+        <view class="meal-item" wx:for="{{meal}}" wx:key="id" bindtap="openDish" data-id="{{item.id}}">
+          <view class="muted">{{item.windowNumber}} 号 · {{item.windowName}}</view>
+          <view class="meal-name">{{item.name}}</view>
+          <view class="muted">{{item.kcal}} kcal · 蛋白 {{item.proteinText}}g</view>
+        </view>
+      </view>
+      <view class="row between meal-total">
+        <view>
+          <text class="muted">这一餐约 </text><text class="num">{{mealTotals.kcal}}</text>
+          <text class="muted"> kcal · 蛋白 {{mealTotals.protein}}g</text>
+        </view>
+        <button class="btn btn-primary small" bindtap="addMeal">加入餐盘</button>
+      </view>
+    </view>
+
+    <view class="card row between" wx:if="{{trayCount > 0}}">
+      <view>
+        <text class="muted">今日餐盘 </text><text class="num">{{trayCount}}</text>
+        <text class="muted"> 道 · {{trayKcal}} kcal</text>
+      </view>
+      <view class="link" bindtap="clearTray">清空</view>
+    </view>
+
+    <view class="card row between">
+      <view>
+        <view class="title">菜品与营养</view>
+        <view class="muted">搜索、按营养筛选、按热量排序</view>
+      </view>
+      <button class="btn small" bindtap="goMenu">去菜单 ›</button>
+    </view>
+  </block>
+</view>

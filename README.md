@@ -49,6 +49,23 @@ $env:PORT=8080; node server.js
 
 手机同 Wi-Fi 演示：`ipconfig` 取本机 IPv4，手机访问 `http://<IPv4>:3000`，首次运行在 Windows 防火墙弹窗中允许「专用网络」。详见 [docs/部署指南.md](docs/部署指南.md)。
 
+## 微信小程序
+
+仓库内附带一个原生小程序客户端（`miniprogram/`），与网页版共用同一套后端，排队和点评是同一份数据。
+
+- 打开方式：微信开发者工具导入 **仓库根目录**（`project.config.json` 已指定 `miniprogramRoot`）
+- AppID：填自己的，或先用测试号
+- 开发期在「详情 → 本地设置」勾选「不校验合法域名」
+- 小程序首页右上角 **⚙** 设置服务器地址：模拟器填 `http://localhost:3000`，真机填电脑局域网 IP
+- 功能：首页排队速览与目标配餐、菜单搜索筛选、菜品详情与点评、排队上报
+- 正式上线需要 HTTPS + 已备案域名 + 小程序后台配置 request 合法域名
+
+完整步骤与平台限制见 [docs/小程序与服务器.md](docs/小程序与服务器.md)。
+
+## 服务端部署
+
+本机 `node server.js` 已验证。云上准备了三套配置（`deploy/`）：Docker Compose、systemd、Nginx HTTPS 反代。部署命令、环境变量与微信域名要求见 [docs/小程序与服务器.md](docs/小程序与服务器.md)。
+
 ## 目录结构
 
 ```text
@@ -70,6 +87,8 @@ ganfan-radar/
 │  ├─ build-menu.js          # 生成 data/menu.json
 │  ├─ patch-app.js           # 让队友前端改由后端下发菜单
 │  └─ e2e.js                 # 无头浏览器端到端验收
+├─ miniprogram/              # 微信小程序客户端（原生 WXML/WXSS/JS）
+├─ deploy/                   # Dockerfile / compose / systemd / Nginx 配置
 ├─ docs/                     # 参赛文档（项目介绍、演示脚本、边界说明、部署、清单）
 └─ app/                      # 队友原始交付物（参考留档）
 ```
