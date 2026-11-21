@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * 食刻 · 农大智慧餐厅 —— 后端
+ * 农餐馆 · 农大智慧餐厅 —— 后端
  * 菜品目录来自 data/menu.json；排队与点评是共享状态，落在 data/db.json。
  * 零依赖，Node 18+。
  */
@@ -50,7 +50,7 @@ function loadMenu() {
     return parsed;
   } catch (err) {
     console.error(`[菜单] 读取失败：${err.message}`);
-    return { version: 1, title: '食刻', windows: [], canteens: [], photos: [] };
+    return { version: 1, title: '农餐馆', windows: [], canteens: [], photos: [] };
   }
 }
 
@@ -484,7 +484,7 @@ server.on('clientError', (err, socket) => {
 
 server.listen(PORT, () => {
   console.log('');
-  console.log('  食刻 · 农大智慧餐厅');
+  console.log('  农餐馆 · 农大智慧餐厅');
   console.log(`  已启动  http://localhost:${PORT}`);
   console.log(`  窗口 ${windows.length} 个 · 菜品 ${dishIndex.size} 道 · 照片 ${(menu.photos || []).length} 张`);
   console.log(`  数据文件 ${path.relative(ROOT, DB_FILE)}${fs.existsSync(DB_FILE) ? '' : '（首次启动，将自动创建）'}`);

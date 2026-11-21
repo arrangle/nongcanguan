@@ -109,6 +109,6 @@ Page({
   },
 
   onShareAppMessage() {
-    return { title: '食刻 · 看看哪个窗口没人排队', path: '/pages/queue/queue' };
+    return { title: '农餐馆 · 看看哪个窗口没人排队', path: '/pages/queue/queue' };
   },
 });

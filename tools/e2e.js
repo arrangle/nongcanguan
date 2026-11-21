@@ -22,11 +22,11 @@ const getArg = (name, fallback) => {
 };
 
 const URL = getArg('--url', 'http://localhost:3999/');
-const OUT_DIR = getArg('--out', path.join(os.tmpdir(), 'shike-shots'));
+const OUT_DIR = getArg('--out', path.join(os.tmpdir(), 'nongcanguan-shots'));
 const WIDTH = Number(getArg('--width', '1440')) || 1440;
 const EDGE = process.env.EDGE || 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe';
 const DEBUG_PORT = 9333;
-const PROFILE = path.join(os.tmpdir(), 'shike-edge-' + Date.now());
+const PROFILE = path.join(os.tmpdir(), 'nongcanguan-edge-' + Date.now());
 
 fs.mkdirSync(OUT_DIR, { recursive: true });
 

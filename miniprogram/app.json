@@ -6,7 +6,7 @@
     "pages/queue/queue"
   ],
   "window": {
-    "navigationBarTitleText": "食刻 · 农大智慧餐厅",
+    "navigationBarTitleText": "农餐馆 · 农大智慧餐厅",
     "navigationBarBackgroundColor": "#173f35",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#f4f5ef",

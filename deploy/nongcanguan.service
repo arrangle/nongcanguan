@@ -1,0 +1,19 @@
+[Unit]
+Description=Nongcanguan CAU Food API
+Documentation=https://github.com/
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/nongcanguan
+ExecStart=/usr/local/bin/node /opt/nongcanguan/server.js
+Environment=PORT=3000
+Environment=DB_FILE=/var/lib/nongcanguan/db.json
+Restart=always
+RestartSec=3
+ReadWritePaths=/var/lib/nongcanguan
+
+[Install]
+WantedBy=multi-user.target

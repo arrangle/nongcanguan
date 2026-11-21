@@ -1,8 +1,8 @@
 {
-  "name": "shike-cau-food",
+  "name": "nongcanguan-cau-food",
   "version": "1.0.0",
   "private": true,
-  "description": "食刻 · 农大智慧餐厅 —— 菜品营养、实时排队与点评",
+  "description": "农餐馆 · 农大智慧餐厅 —— 菜品营养、实时排队与点评",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

@@ -10,7 +10,7 @@ Base URL：`http://localhost:3000`。所有响应为 JSON，UTF-8。
 ```json
 {
   "version": 1,
-  "title": "食刻 · 农大智慧餐厅",
+  "title": "农餐馆 · 农大智慧餐厅",
   "canteens": [{ "id": "gong1", "name": "公一食堂", "alias": "公寓一食堂", "status": "online" }],
   "windows": [
     {

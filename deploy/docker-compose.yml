@@ -1,9 +1,9 @@
 services:
-  shike:
+  nongcanguan:
     build:
       context: ..
       dockerfile: deploy/Dockerfile
-    container_name: shike
+    container_name: nongcanguan
     ports:
       - "3000:3000"
     environment:
@@ -11,7 +11,7 @@ services:
       - DB_FILE=/app/runtime/db.json
       # - ADMIN_CODE=change-me-before-public
     volumes:
-      - shike-data:/app/runtime
+      - nongcanguan-data:/app/runtime
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/api/health"]
@@ -20,4 +20,4 @@ services:
       retries: 3
 
 volumes:
-  shike-data:
+  nongcanguan-data:

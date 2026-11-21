@@ -1,4 +1,4 @@
-/* 食刻 · 共享排队雷达 + 点评模块
+/* 农餐馆 · 共享排队雷达 + 点评模块
  * 复用 app.js 的 windows / state / showToast / renderDishDetail，
  * 以最小侵入方式挂接后端 /api/queues 与 /api/dishes/:id/reviews。
  */

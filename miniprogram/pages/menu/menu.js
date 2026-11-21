@@ -149,6 +149,6 @@ Page({
   },
 
   onShareAppMessage() {
-    return { title: '食刻 · 农大食堂菜单与营养', path: '/pages/menu/menu' };
+    return { title: '农餐馆 · 农大食堂菜单与营养', path: '/pages/menu/menu' };
   },
 });

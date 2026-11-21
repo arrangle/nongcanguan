@@ -126,7 +126,7 @@ Page({
 
   onShareAppMessage() {
     return {
-      title: this.data.dish ? this.data.dish.name + ' · 食刻' : '食刻 · 农大食堂',
+      title: this.data.dish ? this.data.dish.name + ' · 农餐馆' : '农餐馆 · 农大食堂',
       path: '/pages/dish/dish?id=' + this.id,
     };
   },

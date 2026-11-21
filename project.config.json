@@ -1,9 +1,9 @@
 {
-  "description": "食刻 · 农大智慧餐厅（微信小程序）",
+  "description": "农餐馆 · 农大智慧餐厅（微信小程序）",
   "miniprogramRoot": "miniprogram/",
   "compileType": "miniprogram",
-  "appid": "touristappid",
-  "projectname": "shike-cau-food",
+  "appid": "wx53ddd2f6a698c6ad",
+  "projectname": "nongcanguan-cau-food",
   "libVersion": "3.6.0",
   "setting": {
     "urlCheck": false,
@@ -12,7 +12,28 @@
     "postcss": true,
     "minified": true,
     "uglifyFileName": false,
-    "compileHotReLoad": true
+    "compileHotReLoad": true,
+    "compileWorklet": false,
+    "uploadWithSourceMap": true,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "condition": false,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
   },
-  "condition": {}
+  "condition": {},
+  "simulatorPluginLibVersion": {},
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {}
 }

@@ -1,7 +1,7 @@
 <view class="container">
   <view class="row between top">
     <view>
-      <view class="brand">食刻<text class="brand-en">CAU FOOD GUIDE</text></view>
+      <view class="brand">农餐馆<text class="brand-en">CAU FOOD GUIDE</text></view>
       <view class="brand-sub">中国农业大学 · 公一食堂</view>
     </view>
     <view class="gear" bindtap="onConfig">⚙</view>
