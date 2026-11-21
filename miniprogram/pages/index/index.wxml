@@ -72,6 +72,38 @@
       <view wx:if="{{!queues.length}}" class="muted">该食堂窗口暂未录入</view>
     </view>
 
+    <view class="card blindbox">
+      <view class="row between">
+        <view>
+          <view class="eyebrow">BLIND BOX · 选择困难救星</view>
+          <view class="title">今天吃什么</view>
+        </view>
+        <view class="muted">从{{canteenLabel}}已录入菜品里抽</view>
+      </view>
+
+      <view class="box-stage {{boxRolling ? 'rolling' : ''}}">
+        <block wx:if="{{boxDish}}">
+          <view class="box-emoji">{{boxDish.emoji}}</view>
+          <view class="box-name">{{boxDish.name}}</view>
+          <view class="muted">{{boxDish.windowNumber}} 号 · {{boxDish.windowName}}</view>
+          <view class="box-meta">{{boxDish.kcal}} kcal · 蛋白 {{boxDish.protein}}g<text wx:if="{{boxDish.rating}}"> · ★ {{boxDish.rating}}</text></view>
+          <view class="row wrap box-tags">
+            <view class="tag" wx:for="{{boxDish.tags}}" wx:key="*this">{{item}}</view>
+          </view>
+          <view class="row box-actions">
+            <button class="btn small" bindtap="drawBox">再抽一次</button>
+            <button class="btn btn-primary small" data-id="{{boxDish.id}}" bindtap="openDish">去看看 ›</button>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="box-emoji {{boxRolling ? 'shake' : ''}}">🎁</view>
+          <view class="box-name">{{boxRolling ? '正在摇盲盒…' : '选择困难？交给一点好运气'}}</view>
+          <view class="muted">避开最近吃过的，抽一道今天没吃过的</view>
+          <button class="btn btn-primary box-draw" bindtap="drawBox" disabled="{{boxRolling}}">抽一个</button>
+        </block>
+      </view>
+    </view>
+
     <view class="card">
       <view class="row between">
         <view>

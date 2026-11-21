@@ -285,6 +285,50 @@
     });
   }
 
+  // ---------------------------------------------------------------- 今日盲盒
+  const BOX_EMOJI = { meat: '🍗', noodles: '🍜', leaf: '🥬', rice: '🍚', egg: '🥚', bowl: '🥣' };
+  let boxRolling = false;
+
+  function drawBox() {
+    if (boxRolling) return;
+    const all = (typeof allDishes !== 'undefined' && Array.isArray(allDishes)) ? allDishes : [];
+    const stage = $('#boxStage');
+    if (!all.length || !stage) return;
+
+    boxRolling = true;
+    stage.classList.add('rolling');
+    stage.innerHTML = '<div class="box-emoji shake">🎁</div><p class="box-loading">正在摇盲盒…</p>';
+
+    setTimeout(function () {
+      let history = [];
+      try { history = JSON.parse(localStorage.getItem('cau-box-history') || '[]'); } catch (_) { history = []; }
+      let pool = all.filter(function (dish) { return history.indexOf(dish.id) === -1; });
+      if (!pool.length) pool = all.slice();
+
+      const dish = pool[Math.floor(Math.random() * pool.length)];
+      history.push(dish.id);
+      try { localStorage.setItem('cau-box-history', JSON.stringify(history.slice(-8))); } catch (_) {}
+
+      const ratio = (dish.serving || 250) / 100;
+      const stat = (summary.ratings || {})[dish.id];
+      const w = dish.window;
+      stage.classList.remove('rolling');
+      stage.innerHTML = '<div class="box-result">' +
+        '<div class="box-emoji">' + (BOX_EMOJI[dish.icon] || '🍽️') + '</div>' +
+        '<h3>' + esc(dish.name) + '</h3>' +
+        '<p class="box-window">' + esc(w.number) + ' 号 · ' + esc(w.name) + '</p>' +
+        '<p class="box-meta">' + Math.round(dish.kcal * ratio) + ' kcal · 蛋白 ' + (dish.protein * ratio).toFixed(1) + 'g' +
+          (stat ? ' · ★ ' + Number(stat.rating).toFixed(1) : '') + '</p>' +
+        '<div class="box-tags">' + (dish.labels || []).slice(0, 3).map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') + '</div>' +
+        '<div class="box-actions">' +
+          '<button class="button button-quiet" type="button" id="boxDrawAgain">再抽一次</button>' +
+          '<button class="button button-primary" type="button" data-box-open="' + esc(dish.id) + '">去看看 ›</button>' +
+        '</div>' +
+      '</div>';
+      boxRolling = false;
+    }, 700);
+  }
+
   // ---------------------------------------------------------------- 今日推荐
   const GOALS = {
     balanced: { plan: ['protein', 'staple', 'veg'] },
@@ -468,6 +512,17 @@
 
       if (target.closest('#plannerAdd')) {
         addPlannerMeal();
+        return;
+      }
+
+      if (target.closest('#boxDraw') || target.closest('#boxDrawAgain')) {
+        drawBox();
+        return;
+      }
+
+      const boxOpen = target.closest('[data-box-open]');
+      if (boxOpen) {
+        openDish(boxOpen.getAttribute('data-box-open'));
         return;
       }
     });

@@ -59,6 +59,28 @@
 }
 
 .recent-hint { margin-top: 8rpx; color: #2c6651; font-size: 20rpx; }
+
+.blindbox .box-stage {
+  margin-top: 16rpx;
+  padding: 26rpx 20rpx;
+  border: 1rpx dashed #cfd8cc;
+  border-radius: 22rpx;
+  background: #f8f9f3;
+  text-align: center;
+}
+.box-stage.rolling { background: #eef2e8; }
+.box-emoji { font-size: 76rpx; line-height: 1.25; }
+.box-emoji.shake { animation: boxshake .38s ease-in-out infinite; }
+@keyframes boxshake {
+  0%, 100% { transform: rotate(-7deg); }
+  50% { transform: rotate(7deg) scale(1.08); }
+}
+.box-name { margin-top: 8rpx; color: #173f35; font-size: 32rpx; font-weight: 700; }
+.box-meta { margin-top: 6rpx; color: #2c6651; font-size: 22rpx; }
+.box-tags { justify-content: center; margin-top: 6rpx; }
+.box-actions { justify-content: center; margin-top: 16rpx; }
+.box-actions .btn { margin: 0 8rpx; }
+.box-draw { margin-top: 16rpx; }
 .rank-item { display: flex; align-items: center; gap: 16rpx; padding: 16rpx 0; border-bottom: 1rpx solid #eef1e9; }
 .rank-item:last-child { border-bottom: none; }
 .rank-no { width: 40rpx; text-align: center; color: #a3b0a5; font-family: Georgia, serif; font-size: 30rpx; }

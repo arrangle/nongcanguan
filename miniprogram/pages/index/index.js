@@ -9,6 +9,8 @@ const GOALS = [
   { key: 'veg', label: '清爽素食', plan: ['veg', 'veg', 'staple'] },
 ];
 
+const ICON_EMOJI = { meat: '🍗', noodles: '🍜', leaf: '🥬', rice: '🍚', egg: '🥚', bowl: '🥣' };
+
 function categoryOf(dish) {
   const labels = dish.labels || [];
   if (labels.includes('汤')) return 'soup';
@@ -38,6 +40,8 @@ Page({
     points: 0,
     leaderboard: [],
     recentHint: '',
+    boxDish: null,
+    boxRolling: false,
   },
 
   onShow() {
@@ -132,9 +136,46 @@ Page({
     }
     this.setData({ activeCanteen: id, canteenLabel: canteen.alias || canteen.name }, () => {
       this.mealRaw = null;
+      this.lastBoxId = null;
+      this.setData({ boxDish: null });
       this.renderQueues();
       this.renderMeal();
     });
+  },
+
+  drawBox() {
+    if (this.data.boxRolling) return;
+    const pool = this.activeCanteenDishes();
+    if (!pool.length) {
+      wx.showToast({ title: '该食堂还没有菜品', icon: 'none' });
+      return;
+    }
+    const lastId = this.lastBoxId;
+    this.setData({ boxRolling: true, boxDish: null });
+    setTimeout(() => {
+      const recent = points.recentMeals().map((x) => x.id);
+      let candidates = pool.filter((d) => !recent.includes(d.id) && d.id !== lastId);
+      if (!candidates.length) candidates = pool.filter((d) => d.id !== lastId);
+      if (!candidates.length) candidates = pool;
+      const dish = candidates[Math.floor(Math.random() * candidates.length)];
+      const n = fmt.nutrition(dish, 1);
+      const stat = (this.summary && this.summary.ratings && this.summary.ratings[dish.id]) || null;
+      this.lastBoxId = dish.id;
+      this.setData({
+        boxRolling: false,
+        boxDish: {
+          id: dish.id,
+          name: dish.name,
+          emoji: ICON_EMOJI[dish.icon] || '🍽️',
+          windowNumber: dish.window.number,
+          windowName: dish.window.name,
+          kcal: n.kcal,
+          protein: n.protein,
+          rating: stat ? Number(stat.rating).toFixed(1) : '',
+          tags: (dish.labels || []).slice(0, 2),
+        },
+      });
+    }, 700);
   },
 
   scoreFor(dish, goal, recentIds) {

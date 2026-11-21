@@ -87,6 +87,28 @@
 .menu-error p { font-size: 11px; line-height: 1.8; }
 .menu-error code { padding: 2px 6px; border-radius: 5px; background: var(--green-3); color: var(--green); font-size: 11px; }
 
+/* ---------- 今日盲盒 ---------- */
+.blindbox-panel { margin-top: 18px; padding: 18px 20px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow-soft); }
+.blindbox-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.blindbox-head h2 { margin-top: 6px; color: var(--green); font-size: 18px; letter-spacing: .3px; }
+.blindbox-head h2 small { margin-left: 8px; color: var(--muted); font-size: 10px; font-weight: 400; letter-spacing: 0; }
+.blindbox-head .button { flex: 0 0 auto; min-height: 34px; padding: 0 12px; font-size: 11px; white-space: nowrap; }
+.box-stage { margin-top: 14px; padding: 26px 20px; border: 1px dashed #cfd8cc; border-radius: 18px; background: var(--surface-soft); text-align: center; }
+.box-stage.rolling { background: #eef2e8; }
+.box-emoji { font-size: 52px; line-height: 1.2; }
+.box-emoji.shake { display: inline-block; animation: boxshake .38s ease-in-out infinite; }
+@keyframes boxshake {
+  0%, 100% { transform: rotate(-7deg); }
+  50% { transform: rotate(7deg) scale(1.08); }
+}
+.box-result h3 { margin-top: 8px; color: var(--green); font-size: 22px; }
+.box-window { margin-top: 4px; color: var(--muted); font-size: 11px; }
+.box-meta { margin-top: 6px; color: var(--green-2); font-size: 12px; }
+.box-tags { margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.box-tags span { padding: 3px 8px; border-radius: 6px; background: var(--green-3); color: var(--green-2); font-size: 10px; }
+.box-actions { margin-top: 14px; display: flex; justify-content: center; gap: 8px; }
+.box-loading { margin-top: 8px; color: var(--muted); font-size: 12px; }
+
 /* ---------- 今日推荐 ---------- */
 .meal-planner { margin-top: 18px; padding: 18px 20px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow-soft); }
 .planner-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }

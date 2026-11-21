@@ -25,7 +25,7 @@ const URL = getArg('--url', 'http://localhost:3999/');
 const OUT_DIR = getArg('--out', path.join(os.tmpdir(), 'nongcanguan-shots'));
 const WIDTH = Number(getArg('--width', '1440')) || 1440;
 const EDGE = process.env.EDGE || 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe';
-const DEBUG_PORT = 9333;
+const DEBUG_PORT = 9400 + Math.floor(Math.random() * 400);
 const PROFILE = path.join(os.tmpdir(), 'nongcanguan-edge-' + Date.now());
 
 fs.mkdirSync(OUT_DIR, { recursive: true });
@@ -139,6 +139,12 @@ async function waitForPort(timeoutMs = 15000) {
 
     await send('Page.enable');
     await send('Runtime.enable');
+    await send('Emulation.setDeviceMetricsOverride', {
+      width: WIDTH,
+      height: 1500,
+      deviceScaleFactor: 1,
+      mobile: false,
+    });
     await send('Page.navigate', { url: URL });
     await waitFor('document.readyState === "complete"', '页面加载完成');
     await new Promise((r) => setTimeout(r, 1200));
@@ -196,7 +202,8 @@ async function waitForPort(timeoutMs = 15000) {
     await screenshot('02-dish-review');
     await evaluate(`document.querySelector('#dishDialog').close(), true`);
 
-    // 7. 排队上报
+    // 7. 排队上报（每次测试使用新的设备号，避免命中 3 分钟限流）
+    await evaluate(`localStorage.setItem('cau-device-id', 'e2e-' + Date.now()), true`);
     const targetWindow = await evaluate(`(function(){ const b=document.querySelector('[data-report]'); return b ? b.getAttribute('data-report') : ''; })()`);
     await evaluate(`document.querySelector('[data-report]').click(), true`);
     await waitFor('document.querySelector("#queueDialog").open', '排队弹层打开');
@@ -222,7 +229,17 @@ async function waitForPort(timeoutMs = 15000) {
     record('整餐加入餐盘', Number(trayCount) >= mealCount, '餐盘共 ' + trayCount + ' 道');
     await screenshot('04-planner');
 
-    // 9. 接口与数据一致性
+    // 9. 今日盲盒
+    await evaluate(`document.querySelector('#boxDraw').click(), true`);
+    await waitFor('!!document.querySelector("#boxStage .box-result")', '盲盒抽取', 8000);
+    const boxName = await evaluate(`document.querySelector('#boxStage h3') ? document.querySelector('#boxStage h3').textContent : ''`);
+    const boxKcal = await evaluate(`document.querySelector('.box-meta') ? document.querySelector('.box-meta').textContent : ''`);
+    record('今日盲盒抽取', Boolean(boxName) && /kcal/.test(boxKcal), boxName + ' / ' + boxKcal);
+    await evaluate(`document.querySelector('.blindbox-panel').scrollIntoView({ block: 'center' }), true`);
+    await new Promise((r) => setTimeout(r, 2600));
+    await screenshot('05-blindbox');
+
+    // 10. 接口与数据一致性
     const summary = await evaluate(`fetch('/api/summary').then(r=>r.json()).then(d=>({queues:Object.keys(d.queues).length, ratings:Object.keys(d.ratings).length, reviews:d.stats.reviews}))`);
     record('后端状态汇总', summary.ratings >= 1 && summary.reviews >= 1, JSON.stringify(summary));
 
