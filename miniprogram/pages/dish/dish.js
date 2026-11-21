@@ -1,5 +1,6 @@
 const api = require('../../utils/api');
 const fmt = require('../../utils/format');
+const points = require('../../utils/points');
 
 Page({
   data: {
@@ -32,6 +33,8 @@ Page({
       const data = await api.getDish(this.id);
       this.dish = data.dish;
       const lv = fmt.level(data.queue);
+      const nut = fmt.nutrition(data.dish, this.data.factor);
+      nut.carbon = fmt.carbon(data.dish, this.data.factor).toFixed(2);
       this.setData({
         dish: Object.assign({}, data.dish, { priceText: fmt.priceText(data.dish) }),
         window: data.window,
@@ -47,7 +50,7 @@ Page({
           carbs: Number(data.dish.carbs).toFixed(1),
           fiber: Number(data.dish.fiber).toFixed(1),
         },
-        nut: fmt.nutrition(data.dish, this.data.factor),
+        nut,
         loading: false,
       });
     } catch (err) {
@@ -56,18 +59,23 @@ Page({
   },
 
   mapReviews(list) {
+    const liked = wx.getStorageSync('nongcanguan-liked-reviews') || [];
     return (list || []).map((r) =>
       Object.assign({}, r, {
         stars: fmt.stars(r.rating),
         time: fmt.relTime(r.ts),
         author: r.author || '匿名同学',
+        likes: r.likes || 0,
+        liked: liked.includes(r.id),
       })
     );
   },
 
   setFactor(e) {
     const factor = Number(e.currentTarget.dataset.factor);
-    this.setData({ factor, nut: fmt.nutrition(this.dish, factor) });
+    const nut = fmt.nutrition(this.dish, factor);
+    nut.carbon = fmt.carbon(this.dish, factor).toFixed(2);
+    this.setData({ factor, nut });
   },
 
   onStar(e) {
@@ -91,6 +99,26 @@ Page({
     return id;
   },
 
+  async like(e) {
+    const id = e.currentTarget.dataset.id;
+    const review = this.data.reviews.find((r) => r.id === id);
+    if (!review || review.liked) return;
+    try {
+      const res = await api.likeReview(id, this.deviceId());
+      const liked = wx.getStorageSync('nongcanguan-liked-reviews') || [];
+      if (!liked.includes(id)) {
+        liked.push(id);
+        wx.setStorageSync('nongcanguan-liked-reviews', liked.slice(-200));
+      }
+      const reviews = this.data.reviews.map((r) =>
+        r.id === id ? Object.assign({}, r, { liked: true, likes: res.likes }) : r
+      );
+      this.setData({ reviews });
+    } catch (err) {
+      wx.showToast({ title: err.message || '点赞失败', icon: 'none' });
+    }
+  },
+
   async submit() {
     if (!this.data.stars) {
       wx.showToast({ title: '先点一下星星打分', icon: 'none' });
@@ -106,6 +134,7 @@ Page({
         deviceId: this.deviceId(),
       });
       if (this.data.nickname) wx.setStorageSync('nickname', this.data.nickname);
+      points.add(2);
       this.setData({
         stats: data.stats,
         reviews: this.mapReviews(data.reviews),
@@ -113,7 +142,7 @@ Page({
         text: '',
         submitting: false,
       });
-      wx.showToast({ title: '点评已发布', icon: 'success' });
+      wx.showToast({ title: '点评已发布 +2 积分', icon: 'success' });
     } catch (err) {
       this.setData({ submitting: false });
       wx.showToast({ title: err.message || '发布失败', icon: 'none' });

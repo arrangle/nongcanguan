@@ -1,11 +1,27 @@
 <view class="container">
+  <scroll-view scroll-x class="canteens" enhanced show-scrollbar="{{false}}">
+    <view
+      wx:for="{{canteens}}"
+      wx:key="id"
+      class="canteen {{activeCanteen === item.id ? 'on' : ''}} {{item.status !== 'online' ? 'disabled' : ''}}"
+      data-id="{{item.id}}"
+      bindtap="onCanteen"
+    >
+      <view class="canteen-name">{{item.name}}</view>
+      <view class="canteen-state">{{item.status === 'online' ? '已上线' : '待录入'}}</view>
+    </view>
+  </scroll-view>
+
   <view class="card head-card">
     <view class="row between">
       <view>
         <view class="eyebrow">LIVE QUEUE</view>
-        <view class="title">排队雷达</view>
+        <view class="title">排队雷达 · {{canteenLabel}}</view>
       </view>
-      <view class="link" bindtap="refresh">刷新</view>
+      <view class="row head-right">
+        <view class="points">积分 {{points}}</view>
+        <view class="link" bindtap="refresh">刷新</view>
+      </view>
     </view>
     <view class="muted">{{updatedText}} · 20 分钟内的上报取中位数</view>
   </view>
@@ -28,6 +44,7 @@
     <button class="btn small report-btn" data-id="{{item.id}}" bindtap="openReport">报一下排队</button>
   </view>
 
+  <view wx:if="{{!items.length && !loading}}" class="muted foot-note">该食堂窗口暂未录入</view>
   <view class="muted foot-note">同一窗口 3 分钟内只能上报一次；请按现场实际情况填写。</view>
 </view>
 
@@ -54,6 +71,6 @@
     >{{item}} 人</view>
   </view>
 
-  <button class="btn btn-primary sheet-submit" bindtap="submit" disabled="{{submitting}}">提交上报</button>
+  <button class="btn btn-primary sheet-submit" bindtap="submit" disabled="{{submitting}}">提交上报 · +1 积分</button>
   <view class="sheet-cancel" bindtap="closeReport">取消</view>
 </view>

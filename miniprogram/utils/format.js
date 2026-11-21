@@ -38,4 +38,13 @@ function stars(rating) {
   return '★★★★★'.slice(0, filled) + '☆☆☆☆☆'.slice(0, 5 - filled);
 }
 
-module.exports = { nutrition, relTime, level, priceText, stars };
+// 粗估碳排（kg CO₂e / 100g），按食材类型给保守系数，仅用于展示参考
+const CARBON_PER_100G = { meat: 0.55, egg: 0.25, rice: 0.12, noodles: 0.1, leaf: 0.05, bowl: 0.12 };
+
+function carbon(dish, factor) {
+  const per100 = CARBON_PER_100G[dish.icon] || 0.12;
+  const grams = (dish.serving || 250) * (factor || 1);
+  return Math.round((grams / 100) * per100 * 100) / 100;
+}
+
+module.exports = { nutrition, relTime, level, priceText, stars, carbon };

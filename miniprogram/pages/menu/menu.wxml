@@ -1,14 +1,27 @@
 <view class="container">
+  <scroll-view scroll-x class="canteens" enhanced show-scrollbar="{{false}}">
+    <view
+      wx:for="{{canteens}}"
+      wx:key="id"
+      class="canteen {{activeCanteen === item.id ? 'on' : ''}} {{item.status !== 'online' ? 'disabled' : ''}}"
+      data-id="{{item.id}}"
+      bindtap="onCanteen"
+    >
+      <view class="canteen-name">{{item.name}}</view>
+      <view class="canteen-state">{{item.status === 'online' ? '已上线' : '待录入'}}</view>
+    </view>
+  </scroll-view>
+
   <view wx:if="{{error}}" class="card error">
     <view class="title">加载失败</view>
     <view class="muted">{{error}}</view>
   </view>
 
-  <block wx:else>
+  <block wx:elif="{{visibleWindows.length}}">
     <scroll-view scroll-x class="windows" enhanced show-scrollbar="{{false}}">
       <view
         class="win {{activeId === item.id ? 'on' : ''}}"
-        wx:for="{{windows}}"
+        wx:for="{{visibleWindows}}"
         wx:key="id"
         data-id="{{item.id}}"
         bindtap="onWindow"
@@ -55,6 +68,7 @@
       <view class="nutrition">
         <text class="kcal">{{item.kcal}}</text><text class="muted"> kcal/100g · 蛋白 {{item.protein}}g · 脂肪 {{item.fat}}g</text>
       </view>
+      <view class="muted carbon">碳排约 {{item.carbon}} kg CO₂e / 份（粗估）</view>
       <view class="row between">
         <view class="row wrap grow">
           <view class="tag" wx:for="{{item.labels}}" wx:for-item="label" wx:key="*this">{{label}}</view>
@@ -65,4 +79,10 @@
 
     <view wx:if="{{!dishes.length && !loading}}" class="empty">没有找到菜品，换个关键词或筛选试试</view>
   </block>
+
+  <view wx:else class="card empty-card">
+    <view class="title">该食堂菜单待录入</view>
+    <view class="muted empty-copy">目前公一食堂已完成 6 个窗口、43 道菜的现场采集；{{canteenLabel}} 会在下一次现场采集后上线。</view>
+    <button class="btn small" bindtap="backToGong1">回到公一食堂</button>
+  </view>
 </view>

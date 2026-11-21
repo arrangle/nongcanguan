@@ -2,14 +2,30 @@
   <view class="row between top">
     <view>
       <view class="brand">农餐馆<text class="brand-en">CAU FOOD GUIDE</text></view>
-      <view class="brand-sub">中国农业大学 · 公一食堂</view>
+      <view class="brand-sub">中国农业大学 · {{canteenLabel}}</view>
     </view>
-    <view class="gear" bindtap="onConfig">⚙</view>
+    <view class="row head-actions">
+      <view class="points">积分 {{points}}</view>
+      <view class="gear" bindtap="onConfig">⚙</view>
+    </view>
   </view>
+
+  <scroll-view scroll-x class="canteens" enhanced show-scrollbar="{{false}}">
+    <view
+      wx:for="{{canteens}}"
+      wx:key="id"
+      class="canteen {{activeCanteen === item.id ? 'on' : ''}} {{item.status !== 'online' ? 'disabled' : ''}}"
+      data-id="{{item.id}}"
+      bindtap="onCanteen"
+    >
+      <view class="canteen-name">{{item.name}}</view>
+      <view class="canteen-state">{{item.status === 'online' ? '已上线' : '待录入'}}</view>
+    </view>
+  </scroll-view>
 
   <view class="hero card">
     <view class="hero-title">今天，也要<text class="hl">好好吃饭。</text></view>
-    <view class="muted">现场菜单数字化 · {{menu.dataDate}} 采集</view>
+    <view class="muted">{{canteenLabel}} · {{menu.dataDate}} 现场采集</view>
     <view class="row stats">
       <view class="stat">
         <view class="num">{{menu.windows.length}}</view>
@@ -53,7 +69,7 @@
         </view>
         <view class="muted">{{item.age}}</view>
       </view>
-      <view wx:if="{{!queues.length}}" class="muted">正在读取窗口数据…</view>
+      <view wx:if="{{!queues.length}}" class="muted">该食堂窗口暂未录入</view>
     </view>
 
     <view class="card">
@@ -64,6 +80,7 @@
         </view>
         <view class="link" bindtap="reroll">换一餐</view>
       </view>
+      <view class="muted recent-hint" wx:if="{{recentHint}}">{{recentHint}}</view>
       <scroll-view scroll-x class="goals">
         <view
           wx:for="{{goals}}"
@@ -79,13 +96,32 @@
           <view class="meal-name">{{item.name}}</view>
           <view class="muted">{{item.kcal}} kcal · 蛋白 {{item.proteinText}}g</view>
         </view>
+        <view wx:if="{{!meal.length}}" class="muted">该食堂暂无可配餐的菜品</view>
       </view>
       <view class="row between meal-total">
         <view>
           <text class="muted">这一餐约 </text><text class="num">{{mealTotals.kcal}}</text>
-          <text class="muted"> kcal · 蛋白 {{mealTotals.protein}}g</text>
+          <text class="muted"> kcal · 蛋白 {{mealTotals.protein}}g · 碳排约 {{mealTotals.carbon}} kg</text>
         </view>
         <button class="btn btn-primary small" bindtap="addMeal">加入餐盘</button>
+      </view>
+    </view>
+
+    <view class="card" wx:if="{{leaderboard.length}}">
+      <view class="row between">
+        <view>
+          <view class="eyebrow">TOP RATED</view>
+          <view class="title">好评榜</view>
+        </view>
+        <view class="link" bindtap="goMenu">全部菜单 ›</view>
+      </view>
+      <view class="rank-item" wx:for="{{leaderboard}}" wx:key="id" data-id="{{item.id}}" bindtap="openDish">
+        <view class="rank-no">{{index + 1}}</view>
+        <view class="grow">
+          <view class="rank-name">{{item.name}}</view>
+          <view class="muted">{{item.windowNumber}} 号窗口 · {{item.reviewCount}} 条点评</view>
+        </view>
+        <view class="rank-score">★ {{item.rating}}</view>
       </view>
     </view>
 

@@ -61,3 +61,6 @@
 .nutrition { margin: 8rpx 0; }
 .kcal { color: #173f35; font-family: Georgia, serif; font-size: 34rpx; }
 .rating { color: #a87818; font-size: 22rpx; white-space: nowrap; }
+.carbon { margin-top: 4rpx; color: #8a948d; font-size: 20rpx; }
+.empty-card { text-align: center; }
+.empty-copy { margin: 12rpx 0 22rpx; line-height: 1.8; }

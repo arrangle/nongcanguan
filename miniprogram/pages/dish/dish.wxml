@@ -36,7 +36,7 @@
         <view class="portion {{factor === 1.5 ? 'on' : ''}}" data-factor="1.5" bindtap="setFactor">1.5 份</view>
       </view>
       <view class="portion-result">
-        <text class="big">{{nut.kcal}}</text><text class="muted"> kcal · 约 {{nut.grams}}g · 蛋白 {{nut.protein}}g · 脂肪 {{nut.fat}}g</text>
+        <text class="big">{{nut.kcal}}</text><text class="muted"> kcal · 约 {{nut.grams}}g · 蛋白 {{nut.protein}}g · 脂肪 {{nut.fat}}g · 碳排约 {{nut.carbon}} kg</text>
       </view>
     </view>
 
@@ -71,7 +71,10 @@
           <view class="stars">{{item.stars}}</view>
         </view>
         <view class="review-text" wx:if="{{item.text}}">{{item.text}}</view>
-        <view class="muted">{{item.time}}</view>
+        <view class="row between review-foot">
+          <view class="muted">{{item.time}}</view>
+          <view class="review-like {{item.liked ? 'on' : ''}}" data-id="{{item.id}}" catchtap="like">👍 {{item.likes}}</view>
+        </view>
       </view>
       <view wx:if="{{!reviews.length}}" class="muted review-empty">还没有人点评，来做第一个。</view>
 

@@ -142,6 +142,18 @@ function dishStats(dishId) {
   return { rating: Math.round(avg * 10) / 10, reviewCount: list.length };
 }
 
+function publicReview(review) {
+  return {
+    id: review.id,
+    dishId: review.dishId,
+    rating: review.rating,
+    text: review.text,
+    author: review.author,
+    ts: review.ts,
+    likes: review.likes || 0,
+  };
+}
+
 function startOfToday() {
   const d = new Date();
   d.setHours(0, 0, 0, 0);
@@ -304,7 +316,8 @@ async function handleApi(req, res, pathname, query) {
     const reviews = db.reviews
       .filter((r) => r.dishId === id)
       .sort((a, b) => b.ts - a.ts)
-      .slice(0, 50);
+      .slice(0, 50)
+      .map(publicReview);
     return sendJson(res, 200, {
       dish: found.dish,
       window: { id: found.window.id, number: found.window.number, name: found.window.name },
@@ -332,15 +345,45 @@ async function handleApi(req, res, pathname, query) {
     if (review) {
       Object.assign(review, { rating, text, author, ts: now });
     } else {
-      review = { id: 'r_' + crypto.randomUUID(), dishId: id, rating, text, author, deviceId, ts: now };
+      review = {
+        id: 'r_' + crypto.randomUUID(),
+        dishId: id,
+        rating,
+        text,
+        author,
+        deviceId,
+        ts: now,
+        likes: 0,
+        likedBy: [],
+      };
       db.reviews.push(review);
     }
     persist();
     const reviews = db.reviews
       .filter((r) => r.dishId === id)
       .sort((a, b) => b.ts - a.ts)
-      .slice(0, 50);
-    return sendJson(res, 201, { ok: true, review, stats: dishStats(id), reviews });
+      .slice(0, 50)
+      .map(publicReview);
+    return sendJson(res, 201, { ok: true, review: publicReview(review), stats: dishStats(id), reviews });
+  }
+
+  const likeMatch = pathname.match(/^\/api\/reviews\/([^/]+)\/like$/);
+  if (likeMatch && method === 'POST') {
+    const id = decodeURIComponent(likeMatch[1]);
+    const body = await readBody(req);
+    const deviceId = cleanText(body.deviceId, 80);
+    if (!deviceId) return fail(res, 400, '缺少设备标识');
+    const review = db.reviews.find((r) => r.id === id);
+    if (!review) return fail(res, 404, '点评不存在');
+    review.likes = review.likes || 0;
+    review.likedBy = Array.isArray(review.likedBy) ? review.likedBy : [];
+    if (!review.likedBy.includes(deviceId)) {
+      if (review.likedBy.length > 5000) review.likedBy.shift();
+      review.likedBy.push(deviceId);
+      review.likes += 1;
+      persist();
+    }
+    return sendJson(res, 200, { ok: true, likes: review.likes, liked: true });
   }
 
   if (pathname === '/api/leaderboard' && method === 'GET') {

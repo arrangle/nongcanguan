@@ -122,6 +122,22 @@ Base URL：`http://localhost:3000`。所有响应为 JSON，UTF-8。
   "reviews": [ /* 最新 50 条 */ ] }
 ```
 
+## POST /api/reviews/:id/like
+
+给一条点评点赞。同一设备对同一条点评只计一次。
+
+```json
+{ "deviceId": "dev-xxx" }
+```
+
+成功 `200`：
+
+```json
+{ "ok": true, "likes": 3, "liked": true }
+```
+
+点评不存在返回 404。点评对象包含 `likes`（点赞数）；出于隐私，响应不再返回 `deviceId`。
+
 ## GET /api/leaderboard
 
 `?type=rating`（默认）：`{ "items": [ 菜品 + windowNumber + windowName + rating + reviewCount ] }`，点评数 ≥1，按评分降序，取前 10。

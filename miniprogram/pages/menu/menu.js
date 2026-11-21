@@ -20,9 +20,12 @@ Page({
   data: {
     loading: true,
     error: '',
+    canteens: [],
+    activeCanteen: '',
+    canteenLabel: '',
     windows: [],
+    visibleWindows: [],
     activeId: '',
-    activeName: '',
     query: '',
     filter: 'all',
     sortIndex: 0,
@@ -37,23 +40,33 @@ Page({
   },
 
   onShow() {
-    if (this.all) this.loadSummary();
+    if (this.menu) this.loadSummary();
   },
 
   async load() {
     this.setData({ loading: true, error: '' });
     try {
-      const [menu, summary] = await Promise.all([api.getMenu(), api.getSummary()]);
+      const menu = await api.getMenu();
+      const summary = await api.getSummary();
       this.summary = summary;
+      this.menu = menu;
       this.all = [];
       (menu.windows || []).forEach((w) => {
         (w.dishes || []).forEach((d) => this.all.push(Object.assign({}, d, { window: w })));
       });
-      const first = (menu.windows || [])[0];
-      this.menu = menu;
+
+      const canteens = menu.canteens || [];
+      const online = canteens.filter((c) => c.status === 'online');
+      const active = online.length ? online[0].id : (canteens[0] ? canteens[0].id : '');
+      const canteen = canteens.find((c) => c.id === active);
+      const firstWindow = (menu.windows || []).find((w) => w.canteenId === active);
+
       this.setData({
+        canteens,
+        activeCanteen: active,
+        canteenLabel: canteen ? (canteen.alias || canteen.name) : '',
         windows: menu.windows || [],
-        activeId: this.data.activeId || (first ? first.id : ''),
+        activeId: firstWindow ? firstWindow.id : '',
         loading: false,
       });
       this.render();
@@ -71,9 +84,25 @@ Page({
     }
   },
 
-  onWindow(e) {
+  onCanteen(e) {
     const id = e.currentTarget.dataset.id;
-    this.setData({ activeId: id }, () => this.render());
+    const canteen = (this.data.canteens || []).find((c) => c.id === id);
+    if (!canteen) return;
+    if (canteen.status !== 'online') {
+      wx.showToast({ title: canteen.name + '菜单待录入', icon: 'none' });
+      return;
+    }
+    const first = (this.data.windows || []).find((w) => w.canteenId === id);
+    this.setData({
+      activeCanteen: id,
+      canteenLabel: canteen.alias || canteen.name,
+      activeId: first ? first.id : '',
+      query: '',
+    }, () => this.render());
+  },
+
+  onWindow(e) {
+    this.setData({ activeId: e.currentTarget.dataset.id }, () => this.render());
   },
 
   onSearch(e) {
@@ -87,20 +116,21 @@ Page({
   },
 
   onSort(e) {
-    const index = Number(e.detail.value);
-    this.setData({ sortIndex: index }, () => this.render());
+    this.setData({ sortIndex: Number(e.detail.value) }, () => this.render());
   },
 
   render() {
-    const all = this.all || [];
-    const activeWindow = (this.menu ? this.menu.windows : []).find((w) => w.id === this.data.activeId);
+    const canteenId = this.data.activeCanteen;
+    const visibleWindows = (this.data.windows || []).filter((w) => w.canteenId === canteenId);
+    let activeId = this.data.activeId;
+    if (!visibleWindows.some((w) => w.id === activeId)) {
+      activeId = visibleWindows.length ? visibleWindows[0].id : '';
+    }
+    const activeWindow = visibleWindows.find((w) => w.id === activeId);
     const ratings = (this.summary && this.summary.ratings) || {};
     const query = (this.data.query || '').trim().toLowerCase();
 
-    let items = query
-      ? all.slice()
-      : all.filter((d) => d.window.id === this.data.activeId);
-
+    let items = (this.all || []).filter((d) => d.window.canteenId === canteenId);
     if (query) {
       items = items.filter((d) => {
         const haystack = [d.name, d.description, (d.labels || []).join(''), d.window.name, d.window.number]
@@ -108,6 +138,8 @@ Page({
           .toLowerCase();
         return haystack.includes(query);
       });
+    } else {
+      items = items.filter((d) => d.window.id === activeId);
     }
 
     const filterDef = FILTERS.find((f) => f.key === this.data.filter) || FILTERS[0];
@@ -129,6 +161,7 @@ Page({
         kcal: Math.round(d.kcal),
         protein: Number(d.protein).toFixed(1),
         fat: Number(d.fat).toFixed(1),
+        carbon: fmt.carbon(d, 1).toFixed(2),
         labels: (d.labels || []).slice(0, 3),
         source: d.source,
         windowNumber: d.window.number,
@@ -138,10 +171,23 @@ Page({
       };
     });
 
-    const head = query
-      ? `在 ${all.length} 道菜中找到 ${dishes.length} 道`
-      : `${activeWindow ? activeWindow.number + ' 号窗口' : ''} · ${dishes.length} 道菜 · 营养按每 100g`;
-    this.setData({ dishes, resultText: head });
+    let head;
+    if (!visibleWindows.length) head = '该食堂菜单待录入';
+    else if (query) head = `在 ${items.length} 道菜中找到 ${dishes.length} 道`;
+    else head = `${activeWindow ? activeWindow.number + ' 号窗口' : ''} · ${dishes.length} 道菜 · 每 100g`;
+
+    this.setData({ dishes, resultText: head, activeId, visibleWindows });
+  },
+
+  backToGong1() {
+    const online = (this.data.canteens || []).find((c) => c.status === 'online');
+    if (!online) return;
+    const first = (this.data.windows || []).find((w) => w.canteenId === online.id);
+    this.setData({
+      activeCanteen: online.id,
+      canteenLabel: online.alias || online.name,
+      activeId: first ? first.id : '',
+    }, () => this.render());
   },
 
   openDish(e) {

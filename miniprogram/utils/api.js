@@ -39,4 +39,9 @@ module.exports = {
   getDish: (id) => request('/api/dishes/' + encodeURIComponent(id)),
   postQueue: (data) => request('/api/queues', { method: 'POST', data }),
   postReview: (id, data) => request('/api/dishes/' + encodeURIComponent(id) + '/reviews', { method: 'POST', data }),
+  getLeaderboard: (type) => request('/api/leaderboard?type=' + (type || 'rating')),
+  likeReview: (id, deviceId) => request('/api/reviews/' + encodeURIComponent(id) + '/like', {
+    method: 'POST',
+    data: { deviceId },
+  }),
 };

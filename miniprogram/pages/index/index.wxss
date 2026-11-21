@@ -47,3 +47,20 @@
 .meal-name { color: #173f35; font-size: 28rpx; font-weight: 600; margin: 4rpx 0; }
 .meal-total { margin-top: 12rpx; padding-top: 16rpx; border-top: 1rpx dashed #e0e5db; }
 .config-btn { margin-top: 18rpx; }
+
+.head-actions .gear { margin-left: 12rpx; }
+.points {
+  padding: 10rpx 16rpx;
+  border-radius: 999rpx;
+  background: #e3edb5;
+  color: #173f35;
+  font-size: 20rpx;
+  font-weight: 700;
+}
+
+.recent-hint { margin-top: 8rpx; color: #2c6651; font-size: 20rpx; }
+.rank-item { display: flex; align-items: center; gap: 16rpx; padding: 16rpx 0; border-bottom: 1rpx solid #eef1e9; }
+.rank-item:last-child { border-bottom: none; }
+.rank-no { width: 40rpx; text-align: center; color: #a3b0a5; font-family: Georgia, serif; font-size: 30rpx; }
+.rank-name { color: #173f35; font-size: 26rpx; font-weight: 600; }
+.rank-score { color: #a87818; font-size: 22rpx; white-space: nowrap; }

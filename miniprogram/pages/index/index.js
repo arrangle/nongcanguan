@@ -1,5 +1,6 @@
 const api = require('../../utils/api');
 const fmt = require('../../utils/format');
+const points = require('../../utils/points');
 
 const GOALS = [
   { key: 'balanced', label: '均衡搭配', plan: ['protein', 'staple', 'veg'] },
@@ -22,48 +23,85 @@ Page({
     loading: true,
     error: '',
     apiBase: '',
-    menu: { windows: [] },
+    menu: { windows: [], canteens: [] },
+    canteens: [],
+    activeCanteen: '',
+    canteenLabel: '',
     dishTotal: 0,
     queues: [],
     goals: GOALS.map((g) => ({ key: g.key, label: g.label })),
     goal: 'balanced',
     meal: [],
-    mealTotals: { kcal: 0, protein: '0' },
+    mealTotals: { kcal: 0, protein: '0', carbon: '0' },
     trayCount: 0,
     trayKcal: 0,
+    points: 0,
+    leaderboard: [],
+    recentHint: '',
   },
 
   onShow() {
-    this.setData({ apiBase: api.base() });
+    this.setData({ apiBase: api.base(), points: points.get() });
     this.load();
   },
 
   async load() {
     this.setData({ loading: true, error: '' });
     try {
-      const [menu, summary] = await Promise.all([api.getMenu(), api.getSummary()]);
+      const menu = await api.getMenu();
+      const summary = await api.getSummary();
+      const board = await api.getLeaderboard('rating').catch(() => ({ items: [] }));
+
       this.menu = menu;
       this.summary = summary;
+
+      const canteens = menu.canteens || [];
+      const online = canteens.filter((c) => c.status === 'online');
+      let active = this.data.activeCanteen;
+      if (!canteens.some((c) => c.id === active && c.status === 'online')) {
+        active = online.length ? online[0].id : (canteens[0] ? canteens[0].id : '');
+      }
+      const activeCanteen = canteens.find((c) => c.id === active);
+
       this.allDishes = [];
       (menu.windows || []).forEach((w) => {
         (w.dishes || []).forEach((d) => this.allDishes.push(Object.assign({}, d, { window: w })));
       });
+
       this.setData({
         menu,
-        dishTotal: this.allDishes.length,
-        queues: this.buildQueues(menu, summary),
+        canteens,
+        activeCanteen: active,
+        canteenLabel: activeCanteen ? (activeCanteen.alias || activeCanteen.name) : '',
+        dishTotal: this.allDishes.filter((d) => d.window.canteenId === active).length,
         loading: false,
+        leaderboard: (board.items || []).slice(0, 5).map((d) => ({
+          id: d.id,
+          name: d.name,
+          rating: Number(d.rating).toFixed(1),
+          reviewCount: d.reviewCount,
+          windowNumber: d.windowNumber,
+        })),
       });
+
+      this.mealRaw = null;
+      this.renderQueues();
       this.renderMeal();
       this.refreshTray(false);
+      this.setData({ points: points.get() });
     } catch (err) {
       this.setData({ loading: false, error: err.message || '加载失败' });
     }
   },
 
-  buildQueues(menu, summary) {
-    const queues = summary.queues || {};
-    return (menu.windows || [])
+  activeCanteenDishes() {
+    return (this.allDishes || []).filter((d) => d.window.canteenId === this.data.activeCanteen);
+  },
+
+  renderQueues() {
+    const queues = (this.summary && this.summary.queues) || {};
+    const items = (this.menu.windows || [])
+      .filter((w) => w.canteenId === this.data.activeCanteen)
       .map((w) => {
         const q = queues[w.id];
         const lv = fmt.level(q);
@@ -81,9 +119,25 @@ Page({
       })
       .sort((a, b) => a.waitMin - b.waitMin)
       .slice(0, 3);
+    this.setData({ queues: items });
   },
 
-  scoreFor(dish, goal) {
+  onCanteen(e) {
+    const id = e.currentTarget.dataset.id;
+    const canteen = (this.data.canteens || []).find((c) => c.id === id);
+    if (!canteen) return;
+    if (canteen.status !== 'online') {
+      wx.showToast({ title: canteen.name + '菜单待录入', icon: 'none' });
+      return;
+    }
+    this.setData({ activeCanteen: id, canteenLabel: canteen.alias || canteen.name }, () => {
+      this.mealRaw = null;
+      this.renderQueues();
+      this.renderMeal();
+    });
+  },
+
+  scoreFor(dish, goal, recentIds) {
     let score = 0;
     if (goal === 'protein') score += (dish.protein || 0) * 3;
     if (goal === 'light') score += Math.max(0, 200 - dish.kcal) * 0.03 + Math.max(0, 8 - dish.fat) * 2;
@@ -92,14 +146,16 @@ Page({
     const queues = (this.summary && this.summary.queues) || {};
     const q = queues[dish.window.id];
     if (q && !q.stale) score -= q.waitMin * 1.5;
+    if (recentIds.includes(dish.id)) score -= 25;
     return score;
   },
 
   pickMeal() {
-    const all = this.allDishes || [];
+    const all = this.activeCanteenDishes();
     if (!all.length) return [];
     const goal = this.data.goal;
     const def = GOALS.find((g) => g.key === goal) || GOALS[0];
+    const recentIds = points.recentMeals().map((x) => x.id);
     const chosen = {};
     const meal = [];
     def.plan.forEach((category) => {
@@ -107,7 +163,7 @@ Page({
       if (!pool.length) pool = all.filter((d) => !chosen[d.id]);
       if (!pool.length) return;
       const ranked = pool
-        .map((d) => ({ d, score: this.scoreFor(d, goal) + Math.random() * 3 }))
+        .map((d) => ({ d, score: this.scoreFor(d, goal, recentIds) + Math.random() * 3 }))
         .sort((a, b) => b.score - a.score);
       const pick = ranked[Math.floor(Math.random() * Math.min(4, ranked.length))].d;
       chosen[pick.id] = true;
@@ -120,10 +176,12 @@ Page({
     if (!this.mealRaw) this.mealRaw = this.pickMeal();
     let kcal = 0;
     let protein = 0;
+    let carbon = 0;
     const items = this.mealRaw.map((d) => {
       const n = fmt.nutrition(d, 1);
       kcal += n.kcal;
       protein += parseFloat(n.protein);
+      carbon += fmt.carbon(d, 1);
       return {
         id: d.id,
         name: d.name,
@@ -133,7 +191,16 @@ Page({
         proteinText: n.protein,
       };
     });
-    this.setData({ meal: items, mealTotals: { kcal: Math.round(kcal), protein: protein.toFixed(0) } });
+    const recentIds = points.recentMeals().map((x) => x.id);
+    this.setData({
+      meal: items,
+      mealTotals: {
+        kcal: Math.round(kcal),
+        protein: protein.toFixed(0),
+        carbon: carbon.toFixed(1),
+      },
+      recentHint: recentIds.length ? '已优先避开最近吃过的 ' + recentIds.length + ' 道菜' : '',
+    });
   },
 
   reroll() {
@@ -169,7 +236,11 @@ Page({
       else tray.push({ id: d.id, factor: 1, qty: 1 });
     });
     wx.setStorageSync('tray', tray);
+    points.rememberMeal(this.mealRaw);
+    points.add(1);
+    this.setData({ points: points.get() });
     this.refreshTray(true);
+    this.renderMeal();
   },
 
   refreshTray(notify) {
@@ -185,7 +256,7 @@ Page({
       count += item.qty || 1;
     });
     this.setData({ trayCount: count, trayKcal: Math.round(kcal) });
-    if (notify) wx.showToast({ title: '已加入今日餐盘', icon: 'success' });
+    if (notify) wx.showToast({ title: '已加入今日餐盘 +1 积分', icon: 'success' });
   },
 
   clearTray() {
@@ -210,5 +281,9 @@ Page({
         that.load();
       },
     });
+  },
+
+  onShareAppMessage() {
+    return { title: '农餐馆 · 今天吃什么', path: '/pages/index/index' };
   },
 });

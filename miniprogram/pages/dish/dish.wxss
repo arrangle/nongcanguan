@@ -36,6 +36,16 @@
 .stars { color: #dcae51; font-size: 22rpx; letter-spacing: 2rpx; }
 .review-text { margin: 6rpx 0; color: #263b34; font-size: 24rpx; line-height: 1.7; }
 .review-empty { margin-top: 16rpx; }
+.review-foot { margin-top: 6rpx; }
+.review-like {
+  padding: 4rpx 14rpx;
+  border: 1rpx solid #e0e5db;
+  border-radius: 999rpx;
+  background: #fffef9;
+  color: #77837c;
+  font-size: 20rpx;
+}
+.review-like.on { border-color: #173f35; background: #e6eee5; color: #173f35; font-weight: 600; }
 
 .form { margin-top: 20rpx; padding-top: 20rpx; border-top: 1rpx dashed #e0e5db; }
 .form-title { color: #173f35; font-size: 24rpx; font-weight: 600; }

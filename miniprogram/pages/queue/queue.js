@@ -1,12 +1,17 @@
 const api = require('../../utils/api');
 const fmt = require('../../utils/format');
+const points = require('../../utils/points');
 
 Page({
   data: {
     loading: true,
     error: '',
+    canteens: [],
+    activeCanteen: '',
+    canteenLabel: '',
     items: [],
     updatedText: '',
+    points: 0,
     modalOpen: false,
     target: '',
     targetName: '',
@@ -16,6 +21,7 @@ Page({
   },
 
   onShow() {
+    this.setData({ points: points.get() });
     this.load();
   },
 
@@ -23,10 +29,22 @@ Page({
     this.setData({ loading: true, error: '' });
     try {
       const data = await api.getQueues();
-      const items = (data.items || []).map((it) => {
+      const menu = await api.getMenu();
+      this.menu = menu;
+
+      const canteens = menu.canteens || [];
+      const online = canteens.filter((c) => c.status === 'online');
+      let active = this.data.activeCanteen;
+      if (!canteens.some((c) => c.id === active && c.status === 'online')) {
+        active = online.length ? online[0].id : (canteens[0] ? canteens[0].id : '');
+      }
+      const canteen = canteens.find((c) => c.id === active);
+
+      this.allItems = (data.items || []).map((it) => {
         const lv = fmt.level(it.queue);
         return {
           id: it.windowId,
+          canteenId: it.canteenId,
           number: it.number,
           name: it.name,
           state: lv.text,
@@ -39,14 +57,35 @@ Page({
           queue: it.queue || null,
         };
       });
+
       this.setData({
-        items,
+        canteens,
+        activeCanteen: active,
+        canteenLabel: canteen ? (canteen.alias || canteen.name) : '',
         loading: false,
         updatedText: '更新于 ' + fmt.relTime(data.updatedAt || Date.now()),
+        points: points.get(),
       });
+      this.renderItems();
     } catch (err) {
       this.setData({ loading: false, error: err.message || '加载失败' });
     }
+  },
+
+  renderItems() {
+    const items = (this.allItems || []).filter((it) => it.canteenId === this.data.activeCanteen);
+    this.setData({ items });
+  },
+
+  onCanteen(e) {
+    const id = e.currentTarget.dataset.id;
+    const canteen = (this.data.canteens || []).find((c) => c.id === id);
+    if (!canteen) return;
+    if (canteen.status !== 'online') {
+      wx.showToast({ title: canteen.name + '菜单待录入', icon: 'none' });
+      return;
+    }
+    this.setData({ activeCanteen: id, canteenLabel: canteen.alias || canteen.name }, () => this.renderItems());
   },
 
   openReport(e) {
@@ -94,8 +133,9 @@ Page({
         people: this.data.people,
         deviceId: this.deviceId(),
       });
-      this.setData({ modalOpen: false, submitting: false });
-      wx.showToast({ title: '上报成功，谢谢帮忙', icon: 'success' });
+      points.add(1);
+      this.setData({ modalOpen: false, submitting: false, points: points.get() });
+      wx.showToast({ title: '上报成功 +1 积分', icon: 'success' });
       this.load();
     } catch (err) {
       this.setData({ submitting: false });
