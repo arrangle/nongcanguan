@@ -1,0 +1,446 @@
+const dish = (windowId, index, name, price, unit, kcal, protein, fat, carbs, fiber, serving, icon, labels, description, source = "AI估算") => ({
+  id: `${windowId}-${index}`, windowId, name, price, unit, kcal, protein, fat, carbs, fiber, serving, icon, labels, description, source
+});
+
+const windows = [
+  {
+    id: "w18", number: "18", name: "低脂美食新风尚", short: "轻食 · 营养公示", cover: "assets/photos/04.webp", gallery: ["04", "03"], position: "center 46%",
+    description: "窗口提供每100克营养公示，蒸、煮、白灼菜品丰富，轻盈一餐从这里开始。",
+    dishes: [
+      dish("w18", 1, "白灼大虾", null, "时价", 71.25, 11.01, 2.06, 2.14, 0.02, 150, "meat", ["白灼", "高蛋白"], "鲜虾白灼，少油烹调，补充优质蛋白质。", "窗口公示"),
+      dish("w18", 2, "麻辣鸡丝", null, "时价", 112.88, 12.62, 5.79, 3.12, 0.63, 150, "meat", ["高蛋白", "微辣"], "鸡丝搭配麻辣调味，蛋白质相对较高。", "窗口公示"),
+      dish("w18", 3, "荷兰豆炒鸡胸肉", null, "时价", 61.76, 5.00, 3.04, 4.52, 1.00, 200, "meat", ["低热量", "荤素搭配"], "荷兰豆清脆，搭配鸡胸肉，整体热量较低。", "窗口公示"),
+      dish("w18", 4, "木耳西蓝花", null, "时价", 85.40, 3.01, 6.96, 4.09, 1.45, 200, "leaf", ["素食", "膳食纤维"], "西蓝花与木耳同炒，补充蔬菜与膳食纤维。", "窗口公示"),
+      dish("w18", 5, "番茄白玉菇", null, "时价", 46.09, 2.94, 2.58, 4.02, 1.49, 200, "leaf", ["素食", "低热量"], "番茄酸甜，白玉菇鲜嫩，适合清淡搭配。", "窗口公示"),
+      dish("w18", 6, "百合蒸南瓜", null, "时价", 43.81, 1.09, 0.19, 10.21, 0.81, 180, "rice", ["素食", "蒸制"], "南瓜与百合蒸制，口感软糯，脂肪较低。", "窗口公示"),
+      dish("w18", 7, "双色菜花", null, "时价", 39.47, 2.75, 2.18, 5.29, 3.04, 200, "leaf", ["素食", "高纤维"], "两种菜花搭配，膳食纤维在公示菜品中较突出。", "窗口公示"),
+      dish("w18", 8, "香菇油菜", null, "时价", 79.84, 1.87, 6.90, 3.79, 1.30, 200, "leaf", ["素食", "家常"], "香菇提鲜，油菜清爽，是经典素菜搭配。", "窗口公示")
+    ]
+  },
+  {
+    id: "w06", number: "06", name: "炒面 · 炒粉", short: "意面 · 通心粉 · 河粉", cover: "assets/photos/11.webp", gallery: ["11", "12"], position: "center 35%",
+    description: "鸡蛋、肉沫、香肠自由搭配，意面、通心粉和河粉现点现选。",
+    dishes: [
+      dish("w06", 1, "鸡蛋炒意大利面", 7, "/份", 168, 6.1, 5.2, 24.5, 1.5, 300, "noodles", ["主食", "蛋香"], "意大利面搭配鸡蛋与时蔬炒制。"),
+      dish("w06", 2, "肉沫炒意大利面", 10, "/份", 186, 7.8, 6.9, 23.8, 1.4, 300, "noodles", ["主食", "肉香"], "肉沫酱香包裹意面，口感扎实。"),
+      dish("w06", 3, "鸡蛋炒通心粉", 7, "/份", 172, 6.3, 5.5, 24.1, 1.4, 300, "noodles", ["主食", "蛋香"], "通心粉与鸡蛋同炒，饱腹的一餐。"),
+      dish("w06", 4, "香肠炒通心粉", 10, "/份", 215, 7.1, 9.8, 24.0, 1.2, 300, "noodles", ["主食", "香肠"], "通心粉搭配香肠，风味浓郁。"),
+      dish("w06", 5, "肉沫炒通心粉", 10, "/份", 194, 7.9, 7.2, 24.1, 1.3, 300, "noodles", ["主食", "肉香"], "肉沫与通心粉翻炒，咸香适口。"),
+      dish("w06", 6, "鸡蛋炒河粉", 7, "/份", 178, 5.8, 6.0, 25.7, 1.2, 300, "noodles", ["主食", "蛋香"], "河粉软滑，搭配鸡蛋与配菜。"),
+      dish("w06", 7, "肉沫炒河粉", 10, "/份", 192, 6.8, 7.1, 25.3, 1.1, 300, "noodles", ["主食", "肉香"], "肉沫与河粉同炒，香气充足。")
+    ]
+  },
+  {
+    id: "w08", number: "08", name: "汤粉 · 面食", short: "汤面 · 拌面 · 刀削面", cover: "assets/photos/10.webp", gallery: ["10", "09"], position: "center 36%",
+    description: "从清爽酸汤到浓郁肉酱，多种面食与加料选择，价格识别自窗口灯箱。",
+    dishes: [
+      dish("w08", 1, "油泼面", 6, "/份", 212, 6.2, 8.9, 27.1, 1.8, 350, "noodles", ["主食", "微辣"], "面条配以热油泼香调味，风味浓郁。"),
+      dish("w08", 2, "打卤面", 6, "/份", 156, 6.8, 4.2, 23.3, 1.7, 350, "noodles", ["主食", "家常"], "面条搭配家常卤汁，咸香适口。"),
+      dish("w08", 3, "肉酱面", 8, "/份", 186, 8.3, 6.8, 23.5, 1.5, 350, "noodles", ["主食", "肉香"], "肉酱拌面，兼顾碳水与蛋白质。"),
+      dish("w08", 4, "酸汤面", 6, "/份", 142, 5.4, 3.2, 22.8, 1.6, 350, "noodles", ["主食", "酸汤"], "酸汤开胃，适合想吃清爽汤面的时候。"),
+      dish("w08", 5, "臊子面", 8, "/份", 176, 7.6, 6.1, 23.4, 1.7, 350, "noodles", ["主食", "西北风味"], "面条配臊子与蔬菜，风味丰富。"),
+      dish("w08", 6, "红烧牛肉面", 13, "/份", 168, 10.2, 5.8, 19.6, 1.4, 400, "noodles", ["主食", "高蛋白"], "红烧牛肉搭配汤面，肉香浓郁。"),
+      dish("w08", 7, "番茄牛腩面", 13, "/份", 152, 9.8, 4.6, 18.5, 1.8, 400, "noodles", ["主食", "番茄"], "番茄酸甜，搭配牛腩与面条。")
+    ]
+  },
+  {
+    id: "w11", number: "11", name: "基本菜品", short: "家常热菜 · 荤素搭配", cover: "assets/photos/07.webp", gallery: ["07", "08", "06"], position: "32% 35%",
+    description: "叉烧、丸子、热炒与凉菜，菜品按整份标价，窗口建议可半份购买。",
+    dishes: [
+      dish("w11", 1, "叉烧鸡块", 12, "/份", 196, 15.2, 10.4, 10.1, 0.5, 200, "meat", ["高蛋白", "肉菜"], "鸡肉以叉烧风味调味，咸甜适口。"),
+      dish("w11", 2, "红烧狮子头", 4, "/个", 248, 11.8, 19.6, 7.2, 0.6, 140, "meat", ["高蛋白", "红烧"], "大肉丸红烧入味，按个售卖。"),
+      dish("w11", 3, "糯米丸子", 4, "/个", 218, 6.4, 8.9, 27.6, 0.8, 140, "rice", ["主食", "糯米"], "糯米包裹肉馅，软糯咸香。"),
+      dish("w11", 4, "秋葵炒鸡蛋", 10, "/份", 128, 7.2, 8.4, 5.6, 2.1, 200, "egg", ["蛋香", "蔬菜"], "秋葵与鸡蛋同炒，荤素搭配。"),
+      dish("w11", 5, "啤酒鸭焖萝卜", 12, "/份", 162, 11.6, 9.1, 7.8, 1.4, 250, "meat", ["高蛋白", "炖煮"], "鸭肉与萝卜焖煮，萝卜吸收汤汁。"),
+      dish("w11", 6, "醋汁藕片", 8, "/份", 116, 2.2, 3.8, 18.5, 2.4, 180, "leaf", ["素食", "酸爽"], "藕片脆爽，醋汁开胃。"),
+      dish("w11", 7, "辣白菜炒土豆片", 6, "/份", 124, 2.6, 4.7, 18.1, 2.2, 200, "leaf", ["素食", "微辣"], "辣白菜与土豆片同炒，酸辣下饭。"),
+      dish("w11", 8, "口水鸡", 12, "/份", 198, 18.4, 12.8, 2.6, 0.4, 180, "meat", ["高蛋白", "微辣"], "鸡肉搭配香辣调味汁，蛋白质丰富。")
+    ]
+  },
+  {
+    id: "w12", number: "12", name: "基本菜品", short: "家常热菜 · 小炒", cover: "assets/photos/07.webp", gallery: ["07", "08"], position: "75% 35%",
+    description: "宫保鸡丁、青笋肉片等家常小炒，丰富一餐的荤素选择。",
+    dishes: [
+      dish("w12", 1, "宫保鸡丁", 6, "/份", 168, 12.6, 8.9, 9.4, 1.1, 200, "meat", ["高蛋白", "经典"], "鸡丁、花生与配菜炒制，咸甜微辣。"),
+      dish("w12", 2, "鱼香茄条", 6, "/份", 142, 2.8, 9.6, 11.8, 2.1, 200, "leaf", ["素食", "鱼香"], "茄条软嫩，鱼香汁酸甜咸香。"),
+      dish("w12", 3, "红烧茄子", 6, "/份", 136, 2.4, 9.1, 11.5, 2.0, 200, "leaf", ["素食", "红烧"], "茄子红烧入味，是经典下饭菜。"),
+      dish("w12", 4, "青笋肉片", 6, "/份", 118, 9.8, 6.7, 4.9, 1.3, 200, "meat", ["高蛋白", "荤素搭配"], "青笋清脆，搭配滑嫩肉片。"),
+      dish("w12", 5, "干锅土豆片", 10, "/份", 156, 3.0, 7.8, 19.4, 2.3, 220, "leaf", ["素食", "干锅"], "土豆片干锅炒制，香辣软糯。"),
+      dish("w12", 6, "香椿摊鸡蛋", 12, "/份", 176, 10.8, 13.2, 3.2, 0.8, 180, "egg", ["高蛋白", "蛋香"], "香椿与鸡蛋摊制，香气独特。"),
+      dish("w12", 7, "菠萝鸡片", 12, "/份", 132, 12.1, 4.8, 10.4, 0.9, 200, "meat", ["高蛋白", "酸甜"], "鸡片搭配菠萝，果香酸甜。")
+    ]
+  },
+  {
+    id: "w22", number: "22", name: "特色肠粉", short: "粤式风味 · 现蒸肠粉", cover: "assets/photos/02.webp", gallery: ["02", "01"], position: "78% 40%",
+    description: "鸡蛋、玉米、虾仁、牛肉等多种肠粉，米浆蒸制，搭配不同馅料。",
+    dishes: [
+      dish("w22", 1, "鸡蛋肠粉", 6, "/份", 128, 5.2, 3.1, 20.3, 0.8, 250, "rice", ["主食", "蒸制"], "米浆蒸成薄皮，搭配鸡蛋与酱汁。"),
+      dish("w22", 2, "双蛋肠粉", 7, "/份", 146, 7.1, 4.5, 19.4, 0.7, 270, "rice", ["主食", "蛋香"], "双份鸡蛋搭配现蒸米皮，蛋香更足。"),
+      dish("w22", 3, "猪肉肠粉", 8, "/份", 156, 7.6, 5.2, 20.1, 0.7, 250, "rice", ["主食", "肉香"], "猪肉馅与米皮同蒸，咸香软滑。"),
+      dish("w22", 4, "玉米粒肠粉", 7, "/份", 132, 4.1, 2.8, 22.9, 1.4, 250, "rice", ["主食", "玉米"], "玉米粒清甜，搭配软滑肠粉。"),
+      dish("w22", 5, "虾仁肠粉", 12, "/份", 118, 8.4, 2.2, 16.8, 0.6, 250, "rice", ["主食", "高蛋白"], "虾仁鲜嫩，整体脂肪估算相对较低。"),
+      dish("w22", 6, "牛肉肠粉", 12, "/份", 149, 8.8, 4.1, 19.5, 0.7, 250, "rice", ["主食", "牛肉"], "牛肉馅搭配米皮与酱汁，鲜香软滑。")
+    ]
+  }
+];
+
+const photoArchive = [
+  { id: "01", caption: "窗口 23–24 · 麻辣烫与石锅拌饭" },
+  { id: "02", caption: "窗口 19–22 · 基本伙与特色风味" },
+  { id: "03", caption: "窗口 16–18 · 轻食选餐区" },
+  { id: "04", caption: "窗口 18 · 低脂菜品每100克营养公示表" },
+  { id: "05", caption: "窗口 15–16 · 基本菜品与一锅炖菜" },
+  { id: "06", caption: "窗口 13 · 基本伙价格公示" },
+  { id: "07", caption: "窗口 11–12 · 基本菜品菜单" },
+  { id: "08", caption: "窗口 11 · 基本伙价格公示" },
+  { id: "09", caption: "窗口 08–10 · 粉面、粥与饼" },
+  { id: "10", caption: "窗口 07–09 · 饺子与粉面" },
+  { id: "11", caption: "窗口 06 · 炒意面、通心粉与河粉" },
+  { id: "12", caption: "窗口 03–06 · 面点、炒饭与炒面" },
+  { id: "13", caption: "窗口 02–03 · 卤味与面点" },
+  { id: "14", caption: "窗口 01–02 · 基本伙与风味卤味" }
+].map(photo => ({ ...photo, src: `assets/photos/${photo.id}.webp` }));
+
+const state = { windowId: "w18", filter: "all", query: "", sort: "default", detailDishId: null, detailFactor: 1, galleryItems: photoArchive, galleryIndex: 0 };
+const iconStyles = {
+  leaf: ["#4e805b", "#e9f1df"], noodles: ["#a87531", "#f8eed6"], meat: ["#a86249", "#f8e9e1"],
+  rice: ["#8d713b", "#f4edda"], egg: ["#ac7a35", "#f9efda"], bowl: ["#4d7e73", "#e4efea"]
+};
+const filters = {
+  all: { label: "全部菜品", test: () => true },
+  light: { label: "轻盈低脂", test: d => d.kcal <= 120 && d.fat <= 7 },
+  protein: { label: "高蛋白", test: d => d.protein >= 9.5 },
+  veg: { label: "清爽素食", test: d => d.labels.includes("素食") },
+  staple: { label: "主食面点", test: d => d.labels.includes("主食") }
+};
+const $ = selector => document.querySelector(selector);
+const $$ = selector => [...document.querySelectorAll(selector)];
+const allDishes = windows.flatMap(w => w.dishes.map(d => ({ ...d, window: w })));
+const getWindow = id => windows.find(w => w.id === id);
+const getDish = id => allDishes.find(d => d.id === id);
+const getPhoto = id => photoArchive.find(p => p.id === id);
+const round = value => Math.round(value);
+const one = value => value.toFixed(1);
+const escapeHTML = value => String(value).replace(/[&<>'"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
+const nutritionFor = (d, factor = 1) => {
+  const ratio = d.serving * factor / 100;
+  return { kcal: d.kcal * ratio, protein: d.protein * ratio, fat: d.fat * ratio, carbs: d.carbs * ratio, fiber: d.fiber * ratio, grams: Math.round(d.serving * factor) };
+};
+const priceHTML = (d, large = false) => d.price === null
+  ? `<span class="dish-price market">窗口时价</span>`
+  : `<span class="dish-price${large ? " large" : ""}"><small>¥</small>${d.price}<small>${d.unit}</small></span>`;
+const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
+
+let tray = [];
+try {
+  const saved = JSON.parse(localStorage.getItem("cau-food-tray") || "[]");
+  if (Array.isArray(saved)) tray = saved.filter(item => getDish(item.dishId) && [0.5, 1, 1.5].includes(item.factor) && Number.isInteger(item.qty) && item.qty > 0);
+} catch (_) { tray = []; }
+const saveTray = () => { try { localStorage.setItem("cau-food-tray", JSON.stringify(tray)); } catch (_) {} };
+
+let toastTimer;
+function showToast(message) {
+  const toast = $("#toast");
+  toast.querySelector("span").textContent = message;
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
+}
+
+function renderWindowList() {
+  $("#windowList").innerHTML = windows.map(w => `
+    <button class="window-item ${w.id === state.windowId ? "active" : ""}" data-window="${w.id}" aria-current="${w.id === state.windowId ? "true" : "false"}">
+      <span class="window-number">${w.number}</span>
+      <span class="window-item-copy"><strong>${w.name}</strong><small>${w.short}</small></span>
+      ${icon("chevron")}
+    </button>`).join("");
+  $("#windowCount").textContent = windows.length;
+}
+
+function renderWindowHero() {
+  const w = getWindow(state.windowId);
+  const image = $("#windowHeroImage");
+  image.src = w.cover;
+  image.alt = `公一食堂${w.number}号${w.name}窗口实拍`;
+  image.style.objectPosition = w.position;
+  $("#windowHeroLabel").textContent = `WINDOW ${w.number} · ${w.dishes.length} DISHES`;
+  $("#windowHeroName").textContent = `${w.number} 号 · ${w.name}`;
+  $("#windowHeroDescription").textContent = w.description;
+}
+
+function getVisibleDishes() {
+  let items = state.query ? allDishes : getWindow(state.windowId).dishes.map(d => ({ ...d, window: getWindow(state.windowId) }));
+  if (state.query) {
+    const query = state.query.toLowerCase();
+    items = items.filter(d => `${d.name}${d.description}${d.labels.join("")}${d.window.name}${d.window.number}`.toLowerCase().includes(query));
+  }
+  items = items.filter(filters[state.filter].test);
+  return [...items].sort((a, b) => {
+    if (state.sort === "calories") return a.kcal - b.kcal;
+    if (state.sort === "protein") return b.protein - a.protein;
+    if (state.sort === "price") return (a.price ?? Infinity) - (b.price ?? Infinity);
+    return 0;
+  });
+}
+
+function dishCard(d) {
+  const [color, tint] = iconStyles[d.icon] || iconStyles.bowl;
+  const visibleLabels = d.labels.filter(label => !["主食", "素食", "高蛋白"].includes(label)).slice(0, 2);
+  if (d.kcal <= 120 && !visibleLabels.includes("低热量")) visibleLabels.push("低热量");
+  return `<article class="dish-card" data-dish="${d.id}" tabindex="0" role="button" aria-label="查看${d.name}营养详情" style="--dish-color:${color};--dish-tint:${tint}">
+    <div class="dish-card-top"><span class="dish-icon">${icon(d.icon)}</span><span class="source-badge ${d.source === "AI估算" ? "estimated" : ""}">${d.source}</span></div>
+    <div class="dish-card-title"><h3>${d.name}</h3>${priceHTML(d)}</div>
+    <p class="dish-description">${d.description}</p>
+    <div class="dish-tags">${visibleLabels.map(label => `<span>${label}</span>`).join("")}</div>
+    ${state.query ? `<div class="dish-window-chip">${d.window.number} 号窗口 · ${d.window.name}</div>` : ""}
+    <div class="dish-card-bottom"><div><div class="dish-energy"><strong>${round(d.kcal)}</strong><span>kcal / 100g</span></div><p class="dish-protein">蛋白质 <b>${one(d.protein)}g</b> · 脂肪 ${one(d.fat)}g</p></div><button class="add-dish" data-add="${d.id}" aria-label="将${d.name}加入今日餐盘" title="加入今日餐盘">${icon("plus")}</button></div>
+  </article>`;
+}
+
+function renderDishes() {
+  const items = getVisibleDishes();
+  $("#windowHero").classList.toggle("search-active", Boolean(state.query));
+  $("#dishSectionTitle").textContent = state.query ? `“${state.query}”的搜索结果` : (state.filter === "all" ? "挑选菜品" : filters[state.filter].label);
+  $("#dishResultCount").textContent = state.query
+    ? `在公一 ${allDishes.length} 道已录入菜品中找到 ${items.length} 道`
+    : `${getWindow(state.windowId).number} 号窗口 · ${items.length} 道菜品 · 营养按每100g展示`;
+  $("#dishGrid").innerHTML = items.map(dishCard).join("");
+  $("#dishGrid").hidden = items.length === 0;
+  $("#emptyState").hidden = items.length !== 0;
+}
+
+function renderFilterTabs() {
+  $$("#filterTabs button").forEach(button => button.classList.toggle("active", button.dataset.filter === state.filter));
+}
+
+function openDish(id) {
+  state.detailDishId = id;
+  state.detailFactor = 1;
+  renderDishDetail();
+  $("#dishDialog").showModal();
+}
+
+function renderDishDetail() {
+  const d = getDish(state.detailDishId);
+  if (!d) return;
+  const w = d.window;
+  const n = nutritionFor(d, state.detailFactor);
+  const portionName = factor => factor === 0.5 ? "半份" : factor === 1.5 ? "1.5 份" : "标准份";
+  const sourceText = d.source === "窗口公示"
+    ? "数值录入自18号窗口现场营养公示表，按每100克记录；当前按所选参考份量换算。"
+    : "根据菜名、常见食材与烹饪方式进行AI估算，并非检测值；实际受配方、用油和份量影响。";
+  $("#dishDialogContent").innerHTML = `<div class="dish-detail">
+    <div class="dish-detail-photo"><img src="${w.cover}" alt="${w.number}号窗口现场照片" style="object-position:${w.position}"><div class="dish-detail-photo-caption"><span>WINDOW ${w.number} · ON-SITE PHOTO</span><p>${w.name}<br>现场菜单拍摄于 2026.11.21</p></div></div>
+    <div class="dish-detail-main">
+      <span class="detail-window">公一食堂 / ${w.number} 号窗口 / ${w.name}</span>
+      <div class="detail-title-row"><h2>${d.name}</h2>${priceHTML(d, true)}</div>
+      <p class="detail-description">${d.description} 参考份量 ${d.serving} 克，以下为当前所选份量的营养参考。</p>
+      <div class="detail-tags">${d.labels.map(label => `<span>${label}</span>`).join("")}</div>
+      <div class="portion-section"><div class="portion-label"><span>选择食用份量</span><span id="portionGrams">约 ${n.grams}g</span></div><div class="portion-options">${[0.5, 1, 1.5].map(factor => `<button class="${factor === state.detailFactor ? "active" : ""}" data-factor="${factor}">${portionName(factor)}</button>`).join("")}</div></div>
+      <div class="detail-energy"><div><strong>${round(n.kcal)}</strong><span>kcal</span></div><small>当前份量能量</small></div>
+      <div class="detail-macros"><div><span>蛋白质</span><strong>${one(n.protein)}<small>g</small></strong></div><div><span>碳水化合物</span><strong>${one(n.carbs)}<small>g</small></strong></div><div><span>脂肪</span><strong>${one(n.fat)}<small>g</small></strong></div><div><span>膳食纤维</span><strong>${one(n.fiber)}<small>g</small></strong></div></div>
+      <div class="detail-source">${icon("info")}<span><b>${d.source}</b> · ${sourceText}</span></div>
+      <button class="button button-primary detail-add" data-detail-add="${d.id}">${icon("plus")}加入今日餐盘 · ${round(n.kcal)} kcal</button>
+    </div>
+  </div>`;
+}
+
+function addDish(id, factor = 1) {
+  const existing = tray.find(item => item.dishId === id && item.factor === factor);
+  if (existing) existing.qty += 1;
+  else tray.push({ dishId: id, factor, qty: 1 });
+  saveTray();
+  renderTray();
+  const d = getDish(id);
+  showToast(`已将“${d.name}”加入今日餐盘`);
+}
+
+function renderTray() {
+  const validItems = tray.map(item => ({ ...item, dish: getDish(item.dishId) })).filter(item => item.dish);
+  const count = validItems.reduce((sum, item) => sum + item.qty, 0);
+  const totals = validItems.reduce((sum, item) => {
+    const n = nutritionFor(item.dish, item.factor);
+    Object.keys(sum).forEach(key => { sum[key] += n[key] * item.qty; });
+    return sum;
+  }, { kcal: 0, protein: 0, fat: 0, carbs: 0, fiber: 0 });
+  const portionName = factor => factor === 0.5 ? "半份" : factor === 1.5 ? "1.5份" : "标准份";
+  $("#trayItems").innerHTML = validItems.map((item, index) => `<div class="tray-item"><div class="tray-item-copy"><strong>${item.dish.name}</strong><span>${item.dish.window.number}号窗口 · ${portionName(item.factor)}${item.qty > 1 ? ` × ${item.qty}` : ""}</span></div><span class="tray-item-energy">${round(nutritionFor(item.dish, item.factor).kcal * item.qty)}<small> kcal</small></span><button class="tray-item-remove" data-remove="${index}" aria-label="移除${item.dish.name}">${icon("close")}</button></div>`).join("");
+  $("#trayEmpty").hidden = count > 0;
+  $("#trayCount").textContent = `${count} 道`;
+  $("#totalCalories").textContent = round(totals.kcal);
+  $("#caloriePercent").textContent = `${round(totals.kcal / 650 * 100)}%`;
+  $("#calorieBar").style.width = `${Math.min(100, totals.kcal / 650 * 100)}%`;
+  $("#totalProtein").innerHTML = `${one(totals.protein)}<small>g</small>`;
+  $("#totalCarbs").innerHTML = `${one(totals.carbs)}<small>g</small>`;
+  $("#totalFat").innerHTML = `${one(totals.fat)}<small>g</small>`;
+  $("#proteinBar").style.width = `${Math.min(100, totals.protein / 30 * 100)}%`;
+  $("#carbBar").style.width = `${Math.min(100, totals.carbs / 80 * 100)}%`;
+  $("#fatBar").style.width = `${Math.min(100, totals.fat / 20 * 100)}%`;
+  $("#clearTray").disabled = count === 0;
+  $("#mobileTrayCount").textContent = count;
+  $("#mobileTrayCalories").textContent = `${round(totals.kcal)} kcal`;
+}
+
+function openGallery(ids = photoArchive.map(p => p.id)) {
+  state.galleryItems = ids.map(getPhoto).filter(Boolean);
+  state.galleryIndex = 0;
+  renderGallery();
+  $("#galleryDialog").showModal();
+}
+
+function renderGallery() {
+  const items = state.galleryItems;
+  const current = items[state.galleryIndex];
+  if (!current) return;
+  $("#galleryTitle").textContent = items.length === photoArchive.length ? "公一 · 现场菜单" : `${getWindow(state.windowId).number} 号窗口 · 现场菜单`;
+  $("#galleryMainImage").src = current.src;
+  $("#galleryMainImage").alt = current.caption;
+  $("#galleryCaption").textContent = current.caption;
+  $("#galleryPosition").textContent = `${state.galleryIndex + 1} / ${items.length}`;
+  $("#galleryThumbs").innerHTML = items.map((photo, index) => `<button class="gallery-thumb ${index === state.galleryIndex ? "active" : ""}" data-gallery-index="${index}" aria-label="查看${photo.caption}"><img src="${photo.src}" alt="" loading="lazy"><span>${photo.id}</span></button>`).join("");
+}
+
+function moveGallery(step) {
+  state.galleryIndex = (state.galleryIndex + step + state.galleryItems.length) % state.galleryItems.length;
+  renderGallery();
+}
+
+function selectWindow(id) {
+  state.windowId = id;
+  state.query = "";
+  state.filter = "all";
+  $("#searchInput").value = "";
+  renderWindowList();
+  renderWindowHero();
+  renderFilterTabs();
+  renderDishes();
+}
+
+$("#windowList").addEventListener("click", event => {
+  const button = event.target.closest("[data-window]");
+  if (button) selectWindow(button.dataset.window);
+});
+
+$("#filterTabs").addEventListener("click", event => {
+  const button = event.target.closest("[data-filter]");
+  if (!button) return;
+  state.filter = button.dataset.filter;
+  renderFilterTabs();
+  renderDishes();
+});
+
+$("#searchInput").addEventListener("input", event => {
+  state.query = event.target.value.trim();
+  renderDishes();
+});
+
+$("#sortSelect").addEventListener("change", event => {
+  state.sort = event.target.value;
+  renderDishes();
+});
+
+$("#resetFilters").addEventListener("click", () => {
+  state.filter = "all";
+  state.query = "";
+  state.sort = "default";
+  $("#searchInput").value = "";
+  $("#sortSelect").value = "default";
+  renderFilterTabs();
+  renderDishes();
+});
+
+$("#dishGrid").addEventListener("click", event => {
+  const addButton = event.target.closest("[data-add]");
+  if (addButton) {
+    event.stopPropagation();
+    addDish(addButton.dataset.add);
+    return;
+  }
+  const card = event.target.closest("[data-dish]");
+  if (card) openDish(card.dataset.dish);
+});
+
+$("#dishGrid").addEventListener("keydown", event => {
+  if ((event.key === "Enter" || event.key === " ") && event.target.matches("[data-dish]")) {
+    event.preventDefault();
+    openDish(event.target.dataset.dish);
+  }
+});
+
+$("#dishDialogContent").addEventListener("click", event => {
+  const portion = event.target.closest("[data-factor]");
+  if (portion) {
+    state.detailFactor = Number(portion.dataset.factor);
+    renderDishDetail();
+    return;
+  }
+  const add = event.target.closest("[data-detail-add]");
+  if (add) {
+    addDish(add.dataset.detailAdd, state.detailFactor);
+    $("#dishDialog").close();
+  }
+});
+
+$("#trayItems").addEventListener("click", event => {
+  const remove = event.target.closest("[data-remove]");
+  if (!remove) return;
+  tray.splice(Number(remove.dataset.remove), 1);
+  saveTray();
+  renderTray();
+});
+
+$("#clearTray").addEventListener("click", () => {
+  tray = [];
+  saveTray();
+  renderTray();
+  showToast("今日餐盘已清空");
+});
+
+$$('[data-canteen]').forEach(button => button.addEventListener("click", () => {
+  if (button.dataset.canteen !== "gong1") {
+    const name = button.dataset.canteen === "gong2" ? "公二" : "公三";
+    showToast(`${name}食堂菜单待录入，当前先为你展示公一食堂`);
+  }
+}));
+
+$("#galleryBtn").addEventListener("click", () => openGallery());
+$("#windowPhotoBtn").addEventListener("click", () => openGallery(getWindow(state.windowId).gallery));
+$("#dataBtn").addEventListener("click", () => $("#dataDialog").showModal());
+$("#galleryPrev").addEventListener("click", () => moveGallery(-1));
+$("#galleryNext").addEventListener("click", () => moveGallery(1));
+$("#galleryThumbs").addEventListener("click", event => {
+  const thumb = event.target.closest("[data-gallery-index]");
+  if (!thumb) return;
+  state.galleryIndex = Number(thumb.dataset.galleryIndex);
+  renderGallery();
+});
+
+$$('[data-close]').forEach(button => button.addEventListener("click", () => $(`#${button.dataset.close}`).close()));
+$$('dialog').forEach(dialog => dialog.addEventListener("click", event => {
+  if (event.target === dialog) {
+    const rect = dialog.getBoundingClientRect();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+  }
+}));
+
+function closeTrayDrawer() { document.body.classList.remove("drawer-open"); }
+$("#mobileTrayBtn").addEventListener("click", () => document.body.classList.add("drawer-open"));
+$("#trayClose").addEventListener("click", closeTrayDrawer);
+$("#drawerBackdrop").addEventListener("click", closeTrayDrawer);
+
+document.addEventListener("keydown", event => {
+  if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+    event.preventDefault();
+    $("#searchInput").focus();
+  }
+  if (event.key === "Escape") closeTrayDrawer();
+  if ($("#galleryDialog").open && event.key === "ArrowLeft") moveGallery(-1);
+  if ($("#galleryDialog").open && event.key === "ArrowRight") moveGallery(1);
+});
+
+$("#statWindows").textContent = windows.length;
+$("#statDishes").textContent = allDishes.length;
+renderWindowList();
+renderWindowHero();
+renderDishes();
+renderTray();

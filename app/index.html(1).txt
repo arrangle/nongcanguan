@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="食刻——中国农业大学餐厅窗口菜品与营养查询工具">
+  <title>食刻 · 农大智慧餐厅</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23173f35'/%3E%3Cpath d='M14 30h36c0 12-7 20-18 20S14 42 14 30Z' fill='%23e5efb8'/%3E%3Cpath d='M22 24c8 0 14-5 17-12 3 9-2 16-12 17' fill='none' stroke='%23e5efb8' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="m4 17 5-4 3 3 3-3 5 4"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3m3 0-1 13H7L6 7m4 4v5m4-5v5"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 4C10 3 4 8 5 15c1 5 7 6 11 2 4-4 4-13 4-13Z"/><path d="M4 21c3-6 7-9 12-12"/></symbol>
+    <symbol id="i-bowl" viewBox="0 0 24 24"><path d="M3 10h18c0 7-4 10-9 10s-9-3-9-10Z"/><path d="M7 6c2-2 5-2 7 0m-3-3c2-1 4-1 6 0M7 23h10"/></symbol>
+    <symbol id="i-noodles" viewBox="0 0 24 24"><path d="M4 11h16c0 6-3 9-8 9s-8-3-8-9Z"/><path d="M7 3v8m4-8v8m4-8v8m4-8v8M7 23h10"/></symbol>
+    <symbol id="i-meat" viewBox="0 0 24 24"><path d="M15.8 4.3c3.2 2.2 4.5 6.4 2.7 9.5-1.4 2.4-4.4 3.1-6.4 4.6-2.2 1.7-5.1 1.9-7.1.2-2.3-2-2.1-5.8.1-7.8 1.7-1.6 4.1-1.8 5.7-3.6 1.3-1.6 2.4-4.6 5-2.9Z"/><circle cx="8" cy="15" r="2"/></symbol>
+    <symbol id="i-rice" viewBox="0 0 24 24"><path d="M5 10h14c0 6-3 9-7 9s-7-3-7-9Z"/><path d="M8 7c0-2 1-3 2-4m3 4c0-2 1-3 2-4M8 22h8"/></symbol>
+    <symbol id="i-egg" viewBox="0 0 24 24"><path d="M19 14c0 4-3 7-7 7s-7-3-7-7S8 3 12 3s7 7 7 11Z"/><circle cx="12" cy="13" r="3"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M13 2c1 5-4 6-4 10 0 2 1 3 3 3 3 0 4-3 3-6 3 2 5 5 4 8-1 4-4 5-7 5s-7-2-8-6c-2-7 5-9 9-14Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-plate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/></symbol>
+  </svg>
+
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="食刻首页">
+      <span class="brand-mark"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 25h28c0 9-5 15-14 15S10 34 10 25Z"/><path d="M16 20c7 0 12-4 15-11 3 7-1 13-10 15"/></svg></span>
+      <span><strong>食刻</strong><small>CAU FOOD GUIDE</small></span>
+    </a>
+    <div class="update-status"><span class="status-dot"></span><span>公一菜单已识别</span><time datetime="2026-11-21">11.21</time></div>
+    <div class="top-actions">
+      <button class="button button-quiet" id="galleryBtn"><svg class="icon"><use href="#i-image"/></svg><span>现场菜单</span><b>14</b></button>
+      <button class="icon-button" id="dataBtn" aria-label="营养数据说明" title="营养数据说明"><svg class="icon"><use href="#i-info"/></svg></button>
+    </div>
+  </header>
+
+  <main class="main-shell">
+    <section class="canteen-section" aria-labelledby="canteenLabel">
+      <div class="section-kicker" id="canteenLabel"><span>01</span> 选择食堂 <small>中国农业大学 · 东区</small></div>
+      <div class="canteen-tabs" role="tablist" aria-label="食堂选择">
+        <button class="canteen-tab active" role="tab" aria-selected="true" data-canteen="gong1">
+          <span class="canteen-number">01</span><span class="canteen-copy"><strong>公一食堂</strong><small>公寓一食堂</small></span><span class="canteen-state">已上线</span><svg class="icon"><use href="#i-arrow"/></svg>
+        </button>
+        <button class="canteen-tab" role="tab" aria-selected="false" aria-disabled="true" data-canteen="gong2">
+          <span class="canteen-number">02</span><span class="canteen-copy"><strong>公二食堂</strong><small>公寓二食堂</small></span><span class="canteen-state">待录入</span>
+        </button>
+        <button class="canteen-tab" role="tab" aria-selected="false" aria-disabled="true" data-canteen="gong3">
+          <span class="canteen-number">03</span><span class="canteen-copy"><strong>公三食堂</strong><small>公寓三食堂</small></span><span class="canteen-state">待录入</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="intro-section">
+      <div class="intro-copy">
+        <p class="eyebrow">GONG YI · MENU & NUTRITION</p>
+        <h1>今天，也要<span>好好吃饭。</span></h1>
+        <p>从现场菜单到营养参考，把每一个窗口看得明白，<br class="desktop-only">把这一餐选得轻松。</p>
+      </div>
+      <div class="intro-stats" aria-label="公一菜单统计">
+        <div><strong id="statWindows">6</strong><span>精选窗口</span></div>
+        <i></i>
+        <div><strong id="statDishes">40</strong><span>已录入菜品</span></div>
+        <i></i>
+        <div><strong>100<em>g</em></strong><span>统一营养口径</span></div>
+      </div>
+    </section>
+
+    <section class="toolbar" aria-label="菜品搜索与筛选">
+      <label class="search-box" for="searchInput">
+        <svg class="icon"><use href="#i-search"/></svg>
+        <input id="searchInput" type="search" autocomplete="off" placeholder="搜索公一菜品，比如“鸡胸肉”或“肠粉”">
+        <kbd>⌘ K</kbd>
+      </label>
+      <div class="toolbar-note"><span class="status-dot"></span>实拍菜单数字化 <span class="divider">/</span> 营养来源可溯源</div>
+    </section>
+
+    <div class="content-layout">
+      <aside class="window-panel" aria-label="窗口目录">
+        <div class="panel-heading"><div><span class="section-index">02</span><h2>选择窗口</h2></div><span class="count-badge" id="windowCount">6</span></div>
+        <nav class="window-list" id="windowList"></nav>
+        <div class="window-foot"><svg class="icon"><use href="#i-image"/></svg><p>菜名与价格来自现场照片<br><span>以窗口当日公示为准</span></p></div>
+      </aside>
+
+      <section class="dishes-panel" aria-label="窗口菜品">
+        <div class="window-hero" id="windowHero">
+          <img id="windowHeroImage" src="assets/photos/04.webp" alt="公一食堂18号低脂轻食窗口实拍">
+          <div class="window-hero-shade"></div>
+          <div class="window-hero-content">
+            <div><span class="window-label" id="windowHeroLabel">WINDOW 18</span><h2 id="windowHeroName">低脂美食新风尚</h2><p id="windowHeroDescription"></p></div>
+            <button class="photo-button" id="windowPhotoBtn"><svg class="icon"><use href="#i-image"/></svg>查看现场菜单</button>
+          </div>
+        </div>
+
+        <div class="dish-list-heading">
+          <div><span class="section-index">03</span><div><h2 id="dishSectionTitle">挑选菜品</h2><p id="dishResultCount"></p></div></div>
+          <label class="sort-select">排序<span><select id="sortSelect" aria-label="菜品排序"><option value="default">窗口顺序</option><option value="calories">热量从低到高</option><option value="protein">蛋白质优先</option><option value="price">价格从低到高</option></select><svg class="icon"><use href="#i-down"/></svg></span></label>
+        </div>
+        <div class="filter-tabs" id="filterTabs" role="group" aria-label="营养筛选">
+          <button class="active" data-filter="all">全部菜品</button>
+          <button data-filter="light"><svg class="icon"><use href="#i-leaf"/></svg>轻盈低脂</button>
+          <button data-filter="protein"><svg class="icon"><use href="#i-meat"/></svg>高蛋白</button>
+          <button data-filter="veg">清爽素食</button>
+          <button data-filter="staple">主食面点</button>
+        </div>
+        <div class="dish-grid" id="dishGrid"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <span><svg class="icon"><use href="#i-search"/></svg></span>
+          <h3>没有找到这道菜品</h3><p>换个关键词，或清除当前营养筛选试试。</p>
+          <button class="button button-primary" id="resetFilters">清除筛选</button>
+        </div>
+      </section>
+
+      <aside class="tray-panel" id="trayPanel" aria-label="今日餐盘">
+        <div class="tray-header"><div><span class="section-index">MY PLATE</span><h2>今日餐盘</h2></div><button class="icon-button tray-close" id="trayClose" aria-label="关闭餐盘"><svg class="icon"><use href="#i-close"/></svg></button><span class="tray-count" id="trayCount">0 道</span></div>
+        <div class="meal-target"><svg class="icon"><use href="#i-plate"/></svg><div><span>本餐参考目标</span><strong>650 <small>kcal</small></strong></div><p>均衡搭配<br>好好吃饭</p></div>
+        <div class="tray-items" id="trayItems"></div>
+        <div class="tray-empty" id="trayEmpty"><span><svg class="icon"><use href="#i-bowl"/></svg></span><h3>餐盘还空着</h3><p>点击菜品旁的加号，<br>看看这一餐的营养组合。</p></div>
+        <div class="tray-summary" id="traySummary">
+          <div class="calorie-summary"><div><span>本餐合计</span><strong id="totalCalories">0</strong><small>kcal</small></div><span class="calorie-percent" id="caloriePercent">0%</span></div>
+          <div class="calorie-track"><span id="calorieBar"></span></div>
+          <div class="macro-list">
+            <div><p><span><i class="protein-dot"></i>蛋白质</span><strong id="totalProtein">0<small>g</small></strong></p><div><span id="proteinBar" class="protein-bar"></span></div></div>
+            <div><p><span><i class="carb-dot"></i>碳水化合物</span><strong id="totalCarbs">0<small>g</small></strong></p><div><span id="carbBar" class="carb-bar"></span></div></div>
+            <div><p><span><i class="fat-dot"></i>脂肪</span><strong id="totalFat">0<small>g</small></strong></p><div><span id="fatBar" class="fat-bar"></span></div></div>
+          </div>
+          <button class="clear-tray" id="clearTray" disabled><svg class="icon"><use href="#i-trash"/></svg>清空餐盘</button>
+          <p class="tray-disclaimer">营养按参考份量换算，仅作饮食参考</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <button class="mobile-tray-button" id="mobileTrayBtn"><svg class="icon"><use href="#i-bowl"/></svg><span>今日餐盘</span><b id="mobileTrayCount">0</b><strong id="mobileTrayCalories">0 kcal</strong></button>
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"><svg class="icon"><use href="#i-check"/></svg><span></span></div>
+
+  <dialog class="dish-dialog" id="dishDialog">
+    <button class="dialog-close icon-button" data-close="dishDialog" aria-label="关闭"><svg class="icon"><use href="#i-close"/></svg></button>
+    <div id="dishDialogContent"></div>
+  </dialog>
+
+  <dialog class="gallery-dialog" id="galleryDialog">
+    <div class="dialog-header"><div><span class="eyebrow">ON-SITE MENU ARCHIVE</span><h2 id="galleryTitle">公一 · 现场菜单</h2></div><button class="icon-button" data-close="galleryDialog" aria-label="关闭"><svg class="icon"><use href="#i-close"/></svg></button></div>
+    <div class="gallery-layout">
+      <div class="gallery-stage"><img id="galleryMainImage" alt="公一食堂现场菜单大图"><div class="gallery-stage-bottom"><p id="galleryCaption"></p><div><button class="icon-button" id="galleryPrev" aria-label="上一张"><svg class="icon"><use href="#i-left"/></svg></button><span id="galleryPosition">1 / 14</span><button class="icon-button" id="galleryNext" aria-label="下一张"><svg class="icon"><use href="#i-right"/></svg></button></div></div></div>
+      <div class="gallery-thumbs" id="galleryThumbs"></div>
+    </div>
+  </dialog>
+
+  <dialog class="data-dialog" id="dataDialog">
+    <div class="dialog-header"><div><span class="eyebrow">NUTRITION DATA NOTES</span><h2>营养数据，明明白白</h2></div><button class="icon-button" data-close="dataDialog" aria-label="关闭"><svg class="icon"><use href="#i-close"/></svg></button></div>
+    <div class="data-intro"><span><svg class="icon"><use href="#i-info"/></svg></span><p>这不是实验检测报告。我们把“现场公示”和“AI 估算”分开标记，让每一项数据都知道从哪里来。</p></div>
+    <ol class="data-notes">
+      <li><b>01</b><div><h3>18 号窗口 · 窗口公示</h3><p>营养数值录入自现场“低脂美食新风尚”公示表，统一按每 100 克展示。</p></div></li>
+      <li><b>02</b><div><h3>其他窗口 · AI 营养估算</h3><p>根据菜名、常见食材与烹饪方式推算。实际数值会随配方、用油和份量变化。</p></div></li>
+      <li><b>03</b><div><h3>菜名与价格 · 实拍识别</h3><p>来自 2026 年 11 月 21 日公一食堂现场照片，售价及供应情况以窗口当日公示为准。</p></div></li>
+      <li><b>04</b><div><h3>今日餐盘 · 参考份量换算</h3><p>每道菜设有参考食用克重，支持半份、标准份和 1.5 份切换，仅用于日常饮食参考。</p></div></li>
+    </ol>
+    <button class="button button-primary data-confirm" data-close="dataDialog">我知道了</button>
+  </dialog>
+</body>
+</html>
