@@ -1,7 +1,9 @@
+const { BASE_URL } = require('../config');
+
 function base() {
   const app = getApp();
   const fromApp = app && app.globalData && app.globalData.apiBase;
-  return (fromApp || wx.getStorageSync('apiBase') || 'http://localhost:3000').replace(/\/+$/, '');
+  return (fromApp || wx.getStorageSync('apiBase') || BASE_URL).replace(/\/+$/, '');
 }
 
 function request(path, options = {}) {

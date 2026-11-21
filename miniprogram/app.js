@@ -1,4 +1,5 @@
-const DEFAULT_BASE = 'http://localhost:3000';
+const { BASE_URL } = require('./config');
+const DEFAULT_BASE = BASE_URL;
 
 App({
   globalData: {
