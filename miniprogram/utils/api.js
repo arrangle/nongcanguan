@@ -3,7 +3,7 @@ const { BASE_URL } = require('../config');
 function base() {
   const app = getApp();
   const fromApp = app && app.globalData && app.globalData.apiBase;
-  return (fromApp || wx.getStorageSync('apiBase') || BASE_URL).replace(/\/+$/, '');
+  return (fromApp || wx.getStorageSync('nongcanguan-api-base') || BASE_URL).replace(/\/+$/, '');
 }
 
 function request(path, options = {}) {

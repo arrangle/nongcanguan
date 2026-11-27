@@ -50,6 +50,7 @@
         data-key="{{item.key}}"
         bindtap="onFilter"
       >{{item.label}}</view>
+      <view class="chip fav-chip {{onlyFav ? 'on' : ''}}" bindtap="toggleOnlyFav">♥ 收藏{{favCount ? ' ' + favCount : ''}}</view>
     </scroll-view>
 
     <view class="row between sortbar">
@@ -62,7 +63,10 @@
     <view class="dish" wx:for="{{dishes}}" wx:key="id" bindtap="openDish" data-id="{{item.id}}">
       <view class="row between">
         <view class="dish-name">{{item.name}}</view>
-        <view class="price">{{item.priceText}}</view>
+        <view class="row dish-right">
+          <view class="price">{{item.priceText}}</view>
+          <view class="heap {{item.fav ? 'on' : ''}}" catchtap="onToggleFav" data-id="{{item.id}}">{{item.fav ? '♥' : '♡'}}</view>
+        </view>
       </view>
       <view class="muted">{{item.windowNumber}} 号 · {{item.windowName}} · {{item.source}}</view>
       <view class="nutrition">

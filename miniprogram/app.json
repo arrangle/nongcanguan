@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/menu/menu",
     "pages/dish/dish",
-    "pages/queue/queue"
+    "pages/queue/queue",
+    "pages/mine/mine"
   ],
   "window": {
     "navigationBarTitleText": "农餐馆 · 农大智慧餐厅",
@@ -20,7 +21,8 @@
     "list": [
       { "pagePath": "pages/index/index", "text": "首页" },
       { "pagePath": "pages/menu/menu", "text": "菜单" },
-      { "pagePath": "pages/queue/queue", "text": "排队" }
+      { "pagePath": "pages/queue/queue", "text": "排队" },
+      { "pagePath": "pages/mine/mine", "text": "我的" }
     ]
   },
   "style": "v2",

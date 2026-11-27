@@ -1,6 +1,14 @@
 .head { margin: 8rpx 0 4rpx; }
 .name { color: #173f35; font-size: 40rpx; font-weight: 700; }
+.head-right { gap: 14rpx; }
 .price { color: #e97548; font-size: 28rpx; font-weight: 600; }
+.heap {
+  padding: 8rpx 16rpx;
+  border: 1rpx solid #e0e5db; border-radius: 999rpx;
+  background: #fffef9; color: #98a29b; font-size: 20rpx; white-space: nowrap;
+}
+.heap.on { border-color: #eec4b8; background: #fff3ee; color: #d8583f; }
+.add-tray { width: 100%; margin-top: 18rpx; }
 .source { background: #f3f1eb; color: #8d8a7c; }
 .desc { margin-top: 14rpx; color: #263b34; font-size: 24rpx; line-height: 1.8; }
 

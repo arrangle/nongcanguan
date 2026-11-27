@@ -25,20 +25,25 @@
 
   <view class="hero card">
     <view class="hero-title">今天，也要<text class="hl">好好吃饭。</text></view>
-    <view class="muted">{{canteenLabel}} · {{menu.dataDate}} 现场采集</view>
-    <view class="row stats">
-      <view class="stat">
-        <view class="num">{{menu.windows.length}}</view>
-        <view class="muted">精选窗口</view>
+    <view class="muted">主人，今天想吃点啥呢？{{canteenLabel}} · {{menu.dataDate}} 现场采集</view>
+  </view>
+
+  <view class="entry-actions">
+    <view class="entry-action primary" bindtap="rollAndScroll">
+      <view class="ea-icon">🎁</view>
+      <view class="ea-copy">
+        <view class="ea-title">盲盒随机</view>
+        <view class="ea-sub">根据人流 · 时间</view>
       </view>
-      <view class="stat">
-        <view class="num">{{dishTotal}}</view>
-        <view class="muted">已录入菜品</view>
+      <view class="ea-arrow">›</view>
+    </view>
+    <view class="entry-action" bindtap="scrollToMeal">
+      <view class="ea-icon plain">📈</view>
+      <view class="ea-copy">
+        <view class="ea-title">今天怎么吃</view>
+        <view class="ea-sub">根据饮食记录</view>
       </view>
-      <view class="stat">
-        <view class="num">100<text class="unit">g</text></view>
-        <view class="muted">营养口径</view>
-      </view>
+      <view class="ea-arrow">›</view>
     </view>
   </view>
 
@@ -50,29 +55,40 @@
   </view>
 
   <block wx:else>
-    <view class="card">
-      <view class="row between">
-        <view>
-          <view class="eyebrow">LIVE QUEUE</view>
-          <view class="title">排队雷达</view>
-        </view>
-        <view class="link" bindtap="goQueue">全部 ›</view>
+    <view class="row between section-head">
+      <view>
+        <view class="eyebrow">WINDOWS · 先出现</view>
+        <view class="title">哪个窗口不排队</view>
       </view>
-      <view class="qitem" wx:for="{{queues}}" wx:key="id" bindtap="goQueue">
-        <view class="row between">
-          <view class="qname">{{item.number}} 号 · {{item.name}}</view>
-          <view class="state {{item.stateCls}}">{{item.state}}</view>
-        </view>
-        <view class="row between qmeta">
-          <view><text class="qnum">{{item.people}}</text><text class="muted"> 人</text></view>
-          <view class="muted">{{item.wait}}</view>
-        </view>
-        <view class="muted">{{item.age}}</view>
-      </view>
-      <view wx:if="{{!queues.length}}" class="muted">该食堂窗口暂未录入</view>
+      <view class="link" bindtap="goQueue">排队雷达 ›</view>
     </view>
 
-    <view class="card blindbox">
+    <scroll-view scroll-x class="win-strip" enhanced show-scrollbar="{{false}}">
+      <view
+        wx:for="{{windows}}"
+        wx:key="id"
+        class="win-card {{item.stateCls === 'low' ? 'calm' : ''}} {{item.stateCls === 'high' ? 'busy' : ''}}"
+        data-id="{{item.id}}"
+        bindtap="openWindow"
+      >
+        <view class="win-top">
+          <view class="win-num">{{item.number}}</view>
+          <view class="win-name">{{item.name}}</view>
+        </view>
+        <view class="row between win-state">
+          <view class="state {{item.stateCls}}">{{item.state}}</view>
+          <view class="muted">{{item.people}} 人</view>
+        </view>
+        <view class="muted win-age">{{item.age}}</view>
+        <view class="win-actions">
+          <view class="win-btn" catchtap="goQueue" data-id="{{item.id}}">排队</view>
+          <view class="win-btn on" catchtap="openWindow" data-id="{{item.id}}">菜品</view>
+        </view>
+      </view>
+    </scroll-view>
+    <view wx:if="{{!windows.length}}" class="muted empty-line">该食堂窗口暂未录入</view>
+
+    <view class="card blindbox" id="blindbox">
       <view class="row between">
         <view>
           <view class="eyebrow">BLIND BOX · 选择困难救星</view>
@@ -104,7 +120,7 @@
       </view>
     </view>
 
-    <view class="card">
+    <view class="card" id="meal">
       <view class="row between">
         <view>
           <view class="eyebrow">SMART MEAL</view>
@@ -157,12 +173,18 @@
       </view>
     </view>
 
-    <view class="card row between" wx:if="{{trayCount > 0}}">
-      <view>
-        <text class="muted">今日餐盘 </text><text class="num">{{trayCount}}</text>
-        <text class="muted"> 道 · {{trayKcal}} kcal</text>
+    <view class="card tray-card" wx:if="{{trayCount > 0}}">
+      <view class="row between">
+        <view>
+          <view class="eyebrow">MY PLATE</view>
+          <view class="title">今日餐盘</view>
+        </view>
+        <view class="link" bindtap="clearTray">清空</view>
       </view>
-      <view class="link" bindtap="clearTray">清空</view>
+      <view class="row between tray-line">
+        <view><text class="num">{{trayCount}}</text><text class="muted"> 道 · {{trayKcal}} kcal</text></view>
+        <button class="btn small" bindtap="logTray">记下这一餐</button>
+      </view>
     </view>
 
     <view class="card row between">

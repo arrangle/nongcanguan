@@ -1,5 +1,6 @@
 const api = require('../../utils/api');
 const fmt = require('../../utils/format');
+const favorites = require('../../utils/favorites');
 
 const FILTERS = [
   { key: 'all', label: '全部菜品', test: () => true },
@@ -33,6 +34,8 @@ Page({
     filters: FILTERS.map((f) => ({ key: f.key, label: f.label })),
     dishes: [],
     resultText: '',
+    onlyFav: false,
+    favCount: 0,
   },
 
   onLoad() {
@@ -40,7 +43,39 @@ Page({
   },
 
   onShow() {
-    if (this.menu) this.loadSummary();
+    const focus = wx.getStorageSync('focusWindow');
+    if (focus) {
+      wx.removeStorageSync('focusWindow');
+      this.pendingFocus = focus;
+    }
+    if (this.menu) {
+      this.applyPendingFocus();
+      this.loadSummary();
+    }
+    this.setData({ favCount: favorites.list().length });
+  },
+
+  applyPendingFocus() {
+    if (!this.pendingFocus) return;
+    const target = (this.data.windows || []).find((w) => w.id === this.pendingFocus);
+    if (target) {
+      this.setData({ activeCanteen: target.canteenId, activeId: target.id, query: '' }, () => this.render());
+    }
+    this.pendingFocus = '';
+  },
+
+  toggleOnlyFav() {
+    this.setData({ onlyFav: !this.data.onlyFav }, () => this.render());
+  },
+
+  onToggleFav(e) {
+    const id = e.currentTarget.dataset.id;
+    const dish = (this.all || []).find((d) => d.id === id);
+    if (!dish) return;
+    const on = favorites.toggle(dish);
+    this.setData({ favCount: favorites.list().length });
+    this.render();
+    wx.showToast({ title: on ? '已收藏' : '已取消收藏', icon: 'none' });
   },
 
   async load() {
@@ -68,7 +103,9 @@ Page({
         windows: menu.windows || [],
         activeId: firstWindow ? firstWindow.id : '',
         loading: false,
+        favCount: favorites.list().length,
       });
+      this.applyPendingFocus();
       this.render();
     } catch (err) {
       this.setData({ loading: false, error: err.message || '加载失败' });
@@ -138,12 +175,17 @@ Page({
           .toLowerCase();
         return haystack.includes(query);
       });
-    } else {
+    } else if (!this.data.onlyFav) {
       items = items.filter((d) => d.window.id === activeId);
     }
 
     const filterDef = FILTERS.find((f) => f.key === this.data.filter) || FILTERS[0];
     items = items.filter(filterDef.test);
+
+    if (this.data.onlyFav) {
+      const favIds = favorites.list().map((item) => item.id);
+      items = items.filter((d) => favIds.indexOf(d.id) > -1);
+    }
 
     const sortKey = (SORTS[this.data.sortIndex] || SORTS[0]).key;
     if (sortKey === 'kcal') items.sort((a, b) => a.kcal - b.kcal);
@@ -168,11 +210,13 @@ Page({
         windowName: d.window.name,
         rating: stat ? Number(stat.rating).toFixed(1) : '',
         reviewCount: stat ? stat.reviewCount : 0,
+        fav: favorites.has(d.id),
       };
     });
 
     let head;
     if (!visibleWindows.length) head = '该食堂菜单待录入';
+    else if (this.data.onlyFav) head = `收藏的 ${dishes.length} 道菜`;
     else if (query) head = `在 ${items.length} 道菜中找到 ${dishes.length} 道`;
     else head = `${activeWindow ? activeWindow.number + ' 号窗口' : ''} · ${dishes.length} 道菜 · 每 100g`;
 

@@ -1,6 +1,7 @@
 const api = require('../../utils/api');
 const fmt = require('../../utils/format');
 const points = require('../../utils/points');
+const mealLog = require('../../utils/meal-log');
 
 const GOALS = [
   { key: 'balanced', label: '均衡搭配', plan: ['protein', 'staple', 'veg'] },
@@ -30,7 +31,7 @@ Page({
     activeCanteen: '',
     canteenLabel: '',
     dishTotal: 0,
-    queues: [],
+    windows: [],
     goals: GOALS.map((g) => ({ key: g.key, label: g.label })),
     goal: 'balanced',
     meal: [],
@@ -47,6 +48,37 @@ Page({
   onShow() {
     this.setData({ apiBase: api.base(), points: points.get() });
     this.load();
+    this.startTimer();
+  },
+
+  onHide() {
+    this.stopTimer();
+  },
+
+  onUnload() {
+    this.stopTimer();
+  },
+
+  startTimer() {
+    this.stopTimer();
+    this.timer = setInterval(() => this.refreshSummary(), 60000);
+  },
+
+  stopTimer() {
+    if (this.timer) {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
+  },
+
+  /** 只刷排队角标，不动整页 */
+  async refreshSummary() {
+    try {
+      this.summary = await api.getSummary();
+      this.renderWindows();
+    } catch (err) {
+      // 网络抖动时不打扰用户
+    }
   },
 
   async load() {
@@ -89,7 +121,7 @@ Page({
       });
 
       this.mealRaw = null;
-      this.renderQueues();
+      this.renderWindows();
       this.renderMeal();
       this.refreshTray(false);
       this.setData({ points: points.get() });
@@ -102,7 +134,7 @@ Page({
     return (this.allDishes || []).filter((d) => d.window.canteenId === this.data.activeCanteen);
   },
 
-  renderQueues() {
+  renderWindows() {
     const queues = (this.summary && this.summary.queues) || {};
     const items = (this.menu.windows || [])
       .filter((w) => w.canteenId === this.data.activeCanteen)
@@ -121,9 +153,8 @@ Page({
           waitMin: q ? q.waitMin : 9999,
         };
       })
-      .sort((a, b) => a.waitMin - b.waitMin)
-      .slice(0, 3);
-    this.setData({ queues: items });
+      .sort((a, b) => a.waitMin - b.waitMin);
+    this.setData({ windows: items });
   },
 
   onCanteen(e) {
@@ -138,7 +169,7 @@ Page({
       this.mealRaw = null;
       this.lastBoxId = null;
       this.setData({ boxDish: null });
-      this.renderQueues();
+      this.renderWindows();
       this.renderMeal();
     });
   },
@@ -266,6 +297,61 @@ Page({
 
   goMenu() {
     wx.switchTab({ url: '/pages/menu/menu' });
+  },
+
+  goMine() {
+    wx.switchTab({ url: '/pages/mine/mine' });
+  },
+
+  /** 点窗口卡：带着窗口 id 进菜单页 */
+  openWindow(e) {
+    const id = e.currentTarget.dataset.id;
+    if (id) wx.setStorageSync('focusWindow', id);
+    wx.switchTab({ url: '/pages/menu/menu' });
+  },
+
+  /** 入口按钮「今天怎么吃」：滚到配餐卡片 */
+  scrollToMeal() {
+    wx.pageScrollTo({ selector: '#meal', duration: 300 });
+  },
+
+  /** 入口按钮「盲盒随机」：抽一道并滚到盲盒卡片 */
+  rollAndScroll() {
+    this.drawBox();
+    wx.pageScrollTo({ selector: '#blindbox', duration: 300 });
+  },
+
+  /** 把当前餐盘记成一餐 */
+  logTray() {
+    const tray = wx.getStorageSync('tray') || [];
+    if (!tray.length) {
+      wx.showToast({ title: '餐盘还是空的，先加两道菜', icon: 'none' });
+      return;
+    }
+    const all = this.allDishes || [];
+    const items = [];
+    let kcal = 0;
+    let protein = 0;
+    let vegCount = 0;
+    tray.forEach((item) => {
+      const dish = all.find((d) => d.id === item.id);
+      if (!dish) return;
+      const qty = item.qty || 1;
+      const nut = fmt.nutrition(dish, item.factor || 1);
+      kcal += nut.kcal * qty;
+      protein += parseFloat(nut.protein) * qty;
+      if ((dish.labels || []).indexOf('素食') > -1 || dish.icon === 'leaf') vegCount += 1;
+      items.push(dish.name + (qty > 1 ? ' ×' + qty : ''));
+    });
+    if (!items.length) {
+      wx.showToast({ title: '菜品还没加载完，稍后再试', icon: 'none' });
+      return;
+    }
+    const slot = mealLog.slotNow();
+    mealLog.add({ date: mealLog.dayKey(new Date()), slot, kcal: Math.round(kcal), protein, vegCount, items });
+    points.add(1);
+    this.setData({ points: points.get() });
+    wx.showToast({ title: mealLog.slotLabel(slot) + '已记下 +1 积分', icon: 'success' });
   },
 
   addMeal() {

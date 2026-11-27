@@ -7,7 +7,7 @@ App({
   },
 
   onLaunch() {
-    const saved = wx.getStorageSync('apiBase');
+    const saved = wx.getStorageSync('nongcanguan-api-base');
     if (saved) this.globalData.apiBase = saved;
   },
 
@@ -15,6 +15,6 @@ App({
     const value = String(base || '').trim().replace(/\/+$/, '');
     if (!value) return;
     this.globalData.apiBase = value;
-    wx.setStorageSync('apiBase', value);
+    wx.setStorageSync('nongcanguan-api-base', value);
   },
 });

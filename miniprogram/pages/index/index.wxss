@@ -17,6 +17,67 @@
 .hero .num { color: #e3edb5; }
 .hero .muted { color: rgba(255, 255, 255, .55); }
 
+/* 入口动作 */
+.entry-actions { display: flex; gap: 16rpx; margin-bottom: 20rpx; }
+.entry-action {
+  flex: 1;
+  display: flex; align-items: center; gap: 12rpx;
+  padding: 22rpx 20rpx;
+  border: 1rpx solid #e0e5db; border-radius: 24rpx;
+  background: #fffef9;
+  box-shadow: 0 8rpx 24rpx rgba(30, 58, 45, .05);
+}
+.entry-action.primary { background: #173f35; border-color: #173f35; }
+.ea-icon {
+  width: 64rpx; height: 64rpx; flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 16rpx; background: rgba(255, 255, 255, .14); font-size: 32rpx;
+}
+.ea-icon.plain { background: #e6eee5; }
+.ea-copy { flex: 1; min-width: 0; }
+.ea-title { color: #173f35; font-size: 26rpx; font-weight: 700; }
+.entry-action.primary .ea-title { color: #ffffff; }
+.ea-sub { margin-top: 4rpx; color: #98a29b; font-size: 19rpx; }
+.entry-action.primary .ea-sub { color: rgba(255, 255, 255, .6); }
+.ea-arrow { color: #a7b1a9; font-size: 32rpx; }
+.entry-action.primary .ea-arrow { color: #e3edb5; }
+
+/* 窗口条 */
+.section-head { padding: 14rpx 4rpx 14rpx; }
+.win-strip { white-space: nowrap; margin-bottom: 20rpx; }
+.win-card {
+  display: inline-block; vertical-align: top;
+  width: 300rpx; margin-right: 14rpx; padding: 20rpx;
+  border: 1rpx solid #e0e5db; border-radius: 24rpx;
+  background: #fffef9;
+}
+.win-card.calm { border-color: #cddcc7; }
+.win-card.busy { border-color: #efd0c4; }
+.win-top { display: flex; align-items: center; gap: 12rpx; }
+.win-num {
+  width: 52rpx; height: 52rpx; flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  border: 1rpx solid #e0e5db; border-radius: 14rpx; background: #f8f9f3;
+  color: #607368; font-family: Georgia, serif; font-size: 24rpx;
+}
+.win-name {
+  flex: 1; min-width: 0; overflow: hidden;
+  color: #173f35; font-size: 24rpx; font-weight: 600;
+  white-space: nowrap; text-overflow: ellipsis;
+}
+.win-state { margin-top: 14rpx; }
+.win-age { margin-top: 8rpx; font-size: 18rpx; }
+.win-actions { display: flex; gap: 10rpx; margin-top: 16rpx; }
+.win-btn {
+  flex: 1; height: 54rpx; line-height: 54rpx; text-align: center;
+  border: 1rpx solid #e0e5db; border-radius: 14rpx;
+  background: #f8f9f3; color: #5f7267; font-size: 20rpx;
+}
+.win-btn.on { background: #173f35; border-color: #173f35; color: #ffffff; }
+.empty-line { padding: 10rpx 4rpx 26rpx; }
+
+.tray-line { margin-top: 14rpx; }
+
 .qitem { padding: 20rpx 0; border-bottom: 1rpx solid #eef1e9; }
 .qitem:last-child { border-bottom: none; padding-bottom: 0; }
 .qname { color: #173f35; font-size: 26rpx; font-weight: 600; }

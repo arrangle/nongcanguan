@@ -57,7 +57,16 @@
   background: #fffef9;
 }
 .dish-name { color: #173f35; font-size: 30rpx; font-weight: 600; }
+.dish-right { gap: 16rpx; }
 .price { color: #e97548; font-size: 24rpx; font-weight: 600; }
+.heap {
+  width: 56rpx; height: 56rpx; flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  border: 1rpx solid #e0e5db; border-radius: 16rpx;
+  background: #fffef9; color: #b0bab2; font-size: 26rpx;
+}
+.heap.on { border-color: #eec4b8; background: #fff3ee; color: #d8583f; }
+.fav-chip { color: #a87818; }
 .nutrition { margin: 8rpx 0; }
 .kcal { color: #173f35; font-family: Georgia, serif; font-size: 34rpx; }
 .rating { color: #a87818; font-size: 22rpx; white-space: nowrap; }

@@ -1,0 +1,48 @@
+.top { padding: 8rpx 4rpx 20rpx; }
+.brand { color: #173f35; font-size: 40rpx; font-weight: 700; letter-spacing: 4rpx; }
+.brand-sub { margin-top: 6rpx; color: #77837c; font-size: 20rpx; }
+
+.summary { padding-bottom: 24rpx; }
+.overview { margin: 22rpx 0 8rpx; }
+.ov { flex: 1; }
+.ov-num { color: #173f35; font-family: Georgia, "Times New Roman", serif; font-size: 48rpx; font-weight: 500; line-height: 1.1; }
+.log-btn { width: 100%; margin-top: 18rpx; }
+
+/* 记录表 */
+.log-table { margin-top: 18rpx; border: 1rpx solid #e0e5db; border-radius: 16rpx; overflow: hidden; }
+.log-row { display: flex; border-top: 1rpx solid #e0e5db; }
+.log-row:first-child { border-top: 0; }
+.log-head { background: #f8f9f3; }
+.log-head .log-date, .log-head .log-cell { color: #77837c; font-size: 20rpx; font-weight: 700; letter-spacing: 1rpx; }
+.log-date { width: 170rpx; flex: 0 0 auto; padding: 14rpx 12rpx; color: #4f6358; font-size: 20rpx; font-weight: 600; border-right: 1rpx solid #e0e5db; }
+.log-cell { flex: 1; min-width: 0; padding: 14rpx 12rpx; border-right: 1rpx solid #e0e5db; }
+.log-cell:last-child { border-right: 0; }
+.log-kcal { color: #173f35; font-family: Georgia, serif; font-size: 26rpx; font-weight: 500; }
+.log-items { margin-top: 4rpx; color: #7b8a80; font-size: 18rpx; line-height: 1.4; }
+.log-protein { margin-top: 4rpx; color: #a2ada5; font-size: 17rpx; }
+.log-empty { color: #c3cbc4; font-size: 24rpx; }
+
+.hint {
+  margin-top: 18rpx;
+  padding: 18rpx 20rpx;
+  border-left: 6rpx solid #dcae51;
+  border-radius: 0 12rpx 12rpx 0;
+  background: #fbf7ea;
+  font-size: 21rpx;
+  line-height: 1.7;
+  color: #7a6b45;
+}
+.hint-empty { border-left-color: #c9d3c6; background: #f5f7f0; color: #7d8a81; }
+.hint-label { display: block; margin-bottom: 4rpx; color: #173f35; font-size: 21rpx; font-weight: 700; }
+
+/* 收藏 */
+.fav-empty { padding: 16rpx 0 4rpx; }
+.fav-item { display: flex; align-items: center; gap: 16rpx; padding: 18rpx 0; border-top: 1rpx solid #eef1e9; }
+.fav-item:first-of-type { border-top: 0; }
+.fav-name { color: #173f35; font-size: 26rpx; font-weight: 600; }
+.fav-remove { padding: 8rpx 14rpx; border: 1rpx solid #e0e5db; border-radius: 10rpx; color: #87938a; font-size: 20rpx; }
+
+/* 设置 */
+.set-row { display: flex; align-items: center; justify-content: space-between; gap: 16rpx; padding: 18rpx 0 6rpx; border-top: 1rpx solid #eef1e9; margin-top: 14rpx; }
+.set-label { color: #173f35; font-size: 24rpx; font-weight: 600; }
+.set-note { margin-top: 14rpx; font-size: 19rpx; line-height: 1.6; }

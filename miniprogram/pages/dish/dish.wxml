@@ -10,7 +10,10 @@
       <view class="muted">{{window.number}} 号窗口 · {{window.name}}</view>
       <view class="row between head">
         <view class="name">{{dish.name}}</view>
-        <view class="price">{{dish.priceText}}</view>
+        <view class="row head-right">
+          <view class="price">{{dish.priceText}}</view>
+          <view class="heap {{fav ? 'on' : ''}}" bindtap="toggleFav">{{fav ? '♥ 已收藏' : '♡ 收藏'}}</view>
+        </view>
       </view>
       <view class="row wrap">
         <view class="tag" wx:for="{{dish.labels}}" wx:key="*this">{{item}}</view>
@@ -38,6 +41,7 @@
       <view class="portion-result">
         <text class="big">{{nut.kcal}}</text><text class="muted"> kcal · 约 {{nut.grams}}g · 蛋白 {{nut.protein}}g · 脂肪 {{nut.fat}}g · 碳排约 {{nut.carbon}} kg</text>
       </view>
+      <button class="btn btn-primary add-tray" bindtap="addToTray">加入今日餐盘 · {{nut.kcal}} kcal</button>
     </view>
 
     <view class="card">

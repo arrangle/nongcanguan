@@ -1,0 +1,112 @@
+<view class="container">
+  <view class="row between top">
+    <view>
+      <view class="brand">我的</view>
+      <view class="brand-sub">记录、收藏与设置 · 只存在这台手机</view>
+    </view>
+    <view class="points">{{points}} 积分</view>
+  </view>
+
+  <view class="card summary">
+    <view class="row between">
+      <view>
+        <view class="eyebrow">TODAY</view>
+        <view class="title">今天吃了什么</view>
+      </view>
+      <view class="link" bindtap="goMenu">去挑菜 ›</view>
+    </view>
+    <view class="row overview">
+      <view class="ov">
+        <view class="ov-num">{{todayMeals}}</view>
+        <view class="muted">已记录餐次</view>
+      </view>
+      <view class="ov">
+        <view class="ov-num">{{todayKcal}}</view>
+        <view class="muted">kcal</view>
+      </view>
+      <view class="ov">
+        <view class="ov-num">{{trayCount}}</view>
+        <view class="muted">餐盘菜品</view>
+      </view>
+    </view>
+    <button class="btn btn-primary log-btn" bindtap="onLogMeal" disabled="{{logging}}">
+      把当前餐盘记为一餐{{trayKcal ? '（' + trayKcal + ' kcal）' : ''}}
+    </button>
+  </view>
+
+  <view class="card">
+    <view class="row between">
+      <view>
+        <view class="eyebrow">MEAL LOG</view>
+        <view class="title">个人饮食记录</view>
+      </view>
+      <view class="link" bindtap="onClearLog">清空</view>
+    </view>
+
+    <view class="log-table">
+      <view class="log-row log-head">
+        <view class="log-date">日期</view>
+        <view class="log-cell">早餐</view>
+        <view class="log-cell">午餐</view>
+        <view class="log-cell">晚餐</view>
+      </view>
+      <view class="log-row" wx:for="{{logRows}}" wx:key="key">
+        <view class="log-date">{{item.label}}</view>
+        <view class="log-cell" wx:for="{{item.cells}}" wx:for-item="cell" wx:key="slot">
+          <block wx:if="{{cell.kcal}}">
+            <view class="log-kcal">{{cell.kcal}} kcal</view>
+            <view class="log-items">{{cell.items}}</view>
+            <view class="log-protein">蛋白 {{cell.protein}}g</view>
+          </block>
+          <view wx:else class="log-empty">—</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="hint {{hint.empty ? 'hint-empty' : ''}}">
+      <text class="hint-label">AI 提醒</text>
+      <text class="hint-text">{{hint.text}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="row between">
+      <view>
+        <view class="eyebrow">FAVORITES</view>
+        <view class="title">我的收藏</view>
+      </view>
+      <view class="link" wx:if="{{favorites.length}}" bindtap="onClearFav">清空</view>
+    </view>
+
+    <view wx:if="{{!favorites.length}}" class="muted fav-empty">
+      在菜单或菜品页点 ♡ 收藏，下次找起来更快。
+    </view>
+
+    <view class="fav-item" wx:for="{{favorites}}" wx:key="id">
+      <view class="grow" bindtap="openDish" data-id="{{item.id}}">
+        <view class="fav-name">{{item.name}}</view>
+        <view class="muted">{{item.windowNumber}} 号 · {{item.windowName}} · {{item.kcal}} kcal/100g · 蛋白 {{item.protein}}g</view>
+      </view>
+      <view class="fav-remove" catchtap="onRemoveFav" data-id="{{item.id}}">取消</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="row between">
+      <view>
+        <view class="eyebrow">SETTINGS</view>
+        <view class="title">设置</view>
+      </view>
+    </view>
+    <view class="set-row" bindtap="onConfig">
+      <view>
+        <view class="set-label">服务器地址</view>
+        <view class="muted">{{apiBase}}</view>
+      </view>
+      <view class="link">修改 ›</view>
+    </view>
+    <view class="set-note muted">
+      饮食记录、收藏和积分都只保存在这台手机上；删除小程序会一并清除。
+    </view>
+  </view>
+</view>

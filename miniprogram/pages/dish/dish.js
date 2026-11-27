@@ -1,6 +1,7 @@
 const api = require('../../utils/api');
 const fmt = require('../../utils/format');
 const points = require('../../utils/points');
+const favorites = require('../../utils/favorites');
 
 Page({
   data: {
@@ -15,6 +16,7 @@ Page({
     reviews: [],
     stats: { rating: null, reviewCount: 0 },
     stars: 0,
+    fav: false,
     starList: [1, 2, 3, 4, 5],
     text: '',
     nickname: '',
@@ -23,8 +25,27 @@ Page({
 
   onLoad(options) {
     this.id = options.id;
-    this.setData({ nickname: wx.getStorageSync('nickname') || '' });
+    this.setData({ nickname: wx.getStorageSync('nickname') || '', fav: favorites.has(options.id) });
     this.load();
+  },
+
+  toggleFav() {
+    if (!this.data.dish) return;
+    const on = favorites.toggle(this.data.dish);
+    this.setData({ fav: on });
+    wx.showToast({ title: on ? '已收藏' : '已取消收藏', icon: 'none' });
+  },
+
+  addToTray() {
+    if (!this.data.dish) return;
+    const tray = wx.getStorageSync('tray') || [];
+    const factor = this.data.factor;
+    const exist = tray.find((item) => item.id === this.id && item.factor === factor);
+    if (exist) exist.qty = (exist.qty || 1) + 1;
+    else tray.push({ id: this.id, factor, qty: 1 });
+    wx.setStorageSync('tray', tray);
+    points.add(1);
+    wx.showToast({ title: '已加入餐盘 +1 积分', icon: 'success' });
   },
 
   async load() {
