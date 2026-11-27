@@ -9,8 +9,10 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23173f35'/%3E%3Cpath d='M14 30h36c0 12-7 20-18 20S14 42 14 30Z' fill='%23e5efb8'/%3E%3Cpath d='M22 24c8 0 14-5 17-12 3 9-2 16-12 17' fill='none' stroke='%23e5efb8' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="features.css">
+  <link rel="stylesheet" href="layout.css">
   <script src="app.js" defer></script>
   <script src="features.js" defer></script>
+  <script src="shell.js" defer></script>
 </head>
 <body>
   <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -35,105 +37,174 @@
     <symbol id="i-flame" viewBox="0 0 24 24"><path d="M13 2c1 5-4 6-4 10 0 2 1 3 3 3 3 0 4-3 3-6 3 2 5 5 4 8-1 4-4 5-7 5s-7-2-8-6c-2-7 5-9 9-14Z"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
     <symbol id="i-plate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 8a3.8 3.8 0 0 1 7 2.8C19 15.6 12 20 12 20Z"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4m8-4v4M3 10h18"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="M4 17l6-6 4 4 6-7"/><path d="M15 8h5v5"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></symbol>
   </svg>
 
-  <header class="topbar">
-    <a class="brand" href="./" aria-label="农餐馆首页">
-      <span class="brand-mark"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 25h28c0 9-5 15-14 15S10 34 10 25Z"/><path d="M16 20c7 0 12-4 15-11 3 7-1 13-10 15"/></svg></span>
-      <span><strong>农餐馆</strong><small>CAU FOOD GUIDE</small></span>
-    </a>
-    <div class="update-status"><span class="status-dot"></span><span>公一菜单已识别</span><time datetime="2026-11-21">11.21</time></div>
-    <div class="top-actions">
-      <button class="button button-quiet" id="galleryBtn"><svg class="icon"><use href="#i-image"/></svg><span>现场菜单</span><b>14</b></button>
-      <button class="icon-button" id="dataBtn" aria-label="营养数据说明" title="营养数据说明"><svg class="icon"><use href="#i-info"/></svg></button>
+  <!-- ========== 入口画面（先出现） ========== -->
+  <section class="entry" id="entryScreen" aria-label="欢迎页">
+    <div class="entry-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <header class="entry-top">
+      <span class="entry-mark"><b>农餐馆</b><small>CAU FOOD GUIDE</small></span>
+      <button class="entry-admin" id="entryAdmin" type="button">管理员登录</button>
+    </header>
+
+    <div class="entry-main">
+      <p class="entry-eyebrow">公一食堂 · 6 个窗口 · 43 道菜</p>
+      <h1>今天也要<br><em>好好吃饭</em></h1>
+      <p class="entry-sub">主人，今天想吃点啥呢？</p>
+
+      <div class="entry-actions">
+        <button class="entry-action" id="entryBox" type="button">
+          <span class="entry-action-icon">🎁</span>
+          <span class="entry-action-copy"><strong>盲盒随机</strong><small>根据人流 · 时间</small></span>
+          <svg class="icon"><use href="#i-arrow"/></svg>
+        </button>
+        <button class="entry-action" id="entryPredict" type="button">
+          <span class="entry-action-icon">📈</span>
+          <span class="entry-action-copy"><strong>预测算法 · 今天怎么吃</strong><small>根据饮食记录</small></span>
+          <svg class="icon"><use href="#i-arrow"/></svg>
+        </button>
+      </div>
+
+      <div class="entry-foot">
+        <button class="entry-enter" id="entryEnter" type="button">直接进入</button>
+        <span>现场菜单拍摄于 2026.11.21 · 营养来源逐项标注</span>
+      </div>
     </div>
-  </header>
 
-  <main class="main-shell">
-    <section class="canteen-section" aria-labelledby="canteenLabel">
-      <div class="section-kicker" id="canteenLabel"><span>01</span> 选择食堂 <small>中国农业大学 · 东区</small></div>
-      <div class="canteen-tabs" role="tablist" aria-label="食堂选择">
-        <button class="canteen-tab active" role="tab" aria-selected="true" data-canteen="gong1">
-          <span class="canteen-number">01</span><span class="canteen-copy"><strong>公一食堂</strong><small>公寓一食堂</small></span><span class="canteen-state">已上线</span><svg class="icon"><use href="#i-arrow"/></svg>
-        </button>
-        <button class="canteen-tab" role="tab" aria-selected="false" aria-disabled="true" data-canteen="gong2">
-          <span class="canteen-number">02</span><span class="canteen-copy"><strong>公二食堂</strong><small>公寓二食堂</small></span><span class="canteen-state">待录入</span>
-        </button>
-        <button class="canteen-tab" role="tab" aria-selected="false" aria-disabled="true" data-canteen="gong3">
-          <span class="canteen-number">03</span><span class="canteen-copy"><strong>公三食堂</strong><small>公寓三食堂</small></span><span class="canteen-state">待录入</span>
-        </button>
+    <nav class="entry-side" aria-label="入口操作">
+      <button type="button" data-entry="enter">进入</button>
+      <button type="button" data-entry="import">导入</button>
+      <button type="button" data-entry="new">新用户</button>
+    </nav>
+  </section>
+
+  <!-- ========== 主界面 ========== -->
+  <div class="app" id="app" hidden>
+    <aside class="sidenav" aria-label="主导航">
+      <a class="sidenav-brand" href="./" id="brandHome" aria-label="返回入口画面">
+        <span class="brand-mark"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 25h28c0 9-5 15-14 15S10 34 10 25Z"/><path d="M16 20c7 0 12-4 15-11 3 7-1 13-10 15"/></svg></span>
+        <span><strong>农餐馆</strong><small>CAU FOOD GUIDE</small></span>
+      </a>
+
+      <nav class="nav-group" aria-label="主要板块">
+        <button class="nav-item" data-nav="limited" type="button">限定</button>
+        <button class="nav-item active" data-nav="windows" type="button" aria-current="page">窗口</button>
+        <button class="nav-item" data-nav="notice" type="button">公告</button>
+      </nav>
+
+      <div class="campus">
+        <p class="campus-title">校区</p>
+        <div class="campus-block">
+          <span class="campus-area">东区</span>
+          <div class="campus-list">
+            <button class="campus-item is-on" data-canteen="gong1" type="button">公一</button>
+            <button class="campus-item" data-canteen="gong2" type="button">公二</button>
+            <button class="campus-item" data-canteen="gong3" type="button">公三</button>
+          </div>
+        </div>
+        <div class="campus-block">
+          <span class="campus-area">西区</span>
+          <div class="campus-list">
+            <button class="campus-item" data-canteen="xi1" type="button">颐一</button>
+            <button class="campus-item" data-canteen="xi2" type="button">颐二</button>
+            <button class="campus-item" data-canteen="xi3" type="button">颐三</button>
+            <button class="campus-item" data-canteen="he1" type="button">和一</button>
+            <button class="campus-item" data-canteen="he2" type="button">和二</button>
+          </div>
+        </div>
       </div>
-    </section>
 
-    <section class="intro-section">
-      <div class="intro-copy">
-        <p class="eyebrow">GONG YI · MENU & NUTRITION</p>
-        <h1>今天，也要<span>好好吃饭。</span></h1>
-        <p>从现场菜单到营养参考，把每一个窗口看得明白，<br class="desktop-only">把这一餐选得轻松。</p>
+      <nav class="nav-group nav-group-secondary" aria-label="工具">
+        <button class="nav-item" data-nav="mail" type="button">食贸信箱</button>
+        <button class="nav-item" data-nav="about" type="button">说明</button>
+        <button class="nav-item" data-nav="rank" type="button">排行榜</button>
+        <button class="nav-item" data-nav="more" type="button">其他功能</button>
+        <button class="nav-item" data-nav="records" type="button">个人记录</button>
+        <button class="nav-item" data-nav="predict" type="button">预测</button>
+      </nav>
+
+      <div class="sidenav-foot">
+        <div class="mini-stats">
+          <span><b id="statWindows">6</b>窗口</span>
+          <span><b id="statDishes">43</b>菜品</span>
+        </div>
+        <p>公一食堂 · 东区<br><span>数据以窗口当日公示为准</span></p>
       </div>
-      <div class="intro-stats" aria-label="公一菜单统计">
-        <div><strong id="statWindows">6</strong><span>精选窗口</span></div>
-        <i></i>
-        <div><strong id="statDishes">40</strong><span>已录入菜品</span></div>
-        <i></i>
-        <div><strong>100<em>g</em></strong><span>统一营养口径</span></div>
-      </div>
-    </section>
+    </aside>
 
-    <section class="toolbar" aria-label="菜品搜索与筛选">
-      <label class="search-box" for="searchInput">
-        <svg class="icon"><use href="#i-search"/></svg>
-        <input id="searchInput" type="search" autocomplete="off" placeholder="搜索公一菜品，比如“鸡胸肉”或“肠粉”">
-        <kbd>⌘ K</kbd>
-      </label>
-      <div class="toolbar-note"><span class="status-dot"></span>实拍菜单数字化 <span class="divider">/</span> 营养来源可溯源</div>
-    </section>
+    <main class="stage">
+      <header class="stage-top">
+        <label class="search-box" for="searchInput">
+          <svg class="icon"><use href="#i-search"/></svg>
+          <input id="searchInput" type="search" autocomplete="off" placeholder="搜索菜品，比如“鸡胸肉”或“肠粉”">
+          <kbd>⌘ K</kbd>
+        </label>
+        <div class="stage-actions">
+          <button class="button button-quiet" id="galleryBtn" type="button"><svg class="icon"><use href="#i-image"/></svg><span>现场菜单</span><b>14</b></button>
+          <button class="icon-button" id="dataBtn" aria-label="营养数据说明" title="营养数据说明"><svg class="icon"><use href="#i-info"/></svg></button>
+        </div>
+      </header>
 
-    <div class="content-layout">
-      <aside class="window-panel" aria-label="窗口目录">
-        <div class="panel-heading"><div><span class="section-index">02</span><h2>选择窗口</h2></div><span class="count-badge" id="windowCount">6</span></div>
-        <nav class="window-list" id="windowList"></nav>
-        <div class="window-foot"><svg class="icon"><use href="#i-image"/></svg><p>菜名与价格来自现场照片<br><span>以窗口当日公示为准</span></p></div>
-      </aside>
+      <!-- 页面：窗口 -->
+      <section class="page" data-page="windows">
+        <div class="page-head">
+          <div>
+            <span class="section-index">01</span>
+            <h2>窗口 <small>先出现</small></h2>
+            <p>先看哪个窗口不排队，再看它今天有什么菜。</p>
+          </div>
+          <span class="count-badge" id="windowCount">6</span>
+        </div>
 
-      <section class="dishes-panel" aria-label="窗口菜品">
+        <div class="window-strip" id="windowList" role="tablist" aria-label="窗口选择"></div>
+
         <div class="window-hero" id="windowHero">
           <img id="windowHeroImage" src="assets/photos/04.webp" alt="公一食堂18号低脂轻食窗口实拍">
           <div class="window-hero-shade"></div>
           <div class="window-hero-content">
             <div><span class="window-label" id="windowHeroLabel">WINDOW 18</span><h2 id="windowHeroName">低脂美食新风尚</h2><p id="windowHeroDescription"></p></div>
-            <button class="photo-button" id="windowPhotoBtn"><svg class="icon"><use href="#i-image"/></svg>查看现场菜单</button>
+            <button class="photo-button" id="windowPhotoBtn" type="button"><svg class="icon"><use href="#i-image"/></svg>查看现场菜单</button>
           </div>
         </div>
 
-        <section class="queue-strip" aria-label="实时排队雷达">
-          <div class="queue-strip-head">
-            <div>
-              <span class="eyebrow">LIVE QUEUE · 大家帮大家</span>
-              <h2>排队雷达 <small id="queueUpdated">每 60 秒刷新</small></h2>
-              <p>看一眼窗口前有几个人，顺手报一下。20 分钟内的上报会实时汇总成等待时间。</p>
-              <p class="queue-stats" id="queueStats">正在读取实时数据…</p>
-            </div>
-            <button class="button button-quiet" id="queueRefresh" type="button">刷新</button>
+        <div class="page-head page-head-sub">
+          <div>
+            <span class="section-index">02</span>
+            <h2 id="dishSectionTitle">菜品 <small>后出现</small></h2>
+            <p id="dishResultCount"></p>
           </div>
-          <div class="queue-list" id="queueList"></div>
-        </section>
+          <label class="sort-select">排序<span><select id="sortSelect" aria-label="菜品排序"><option value="default">窗口顺序</option><option value="calories">热量从低到高</option><option value="protein">蛋白质优先</option><option value="price">价格从低到高</option></select><svg class="icon"><use href="#i-down"/></svg></span></label>
+        </div>
 
-        <section class="blindbox-panel" aria-label="今日盲盒">
-          <div class="blindbox-head">
-            <div>
-              <span class="eyebrow">BLIND BOX · 选择困难救星</span>
-              <h2>今天吃什么 <small>从已录入菜品里抽一道，避开最近抽过的</small></h2>
-            </div>
-            <button class="button button-quiet" id="boxDraw" type="button">抽一个</button>
+        <div class="filter-tabs" id="filterTabs" role="group" aria-label="营养筛选">
+          <button class="active" data-filter="all">全部菜品</button>
+          <button data-filter="light"><svg class="icon"><use href="#i-leaf"/></svg>轻盈低脂</button>
+          <button data-filter="protein"><svg class="icon"><use href="#i-meat"/></svg>高蛋白</button>
+          <button data-filter="veg">清爽素食</button>
+          <button data-filter="staple">主食面点</button>
+        </div>
+
+        <div class="dish-grid" id="dishGrid"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <span><svg class="icon"><use href="#i-search"/></svg></span>
+          <h3>没有找到这道菜品</h3><p>换个关键词，或清除当前营养筛选试试。</p>
+          <button class="button button-primary" id="resetFilters" type="button">清除筛选</button>
+        </div>
+      </section>
+
+      <!-- 页面：预测 -->
+      <section class="page" data-page="predict" hidden>
+        <div class="page-head">
+          <div>
+            <span class="section-index">03</span>
+            <h2>预测 <small>今天怎么吃</small></h2>
+            <p>按目标和当前排队情况配一餐，再参考个人饮食记录。</p>
           </div>
-          <div class="box-stage" id="boxStage">
-            <div class="box-empty">
-              <div class="box-emoji">🎁</div>
-              <p class="box-loading">选择困难？交给一点好运气。</p>
-            </div>
-          </div>
-        </section>
+        </div>
 
         <section class="meal-planner" aria-label="今日推荐配餐">
           <div class="planner-head">
@@ -153,44 +224,118 @@
           <p class="meal-note">营养按各菜参考标准份估算；热量与营养数值为参考值，仅作日常饮食参考。</p>
         </section>
 
-        <div class="dish-list-heading">
-          <div><span class="section-index">03</span><div><h2 id="dishSectionTitle">挑选菜品</h2><p id="dishResultCount"></p></div></div>
-          <label class="sort-select">排序<span><select id="sortSelect" aria-label="菜品排序"><option value="default">窗口顺序</option><option value="calories">热量从低到高</option><option value="protein">蛋白质优先</option><option value="price">价格从低到高</option></select><svg class="icon"><use href="#i-down"/></svg></span></label>
+        <p class="predict-hint" id="predictHint"></p>
+
+        <section class="queue-strip" aria-label="实时排队雷达">
+          <div class="queue-strip-head">
+            <div>
+              <span class="eyebrow">LIVE QUEUE · 大家帮大家</span>
+              <h2>排队雷达 <small id="queueUpdated">每 60 秒刷新</small></h2>
+              <p>看一眼窗口前有几个人，顺手报一下。20 分钟内的上报会实时汇总成等待时间。</p>
+              <p class="queue-stats" id="queueStats">正在读取实时数据…</p>
+            </div>
+            <button class="button button-quiet" id="queueRefresh" type="button">刷新</button>
+          </div>
+          <div class="queue-list" id="queueList"></div>
+        </section>
+      </section>
+
+      <!-- 页面：个人记录 -->
+      <section class="page" data-page="records" hidden>
+        <div class="page-head">
+          <div>
+            <span class="section-index">04</span>
+            <h2>个人饮食记录</h2>
+            <p>在餐盘里点「记下这一餐」，就会出现在这张表里。数据只存在这台设备的浏览器里。</p>
+          </div>
+          <button class="button button-quiet" id="recordsClear" type="button">清空记录</button>
         </div>
-        <div class="filter-tabs" id="filterTabs" role="group" aria-label="营养筛选">
-          <button class="active" data-filter="all">全部菜品</button>
-          <button data-filter="light"><svg class="icon"><use href="#i-leaf"/></svg>轻盈低脂</button>
-          <button data-filter="protein"><svg class="icon"><use href="#i-meat"/></svg>高蛋白</button>
-          <button data-filter="veg">清爽素食</button>
-          <button data-filter="staple">主食面点</button>
+        <div class="records-table" id="recordsTable"></div>
+        <p class="records-ai" id="recordsAi"></p>
+      </section>
+
+      <!-- 页面：排行榜 -->
+      <section class="page" data-page="rank" hidden>
+        <div class="page-head">
+          <div>
+            <span class="section-index">05</span>
+            <h2>排行榜 <small>好评榜</small></h2>
+            <p>按菜品聚合同学的真实评分，点评数越多越靠前。</p>
+          </div>
         </div>
-        <div class="dish-grid" id="dishGrid"></div>
-        <div class="empty-state" id="emptyState" hidden>
-          <span><svg class="icon"><use href="#i-search"/></svg></span>
-          <h3>没有找到这道菜品</h3><p>换个关键词，或清除当前营养筛选试试。</p>
-          <button class="button button-primary" id="resetFilters">清除筛选</button>
+        <div class="rank-list" id="rankList"><p class="rank-empty">正在读取评分…</p></div>
+      </section>
+
+      <!-- 页面：其他功能 -->
+      <section class="page" data-page="more" hidden>
+        <div class="page-head">
+          <div>
+            <span class="section-index">06</span>
+            <h2>其他功能</h2>
+            <p>单菜盲盒、现场菜单相册，以及排队雷达的快捷入口。</p>
+          </div>
+        </div>
+
+        <section class="blindbox-panel" aria-label="今日盲盒">
+          <div class="blindbox-head">
+            <div>
+              <span class="eyebrow">BLIND BOX · 选择困难救星</span>
+              <h2>今天吃什么 <small>从已录入菜品里抽一道，避开最近抽过的</small></h2>
+            </div>
+            <button class="button button-quiet" id="boxDraw" type="button">抽一个</button>
+          </div>
+          <div class="box-stage" id="boxStage">
+            <div class="box-empty">
+              <div class="box-emoji">🎁</div>
+              <p class="box-loading">选择困难？交给一点好运气。</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="more-grid">
+          <button class="more-card" id="moreGallery" type="button"><svg class="icon"><use href="#i-image"/></svg><strong>现场菜单相册</strong><small>14 张 11.21 实拍</small></button>
+          <button class="more-card" data-nav="predict" type="button"><svg class="icon"><use href="#i-trend"/></svg><strong>排队雷达</strong><small>谁在排队，一眼看到</small></button>
+          <button class="more-card" data-nav="records" type="button"><svg class="icon"><use href="#i-calendar"/></svg><strong>个人记录</strong><small>早 / 中 / 晚吃了什么</small></button>
         </div>
       </section>
 
-      <aside class="tray-panel" id="trayPanel" aria-label="今日餐盘">
-        <div class="tray-header"><div><span class="section-index">MY PLATE</span><h2>今日餐盘</h2></div><button class="icon-button tray-close" id="trayClose" aria-label="关闭餐盘"><svg class="icon"><use href="#i-close"/></svg></button><span class="tray-count" id="trayCount">0 道</span></div>
-        <div class="meal-target"><svg class="icon"><use href="#i-plate"/></svg><div><span>本餐参考目标</span><strong>650 <small>kcal</small></strong></div><p>均衡搭配<br>好好吃饭</p></div>
-        <div class="tray-items" id="trayItems"></div>
-        <div class="tray-empty" id="trayEmpty"><span><svg class="icon"><use href="#i-bowl"/></svg></span><h3>餐盘还空着</h3><p>点击菜品旁的加号，<br>看看这一餐的营养组合。</p></div>
-        <div class="tray-summary" id="traySummary">
-          <div class="calorie-summary"><div><span>本餐合计</span><strong id="totalCalories">0</strong><small>kcal</small></div><span class="calorie-percent" id="caloriePercent">0%</span></div>
-          <div class="calorie-track"><span id="calorieBar"></span></div>
-          <div class="macro-list">
-            <div><p><span><i class="protein-dot"></i>蛋白质</span><strong id="totalProtein">0<small>g</small></strong></p><div><span id="proteinBar" class="protein-bar"></span></div></div>
-            <div><p><span><i class="carb-dot"></i>碳水化合物</span><strong id="totalCarbs">0<small>g</small></strong></p><div><span id="carbBar" class="carb-bar"></span></div></div>
-            <div><p><span><i class="fat-dot"></i>脂肪</span><strong id="totalFat">0<small>g</small></strong></p><div><span id="fatBar" class="fat-bar"></span></div></div>
+      <!-- 页面：公告 -->
+      <section class="page" data-page="notice" hidden>
+        <div class="page-head">
+          <div>
+            <span class="section-index">07</span>
+            <h2>公告</h2>
+            <p>菜单与数据的最新说明。</p>
           </div>
-          <button class="clear-tray" id="clearTray" disabled><svg class="icon"><use href="#i-trash"/></svg>清空餐盘</button>
-          <p class="tray-disclaimer">营养按参考份量换算，仅作饮食参考</p>
         </div>
-      </aside>
-    </div>
-  </main>
+        <ol class="notice-list">
+          <li><b>01</b><div><h3>公一食堂已上线</h3><p>6 个窗口、43 道菜、14 张 2026-11-21 现场实拍；菜名与价格以窗口当日公示为准。</p></div></li>
+          <li><b>02</b><div><h3>公二、公三、西区待录入</h3><p>菜单还在收集，页面里显示为「待录入」，不做虚假填充。</p></div></li>
+          <li><b>03</b><div><h3>营养数值的来源</h3><p>18 号窗口录入自现场公示表，其余为 AI 估算，每张菜品卡右上角标明了来源。</p></div></li>
+          <li><b>04</b><div><h3>排队与点评来自真实用户</h3><p>初始为空，由同学们上报和点评产生；超 20 分钟没有新数据会自动标灰。</p></div></li>
+        </ol>
+      </section>
+    </main>
+
+    <aside class="tray-panel" id="trayPanel" aria-label="今日餐盘">
+      <div class="tray-header"><div><span class="section-index">MY PLATE</span><h2>今日餐盘</h2></div><button class="icon-button tray-close" id="trayClose" aria-label="关闭餐盘"><svg class="icon"><use href="#i-close"/></svg></button><span class="tray-count" id="trayCount">0 道</span></div>
+      <div class="meal-target"><svg class="icon"><use href="#i-plate"/></svg><div><span>本餐参考目标</span><strong>650 <small>kcal</small></strong></div><p>均衡搭配<br>好好吃饭</p></div>
+      <div class="tray-items" id="trayItems"></div>
+      <div class="tray-empty" id="trayEmpty"><span><svg class="icon"><use href="#i-bowl"/></svg></span><h3>餐盘还空着</h3><p>点击菜品旁的加号，<br>看看这一餐的营养组合。</p></div>
+      <div class="tray-summary" id="traySummary">
+        <div class="calorie-summary"><div><span>本餐合计</span><strong id="totalCalories">0</strong><small>kcal</small></div><span class="calorie-percent" id="caloriePercent">0%</span></div>
+        <div class="calorie-track"><span id="calorieBar"></span></div>
+        <div class="macro-list">
+          <div><p><span><i class="protein-dot"></i>蛋白质</span><strong id="totalProtein">0<small>g</small></strong></p><div><span id="proteinBar" class="protein-bar"></span></div></div>
+          <div><p><span><i class="carb-dot"></i>碳水化合物</span><strong id="totalCarbs">0<small>g</small></strong></p><div><span id="carbBar" class="carb-bar"></span></div></div>
+          <div><p><span><i class="fat-dot"></i>脂肪</span><strong id="totalFat">0<small>g</small></strong></p><div><span id="fatBar" class="fat-bar"></span></div></div>
+        </div>
+        <button class="log-meal" id="logMealBtn" type="button"><svg class="icon"><use href="#i-calendar"/></svg>记下这一餐</button>
+        <button class="clear-tray" id="clearTray" disabled><svg class="icon"><use href="#i-trash"/></svg>清空餐盘</button>
+        <p class="tray-disclaimer">营养按参考份量换算，仅作饮食参考</p>
+      </div>
+    </aside>
+  </div>
 
   <button class="mobile-tray-button" id="mobileTrayBtn"><svg class="icon"><use href="#i-bowl"/></svg><span>今日餐盘</span><b id="mobileTrayCount">0</b><strong id="mobileTrayCalories">0 kcal</strong></button>
   <div class="drawer-backdrop" id="drawerBackdrop"></div>
@@ -237,6 +382,17 @@
       <li><b>04</b><div><h3>今日餐盘 · 参考份量换算</h3><p>每道菜设有参考食用克重，支持半份、标准份和 1.5 份切换，仅用于日常饮食参考。</p></div></li>
     </ol>
     <button class="button button-primary data-confirm" data-close="dataDialog">我知道了</button>
+  </dialog>
+
+  <dialog class="admin-dialog" id="adminDialog">
+    <div class="dialog-header"><div><span class="eyebrow">ADMIN</span><h2>管理员登录</h2></div><button class="icon-button" data-close="adminDialog" aria-label="关闭"><svg class="icon"><use href="#i-close"/></svg></button></div>
+    <div class="admin-body">
+      <p>当前版本没有账号体系。菜单由管理员维护，通过服务端接口写入，需要 <code>ADMIN_CODE</code> 才能提交：</p>
+      <pre>POST /api/menu
+{ "adminCode": "…", "canteens": […], "windows": […], "dishes": […] }</pre>
+      <p class="admin-note">维护流程见仓库 <code>docs/菜单数据维护.md</code>。</p>
+      <button class="button button-primary data-confirm" data-close="adminDialog">知道了</button>
+    </div>
   </dialog>
 </body>
 </html>

@@ -149,8 +149,22 @@ async function waitForPort(timeoutMs = 15000) {
     await waitFor('document.readyState === "complete"', '页面加载完成');
     await new Promise((r) => setTimeout(r, 1200));
 
+    // 0. 入口画面 → 主界面
+    await waitFor('!!document.querySelector("#entryScreen")', '入口画面渲染');
+    const entryTitle = await evaluate('document.querySelector("#entryScreen h1") ? document.querySelector("#entryScreen h1").textContent.replace(/\\s+/g, "") : ""');
+    record('入口画面', entryTitle.includes('今天也要好好吃饭'), entryTitle);
+    await screenshot('00-entry');
+    await evaluate('document.querySelector("#entryEnter").click(), true');
+    await waitFor('document.querySelector("#app") && !document.querySelector("#app").hidden', '进入主界面');
+    await new Promise((r) => setTimeout(r, 500));
+
     const overflow = await evaluate('document.documentElement.scrollWidth - document.documentElement.clientWidth');
     record('无横向溢出', overflow <= 1, `宽度 ${WIDTH}px，溢出 ${overflow}px`);
+
+    // 0.1 窗口条：先出现，带排队角标
+    await waitFor('document.querySelectorAll("#windowList .window-item").length === 6', '窗口条渲染');
+    const stripQueue = await evaluate('document.querySelector(".win-q[data-qslot]") ? document.querySelector(".win-q[data-qslot]").textContent.trim() : ""');
+    record('窗口条与排队角标', Boolean(stripQueue), stripQueue);
 
     // 1. 菜品目录
     await waitFor('document.querySelectorAll(".dish-card").length > 0', '菜品卡片渲染');
@@ -238,6 +252,22 @@ async function waitForPort(timeoutMs = 15000) {
     await evaluate(`document.querySelector('.blindbox-panel').scrollIntoView({ block: 'center' }), true`);
     await new Promise((r) => setTimeout(r, 2600));
     await screenshot('05-blindbox');
+
+    // 9.1 收藏与个人记录
+    await evaluate(`(function(){ const nav=document.querySelector('[data-nav="windows"]'); if(nav) nav.click(); return true; })()`);
+    await new Promise((r) => setTimeout(r, 500));
+    await evaluate(`(function(){ const b=document.querySelector('.dish-fav'); if(b) b.click(); return true; })()`);
+    await new Promise((r) => setTimeout(r, 300));
+    const favOn = await evaluate(`!!document.querySelector('.dish-fav.on')`);
+    record('菜品收藏', favOn, favOn ? '已点亮' : '未点亮');
+
+    await evaluate(`document.querySelector('#logMealBtn').click(), true`);
+    await new Promise((r) => setTimeout(r, 400));
+    await evaluate(`(function(){ const nav=document.querySelector('[data-nav="records"]'); if(nav) nav.click(); return true; })()`);
+    await new Promise((r) => setTimeout(r, 500));
+    const recordCell = await evaluate(`(function(){ const c=document.querySelector('#recordsTable .meal-cell'); return c ? c.textContent.replace(/\\s+/g,' ').trim() : ''; })()`);
+    record('个人饮食记录', /kcal/.test(recordCell), recordCell.slice(0, 50));
+    await screenshot('06-records');
 
     // 10. 接口与数据一致性
     const summary = await evaluate(`fetch('/api/summary').then(r=>r.json()).then(d=>({queues:Object.keys(d.queues).length, ratings:Object.keys(d.ratings).length, reviews:d.stats.reviews}))`);

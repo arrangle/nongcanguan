@@ -72,12 +72,19 @@ function showToast(message) {
 
 function renderWindowList() {
   $("#windowList").innerHTML = windows.map(w => `
-    <button class="window-item ${w.id === state.windowId ? "active" : ""}" data-window="${w.id}" aria-current="${w.id === state.windowId ? "true" : "false"}">
-      <span class="window-number">${w.number}</span>
-      <span class="window-item-copy"><strong>${w.name}</strong><small>${w.short}</small></span>
-      ${icon("chevron")}
-    </button>`).join("");
+    <div class="window-item ${w.id === state.windowId ? "active" : ""}" data-window="${w.id}" role="tab" tabindex="0" aria-selected="${w.id === state.windowId ? "true" : "false"}">
+      <div class="window-item-head">
+        <span class="window-number">${w.number}</span>
+        <span class="window-item-copy"><strong>${w.name}</strong><small>${w.short}</small></span>
+      </div>
+      <span class="win-q" data-qslot="${w.id}">排队数据读取中</span>
+      <div class="win-actions">
+        <button type="button" data-report="${w.id}" title="上报当前排队人数">排队</button>
+        <button type="button" data-gallery-win="${w.id}" title="查看这个窗口的现场菜单">拍照</button>
+      </div>
+    </div>`).join("");
   $("#windowCount").textContent = windows.length;
+  if (typeof window.decorateWindows === "function") window.decorateWindows();
 }
 
 function renderWindowHero() {
@@ -110,8 +117,10 @@ function dishCard(d) {
   const [color, tint] = iconStyles[d.icon] || iconStyles.bowl;
   const visibleLabels = d.labels.filter(label => !["主食", "素食", "高蛋白"].includes(label)).slice(0, 2);
   if (d.kcal <= 120 && !visibleLabels.includes("低热量")) visibleLabels.push("低热量");
+  const faved = typeof window.isFav === "function" && window.isFav(d.id);
   return `<article class="dish-card" data-dish="${d.id}" tabindex="0" role="button" aria-label="查看${d.name}营养详情" style="--dish-color:${color};--dish-tint:${tint}">
     <div class="dish-card-top"><span class="dish-icon">${icon(d.icon)}</span><span class="source-badge ${d.source === "AI估算" ? "estimated" : ""}">${d.source}</span></div>
+    <button class="dish-fav ${faved ? "on" : ""}" type="button" data-fav="${d.id}" aria-pressed="${faved}" aria-label="收藏${d.name}">${icon("heart")}</button>
     <div class="dish-card-title"><h3>${d.name}</h3>${priceHTML(d)}</div>
     <p class="dish-description">${d.description}</p>
     <div class="dish-tags">${visibleLabels.map(label => `<span>${label}</span>`).join("")}</div>
@@ -240,8 +249,16 @@ function selectWindow(id) {
 }
 
 $("#windowList").addEventListener("click", event => {
+  if (event.target.closest("[data-report], [data-gallery-win]")) return;
   const button = event.target.closest("[data-window]");
   if (button) selectWindow(button.dataset.window);
+});
+$("#windowList").addEventListener("keydown", event => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+  const button = event.target.closest("[data-window]");
+  if (!button || event.target.closest("button")) return;
+  event.preventDefault();
+  selectWindow(button.dataset.window);
 });
 
 $("#filterTabs").addEventListener("click", event => {
@@ -273,6 +290,12 @@ $("#resetFilters").addEventListener("click", () => {
 });
 
 $("#dishGrid").addEventListener("click", event => {
+  const favButton = event.target.closest("[data-fav]");
+  if (favButton) {
+    event.stopPropagation();
+    if (typeof window.toggleFav === "function") window.toggleFav(favButton.dataset.fav);
+    return;
+  }
   const addButton = event.target.closest("[data-add]");
   if (addButton) {
     event.stopPropagation();
