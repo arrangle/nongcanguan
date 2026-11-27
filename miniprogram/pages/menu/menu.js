@@ -218,7 +218,7 @@ Page({
     if (!visibleWindows.length) head = '该食堂菜单待录入';
     else if (this.data.onlyFav) head = `收藏的 ${dishes.length} 道菜`;
     else if (query) head = `在 ${items.length} 道菜中找到 ${dishes.length} 道`;
-    else head = `${activeWindow ? activeWindow.number + ' 号窗口' : ''} · ${dishes.length} 道菜 · 每 100g`;
+    else head = `${activeWindow ? (activeWindow.number ? activeWindow.number + ' 号窗口' : activeWindow.name) : ''} · ${dishes.length} 道菜 · 每 100g`;
 
     this.setData({ dishes, resultText: head, activeId, visibleWindows });
   },

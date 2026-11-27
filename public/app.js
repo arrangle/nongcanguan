@@ -4,24 +4,11 @@ const dish = (windowId, index, name, price, unit, kcal, protein, fat, carbs, fib
 
 let windows = [];
 
-const photoArchive = [
-  { id: "01", caption: "窗口 23–24 · 麻辣烫与石锅拌饭" },
-  { id: "02", caption: "窗口 19–22 · 基本伙与特色风味" },
-  { id: "03", caption: "窗口 16–18 · 轻食选餐区" },
-  { id: "04", caption: "窗口 18 · 低脂菜品每100克营养公示表" },
-  { id: "05", caption: "窗口 15–16 · 基本菜品与一锅炖菜" },
-  { id: "06", caption: "窗口 13 · 基本伙价格公示" },
-  { id: "07", caption: "窗口 11–12 · 基本菜品菜单" },
-  { id: "08", caption: "窗口 11 · 基本伙价格公示" },
-  { id: "09", caption: "窗口 08–10 · 粉面、粥与饼" },
-  { id: "10", caption: "窗口 07–09 · 饺子与粉面" },
-  { id: "11", caption: "窗口 06 · 炒意面、通心粉与河粉" },
-  { id: "12", caption: "窗口 03–06 · 面点、炒饭与炒面" },
-  { id: "13", caption: "窗口 02–03 · 卤味与面点" },
-  { id: "14", caption: "窗口 01–02 · 基本伙与风味卤味" }
-].map(photo => ({ ...photo, src: `assets/photos/${photo.id}.webp` }));
+// 现场照片由 /api/menu 的 photos 提供（公一 14 张 + 公三/西区现场价目牌）
+let photoArchive = [];
 
-const state = { windowId: "w18", filter: "all", query: "", sort: "default", detailDishId: null, detailFactor: 1, galleryItems: photoArchive, galleryIndex: 0 };
+let canteens = [];
+const state = { canteenId: "gong1", windowId: "w18", filter: "all", query: "", sort: "default", detailDishId: null, detailFactor: 1, galleryItems: [], galleryIndex: 0 };
 const iconStyles = {
   leaf: ["#4e805b", "#e9f1df"], noodles: ["#a87531", "#f8eed6"], meat: ["#a86249", "#f8e9e1"],
   rice: ["#8d713b", "#f4edda"], egg: ["#ac7a35", "#f9efda"], bowl: ["#4d7e73", "#e4efea"]
@@ -38,6 +25,8 @@ const $$ = selector => [...document.querySelectorAll(selector)];
 let allDishes = [];
 function rebuildIndexes() { allDishes = windows.flatMap(w => w.dishes.map(d => ({ ...d, window: w }))); }
 const getWindow = id => windows.find(w => w.id === id);
+const getCanteen = id => canteens.find(c => c.id === id);
+const canteenWindows = () => windows.filter(w => w.canteenId === state.canteenId);
 const getDish = id => allDishes.find(d => d.id === id);
 const getPhoto = id => photoArchive.find(p => p.id === id);
 const round = value => Math.round(value);
@@ -71,35 +60,44 @@ function showToast(message) {
 }
 
 function renderWindowList() {
-  $("#windowList").innerHTML = windows.map(w => `
+  const list = canteenWindows();
+  $("#windowList").innerHTML = list.map(w => `
     <div class="window-item ${w.id === state.windowId ? "active" : ""}" data-window="${w.id}" role="tab" tabindex="0" aria-selected="${w.id === state.windowId ? "true" : "false"}">
-      <div class="window-item-head">
-        <span class="window-number">${w.number}</span>
-        <span class="window-item-copy"><strong>${w.name}</strong><small>${w.short}</small></span>
+      <div class="window-item-title">
+        ${w.number ? `<b class="window-number">${w.number}</b>` : ""}
+        <strong>${w.name}</strong>
       </div>
+      <small class="window-item-sub">${w.short}</small>
       <span class="win-q" data-qslot="${w.id}">排队数据读取中</span>
       <div class="win-actions">
         <button type="button" data-report="${w.id}" title="上报当前排队人数">排队</button>
         <button type="button" data-gallery-win="${w.id}" title="查看这个窗口的现场菜单">拍照</button>
       </div>
     </div>`).join("");
-  $("#windowCount").textContent = windows.length;
+  $("#windowCount").textContent = list.length;
+  const empty = $("#windowEmpty");
+  if (empty) empty.hidden = list.length !== 0;
   if (typeof window.decorateWindows === "function") window.decorateWindows();
 }
 
 function renderWindowHero() {
   const w = getWindow(state.windowId);
+  const hero = $("#windowHero");
+  if (!w) { if (hero) hero.hidden = true; return; }
+  if (hero) hero.hidden = false;
   const image = $("#windowHeroImage");
   image.src = w.cover;
   image.alt = `公一食堂${w.number}号${w.name}窗口实拍`;
   image.style.objectPosition = w.position;
-  $("#windowHeroLabel").textContent = `WINDOW ${w.number} · ${w.dishes.length} DISHES`;
-  $("#windowHeroName").textContent = `${w.number} 号 · ${w.name}`;
+  $("#windowHeroLabel").textContent = `${w.number ? "WINDOW " + w.number : "窗口"} · ${w.dishes.length} DISHES`;
+  $("#windowHeroName").textContent = w.number ? `${w.number} 号 · ${w.name}` : w.name;
   $("#windowHeroDescription").textContent = w.description;
 }
 
 function getVisibleDishes() {
-  let items = state.query ? allDishes : getWindow(state.windowId).dishes.map(d => ({ ...d, window: getWindow(state.windowId) }));
+  const inCanteen = allDishes.filter(d => d.window.canteenId === state.canteenId);
+  const active = getWindow(state.windowId);
+  let items = state.query ? inCanteen : (active ? active.dishes.map(d => ({ ...d, window: active })) : []);
   if (state.query) {
     const query = state.query.toLowerCase();
     items = items.filter(d => `${d.name}${d.description}${d.labels.join("")}${d.window.name}${d.window.number}`.toLowerCase().includes(query));
@@ -124,7 +122,7 @@ function dishCard(d) {
     <div class="dish-card-title"><h3>${d.name}</h3>${priceHTML(d)}</div>
     <p class="dish-description">${d.description}</p>
     <div class="dish-tags">${visibleLabels.map(label => `<span>${label}</span>`).join("")}</div>
-    ${state.query ? `<div class="dish-window-chip">${d.window.number} 号窗口 · ${d.window.name}</div>` : ""}
+    ${state.query ? `<div class="dish-window-chip">${d.window.number ? d.window.number + " 号窗口 · " : ""}${d.window.name}</div>` : ""}
     <div class="dish-card-bottom"><div><div class="dish-energy"><strong>${round(d.kcal)}</strong><span>kcal / 100g</span></div><p class="dish-protein">蛋白质 <b>${one(d.protein)}g</b> · 脂肪 ${one(d.fat)}g</p></div><button class="add-dish" data-add="${d.id}" aria-label="将${d.name}加入今日餐盘" title="加入今日餐盘">${icon("plus")}</button></div>
   </article>`;
 }
@@ -132,13 +130,22 @@ function dishCard(d) {
 function renderDishes() {
   const items = getVisibleDishes();
   $("#windowHero").classList.toggle("search-active", Boolean(state.query));
+  const canteen = getCanteen(state.canteenId);
+  const canteenName = canteen ? (canteen.alias || canteen.name) : "";
   $("#dishSectionTitle").textContent = state.query ? `“${state.query}”的搜索结果` : (state.filter === "all" ? "挑选菜品" : filters[state.filter].label);
+  const active = getWindow(state.windowId);
   $("#dishResultCount").textContent = state.query
-    ? `在公一 ${allDishes.length} 道已录入菜品中找到 ${items.length} 道`
-    : `${getWindow(state.windowId).number} 号窗口 · ${items.length} 道菜品 · 营养按每100g展示`;
+    ? `在${canteenName} ${inCanteenCount()} 道已录入菜品中找到 ${items.length} 道`
+    : active
+      ? `${active.number ? active.number + " 号窗口 · " : active.name + " · "}${items.length} 道菜品 · 营养按每100g展示`
+      : "该食堂暂未录入窗口";
   $("#dishGrid").innerHTML = items.map(dishCard).join("");
   $("#dishGrid").hidden = items.length === 0;
   $("#emptyState").hidden = items.length !== 0;
+}
+
+function inCanteenCount() {
+  return allDishes.filter(d => d.window.canteenId === state.canteenId).length;
 }
 
 function renderFilterTabs() {
@@ -162,9 +169,9 @@ function renderDishDetail() {
     ? "数值录入自18号窗口现场营养公示表，按每100克记录；当前按所选参考份量换算。"
     : "根据菜名、常见食材与烹饪方式进行AI估算，并非检测值；实际受配方、用油和份量影响。";
   $("#dishDialogContent").innerHTML = `<div class="dish-detail">
-    <div class="dish-detail-photo"><img src="${w.cover}" alt="${w.number}号窗口现场照片" style="object-position:${w.position}"><div class="dish-detail-photo-caption"><span>WINDOW ${w.number} · ON-SITE PHOTO</span><p>${w.name}<br>现场菜单拍摄于 2026.11.21</p></div></div>
+    <div class="dish-detail-photo"><img src="${w.cover}" alt="${w.name}现场照片" style="object-position:${w.position}"><div class="dish-detail-photo-caption"><span>${w.number ? "WINDOW " + w.number : "ON-SITE"} · ON-SITE PHOTO</span><p>${w.name}<br>现场菜单拍摄于 2026.11.21</p></div></div>
     <div class="dish-detail-main">
-      <span class="detail-window">公一食堂 / ${w.number} 号窗口 / ${w.name}</span>
+      <span class="detail-window">${(getCanteen(w.canteenId) || {}).name || "食堂"} / ${w.number ? w.number + " 号窗口 / " : ""}${w.name}</span>
       <div class="detail-title-row"><h2>${d.name}</h2>${priceHTML(d, true)}</div>
       <p class="detail-description">${d.description} 参考份量 ${d.serving} 克，以下为当前所选份量的营养参考。</p>
       <div class="detail-tags">${d.labels.map(label => `<span>${label}</span>`).join("")}</div>
@@ -224,7 +231,12 @@ function renderGallery() {
   const items = state.galleryItems;
   const current = items[state.galleryIndex];
   if (!current) return;
-  $("#galleryTitle").textContent = items.length === photoArchive.length ? "公一 · 现场菜单" : `${getWindow(state.windowId).number} 号窗口 · 现场菜单`;
+  const currentWindow = getWindow(state.windowId);
+  $("#galleryTitle").textContent = items.length === photoArchive.length
+    ? ((getCanteen(state.canteenId) || {}).name || "食堂") + " · 现场菜单"
+    : currentWindow
+      ? (currentWindow.number ? currentWindow.number + " 号窗口" : currentWindow.name) + " · 现场菜单"
+      : "现场菜单";
   $("#galleryMainImage").src = current.src;
   $("#galleryMainImage").alt = current.caption;
   $("#galleryCaption").textContent = current.caption;
@@ -342,12 +354,7 @@ $("#clearTray").addEventListener("click", () => {
   showToast("今日餐盘已清空");
 });
 
-$$('[data-canteen]').forEach(button => button.addEventListener("click", () => {
-  if (button.dataset.canteen !== "gong1") {
-    const name = button.dataset.canteen === "gong2" ? "公二" : "公三";
-    showToast(`${name}食堂菜单待录入，当前先为你展示公一食堂`);
-  }
-}));
+$$('[data-canteen]').forEach(button => button.addEventListener("click", () => selectCanteen(button.dataset.canteen)));
 
 $("#galleryBtn").addEventListener("click", () => openGallery());
 $("#windowPhotoBtn").addEventListener("click", () => openGallery(getWindow(state.windowId).gallery));
@@ -389,14 +396,59 @@ async function loadMenu() {
   if (!response.ok) throw new Error("菜单接口返回 " + response.status);
   const data = await response.json();
   windows = (data.windows || []).map(w => ({ ...w, dishes: w.dishes || [] }));
-  if (!windows.find(w => w.id === state.windowId) && windows.length) state.windowId = windows[0].id;
+  canteens = data.canteens || [];
+  photoArchive = (data.photos || []).map(p => ({
+    ...p,
+    src: p.src.indexOf("assets/") === 0 ? p.src : "assets/photos/" + p.src,
+  }));
+  state.galleryItems = photoArchive;
+
+  const online = canteens.filter(c => c.status === "online");
+  if (!canteens.some(c => c.id === state.canteenId && c.status === "online")) {
+    state.canteenId = online.length ? online[0].id : (canteens[0] ? canteens[0].id : "gong1");
+  }
+  if (!windows.find(w => w.id === state.windowId && w.canteenId === state.canteenId)) {
+    const first = windows.find(w => w.canteenId === state.canteenId);
+    state.windowId = first ? first.id : null;
+  }
   rebuildIndexes();
+}
+
+function renderCanteenNav() {
+  $$("[data-canteen]").forEach(button => {
+    const c = getCanteen(button.dataset.canteen);
+    button.classList.toggle("is-on", button.dataset.canteen === state.canteenId);
+    button.classList.toggle("is-pending", Boolean(c && c.status !== "online"));
+    button.setAttribute("aria-pressed", String(button.dataset.canteen === state.canteenId));
+  });
+}
+
+function selectCanteen(id) {
+  const canteen = getCanteen(id);
+  if (!canteen) return;
+  if (canteen.status !== "online") {
+    showToast(canteen.name + "菜单待录入，先看看已上线的食堂");
+    return;
+  }
+  state.canteenId = id;
+  state.query = "";
+  state.filter = "all";
+  const first = windows.find(w => w.canteenId === id);
+  state.windowId = first ? first.id : null;
+  const search = $("#searchInput");
+  if (search) search.value = "";
+  renderCanteenNav();
+  renderWindowList();
+  renderWindowHero();
+  renderFilterTabs();
+  renderDishes();
 }
 
 function boot() {
   restoreTray();
   $("#statWindows").textContent = windows.length;
   $("#statDishes").textContent = allDishes.length;
+  renderCanteenNav();
   renderWindowList();
   renderWindowHero();
   renderFilterTabs();

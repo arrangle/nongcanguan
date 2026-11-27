@@ -7,7 +7,7 @@
 
   <block wx:else>
     <view class="card">
-      <view class="muted">{{window.number}} 号窗口 · {{window.name}}</view>
+      <view class="muted">{{window.number ? window.number + ' 号窗口 · ' : ''}}{{window.name}}</view>
       <view class="row between head">
         <view class="name">{{dish.name}}</view>
         <view class="row head-right">

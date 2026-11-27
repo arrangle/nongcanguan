@@ -378,3 +378,38 @@
 @media (prefers-reduced-motion: reduce) {
   .entry-action, .window-strip .window-item, .more-card, .rank-row { transition: none; }
 }
+
+/* 食堂无窗口时的提示 */
+.window-empty {
+  margin: 10px 2px 0; padding: 14px 16px;
+  border: 1px dashed #cfd8c8; border-radius: 12px;
+  background: rgba(255, 255, 255, .6);
+  color: #7d8a81; font-size: 11px;
+}
+.campus-item.is-pending { opacity: .55; }
+
+/* 窗口卡：防止长菜名/长说明溢出卡片 */
+.window-strip .window-item { overflow: hidden; }
+.window-item-head { min-width: 0; }
+.window-strip .window-item-copy { min-width: 0; overflow: hidden; }
+.window-strip .window-item-copy strong,
+.window-strip .window-item-copy small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* 窗口卡标题行：号码可选，名字单行省略 */
+.window-item-title { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.window-item-title strong {
+  flex: 1; min-width: 0; overflow: hidden;
+  color: #2b473c; font-size: 12px; letter-spacing: .2px;
+  white-space: nowrap; text-overflow: ellipsis;
+}
+.window-strip .window-item.active .window-item-title strong { color: #fff; }
+.window-item-sub {
+  display: block; overflow: hidden;
+  color: #97a29a; font-size: 9px;
+  white-space: nowrap; text-overflow: ellipsis;
+}
+.window-strip .window-item.active .window-item-sub { color: rgba(255, 255, 255, .6); }
+
+/* 卡片是列方向 flex，子元素要撑满宽度（覆盖 styles.css 的 align-items:center） */
+.window-strip .window-item { align-items: stretch; }
+.window-strip .window-item .win-q { align-self: flex-start; }

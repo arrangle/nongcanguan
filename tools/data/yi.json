@@ -1,0 +1,382 @@
+[
+  {
+    "photo": "微信图片_20261126202354_223_67.jpg",
+    "windowNumber": "",
+    "cardTitle": "麻辣烫、麻辣香锅",
+    "items": [
+      { "name": "麻辣烫、麻辣香锅", "price": 18.8, "unit": "元/斤", "note": "上方绿色灯箱横幅" }
+    ]
+  },
+  {
+    "photo": "微信图片_20261126202711_225_67.jpg",
+    "windowNumber": "",
+    "cardTitle": "糖葫芦价格",
+    "items": [
+      { "name": "黄油薄脆巧克力冷萃酸奶糖葫芦", "price": 12, "unit": "元/份", "note": "上方打印标签：售卖时间午餐、晚餐；制作人李晶晶" },
+      { "name": "山楂糖葫芦", "price": 6, "unit": "元", "note": "粉色价目牌" },
+      { "name": "夹心糖葫芦", "price": 7, "unit": "元", "note": "粉色价目牌" },
+      { "name": "无花果糖葫芦", "price": 7, "unit": "元", "note": "粉色价目牌" },
+      { "name": "芭乐糖葫芦", "price": 7.5, "unit": "元", "note": "粉色价目牌" },
+      { "name": "水果糖葫芦", "price": 8, "unit": "元", "note": "粉色价目牌" },
+      { "name": "糍粑糖葫芦", "price": 10, "unit": "元", "note": "粉色价目牌" },
+      { "name": "草莓糖葫芦", "price": 12, "unit": "元", "note": "粉色价目牌" },
+      { "name": "黄油薄脆巧克力冷萃酸奶糖葫芦", "price": 12, "unit": "元", "note": "粉色价目牌" },
+      { "name": "巧克力脆皮糖葫芦", "price": null, "unit": "", "note": "粉色价目牌，原价格处为空白括号" },
+      { "name": "奶皮子", "price": 6, "unit": "元", "note": "粉色价目牌，标注“奶皮子+6元”" },
+      { "name": "草莓糖葫芦", "price": 12, "unit": "元", "note": "米色价目牌" },
+      { "name": "水果糖葫芦", "price": 8, "unit": "元", "note": "米色价目牌" },
+      { "name": "夹心糖葫芦", "price": 7, "unit": "元", "note": "米色价目牌" },
+      { "name": "山楂糖葫芦", "price": 6, "unit": "元", "note": "米色价目牌" },
+      { "name": "无花果糖葫芦", "price": 7, "unit": "元", "note": "米色价目牌" },
+      { "name": "芭乐糖葫芦", "price": 7.5, "unit": "元", "note": "米色价目牌" }
+    ]
+  },
+  {
+    "photo": "微信图片_20261126202712_226_67.jpg",
+    "windowNumber": "",
+    "cardTitle": "主食花样",
+    "items": [
+      { "name": "酱香饼", "price": 2, "unit": "元", "note": "" },
+      { "name": "麻酱饼", "price": 1.5, "unit": "元", "note": "" },
+      { "name": "糖三角", "price": 1, "unit": "元", "note": "" },
+      { "name": "花卷", "price": 0.5, "unit": "元", "note": "" },
+      { "name": "刀切馒头", "price": 0.3, "unit": "元", "note": "" },
+      { "name": "紫薯包", "price": 2, "unit": "元", "note": "" },
+      { "name": "辣葱花饼", "price": 1.5, "unit": "元", "note": "" },
+      { "name": "豆沙包", "price": 1, "unit": "元", "note": "" },
+      { "name": "太阳饼", "price": 3.5, "unit": "元", "note": "" },
+      { "name": "玉米", "price": 2.5, "unit": "元/个", "note": "" },
+      { "name": "蒸红薯", "price": 3, "unit": "元/斤", "note": "" },
+      { "name": "大饼", "price": 0.7, "unit": "元", "note": "" },
+      { "name": "发面饼（小）", "price": 1, "unit": "元", "note": "" },
+      { "name": "麻辣饼", "price": 1.5, "unit": "元", "note": "" },
+      { "name": "鸡蛋（大饼）", "price": 1.5, "unit": "元", "note": "" },
+      { "name": "红糖饼", "price": 1.5, "unit": "元", "note": "" },
+      { "name": "葱花饼", "price": 1.5, "unit": "元", "note": "" },
+      { "name": "手抓饼", "price": 4, "unit": "元", "note": "" },
+      { "name": "八宝粥", "price": 1.5, "unit": "元", "note": "" },
+      { "name": "香酥牛肉饼", "price": 6, "unit": "元", "note": "" },
+      { "name": "香酥萝卜丝饼", "price": 2.5, "unit": "元", "note": "" },
+      { "name": "鸡蛋肉饼", "price": 4.5, "unit": "元", "note": "" }
+    ]
+  },
+  {
+    "photo": "微信图片_20261126202713_227_67.jpg",
+    "windowNumber": "",
+    "cardTitle": "减脂餐",
+    "items": [
+      { "name": "牛肉", "price": 10, "unit": "元/两", "note": "" },
+      { "name": "西蓝花", "price": 3, "unit": "元/半份", "note": "" },
+      { "name": "鲜大虾", "price": 4, "unit": "元/个", "note": "" },
+      { "name": "豆腐", "price": 2, "unit": "元/半份", "note": "" },
+      { "name": "鸡腿", "price": 2.5, "unit": "元/两", "note": "" },
+      { "name": "蟹味菇", "price": 3, "unit": "元/半份", "note": "" },
+      { "name": "鸡胸肉", "price": 2.5, "unit": "元/两", "note": "" },
+      { "name": "秋葵", "price": 3, "unit": "元/半份", "note": "" },
+      { "name": "猪里脊肉", "price": 4, "unit": "元/两", "note": "" },
+      { "name": "水煮蛋", "price": 0.8, "unit": "元/个", "note": "" },
+      { "name": "芥蓝", "price": 3, "unit": "元/半份", "note": "" },
+      { "name": "胡萝卜丝", "price": 2, "unit": "元/半份", "note": "" },
+      { "name": "玉米粒", "price": 3, "unit": "元/半份", "note": "" },
+      { "name": "青笋丝", "price": 3, "unit": "元/半份", "note": "" },
+      { "name": "板栗南瓜", "price": 0.6, "unit": "元/两", "note": "" },
+      { "name": "蒸山药", "price": 1.5, "unit": "元/两", "note": "" },
+      { "name": "蒸胡萝卜", "price": 0.3, "unit": "元/两", "note": "" },
+      { "name": "糙米饭、杂粮饭", "price": 0.25, "unit": "元/两", "note": "" }
+    ]
+  },
+  {
+    "photo": "微信图片_20261126202714_228_67.jpg",
+    "windowNumber": "",
+    "cardTitle": "基本伙",
+    "items": [
+      { "name": "火爆滑肉", "price": 8, "unit": "元", "note": "" },
+      { "name": "红烧鲢鱼块", "price": 6, "unit": "元/块", "note": "" },
+      { "name": "奥尔良烤鸡腿", "price": 8, "unit": "元", "note": "" },
+      { "name": "油菜溜丸子", "price": 6, "unit": "元", "note": "" },
+      { "name": "白灼秋葵", "price": 4, "unit": "元", "note": "" },
+      { "name": "土匪猪肝", "price": 6, "unit": "元", "note": "" },
+      { "name": "粉丝娃娃菜", "price": 4, "unit": "元", "note": "" },
+      { "name": "糖醋盐酥鸡", "price": 6, "unit": "元", "note": "" },
+      { "name": "香酥辣子鸡", "price": 7, "unit": "元", "note": "" },
+      { "name": "豆豉蒸腔骨", "price": 8, "unit": "元/6块", "note": "" },
+      { "name": "芝士年糕鸡", "price": 6, "unit": "元/块", "note": "" },
+      { "name": "毛血旺", "price": 5, "unit": "元", "note": "" },
+      { "name": "南瓜山药蒸", "price": 4, "unit": "元", "note": "名称下缘有遮挡" },
+      { "name": "翡翠虾仁", "price": 6, "unit": "元", "note": "" },
+      { "name": "五彩茄子", "price": 4, "unit": "元", "note": "" },
+      { "name": "虎皮尖椒", "price": 4, "unit": "元", "note": "" },
+      { "name": "手撕包菜", "price": 4, "unit": "元", "note": "" },
+      { "name": "锅包肉", "price": 6, "unit": "元", "note": "" },
+      { "name": "滑蛋豆腐", "price": 5, "unit": "元", "note": "" },
+      { "name": "葱油鸡腿", "price": 8, "unit": "元", "note": "" },
+      { "name": "蒜黄肉丝", "price": 5, "unit": "元", "note": "" },
+      { "name": "辣姜五花肉", "price": 8, "unit": "元", "note": "" },
+      { "name": "白菜鸭肉卷", "price": 5, "unit": "元", "note": "" },
+      { "name": "麻辣鱼块", "price": 6, "unit": "元", "note": "" },
+      { "name": "双结烧肉", "price": 7, "unit": "元", "note": "" },
+      { "name": "炒合菜", "price": 4, "unit": "元", "note": "" },
+      { "name": "清炒油菜", "price": 3, "unit": "元", "note": "" },
+      { "name": "黑椒鸡柳", "price": 6, "unit": "元", "note": "" },
+      { "name": "冬瓜鸡块", "price": 5, "unit": "元", "note": "" },
+      { "name": "麻辣豆腐", "price": 2, "unit": "元", "note": "" },
+      { "name": "香葱鸡蛋油豆皮", "price": 4, "unit": "元", "note": "" },
+      { "name": "爆汁豆腐", "price": 5, "unit": "元", "note": "" },
+      { "name": "干锅鸡", "price": 7, "unit": "元", "note": "" },
+      { "name": "小炒鸭肉卷", "price": 6, "unit": "元", "note": "" },
+      { "name": "三丝爆豆", "price": 6, "unit": "元", "note": "" },
+      { "name": "薄荷鸡", "price": 7, "unit": "元", "note": "低糖少油" },
+      { "name": "胡萝卜粉丝炒蛋", "price": 4, "unit": "元", "note": "" },
+      { "name": "孜然玉米肠", "price": 5, "unit": "元", "note": "" },
+      { "name": "双菇蒸滑鸡", "price": 7, "unit": "元", "note": "蟹味菇、香菇" }
+    ]
+  },
+  {
+    "photo": "微信图片_20261126202715_229_67.jpg",
+    "windowNumber": "7",
+    "cardTitle": "早餐花样",
+    "items": [
+      { "name": "梅干菜肉包", "price": 3, "unit": "元", "note": "" },
+      { "name": "韭菜鸡蛋粉条包", "price": 1.5, "unit": "元", "note": "" },
+      { "name": "猪肉韭菜包", "price": 2, "unit": "元", "note": "" },
+      { "name": "猪肉芹菜包", "price": 1.5, "unit": "元", "note": "" },
+      { "name": "掉渣饼", "price": 5, "unit": "元", "note": "" },
+      { "name": "炸糕", "price": 2, "unit": "元", "note": "" },
+      { "name": "葱油卷", "price": 1.5, "unit": "元", "note": "" },
+      { "name": "豆沙饼", "price": 2, "unit": "元", "note": "" },
+      { "name": "玉米饼", "price": 1, "unit": "元", "note": "" },
+      { "name": "手抓饼", "price": 4, "unit": "元", "note": "" },
+      { "name": "土豆丝卷饼", "price": 3, "unit": "元", "note": "" },
+      { "name": "酸奶麻花", "price": 4.5, "unit": "元", "note": "" },
+      { "name": "酱香饼", "price": 2, "unit": "元", "note": "" },
+      { "name": "肉饼", "price": 2, "unit": "元", "note": "" },
+      { "name": "蒸玉米", "price": 2.5, "unit": "元", "note": "" },
+      { "name": "蛋挞", "price": 3, "unit": "元", "note": "" },
+      { "name": "火山石烤肠", "price": 3.6, "unit": "元", "note": "" },
+      { "name": "三明治", "price": 3.5, "unit": "元", "note": "" },
+      { "name": "黑胡椒肉饼", "price": 3.5, "unit": "元", "note": "" },
+      { "name": "紫薯包", "price": 2, "unit": "元", "note": "" },
+      { "name": "太阳饼", "price": 2.5, "unit": "元", "note": "" },
+      { "name": "肉馅煎包", "price": 1.5, "unit": "元", "note": "" },
+      { "name": "素馅煎包", "price": 1, "unit": "元", "note": "" },
+      { "name": "双夹", "price": 5, "unit": "元", "note": "" }
+    ]
+  },
+  {
+    "photo": "微信图片_20261126202716_230_67.jpg",
+    "windowNumber": "8",
+    "cardTitle": "早餐花样",
+    "items": [
+      { "name": "豇豆肉包", "price": 2, "unit": "元", "note": "" },
+      { "name": "胡萝卜鸡蛋包", "price": 1, "unit": "元", "note": "" },
+      { "name": "猪肉茴香包", "price": 1.5, "unit": "元", "note": "" },
+      { "name": "新奥尔良鸡腿肉包", "price": 3, "unit": "元", "note": "" },
+      { "name": "牛肉饼", "price": 6, "unit": "元", "note": "已划线，疑似停售" },
+      { "name": "红豆糯米团", "price": 3, "unit": "元", "note": "已划线，疑似停售" },
+      { "name": "炸糕", "price": 2, "unit": "元", "note": "" },
+      { "name": "葱油卷", "price": 1.5, "unit": "元", "note": "" },
+      { "name": "豆沙饼、莲蓉饼", "price": 2, "unit": "元", "note": "" },
+      { "name": "玉米饼", "price": 1, "unit": "元", "note": "" },
+      { "name": "手抓饼", "price": 4, "unit": "元", "note": "" },
+      { "name": "土豆丝卷饼", "price": 3, "unit": "元", "note": "" },
+      { "name": "酸奶麻花", "price": 4.5, "unit": "元", "note": "" },
+      { "name": "酱香饼", "price": 2, "unit": "元", "note": "" },
+      { "name": "肉饼", "price": 2, "unit": "元", "note": "" },
+      { "name": "蒸玉米", "price": 2.5, "unit": "元", "note": "" },
+      { "name": "蛋挞", "price": 3, "unit": "元", "note": "" },
+      { "name": "火山石烤肠", "price": 3.6, "unit": "元", "note": "" },
+      { "name": "三明治", "price": 3.5, "unit": "元", "note": "" },
+      { "name": "黑胡椒肉饼", "price": 3.5, "unit": "元", "note": "" },
+      { "name": "紫薯包", "price": 2, "unit": "元", "note": "" },
+      { "name": "太阳饼", "price": 2.5, "unit": "元", "note": "" },
+      { "name": "肉馅煎包", "price": 1.5, "unit": "元", "note": "" },
+      { "name": "素馅煎包", "price": 1, "unit": "元", "note": "" },
+      { "name": "双夹", "price": 5, "unit": "元", "note": "" }
+    ]
+  },
+  {
+    "photo": "微信图片_20261126202717_231_67.jpg",
+    "windowNumber": "",
+    "cardTitle": "早餐花样",
+    "items": [
+      { "name": "酱肉包", "price": 3, "unit": "元", "note": "" },
+      { "name": "白菜鸡蛋包", "price": 1, "unit": "元", "note": "" },
+      { "name": "猪肉白萝卜包", "price": 1.5, "unit": "元", "note": "" },
+      { "name": "牛肉饼", "price": 6, "unit": "元", "note": "已划线，疑似停售" },
+      { "name": "红豆糯米团", "price": 3, "unit": "元", "note": "已划线，疑似停售" },
+      { "name": "炸糕", "price": 2, "unit": "元", "note": "" },
+      { "name": "葱油卷", "price": 1.5, "unit": "元", "note": "" },
+      { "name": "豆沙饼、莲蓉饼", "price": 2, "unit": "元", "note": "" },
+      { "name": "玉米饼", "price": 1, "unit": "元", "note": "" },
+      { "name": "手抓饼", "price": 4, "unit": "元", "note": "" },
+      { "name": "土豆丝卷饼", "price": 3, "unit": "元", "note": "" },
+      { "name": "酸奶麻花", "price": 4.5, "unit": "元", "note": "" },
+      { "name": "酱香饼", "price": 2, "unit": "元", "note": "" },
+      { "name": "肉饼", "price": 2, "unit": "元", "note": "" },
+      { "name": "蒸玉米", "price": 2.5, "unit": "元", "note": "" },
+      { "name": "蛋挞", "price": 3, "unit": "元", "note": "" },
+      { "name": "火山石烤肠", "price": 3.6, "unit": "元", "note": "" },
+      { "name": "三明治", "price": 3.5, "unit": "元", "note": "" },
+      { "name": "黑胡椒肉饼", "price": 3.5, "unit": "元", "note": "" },
+      { "name": "紫薯包", "price": 2, "unit": "元", "note": "" },
+      { "name": "太阳饼", "price": 2.5, "unit": "元", "note": "" },
+      { "name": "肉馅煎包", "price": 1.5, "unit": "元", "note": "" },
+      { "name": "素馅煎包", "price": 1, "unit": "元", "note": "价格处有反光" },
+      { "name": "双夹", "price": 5, "unit": "元", "note": "" }
+    ]
+  },
+  {
+    "photo": "微信图片_20261126202721_232_67.jpg",
+    "windowNumber": "5",
+    "cardTitle": "早餐面系列；贵州蘸水菜",
+    "items": [
+      { "name": "传统早餐面", "price": 3, "unit": "元/碗", "note": "汤底可选红烧、酸辣、清汤" },
+      { "name": "传统早餐河粉", "price": 3, "unit": "元/碗", "note": "汤底可选红烧、酸辣、清汤" },
+      { "name": "鸡丝面（河粉）", "price": 4, "unit": "元/碗", "note": "汤底可选红烧、酸辣、清汤" },
+      { "name": "鸡丝米粉", "price": 4.5, "unit": "元/碗", "note": "汤底可选红烧、酸辣、清汤" },
+      { "name": "牛肉面（河粉）", "price": 6, "unit": "元/碗", "note": "汤底可选红烧、酸辣、清汤" },
+      { "name": "牛肉米粉", "price": 6.5, "unit": "元/碗", "note": "汤底可选红烧、酸辣、清汤" },
+      { "name": "番茄肥牛（面 河粉）", "price": 6, "unit": "元/碗", "note": "汤底可选红烧、酸辣、清汤" },
+      { "name": "番茄肥牛（米粉河粉）", "price": 6.5, "unit": "元/碗", "note": "汤底可选红烧、酸辣、清汤" },
+      { "name": "素菜", "price": 1.2, "unit": "元/两", "note": "贵州蘸水菜；蘸水可选贵州糊辣椒蘸水、贵州红酸汤蘸水、贵州三合油咸鲜蘸水、芝麻酱蘸水" },
+      { "name": "牛肉", "price": 10, "unit": "元/两", "note": "贵州蘸水菜" },
+      { "name": "鸡腿", "price": 2.5, "unit": "元/两", "note": "贵州蘸水菜" },
+      { "name": "鸡胸肉", "price": 2.5, "unit": "元/两", "note": "贵州蘸水菜" },
+      { "name": "猪里脊肉", "price": 4, "unit": "元/两", "note": "贵州蘸水菜" }
+    ]
+  },
+  {
+    "photo": "微信图片_20261126202722_233_67.jpg",
+    "windowNumber": "",
+    "cardTitle": "米线",
+    "items": [
+      { "name": "鸡汤米线", "price": 10, "unit": "元", "note": "" },
+      { "name": "午餐肉米线", "price": 13, "unit": "元", "note": "" },
+      { "name": "鱼豆腐米线", "price": 13, "unit": "元", "note": "" },
+      { "name": "培根米线", "price": 13, "unit": "元", "note": "" },
+      { "name": "虾饺米线", "price": 13, "unit": "元", "note": "" },
+      { "name": "肥牛米线", "price": 14, "unit": "元", "note": "" },
+      { "name": "鱿鱼米线", "price": 15, "unit": "元", "note": "" },
+      { "name": "半只鸡米线", "price": 15, "unit": "元", "note": "" },
+      { "name": "春三鲜米线", "price": 18, "unit": "元", "note": "" },
+      { "name": "加米线", "price": 3, "unit": "元/份", "note": "" }
+    ]
+  },
+  {
+    "photo": "微信图片_20261126202723_234_67.jpg",
+    "windowNumber": "14、15",
+    "cardTitle": "新上 南派铁锅小炒；冬日暖锅",
+    "items": [
+      { "name": "小炒有机菜花", "price": 8, "unit": "元/份", "note": "15号窗口；现点现炒·锅气十足" },
+      { "name": "湘味酸辣鸡杂", "price": 10, "unit": "元/份", "note": "15号窗口" },
+      { "name": "辣椒炒肉", "price": 15, "unit": "元/份", "note": "15号窗口" },
+      { "name": "冬笋炒腊肉", "price": 16, "unit": "元/份", "note": "15号窗口" },
+      { "name": "青椒焖土鸡", "price": 14, "unit": "元/份", "note": "15号窗口" },
+      { "name": "牛腩烧芋仔", "price": 16, "unit": "元/份", "note": "15号窗口" },
+      { "name": "爆炒牛肚丝", "price": 14, "unit": "元/份", "note": "15号窗口" },
+      { "name": "酥肉锅+米饭", "price": 16, "unit": "元", "note": "14号窗口；猪肉小酥肉；锅底可选酸菜金汤、青花椒、番茄、麻辣" },
+      { "name": "肥牛锅+米饭", "price": 16, "unit": "元", "note": "14号窗口；锅底可选酸菜金汤、青花椒、番茄、麻辣" },
+      { "name": "菌菇锅+米饭", "price": 10, "unit": "元", "note": "14号窗口；锅底可选酸菜金汤、青花椒、番茄、麻辣" },
+      { "name": "素什锦锅+米饭", "price": 9, "unit": "元", "note": "14号窗口；锅底可选酸菜金汤、青花椒、番茄、麻辣" }
+    ]
+  },
+  {
+    "photo": "微信图片_20261126202726_235_67.jpg",
+    "windowNumber": "",
+    "cardTitle": "淮南牛汤套餐",
+    "items": [
+      { "name": "9元牛汤套餐", "price": 9, "unit": "元", "note": "牛杂+（任意粉）+烧饼+小菜；默认搭配红薯粉" },
+      { "name": "10元牛汤套餐", "price": 10, "unit": "元", "note": "牛心+（任意粉）+烧饼+小菜；默认搭配红薯粉" },
+      { "name": "11元牛汤套餐", "price": 11, "unit": "元", "note": "牛肚+（任意粉）+烧饼+小菜；默认搭配红薯粉" },
+      { "name": "12元牛汤套餐", "price": 12, "unit": "元", "note": "牛丸+（任意粉）+烧饼+小菜；默认搭配红薯粉" },
+      { "name": "13元牛汤套餐", "price": 13, "unit": "元", "note": "牛肉+（任意粉）+烧饼+小菜；默认搭配红薯粉" }
+    ]
+  },
+  {
+    "photo": "微信图片_20261126202727_236_67.jpg",
+    "windowNumber": "",
+    "cardTitle": "拌饭；淮南牛肉汤",
+    "items": [
+      { "name": "肉沫擂椒拌饭", "price": 13, "unit": "元/份", "note": "" },
+      { "name": "韩式鸡肉煲仔饭", "price": 13, "unit": "元/份", "note": "" },
+      { "name": "番茄肥牛煲仔饭", "price": 14, "unit": "元/份", "note": "" },
+      { "name": "黄焖鸡煲仔饭", "price": 13, "unit": "元/份", "note": "" },
+      { "name": "辣白菜五花肉煲仔饭", "price": 13, "unit": "元/份", "note": "" },
+      { "name": "擂椒鸡排煲仔饭", "price": 13, "unit": "元/份", "note": "霸王鸡排+擂椒皮蛋酱" },
+      { "name": "纯牛汤", "price": 3, "unit": "元/份", "note": "" },
+      { "name": "牛肉", "price": 9, "unit": "元/两", "note": "" },
+      { "name": "牛汤水晶粉", "price": 5, "unit": "元/份", "note": "" },
+      { "name": "牛肚", "price": 5, "unit": "元/两", "note": "" },
+      { "name": "牛汤土豆粉", "price": 5, "unit": "元/份", "note": "" },
+      { "name": "牛杂", "price": 2, "unit": "元/两", "note": "" },
+      { "name": "牛心", "price": 4, "unit": "元/两", "note": "" },
+      { "name": "牛汤红薯粉", "price": 6, "unit": "元/份", "note": "" },
+      { "name": "牛汤方便面", "price": 6, "unit": "元/份", "note": "" },
+      { "name": "炸馒头片", "price": 1, "unit": "元/个", "note": "每份送小菜1碟；活动期间牛汤送炸馒头片一个" }
+    ]
+  },
+  {
+    "photo": "微信图片_20261126202728_237_67.jpg",
+    "windowNumber": "18",
+    "cardTitle": "脆皮烤鸭",
+    "items": [
+      { "name": "黑椒猪排铁板蛋炒饭", "price": 15, "unit": "元/份", "note": "新品推荐；颐一食堂18号窗口" },
+      { "name": "脆皮烤鸭", "price": 35, "unit": "元/只", "note": "" },
+      { "name": "脆皮烤鸭", "price": 17.5, "unit": "元/半只", "note": "" },
+      { "name": "烤鸭盖饭", "price": 15, "unit": "元/份", "note": "送小菜一份、酱汁一份" },
+      { "name": "土豆泥鸡排拌饭", "price": 13, "unit": "元/份", "note": "" }
+    ]
+  },
+  {
+    "photo": "微信图片_20261126202730_238_67.jpg",
+    "windowNumber": "",
+    "cardTitle": "饺子系列；新派炒饭、炒方便面",
+    "items": [
+      { "name": "猪肉茴香", "price": 7.5, "unit": "元/份", "note": "饺子系列" },
+      { "name": "猪肉白菜", "price": 7.5, "unit": "元/份", "note": "饺子系列" },
+      { "name": "猪肉韭菜", "price": 7.5, "unit": "元/份", "note": "饺子系列" },
+      { "name": "肉三鲜", "price": 8, "unit": "元/份", "note": "饺子系列" },
+      { "name": "猪肉白萝卜", "price": 7.5, "unit": "元/份", "note": "饺子系列" },
+      { "name": "晚餐：馄饨", "price": 2, "unit": "元/碗", "note": "饺子系列牌" },
+      { "name": "蛋炒饭、炒饼", "price": 8, "unit": "元", "note": "炒饭口味可选：咸蛋黄、酱油、肉松、榄菜" },
+      { "name": "自选炒饭、炒饼", "price": 12, "unit": "元", "note": "可选素菜：豌豆、玉米粒、胡萝卜丁、酸豇豆、紫洋葱粒、香葱、海苔、黄瓜丁、圆白菜丝、辣白菜碎、辣萝卜丁；肉类：牛肉、五花肉、香肠、果木鸭胸、骨肉相连、川香鸡柳、培根" }
+    ]
+  },
+  {
+    "photo": "微信图片_20261126202731_239_67.jpg",
+    "windowNumber": "",
+    "cardTitle": "拉面 削面",
+    "items": [
+      { "name": "浓香烧肉面", "price": 10, "unit": "元/份", "note": "" },
+      { "name": "红烧鸡块面", "price": 10, "unit": "元/份", "note": "" },
+      { "name": "西红柿鸡蛋面", "price": 6, "unit": "元/份", "note": "" },
+      { "name": "茄子肉丁面", "price": 7, "unit": "元/份", "note": "" },
+      { "name": "鸡蛋酱面", "price": 8, "unit": "元/份", "note": "" },
+      { "name": "红烧肥牛面", "price": 12, "unit": "元/份", "note": "" }
+    ]
+  },
+  {
+    "photo": "微信图片_20261126202732_240_67.jpg",
+    "windowNumber": "",
+    "cardTitle": "重庆小面系列",
+    "items": [
+      { "name": "红烧牛肉面", "price": 12, "unit": "元/份", "note": "" },
+      { "name": "红烧排骨面", "price": 12, "unit": "元/份", "note": "" },
+      { "name": "酸菜肉丝面", "price": 7, "unit": "元/份", "note": "" },
+      { "name": "重庆小面", "price": 6, "unit": "元/份", "note": "" },
+      { "name": "鸡胗面", "price": 8, "unit": "元/份", "note": "" },
+      { "name": "油泼面", "price": 8, "unit": "元/份", "note": "" },
+      { "name": "葱油拌面", "price": 8, "unit": "元/份", "note": "" },
+      { "name": "椒麻鸡拌面", "price": 14, "unit": "元/份", "note": "" },
+      { "name": "宜宾燃面", "price": 8, "unit": "元/份", "note": "" }
+    ]
+  },
+  {
+    "photo": "微信图片_20261126202733_241_67.jpg",
+    "windowNumber": "",
+    "cardTitle": "麻辣烫、麻辣香锅",
+    "items": [
+      { "name": "麻辣烫、麻辣香锅", "price": 18.8, "unit": "元/斤", "note": "上方绿色灯箱横幅；与223为重复照片" }
+    ]
+  }
+]

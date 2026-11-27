@@ -72,7 +72,7 @@
         bindtap="openWindow"
       >
         <view class="win-top">
-          <view class="win-num">{{item.number}}</view>
+          <view class="win-num" wx:if="{{item.number}}">{{item.number}}</view>
           <view class="win-name">{{item.name}}</view>
         </view>
         <view class="row between win-state">

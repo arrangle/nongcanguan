@@ -1,0 +1,201 @@
+[
+  {
+    "photo": "微信图片_20261126174509_2895_365.jpg",
+    "cardTitle": "扯面价目表",
+    "windowNumber": "",
+    "items": [
+      {"name": "香菇肉丝面", "price": 10, "unit": "元/份", "note": ""},
+      {"name": "番茄牛肉面", "price": 14, "unit": "元/份", "note": ""},
+      {"name": "西红柿鸡蛋面", "price": 5, "unit": "元/份", "note": ""},
+      {"name": "油泼面", "price": 8, "unit": "元/份", "note": ""},
+      {"name": "臊子面", "price": 10, "unit": "元/份", "note": ""},
+      {"name": "鸡块板面", "price": 10, "unit": "元/份", "note": ""},
+      {"name": "酸菜肥牛面", "price": 12, "unit": "元/份", "note": ""},
+      {"name": "牛肉炸酱面", "price": 12, "unit": "元/份", "note": ""},
+      {"name": "牛肉板面", "price": 15, "unit": "元/份", "note": ""},
+      {"name": "红烧牛肉面", "price": 15, "unit": "元/份", "note": ""},
+      {"name": "biangbiang面", "price": 12, "unit": "元/份", "note": "可换细面"}
+    ]
+  },
+  {
+    "photo": "微信图片_20261126174511_2896_365.jpg",
+    "cardTitle": "价目表",
+    "windowNumber": "",
+    "items": [
+      {"name": "鱼豆腐土豆粉", "price": 10, "unit": "元/份", "note": ""},
+      {"name": "笋丝土豆粉", "price": 10, "unit": "元/份", "note": ""},
+      {"name": "酸菜肉沫土豆粉", "price": 10, "unit": "元/份", "note": ""},
+      {"name": "午餐肉土豆粉", "price": 10, "unit": "元/份", "note": ""},
+      {"name": "小酥肉土豆粉", "price": 13, "unit": "元/份", "note": ""},
+      {"name": "全家福土豆粉", "price": 14, "unit": "元/份", "note": ""},
+      {"name": "酱牛肉土豆粉", "price": 15, "unit": "元/份", "note": ""},
+      {"name": "虾饺米线", "price": 13, "unit": "元/份", "note": ""},
+      {"name": "培根米线", "price": 13, "unit": "元/份", "note": ""},
+      {"name": "鱼丸米线", "price": 13, "unit": "元/份", "note": ""},
+      {"name": "肥牛米线", "price": 14, "unit": "元/份", "note": ""},
+      {"name": "酱牛肉米线", "price": 15, "unit": "元/份", "note": ""}
+    ]
+  },
+  {
+    "photo": "微信图片_20261126174512_2897_365.jpg",
+    "cardTitle": "新品推出",
+    "windowNumber": "",
+    "items": [
+      {"name": "白糖豆花", "price": 3.0, "unit": "元", "note": ""},
+      {"name": "木耳鸡蛋豆花", "price": 4.0, "unit": "元", "note": ""},
+      {"name": "桂花红糖蜂蜜豆花", "price": 4.0, "unit": "元", "note": ""},
+      {"name": "奶香紫薯芋泥豆花", "price": 4.0, "unit": "元", "note": ""},
+      {"name": "四川芽菜肉沫豆花", "price": 4.5, "unit": "元", "note": ""},
+      {"name": "水果珍珠豆花", "price": 5.5, "unit": "元", "note": ""},
+      {"name": "奶香蜜豆珍珠豆花", "price": 5.5, "unit": "元", "note": ""}
+    ]
+  },
+  {
+    "photo": "微信图片_20261126174514_2898_365.jpg",
+    "cardTitle": "盖饭价目表",
+    "windowNumber": "",
+    "items": [
+      {"name": "麻婆豆腐鱿鱼饭", "price": 13, "unit": "元/份", "note": ""},
+      {"name": "鲜香葱爆羔羊饭", "price": 18, "unit": "元/份", "note": ""},
+      {"name": "可乐红烧肉饭", "price": 15, "unit": "元/份", "note": ""},
+      {"name": "霸王鸡排饭", "price": 10, "unit": "元/份", "note": ""},
+      {"name": "脆皮酥鸡饭", "price": 10, "unit": "元/份", "note": ""},
+      {"name": "酱香肘子饭", "price": 12, "unit": "元/份", "note": ""},
+      {"name": "小炒鸡肉饭", "price": 13, "unit": "元/份", "note": ""},
+      {"name": "老干妈肥肠饭", "price": 14, "unit": "元/份", "note": ""},
+      {"name": "西红柿牛腩饭", "price": 14, "unit": "元/份", "note": ""},
+      {"name": "牛丼肥牛饭", "price": 15, "unit": "元/份", "note": ""},
+      {"name": "小炒黄牛饭", "price": 18, "unit": "元/份", "note": ""}
+    ]
+  },
+  {
+    "photo": "微信图片_20261126174515_2899_365.jpg",
+    "cardTitle": "价目表",
+    "windowNumber": "",
+    "items": [
+      {"name": "黄咖喱鸡肉拌饭", "price": 13, "unit": "元/份", "note": ""},
+      {"name": "酱香茄子拌饭", "price": 10, "unit": "元/份", "note": ""},
+      {"name": "韩式鸡肉拌饭", "price": 12, "unit": "元/份", "note": ""},
+      {"name": "湘味小炒肉拌饭", "price": 13, "unit": "元/份", "note": ""},
+      {"name": "滑蛋肉片拌饭", "price": 13, "unit": "元/份", "note": ""},
+      {"name": "黑椒薯仔猪颈饭", "price": 14, "unit": "元/份", "note": ""},
+      {"name": "韩式炒烤五花肉拌饭", "price": 15, "unit": "元/份", "note": ""},
+      {"name": "碴碴牛肉拌饭", "price": 18, "unit": "元/份", "note": ""}
+    ]
+  },
+  {
+    "photo": "微信图片_20261126174545_2917_365.jpg",
+    "cardTitle": "价目表",
+    "windowNumber": "",
+    "items": [
+      {"name": "火腿炒饭", "price": 10, "unit": "元/份", "note": ""},
+      {"name": "酸豆角肉沫炒饭", "price": 12, "unit": "元/份", "note": ""},
+      {"name": "蛋炒饭", "price": 8, "unit": "元/份", "note": ""},
+      {"name": "扬州炒饭", "price": 16, "unit": "元/份", "note": "含：鲍鱼、火腿、香菇、虾仁、鸡蛋"},
+      {"name": "港式菠萝炒饭", "price": 14, "unit": "元/份", "note": "含：菠萝、虾仁、葡萄干、鸡蛋"},
+      {"name": "虾仁炒饭", "price": 13, "unit": "元/份", "note": ""},
+      {"name": "牛肉炒饭", "price": 13, "unit": "元/份", "note": ""},
+      {"name": "蛋炒饼", "price": 8, "unit": "元/份", "note": ""},
+      {"name": "鸡蛋炒河粉", "price": 10, "unit": "元/份", "note": ""},
+      {"name": "牛肉炒河粉", "price": 15, "unit": "元/份", "note": ""},
+      {"name": "鸡蛋炒方便面", "price": 10, "unit": "元/份", "note": ""}
+    ]
+  },
+  {
+    "photo": "微信图片_20261126174546_2918_365.jpg",
+    "cardTitle": "淮南牛肉汤",
+    "windowNumber": "",
+    "items": [
+      {"name": "牛汤", "price": 3, "unit": "元/份", "note": "仅有汤"},
+      {"name": "牛汤水晶粉", "price": 5, "unit": "元/份", "note": ""},
+      {"name": "牛汤方便面", "price": 6, "unit": "元/份", "note": ""},
+      {"name": "牛汤红薯粉", "price": 7, "unit": "元/份", "note": ""},
+      {"name": "牛杂", "price": 2, "unit": "元/两", "note": ""},
+      {"name": "牛肚", "price": 6, "unit": "元/两", "note": ""},
+      {"name": "牛肉", "price": 9, "unit": "元/两", "note": ""},
+      {"name": "油酥烧饼", "price": 1, "unit": "元/个", "note": ""},
+      {"name": "小油菜", "price": 2, "unit": "元/份", "note": ""},
+      {"name": "油麦菜", "price": 2, "unit": "元/份", "note": ""}
+    ]
+  },
+  {
+    "photo": "微信图片_20261126174547_2919_365.jpg",
+    "cardTitle": "",
+    "windowNumber": "",
+    "items": [
+      {"name": "龙虾饭", "price": 23, "unit": "元/份", "note": "麻辣/蒜香"},
+      {"name": "咸蛋黄龙虾饭", "price": 25, "unit": "元/份", "note": ""},
+      {"name": "海肠捞饭", "price": 16, "unit": "元/份", "note": ""},
+      {"name": "日式牛肉饭", "price": 18, "unit": "元/份", "note": ""},
+      {"name": "牛排意面套餐", "price": 18, "unit": "元/份", "note": ""},
+      {"name": "鲍鱼捞饭", "price": 18, "unit": "元/份", "note": ""},
+      {"name": "番茄肥牛芝士焗饭", "price": 18, "unit": "元/份", "note": ""},
+      {"name": "蘑菇培根芝士焗饭", "price": 16, "unit": "元/份", "note": "已划掉"},
+      {"name": "奥尔良鸡肉焗饭", "price": 15, "unit": "元/份", "note": ""},
+      {"name": "意式香草萌萌鸡", "price": 13, "unit": "元/份", "note": "已划掉"}
+    ]
+  },
+  {
+    "photo": "微信图片_20261126174548_2920_365.jpg",
+    "cardTitle": "新品",
+    "windowNumber": "",
+    "items": [
+      {"name": "脆皮黄豆冰淇淋", "price": 4.5, "unit": "元/个", "note": ""},
+      {"name": "黄豆冰淇淋", "price": 4, "unit": "元/个", "note": ""},
+      {"name": "脆皮黑豆冰淇淋", "price": 5, "unit": "元/个", "note": ""},
+      {"name": "黑豆冰淇淋", "price": 4.5, "unit": "元/个", "note": ""}
+    ]
+  },
+  {
+    "photo": "微信图片_20261126174550_2921_365.jpg",
+    "cardTitle": "咖啡",
+    "windowNumber": "",
+    "items": [
+      {"name": "美式", "price": 5.9, "unit": "元/杯", "note": ""},
+      {"name": "橙C美式", "price": 7.9, "unit": "元/杯", "note": ""},
+      {"name": "卡布奇诺", "price": 8.9, "unit": "元/杯", "note": ""},
+      {"name": "香草拿铁", "price": 9.9, "unit": "元/杯", "note": ""},
+      {"name": "焦糖拿铁", "price": 9.9, "unit": "元/杯", "note": ""},
+      {"name": "榛果拿铁", "price": 9.9, "unit": "元/杯", "note": ""},
+      {"name": "生椰拿铁", "price": 10.9, "unit": "元/杯", "note": ""},
+      {"name": "燕麦拿铁", "price": 10.9, "unit": "元/杯", "note": ""},
+      {"name": "功能型、护眼型", "price": 1, "unit": "元", "note": "咖啡可加小料"},
+      {"name": "舒压型", "price": 2, "unit": "元", "note": "咖啡可加小料"},
+      {"name": "免疫型", "price": 1, "unit": "元", "note": "咖啡可加小料"}
+    ]
+  },
+  {
+    "photo": "微信图片_20261126174552_2922_365.jpg",
+    "cardTitle": "五谷豆浆",
+    "windowNumber": "",
+    "items": [
+      {"name": "黄豆麦香浆", "price": 2.5, "unit": "元/杯", "note": ""},
+      {"name": "红豆薏米浆", "price": 3, "unit": "元/杯", "note": ""},
+      {"name": "花生核桃露", "price": 3, "unit": "元/杯", "note": ""},
+      {"name": "紫薯山药浆", "price": 2.5, "unit": "元/杯", "note": ""},
+      {"name": "绿豆清凉浆", "price": 2.5, "unit": "元/杯", "note": ""},
+      {"name": "红枣养颜浆", "price": 2.5, "unit": "元/杯", "note": ""},
+      {"name": "三黑无糖浆", "price": 2.5, "unit": "元/杯", "note": ""},
+      {"name": "茉莉豆乳", "price": 4.5, "unit": "元/杯", "note": ""},
+      {"name": "绿豆豆乳", "price": 4, "unit": "元/杯", "note": ""},
+      {"name": "西瓜豆乳换西梅芭乐", "price": 4.5, "unit": "元/杯", "note": "原文如此"}
+    ]
+  },
+  {
+    "photo": "微信图片_20261126174554_2923_365.jpg",
+    "cardTitle": "五谷豆浆",
+    "windowNumber": "",
+    "items": [
+      {"name": "黄豆麦香浆", "price": 2.5, "unit": "元/杯", "note": ""},
+      {"name": "红豆薏米浆", "price": 3, "unit": "元/杯", "note": ""},
+      {"name": "花生核桃露", "price": 3, "unit": "元/杯", "note": ""},
+      {"name": "紫薯山药浆", "price": 2.5, "unit": "元/杯", "note": ""},
+      {"name": "绿豆清凉浆", "price": 2.5, "unit": "元/杯", "note": ""},
+      {"name": "红枣养颜浆", "price": 2.5, "unit": "元/杯", "note": ""},
+      {"name": "三黑无糖浆", "price": 2.5, "unit": "元/杯", "note": ""},
+      {"name": "茉莉豆乳", "price": 4.5, "unit": "元/杯", "note": ""},
+      {"name": "绿豆豆乳", "price": 4, "unit": "元/杯", "note": ""},
+      {"name": "西瓜豆乳换西梅芭乐", "price": 4.5, "unit": "元/杯", "note": "原文如此"}
+    ]
+  }
+]

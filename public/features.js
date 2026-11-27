@@ -84,7 +84,10 @@
   function renderQueue() {
     const list = $('#queueList');
     if (!list) return;
-    const items = currentWindows().map((w) => ({ w, q: summary.queues[w.id] || null }));
+    const scope = (typeof state !== 'undefined' && state && state.canteenId) ? state.canteenId : null;
+    const items = currentWindows()
+      .filter((w) => !scope || w.canteenId === scope)
+      .map((w) => ({ w, q: summary.queues[w.id] || null }));
     items.sort((a, b) => {
       const av = a.q ? a.q.waitMin : 9999;
       const bv = b.q ? b.q.waitMin : 9999;

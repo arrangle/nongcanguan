@@ -170,7 +170,7 @@ async function waitForPort(timeoutMs = 15000) {
     await waitFor('document.querySelectorAll(".dish-card").length > 0', '菜品卡片渲染');
     const dishCount = await evaluate('document.querySelectorAll(".dish-card").length');
     const total = await evaluate('typeof allDishes !== "undefined" ? allDishes.length : -1');
-    record('菜单目录渲染', dishCount > 0 && total === 43, `当前窗口 ${dishCount} 张卡片，全站 ${total} 道菜`);
+    record('菜单目录渲染', dishCount > 0 && total >= 43, `当前窗口 ${dishCount} 张卡片，全站 ${total} 道菜`);
 
     // 2. 排队雷达
     await waitFor('document.querySelectorAll(".queue-card").length === 6', '排队卡片渲染');

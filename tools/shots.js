@@ -116,6 +116,14 @@ async function waitForPort(timeoutMs = 15000) {
     await wait(900);
     await shot('02-windows');
 
+    for (const canteen of ['gong3', 'he1', 'yi1']) {
+      await evaluate("document.querySelector('[data-canteen=\"" + canteen + "\"]').click(), true");
+      await wait(700);
+      await shot('02b-' + canteen);
+    }
+    await evaluate("document.querySelector('[data-canteen=\"gong1\"]').click(), true");
+    await wait(500);
+
     await evaluate("document.querySelector('[data-nav=\"predict\"]').click(), true");
     await wait(700);
     await shot('03-predict');
