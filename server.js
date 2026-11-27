@@ -11,6 +11,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const zlib = require('zlib');
 
 const ROOT = __dirname;
 const PUBLIC_DIR = path.join(ROOT, 'public');
@@ -198,10 +199,21 @@ function summary() {
 
 // ---------------------------------------------------------------- 工具
 function sendJson(res, status, body) {
-  const payload = JSON.stringify(body);
+  const payload = Buffer.from(JSON.stringify(body));
+  if (res.__gzip && payload.length > 1024) {
+    const gz = zlib.gzipSync(payload);
+    res.writeHead(status, {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Content-Encoding': 'gzip',
+      'Content-Length': gz.length,
+      'Cache-Control': 'no-store',
+      'Vary': 'Accept-Encoding',
+    });
+    return res.end(gz);
+  }
   res.writeHead(status, {
     'Content-Type': 'application/json; charset=utf-8',
-    'Content-Length': Buffer.byteLength(payload),
+    'Content-Length': payload.length,
     'Cache-Control': 'no-store',
   });
   res.end(payload);
@@ -480,6 +492,18 @@ function sendFile(res, filePath) {
   const longCache = ['.webp', '.png', '.jpg', '.jpeg', '.svg', '.ico', '.woff2'].includes(ext);
   fs.readFile(filePath, (err, data) => {
     if (err) return fail(res, 404, '资源不存在');
+    const compressible = /text|javascript|json|svg|xml/.test(type) && data.length > 1024;
+    if (res.__gzip && compressible) {
+      const gz = zlib.gzipSync(data);
+      res.writeHead(200, {
+        'Content-Type': type,
+        'Content-Encoding': 'gzip',
+        'Content-Length': gz.length,
+        'Cache-Control': longCache ? 'public, max-age=86400' : 'no-cache',
+        'Vary': 'Accept-Encoding',
+      });
+      return res.end(gz);
+    }
     res.writeHead(200, {
       'Content-Type': type,
       'Content-Length': data.length,
@@ -491,6 +515,7 @@ function sendFile(res, filePath) {
 
 // ---------------------------------------------------------------- 服务
 const server = http.createServer((req, res) => {
+  res.__gzip = /\bgzip\b/.test(req.headers['accept-encoding'] || '');
   if (req.method === 'OPTIONS') {
     res.writeHead(204, {
       'Access-Control-Allow-Origin': '*',
