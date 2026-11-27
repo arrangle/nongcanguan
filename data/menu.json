@@ -3122,9 +3122,7 @@
           "fiber": 0.6,
           "serving": 100,
           "icon": "meat",
-          "labels": [
-            "素食"
-          ],
+          "labels": [],
           "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
           "source": "窗口公示"
         },
@@ -3410,7 +3408,6 @@
           "serving": 100,
           "icon": "meat",
           "labels": [
-            "素食",
             "低热量"
           ],
           "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
@@ -3586,9 +3583,7 @@
           "fiber": 0.6,
           "serving": 100,
           "icon": "meat",
-          "labels": [
-            "素食"
-          ],
+          "labels": [],
           "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
           "source": "窗口公示"
         },
@@ -5392,8 +5387,7 @@
           "serving": 140,
           "icon": "meat",
           "labels": [
-            "高蛋白",
-            "素食"
+            "高蛋白"
           ],
           "description": "和园一层 6 号窗口价目牌；营养为按菜名估算。",
           "source": "AI估算"
@@ -5429,8 +5423,7 @@
           "serving": 140,
           "icon": "meat",
           "labels": [
-            "高蛋白",
-            "素食"
+            "高蛋白"
           ],
           "description": "和园一层 6 号窗口价目牌；营养为按菜名估算。",
           "source": "AI估算"
@@ -5466,8 +5459,7 @@
           "serving": 140,
           "icon": "meat",
           "labels": [
-            "高蛋白",
-            "素食"
+            "高蛋白"
           ],
           "description": "冬季时令推新（纸质）。和园一层 6 号窗口价目牌；营养为按菜名估算。",
           "source": "AI估算"
@@ -5485,7 +5477,6 @@
           "serving": 150,
           "icon": "leaf",
           "labels": [
-            "素食",
             "低热量"
           ],
           "description": "冬季时令推新（纸质）。和园一层 6 号窗口价目牌；营养为按菜名估算。",
@@ -5504,7 +5495,6 @@
           "serving": 150,
           "icon": "leaf",
           "labels": [
-            "素食",
             "低热量"
           ],
           "description": "冬季时令推新（纸质）。和园一层 6 号窗口价目牌；营养为按菜名估算。",
@@ -5648,8 +5638,7 @@
           "serving": 140,
           "icon": "meat",
           "labels": [
-            "高蛋白",
-            "素食"
+            "高蛋白"
           ],
           "description": "新添品种标牌。和园一层 7 号窗口价目牌；营养为按菜名估算。",
           "source": "AI估算"
@@ -5792,8 +5781,7 @@
           "serving": 140,
           "icon": "meat",
           "labels": [
-            "高蛋白",
-            "素食"
+            "高蛋白"
           ],
           "description": "和园一层 8 号窗口价目牌；营养为按菜名估算。",
           "source": "AI估算"
@@ -6008,9 +5996,7 @@
           "fiber": 0.6,
           "serving": 150,
           "icon": "bowl",
-          "labels": [
-            "素食"
-          ],
+          "labels": [],
           "description": "和园一层 9 号窗口价目牌；营养为按菜名估算。",
           "source": "AI估算"
         },
@@ -6062,9 +6048,7 @@
           "fiber": 0.6,
           "serving": 150,
           "icon": "bowl",
-          "labels": [
-            "素食"
-          ],
+          "labels": [],
           "description": "和园一层 9 号窗口价目牌；营养为按菜名估算。",
           "source": "AI估算"
         },
@@ -7705,8 +7689,7 @@
           "serving": 350,
           "icon": "rice",
           "labels": [
-            "主食",
-            "素食"
+            "主食"
           ],
           "description": "和园一层 17 号窗口价目牌；营养为按菜名估算。",
           "source": "AI估算"
@@ -7976,8 +7959,7 @@
           "serving": 140,
           "icon": "meat",
           "labels": [
-            "高蛋白",
-            "素食"
+            "高蛋白"
           ],
           "description": "和园一层 18 号窗口价目牌；营养为按菜名估算。",
           "source": "AI估算"
@@ -8161,8 +8143,7 @@
           "serving": 140,
           "icon": "meat",
           "labels": [
-            "高蛋白",
-            "素食"
+            "高蛋白"
           ],
           "description": "冬季时令推新（纸质）。和园一层 18 号窗口价目牌；营养为按菜名估算。",
           "source": "AI估算"
@@ -9758,8 +9739,7 @@
           "serving": 400,
           "icon": "noodles",
           "labels": [
-            "主食",
-            "素食"
+            "主食"
           ],
           "description": "点餐屏。和园二层价目牌；营养为按菜名估算。",
           "source": "AI估算"
@@ -12621,7 +12601,6 @@
           "serving": 150,
           "icon": "leaf",
           "labels": [
-            "素食",
             "低热量"
           ],
           "description": "颐园一层价目牌；营养为按菜名估算。",
@@ -12731,9 +12710,7 @@
           "fiber": 0.6,
           "serving": 150,
           "icon": "bowl",
-          "labels": [
-            "素食"
-          ],
+          "labels": [],
           "description": "颐园一层价目牌；营养为按菜名估算。",
           "source": "AI估算"
         },
@@ -12768,8 +12745,7 @@
           "serving": 140,
           "icon": "meat",
           "labels": [
-            "高蛋白",
-            "素食"
+            "高蛋白"
           ],
           "description": "颐园一层价目牌；营养为按菜名估算。",
           "source": "AI估算"
@@ -14677,8 +14653,7 @@
           "serving": 400,
           "icon": "noodles",
           "labels": [
-            "主食",
-            "素食"
+            "主食"
           ],
           "description": "颐园一层价目牌；营养为按菜名估算。",
           "source": "AI估算"

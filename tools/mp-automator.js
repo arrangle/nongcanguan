@@ -59,6 +59,20 @@ function check(name, ok, detail) {
     await miniProgram.screenshot({ path: path.join(OUT, 'mp-' + name + '.png') });
   }
 
+  // 食堂切换：公三应有 12 个窗口
+  await miniProgram.reLaunch('/pages/index/index');
+  await new Promise((r) => setTimeout(r, 2000));
+  const home = await miniProgram.currentPage();
+  const canteenEls = await home.$$('.canteen');
+  check('食堂列表', canteenEls.length >= 6, '共 ' + canteenEls.length + ' 个食堂');
+  if (canteenEls[2]) {
+    await canteenEls[2].tap();
+    await new Promise((r) => setTimeout(r, 1800));
+    const wins = await home.$$('.win-card');
+    check('公三窗口条', wins.length >= 10, '公三 ' + wins.length + ' 个窗口');
+    await miniProgram.screenshot({ path: path.join(OUT, 'mp-gong3.png') });
+  }
+
   // 我的页：先往餐盘放一道菜，再点「记下这一餐」，表格里应出现 kcal
   await miniProgram.callWxMethod('setStorageSync', 'tray', [{ id: 'w12-1', factor: 1, qty: 1 }]);
   await miniProgram.callWxMethod('removeStorageSync', 'nongcanguan-meal-log');

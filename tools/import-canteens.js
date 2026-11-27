@@ -103,7 +103,7 @@ function labelsFor(name, est, tag) {
   if (tag) labels.push(tag);
   if (/(饭|面|粉|饼|馒头|花卷|包子|粥)/.test(name)) labels.push('主食');
   if (est.protein >= 12) labels.push('高蛋白');
-  if (!/(肉|鸡|鸭|牛|羊|猪|鱼|虾|蟹|肠|培根|腊|蛋|奶)/.test(name)) labels.push('素食');
+  if (!/(肉|鸡|鸭|牛|羊|猪|鱼|虾|蟹|肠|培根|腊|蛋|奶|里脊|排骨|肚|腰|肝|血|丸|蹄|翅|爪|骨)/.test(name)) labels.push('素食');
   if (est.kcal <= 120) labels.push('低热量');
   return [...new Set(labels)].slice(0, 3);
 }
