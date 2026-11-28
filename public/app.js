@@ -40,43 +40,74 @@ const priceHTML = (d, large = false) => d.price === null
   ? `<span class="dish-price market">窗口时价</span>`
   : `<span class="dish-price${large ? " large" : ""}"><small>¥</small>${d.price}<small>${d.unit}</small></span>`;
 const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
-// 菜品配图：来自 Wikimedia Commons 的自由许可照片（见 docs/图片来源.md）。
-// 只有菜名和图片明显对得上才配图，其余用绿色占位底图，不硬凑。
-const PHOTO_RULES = [
-  { key: 'coffee', re: /咖啡|拿铁|美式|卡布奇诺|摩卡/ },
-  { key: 'soy-milk', re: /豆浆|豆乳|米浆|五谷浆/ },
-  { key: 'dessert', re: /糖葫芦|冰淇淋|冰激凌|豆花|蛋糕|蛋挞|西米露|糖水|甜筒/ },
-  { key: 'congee', re: /粥|羹|糊/ },
-  { key: 'soup', re: /牛汤|羊肉汤|瓦罐汤|例汤|汤$/ },
-  { key: 'dumplings', re: /饺|馄饨|抄手|锅贴/ },
-  { key: 'baozi', re: /包子|花卷|馒头|窝头|馍/ },
-  { key: 'pancake', re: /饼|火烧|锅盔/ },
-  { key: 'fried-rice', re: /炒饭|蛋炒饭|扬州炒饭|菠萝炒饭/ },
-  { key: 'rice-bowl', re: /盖饭|拌饭|煲仔|焗饭|捞饭|米饭|焖饭|烩饭|饭$/ },
-  { key: 'fried-noodles', re: /炒面|炒河粉|炒粉|炒饼|干炒|炒方便面/ },
-  { key: 'noodle-soup', re: /面|粉|米线|河粉|馄饨汤/ },
-  { key: 'mapo-tofu', re: /麻婆|豆腐|豆干|腐竹/ },
-  { key: 'tomato-egg', re: /番茄|西红柿/ },
-  { key: 'kung-pao', re: /宫保|辣子鸡|鸡丁|鸡柳|鸡米花/ },
-  { key: 'braised-pork', re: /红烧肉|肘子|把子肉|东坡肉|扣肉|排骨|猪蹄/ },
-  { key: 'roast-duck', re: /烤鸭|烧鸭|酱鸭|鸭腿/ },
-  { key: 'shrimp', re: /虾/ },
-  { key: 'seafood', re: /鱼|蟹|贝|花甲|花蛤|鱿鱼|八爪|蛏|螺/ },
-  { key: 'greens', re: /青菜|时蔬|西兰花|菠菜|油菜|包菜|菜心|芥蓝|生菜|莴笋|豆角|荷兰豆|土豆丝|白菜|娃娃菜|蒿子秆|空心菜|芦笋|豆苗|秋葵/ },
-];
-
-const PHOTO_EXT = {
-  'mapo-tofu': '.jpg', 'rice-bowl': '.jpg', 'greens': '.jpg', 'soup': '.jpg',
+// 菜品配图：每道菜按自己的菜名匹配一张专属照片（来源见 docs/图片来源.md）。
+// 只有菜名里真的出现这个菜时才会配图，否则显示绿色占位底图，不拿别的菜凑数。
+const DISH_PHOTOS = {
+  'gongbao': 'assets/dishes/gongbao.jpg',
+  'mapo-tofu': 'assets/dishes/mapo-tofu.jpg',
+  'tomato-egg': 'assets/dishes/tomato-egg.jpg',
+  'hongshaorou': 'assets/dishes/hongshaorou.jpg',
+  'yuxiang-rousi': 'assets/dishes/yuxiang-rousi.jpg',
+  'jiaozi': 'assets/dishes/jiaozi.jpg',
+  'baozi': 'assets/dishes/baozi.jpg',
+  'lamian': 'assets/dishes/lamian.jpg',
+  'chaofan': 'assets/dishes/chaofan.jpg',
+  'chaomian': 'assets/dishes/chaomian.jpg',
+  'mifan': 'assets/dishes/mifan.jpg',
+  'zhou': 'assets/dishes/zhou.jpg',
+  'doujiang': 'assets/dishes/doujiang.jpg',
+  'latte': 'assets/dishes/latte.jpg',
+  'tanghulu': 'assets/dishes/tanghulu.jpg',
+  'kaoya': 'assets/dishes/kaoya.jpg',
+  'malatang': 'assets/dishes/malatang.jpg',
+  'youtiao': 'assets/dishes/youtiao.jpg',
+  'bao': 'assets/dishes/bao.jpg',
+  'bing': 'assets/dishes/bing.jpg',
+  'miantiao': 'assets/dishes/miantiao.jpg',
+  'qingcai': 'assets/dishes/qingcai.jpg',
+  'yu': 'assets/dishes/yu.jpg',
+  'huoguo': 'assets/dishes/huoguo.jpg',
+  'jianbing': 'assets/dishes/jianbing.jpg',
 };
+
+// 菜名关键词 → 配图 key（长词优先，避免「面」抢走「炒面」）
+const PHOTO_KEYWORDS = [
+  { key: 'chaomian', words: ['炒面', '炒河粉', '炒粉', '炒意', '意面'] },
+  { key: 'chaofan', words: ['炒饭', '蛋炒饭'] },
+  { key: 'miantiao', words: ['拉面', '刀削面', '汤面', '面条', '米线', '河粉', '面'] },
+  { key: 'mifan', words: ['盖浇饭', '盖饭', '煲仔饭', '米饭'] },
+  { key: 'gongbao', words: ['宫保鸡丁', '宫爆鸡丁'] },
+  { key: 'mapo-tofu', words: ['麻婆豆腐'] },
+  { key: 'tomato-egg', words: ['番茄炒蛋', '西红柿炒蛋', '番茄鸡蛋', '西红柿鸡蛋'] },
+  { key: 'hongshaorou', words: ['红烧肉'] },
+  { key: 'yuxiang-rousi', words: ['鱼香肉丝'] },
+  { key: 'jiaozi', words: ['饺子', '水饺', '蒸饺', '馄饨'] },
+  { key: 'baozi', words: ['包子', '肉包', '菜包'] },
+  { key: 'lamian', words: ['牛肉面'] },
+  { key: 'zhou', words: ['粥', '稀饭'] },
+  { key: 'doujiang', words: ['豆浆'] },
+  { key: 'latte', words: ['拿铁', '美式', '卡布奇诺', '咖啡'] },
+  { key: 'tanghulu', words: ['糖葫芦'] },
+  { key: 'kaoya', words: ['烤鸭', '烧鸭'] },
+  { key: 'malatang', words: ['麻辣烫'] },
+  { key: 'huoguo', words: ['火锅'] },
+  { key: 'jianbing', words: ['煎饼'] },
+  { key: 'youtiao', words: ['油条'] },
+  { key: 'bao', words: ['馒头', '花卷'] },
+  { key: 'bing', words: ['饼'] },
+  { key: 'qingcai', words: ['青菜', '时蔬'] },
+  { key: 'yu', words: ['鱼'] },
+];
 
 function dishPhoto(d) {
   const name = d.name || '';
-  const hit = PHOTO_RULES.find((rule) => rule.re.test(name));
-  if (!hit) return { src: '', match: false };
-  const ext = PHOTO_EXT[hit.key] || '.jpg';
-  return { src: 'assets/dishes/' + hit.key + ext, match: true };
+  for (const rule of PHOTO_KEYWORDS) {
+    if (!rule.words.some((w) => name.indexOf(w) > -1)) continue;
+    const src = DISH_PHOTOS[rule.key];
+    if (src) return { src, match: true };
+  }
+  return { src: '', match: false };
 }
-
 let tray = [];
 function restoreTray() {
   try {
