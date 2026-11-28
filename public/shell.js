@@ -460,7 +460,64 @@
   }
 
   // ------------------------------------------------------------------ 事件绑定
+  // ------------------------------------------------------------------ 折叠 / 展开
+  const COLLAPSE_KEY = 'nongcanguan-collapse';
+
+  function readCollapse() {
+    try {
+      const value = JSON.parse(localStorage.getItem(COLLAPSE_KEY) || '{}');
+      return { windows: Boolean(value.windows), rail: Boolean(value.rail) };
+    } catch (_) { return { windows: false, rail: false }; }
+  }
+
+  function saveCollapse(state) {
+    try { localStorage.setItem(COLLAPSE_KEY, JSON.stringify(state)); } catch (_) {}
+  }
+
+  const collapsed = readCollapse();
+
+  function applyCollapse() {
+    const panel = $('.window-panel');
+    if (panel) panel.classList.toggle('collapsed', collapsed.windows);
+    const toggle = $('#toggleWindowPanel');
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', String(!collapsed.windows));
+      toggle.querySelector('span').textContent = collapsed.windows ? '展开' : '收起';
+    }
+
+    const layout = $('.dish-layout');
+    if (layout) layout.classList.toggle('rail-collapsed', collapsed.rail);
+    const railToggle = $('#toggleFilterRail');
+    if (railToggle) {
+      railToggle.setAttribute('aria-expanded', String(!collapsed.rail));
+      railToggle.querySelector('span').textContent = collapsed.rail ? '筛选' : '收起筛选';
+    }
+  }
+
+  function bindCollapse() {
+    applyCollapse();
+    const windowToggle = $('#toggleWindowPanel');
+    if (windowToggle) windowToggle.addEventListener('click', () => {
+      collapsed.windows = !collapsed.windows;
+      saveCollapse(collapsed);
+      applyCollapse();
+    });
+    const railToggle = $('#toggleFilterRail');
+    if (railToggle) railToggle.addEventListener('click', () => {
+      collapsed.rail = !collapsed.rail;
+      saveCollapse(collapsed);
+      applyCollapse();
+    });
+    const railCollapse = $('#collapseFilterRail');
+    if (railCollapse) railCollapse.addEventListener('click', () => {
+      collapsed.rail = true;
+      saveCollapse(collapsed);
+      applyCollapse();
+    });
+  }
+
   function bind() {
+    bindCollapse();
     const entry = $('#entryScreen');
     if (entry) entry.addEventListener('click', (event) => {
       const button = event.target.closest('[data-entry]');

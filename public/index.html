@@ -163,7 +163,12 @@
         <section class="window-panel" aria-label="窗口目录">
           <div class="panel-heading">
             <div><span class="section-index">窗口</span><h2>选择窗口</h2></div>
-            <span class="queue-updated" id="windowQueueMeta">排队数据加载中</span>
+            <div class="panel-head-right">
+              <span class="queue-updated" id="windowQueueMeta">排队数据加载中</span>
+              <button class="panel-toggle" id="toggleWindowPanel" type="button" aria-expanded="true">
+                <span>收起</span><svg class="icon"><use href="#i-down"/></svg>
+              </button>
+            </div>
           </div>
           <div class="window-strip" id="windowList" role="tablist" aria-label="窗口选择"></div>
           <p class="window-empty" id="windowEmpty" hidden>这个食堂的窗口还没录入，先看看公一、公三、和园或颐园的现场价目牌。</p>
@@ -181,7 +186,10 @@
 
         <div class="dish-layout">
           <aside class="filter-rail" aria-label="筛选与排序">
-            <p class="rail-title">筛选</p>
+            <div class="rail-head">
+              <p class="rail-title">筛选</p>
+              <button class="rail-collapse" id="collapseFilterRail" type="button" aria-label="收起筛选栏">收起</button>
+            </div>
             <div class="filter-tabs" id="filterTabs" role="group" aria-label="营养筛选">
               <button class="active" data-filter="all">全部菜品</button>
               <button data-filter="light"><svg class="icon"><use href="#i-leaf"/></svg>轻盈低脂</button>
@@ -204,6 +212,9 @@
           <div class="dish-main">
             <div class="dish-list-heading">
               <div><span class="section-index">03</span><div><h2 id="dishSectionTitle">挑选菜品</h2><p id="dishResultCount"></p></div></div>
+              <button class="rail-toggle" id="toggleFilterRail" type="button" aria-expanded="true">
+                <svg class="icon"><use href="#i-down"/></svg><span>收起筛选</span>
+              </button>
             </div>
             <div class="dish-grid" id="dishGrid"></div>
             <div class="empty-state" id="emptyState" hidden>
