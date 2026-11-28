@@ -4,7 +4,7 @@ const dish = (windowId, index, name, price, unit, kcal, protein, fat, carbs, fib
 
 let windows = [];
 
-// 现场照片由 /api/menu 的 photos 提供（公一 14 张 + 公三/西区现场价目牌）
+// 现场照片由 /api/menu 的 photos 提供（公一 14 张 + 研一/西区现场价目牌）
 let photoArchive = [];
 
 let canteens = [];

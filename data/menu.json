@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "title": "农餐馆 · 农大智慧餐厅",
   "subtitle": "CAU FOOD GUIDE",
   "canteenLabel": "中国农业大学 · 东区",
@@ -22,7 +22,7 @@
       "id": "gong3",
       "name": "公三食堂",
       "alias": "公寓三食堂",
-      "status": "online"
+      "status": "pending"
     },
     {
       "id": "he1",
@@ -973,2715 +973,6 @@
           ],
           "description": "牛肉馅搭配米皮与酱汁，鲜香软滑。",
           "source": "AI估算"
-        }
-      ]
-    },
-    {
-      "id": "wgong3-1",
-      "canteenId": "gong3",
-      "number": "",
-      "name": "扯面",
-      "short": "公三食堂 · 扯面价目表（价目牌拍摄于 2026.11.26）",
-      "description": "公三食堂 · 扯面价目表（价目牌拍摄于 2026.11.26）",
-      "cover": "assets/new/n001.webp",
-      "position": "center 40%",
-      "gallery": [
-        "n001"
-      ],
-      "dishes": [
-        {
-          "id": "wgong3-1-1",
-          "name": "香菇肉丝面",
-          "price": 10,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-1-2",
-          "name": "番茄牛肉面",
-          "price": 14,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-1-3",
-          "name": "西红柿鸡蛋面",
-          "price": 5,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-1-4",
-          "name": "油泼面",
-          "price": 8,
-          "unit": "/份",
-          "kcal": 130,
-          "protein": 5.5,
-          "fat": 2.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食",
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-1-5",
-          "name": "臊子面",
-          "price": 10,
-          "unit": "/份",
-          "kcal": 130,
-          "protein": 5.5,
-          "fat": 2.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食",
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-1-6",
-          "name": "鸡块板面",
-          "price": 10,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-1-7",
-          "name": "酸菜肥牛面",
-          "price": 12,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-1-8",
-          "name": "牛肉炸酱面",
-          "price": 12,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-1-9",
-          "name": "牛肉板面",
-          "price": 15,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-1-10",
-          "name": "红烧牛肉面",
-          "price": 15,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-1-11",
-          "name": "biangbiang面",
-          "price": 12,
-          "unit": "/份",
-          "kcal": 130,
-          "protein": 5.5,
-          "fat": 2.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食",
-            "素食"
-          ],
-          "description": "可换细面。公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        }
-      ]
-    },
-    {
-      "id": "wgong3-2",
-      "canteenId": "gong3",
-      "number": "",
-      "name": "土豆粉 · 米线",
-      "short": "公三食堂 · 价目表（价目牌拍摄于 2026.11.26）",
-      "description": "公三食堂 · 价目表（价目牌拍摄于 2026.11.26）",
-      "cover": "assets/new/n002.webp",
-      "position": "center 40%",
-      "gallery": [
-        "n002"
-      ],
-      "dishes": [
-        {
-          "id": "wgong3-2-1",
-          "name": "鱼豆腐土豆粉",
-          "price": 10,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-2-2",
-          "name": "笋丝土豆粉",
-          "price": 10,
-          "unit": "/份",
-          "kcal": 130,
-          "protein": 5.5,
-          "fat": 2.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食",
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-2-3",
-          "name": "酸菜肉沫土豆粉",
-          "price": 10,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-2-4",
-          "name": "午餐肉土豆粉",
-          "price": 10,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-2-5",
-          "name": "小酥肉土豆粉",
-          "price": 13,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-2-6",
-          "name": "全家福土豆粉",
-          "price": 14,
-          "unit": "/份",
-          "kcal": 130,
-          "protein": 5.5,
-          "fat": 2.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食",
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-2-7",
-          "name": "酱牛肉土豆粉",
-          "price": 15,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-2-8",
-          "name": "虾饺米线",
-          "price": 13,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-2-9",
-          "name": "培根米线",
-          "price": 13,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-2-10",
-          "name": "鱼丸米线",
-          "price": 13,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-2-11",
-          "name": "肥牛米线",
-          "price": 14,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-2-12",
-          "name": "酱牛肉米线",
-          "price": 15,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        }
-      ]
-    },
-    {
-      "id": "wgong3-3",
-      "canteenId": "yan1",
-      "number": "",
-      "name": "豆花",
-      "short": "公三食堂 · 新品推出（价目牌拍摄于 2026.11.26）",
-      "description": "公三食堂 · 新品推出（价目牌拍摄于 2026.11.26）",
-      "cover": "assets/new/n003.webp",
-      "position": "center 40%",
-      "gallery": [
-        "n003"
-      ],
-      "dishes": [
-        {
-          "id": "wgong3-3-1",
-          "name": "白糖豆花",
-          "price": 3,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 4,
-          "fat": 8,
-          "carbs": 34,
-          "fiber": 0.6,
-          "serving": 120,
-          "icon": "egg",
-          "labels": [
-            "甜品",
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-3-2",
-          "name": "木耳鸡蛋豆花",
-          "price": 4,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 4,
-          "fat": 8,
-          "carbs": 34,
-          "fiber": 0.6,
-          "serving": 120,
-          "icon": "egg",
-          "labels": [
-            "甜品"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-3-3",
-          "name": "桂花红糖蜂蜜豆花",
-          "price": 4,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 4,
-          "fat": 8,
-          "carbs": 34,
-          "fiber": 0.6,
-          "serving": 120,
-          "icon": "egg",
-          "labels": [
-            "甜品",
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-3-4",
-          "name": "奶香紫薯芋泥豆花",
-          "price": 4,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 4,
-          "fat": 8,
-          "carbs": 34,
-          "fiber": 0.6,
-          "serving": 120,
-          "icon": "egg",
-          "labels": [
-            "甜品"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-3-5",
-          "name": "四川芽菜肉沫豆花",
-          "price": 4.5,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 4,
-          "fat": 8,
-          "carbs": 34,
-          "fiber": 0.6,
-          "serving": 120,
-          "icon": "egg",
-          "labels": [
-            "甜品"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-3-6",
-          "name": "水果珍珠豆花",
-          "price": 5.5,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 4,
-          "fat": 8,
-          "carbs": 34,
-          "fiber": 0.6,
-          "serving": 120,
-          "icon": "egg",
-          "labels": [
-            "甜品",
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-3-7",
-          "name": "奶香蜜豆珍珠豆花",
-          "price": 5.5,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 4,
-          "fat": 8,
-          "carbs": 34,
-          "fiber": 0.6,
-          "serving": 120,
-          "icon": "egg",
-          "labels": [
-            "甜品"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        }
-      ]
-    },
-    {
-      "id": "wgong3-4",
-      "canteenId": "gong3",
-      "number": "",
-      "name": "盖饭",
-      "short": "公三食堂 · 盖饭价目表（价目牌拍摄于 2026.11.26）",
-      "description": "公三食堂 · 盖饭价目表（价目牌拍摄于 2026.11.26）",
-      "cover": "assets/new/n004.webp",
-      "position": "center 40%",
-      "gallery": [
-        "n004"
-      ],
-      "dishes": [
-        {
-          "id": "wgong3-4-1",
-          "name": "麻婆豆腐鱿鱼饭",
-          "price": 13,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-4-2",
-          "name": "鲜香葱爆羔羊饭",
-          "price": 18,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-4-3",
-          "name": "可乐红烧肉饭",
-          "price": 15,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-4-4",
-          "name": "霸王鸡排饭",
-          "price": 10,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-4-5",
-          "name": "脆皮酥鸡饭",
-          "price": 10,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-4-6",
-          "name": "酱香肘子饭",
-          "price": 12,
-          "unit": "/份",
-          "kcal": 165,
-          "protein": 6,
-          "fat": 4.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食",
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-4-7",
-          "name": "小炒鸡肉饭",
-          "price": 13,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-4-8",
-          "name": "老干妈肥肠饭",
-          "price": 14,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-4-9",
-          "name": "西红柿牛腩饭",
-          "price": 14,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-4-10",
-          "name": "牛丼肥牛饭",
-          "price": 15,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-4-11",
-          "name": "小炒黄牛饭",
-          "price": 18,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        }
-      ]
-    },
-    {
-      "id": "wgong3-5",
-      "canteenId": "gong3",
-      "number": "",
-      "name": "拌饭",
-      "short": "公三食堂 · 价目表（价目牌拍摄于 2026.11.26）",
-      "description": "公三食堂 · 价目表（价目牌拍摄于 2026.11.26）",
-      "cover": "assets/new/n005.webp",
-      "position": "center 40%",
-      "gallery": [
-        "n005"
-      ],
-      "dishes": [
-        {
-          "id": "wgong3-5-1",
-          "name": "黄咖喱鸡肉拌饭",
-          "price": 13,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-5-2",
-          "name": "酱香茄子拌饭",
-          "price": 10,
-          "unit": "/份",
-          "kcal": 165,
-          "protein": 6,
-          "fat": 4.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食",
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-5-3",
-          "name": "韩式鸡肉拌饭",
-          "price": 12,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-5-4",
-          "name": "湘味小炒肉拌饭",
-          "price": 13,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-5-5",
-          "name": "滑蛋肉片拌饭",
-          "price": 13,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-5-6",
-          "name": "黑椒薯仔猪颈饭",
-          "price": 14,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-5-7",
-          "name": "韩式炒烤五花肉拌饭",
-          "price": 15,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-5-8",
-          "name": "碴碴牛肉拌饭",
-          "price": 18,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        }
-      ]
-    },
-    {
-      "id": "wgong3-6",
-      "canteenId": "gong3",
-      "number": "",
-      "name": "炒饭 · 炒河粉",
-      "short": "公三食堂 · 价目表（价目牌拍摄于 2026.11.26）",
-      "description": "公三食堂 · 价目表（价目牌拍摄于 2026.11.26）",
-      "cover": "assets/new/n006.webp",
-      "position": "center 40%",
-      "gallery": [
-        "n006"
-      ],
-      "dishes": [
-        {
-          "id": "wgong3-6-1",
-          "name": "火腿炒饭",
-          "price": 10,
-          "unit": "/份",
-          "kcal": 165,
-          "protein": 6,
-          "fat": 4.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食",
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-6-2",
-          "name": "酸豆角肉沫炒饭",
-          "price": 12,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-6-3",
-          "name": "蛋炒饭",
-          "price": 8,
-          "unit": "/份",
-          "kcal": 165,
-          "protein": 6,
-          "fat": 4.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-6-4",
-          "name": "扬州炒饭",
-          "price": 16,
-          "unit": "/份",
-          "kcal": 165,
-          "protein": 6,
-          "fat": 4.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食",
-            "素食"
-          ],
-          "description": "含：鲍鱼、火腿、香菇、虾仁、鸡蛋。公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-6-5",
-          "name": "港式菠萝炒饭",
-          "price": 14,
-          "unit": "/份",
-          "kcal": 165,
-          "protein": 6,
-          "fat": 4.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食",
-            "素食"
-          ],
-          "description": "含：菠萝、虾仁、葡萄干、鸡蛋。公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-6-6",
-          "name": "虾仁炒饭",
-          "price": 13,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-6-7",
-          "name": "牛肉炒饭",
-          "price": 13,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-6-8",
-          "name": "蛋炒饼",
-          "price": 8,
-          "unit": "/份",
-          "kcal": 250,
-          "protein": 6,
-          "fat": 8,
-          "carbs": 38,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-6-9",
-          "name": "鸡蛋炒河粉",
-          "price": 10,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-6-10",
-          "name": "牛肉炒河粉",
-          "price": 15,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-6-11",
-          "name": "鸡蛋炒方便面",
-          "price": 10,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        }
-      ]
-    },
-    {
-      "id": "wgong3-7",
-      "canteenId": "gong3",
-      "number": "",
-      "name": "淮南牛肉汤",
-      "short": "公三食堂 · 淮南牛肉汤（价目牌拍摄于 2026.11.26）",
-      "description": "公三食堂 · 淮南牛肉汤（价目牌拍摄于 2026.11.26）",
-      "cover": "assets/new/n007.webp",
-      "position": "center 40%",
-      "gallery": [
-        "n007"
-      ],
-      "dishes": [
-        {
-          "id": "wgong3-7-1",
-          "name": "牛汤",
-          "price": 3,
-          "unit": "/份",
-          "kcal": 45,
-          "protein": 3,
-          "fat": 2,
-          "carbs": 4,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "bowl",
-          "labels": [
-            "汤",
-            "低热量"
-          ],
-          "description": "仅有汤。公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-7-2",
-          "name": "牛汤水晶粉",
-          "price": 5,
-          "unit": "/份",
-          "kcal": 45,
-          "protein": 3,
-          "fat": 2,
-          "carbs": 4,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "bowl",
-          "labels": [
-            "汤",
-            "主食",
-            "低热量"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-7-3",
-          "name": "牛汤方便面",
-          "price": 6,
-          "unit": "/份",
-          "kcal": 45,
-          "protein": 3,
-          "fat": 2,
-          "carbs": 4,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "bowl",
-          "labels": [
-            "汤",
-            "主食",
-            "低热量"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-7-4",
-          "name": "牛汤红薯粉",
-          "price": 7,
-          "unit": "/份",
-          "kcal": 45,
-          "protein": 3,
-          "fat": 2,
-          "carbs": 4,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "bowl",
-          "labels": [
-            "汤",
-            "主食",
-            "低热量"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-7-5",
-          "name": "牛杂",
-          "price": 2,
-          "unit": "/两",
-          "kcal": 220,
-          "protein": 16,
-          "fat": 15,
-          "carbs": 2,
-          "fiber": 0.6,
-          "serving": 140,
-          "icon": "meat",
-          "labels": [
-            "高蛋白"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-7-6",
-          "name": "牛肚",
-          "price": 6,
-          "unit": "/两",
-          "kcal": 220,
-          "protein": 16,
-          "fat": 15,
-          "carbs": 2,
-          "fiber": 0.6,
-          "serving": 140,
-          "icon": "meat",
-          "labels": [
-            "高蛋白"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-7-7",
-          "name": "牛肉",
-          "price": 9,
-          "unit": "/两",
-          "kcal": 220,
-          "protein": 16,
-          "fat": 15,
-          "carbs": 2,
-          "fiber": 0.6,
-          "serving": 140,
-          "icon": "meat",
-          "labels": [
-            "高蛋白"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-7-8",
-          "name": "油酥烧饼",
-          "price": 1,
-          "unit": "/个",
-          "kcal": 250,
-          "protein": 6,
-          "fat": 8,
-          "carbs": 38,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "rice",
-          "labels": [
-            "主食",
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-7-9",
-          "name": "小油菜",
-          "price": 2,
-          "unit": "/份",
-          "kcal": 45,
-          "protein": 2,
-          "fat": 1.5,
-          "carbs": 6,
-          "fiber": 1.8,
-          "serving": 150,
-          "icon": "leaf",
-          "labels": [
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-7-10",
-          "name": "油麦菜",
-          "price": 2,
-          "unit": "/份",
-          "kcal": 45,
-          "protein": 2,
-          "fat": 1.5,
-          "carbs": 6,
-          "fiber": 1.8,
-          "serving": 150,
-          "icon": "leaf",
-          "labels": [
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        }
-      ]
-    },
-    {
-      "id": "wgong3-8",
-      "canteenId": "gong3",
-      "number": "",
-      "name": "龙虾饭 · 焗饭",
-      "short": "公三食堂 · 龙虾饭 · 焗饭（价目牌拍摄于 2026.11.26）",
-      "description": "公三食堂 · 龙虾饭 · 焗饭（价目牌拍摄于 2026.11.26）",
-      "cover": "assets/new/n008.webp",
-      "position": "center 40%",
-      "gallery": [
-        "n008"
-      ],
-      "dishes": [
-        {
-          "id": "wgong3-8-1",
-          "name": "龙虾饭",
-          "price": 23,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "麻辣/蒜香。公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-8-2",
-          "name": "咸蛋黄龙虾饭",
-          "price": 25,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-8-3",
-          "name": "海肠捞饭",
-          "price": 16,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-8-4",
-          "name": "日式牛肉饭",
-          "price": 18,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-8-5",
-          "name": "牛排意面套餐",
-          "price": 18,
-          "unit": "/份",
-          "kcal": 185,
-          "protein": 10.5,
-          "fat": 6.5,
-          "carbs": 22,
-          "fiber": 0.6,
-          "serving": 400,
-          "icon": "noodles",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-8-6",
-          "name": "鲍鱼捞饭",
-          "price": 18,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-8-7",
-          "name": "番茄肥牛芝士焗饭",
-          "price": 18,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-8-8",
-          "name": "蘑菇培根芝士焗饭",
-          "price": 16,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "已划掉。公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-8-9",
-          "name": "奥尔良鸡肉焗饭",
-          "price": 15,
-          "unit": "/份",
-          "kcal": 220,
-          "protein": 11,
-          "fat": 8.5,
-          "carbs": 25,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "rice",
-          "labels": [
-            "主食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-8-10",
-          "name": "意式香草萌萌鸡",
-          "price": 13,
-          "unit": "/份",
-          "kcal": 180,
-          "protein": 17,
-          "fat": 11,
-          "carbs": 2,
-          "fiber": 0.6,
-          "serving": 150,
-          "icon": "meat",
-          "labels": [
-            "高蛋白"
-          ],
-          "description": "已划掉。公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        }
-      ]
-    },
-    {
-      "id": "wgong3-9",
-      "canteenId": "yan1",
-      "number": "",
-      "name": "冰淇淋",
-      "short": "公三食堂 · 新品（价目牌拍摄于 2026.11.26）",
-      "description": "公三食堂 · 新品（价目牌拍摄于 2026.11.26）",
-      "cover": "assets/new/n009.webp",
-      "position": "center 40%",
-      "gallery": [
-        "n009"
-      ],
-      "dishes": [
-        {
-          "id": "wgong3-9-1",
-          "name": "脆皮黄豆冰淇淋",
-          "price": 4.5,
-          "unit": "/个",
-          "kcal": 220,
-          "protein": 4,
-          "fat": 8,
-          "carbs": 34,
-          "fiber": 0.6,
-          "serving": 120,
-          "icon": "egg",
-          "labels": [
-            "甜品",
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-9-2",
-          "name": "黄豆冰淇淋",
-          "price": 4,
-          "unit": "/个",
-          "kcal": 220,
-          "protein": 4,
-          "fat": 8,
-          "carbs": 34,
-          "fiber": 0.6,
-          "serving": 120,
-          "icon": "egg",
-          "labels": [
-            "甜品",
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-9-3",
-          "name": "脆皮黑豆冰淇淋",
-          "price": 5,
-          "unit": "/个",
-          "kcal": 220,
-          "protein": 4,
-          "fat": 8,
-          "carbs": 34,
-          "fiber": 0.6,
-          "serving": 120,
-          "icon": "egg",
-          "labels": [
-            "甜品",
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-9-4",
-          "name": "黑豆冰淇淋",
-          "price": 4.5,
-          "unit": "/个",
-          "kcal": 220,
-          "protein": 4,
-          "fat": 8,
-          "carbs": 34,
-          "fiber": 0.6,
-          "serving": 120,
-          "icon": "egg",
-          "labels": [
-            "甜品",
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        }
-      ]
-    },
-    {
-      "id": "wgong3-10",
-      "canteenId": "yan1",
-      "number": "",
-      "name": "咖啡",
-      "short": "公三食堂 · 咖啡（价目牌拍摄于 2026.11.26）",
-      "description": "公三食堂 · 咖啡（价目牌拍摄于 2026.11.26）",
-      "cover": "assets/new/n010.webp",
-      "position": "center 40%",
-      "gallery": [
-        "n010"
-      ],
-      "dishes": [
-        {
-          "id": "wgong3-10-1",
-          "name": "美式",
-          "price": 5.9,
-          "unit": "/杯",
-          "kcal": 55,
-          "protein": 2.4,
-          "fat": 1.8,
-          "carbs": 8,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "bowl",
-          "labels": [
-            "饮品",
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-10-2",
-          "name": "橙C美式",
-          "price": 7.9,
-          "unit": "/杯",
-          "kcal": 55,
-          "protein": 2.4,
-          "fat": 1.8,
-          "carbs": 8,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "bowl",
-          "labels": [
-            "饮品",
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-10-3",
-          "name": "卡布奇诺",
-          "price": 8.9,
-          "unit": "/杯",
-          "kcal": 55,
-          "protein": 2.4,
-          "fat": 1.8,
-          "carbs": 8,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "bowl",
-          "labels": [
-            "饮品",
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-10-4",
-          "name": "香草拿铁",
-          "price": 9.9,
-          "unit": "/杯",
-          "kcal": 55,
-          "protein": 2.4,
-          "fat": 1.8,
-          "carbs": 8,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "bowl",
-          "labels": [
-            "饮品",
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-10-5",
-          "name": "焦糖拿铁",
-          "price": 9.9,
-          "unit": "/杯",
-          "kcal": 55,
-          "protein": 2.4,
-          "fat": 1.8,
-          "carbs": 8,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "bowl",
-          "labels": [
-            "饮品",
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-10-6",
-          "name": "榛果拿铁",
-          "price": 9.9,
-          "unit": "/杯",
-          "kcal": 55,
-          "protein": 2.4,
-          "fat": 1.8,
-          "carbs": 8,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "bowl",
-          "labels": [
-            "饮品",
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-10-7",
-          "name": "生椰拿铁",
-          "price": 10.9,
-          "unit": "/杯",
-          "kcal": 55,
-          "protein": 2.4,
-          "fat": 1.8,
-          "carbs": 8,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "bowl",
-          "labels": [
-            "饮品",
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-10-8",
-          "name": "燕麦拿铁",
-          "price": 10.9,
-          "unit": "/杯",
-          "kcal": 55,
-          "protein": 2.4,
-          "fat": 1.8,
-          "carbs": 8,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "bowl",
-          "labels": [
-            "饮品",
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-10-9",
-          "name": "功能型、护眼型",
-          "price": 1,
-          "unit": "/份",
-          "kcal": 140,
-          "protein": 7,
-          "fat": 5,
-          "carbs": 15,
-          "fiber": 0.6,
-          "serving": 150,
-          "icon": "bowl",
-          "labels": [
-            "素食"
-          ],
-          "description": "咖啡可加小料。公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-10-10",
-          "name": "舒压型",
-          "price": 2,
-          "unit": "/份",
-          "kcal": 140,
-          "protein": 7,
-          "fat": 5,
-          "carbs": 15,
-          "fiber": 0.6,
-          "serving": 150,
-          "icon": "bowl",
-          "labels": [
-            "素食"
-          ],
-          "description": "咖啡可加小料。公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-10-11",
-          "name": "免疫型",
-          "price": 1,
-          "unit": "/份",
-          "kcal": 140,
-          "protein": 7,
-          "fat": 5,
-          "carbs": 15,
-          "fiber": 0.6,
-          "serving": 150,
-          "icon": "bowl",
-          "labels": [
-            "素食"
-          ],
-          "description": "咖啡可加小料。公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        }
-      ]
-    },
-    {
-      "id": "wgong3-11",
-      "canteenId": "yan1",
-      "number": "",
-      "name": "五谷豆浆",
-      "short": "公三食堂 · 五谷豆浆（价目牌拍摄于 2026.11.26）",
-      "description": "公三食堂 · 五谷豆浆（价目牌拍摄于 2026.11.26）",
-      "cover": "assets/new/n011.webp",
-      "position": "center 40%",
-      "gallery": [
-        "n011"
-      ],
-      "dishes": [
-        {
-          "id": "wgong3-11-1",
-          "name": "黄豆麦香浆",
-          "price": 2.5,
-          "unit": "/杯",
-          "kcal": 140,
-          "protein": 7,
-          "fat": 5,
-          "carbs": 15,
-          "fiber": 0.6,
-          "serving": 150,
-          "icon": "bowl",
-          "labels": [
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-11-2",
-          "name": "红豆薏米浆",
-          "price": 3,
-          "unit": "/杯",
-          "kcal": 55,
-          "protein": 2.4,
-          "fat": 1.8,
-          "carbs": 8,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "bowl",
-          "labels": [
-            "饮品",
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-11-3",
-          "name": "花生核桃露",
-          "price": 3,
-          "unit": "/杯",
-          "kcal": 140,
-          "protein": 7,
-          "fat": 5,
-          "carbs": 15,
-          "fiber": 0.6,
-          "serving": 150,
-          "icon": "bowl",
-          "labels": [
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-11-4",
-          "name": "紫薯山药浆",
-          "price": 2.5,
-          "unit": "/杯",
-          "kcal": 45,
-          "protein": 2,
-          "fat": 1.5,
-          "carbs": 6,
-          "fiber": 1.8,
-          "serving": 150,
-          "icon": "leaf",
-          "labels": [
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-11-5",
-          "name": "绿豆清凉浆",
-          "price": 2.5,
-          "unit": "/杯",
-          "kcal": 140,
-          "protein": 7,
-          "fat": 5,
-          "carbs": 15,
-          "fiber": 0.6,
-          "serving": 150,
-          "icon": "bowl",
-          "labels": [
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-11-6",
-          "name": "红枣养颜浆",
-          "price": 2.5,
-          "unit": "/杯",
-          "kcal": 140,
-          "protein": 7,
-          "fat": 5,
-          "carbs": 15,
-          "fiber": 0.6,
-          "serving": 150,
-          "icon": "bowl",
-          "labels": [
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-11-7",
-          "name": "三黑无糖浆",
-          "price": 2.5,
-          "unit": "/杯",
-          "kcal": 140,
-          "protein": 7,
-          "fat": 5,
-          "carbs": 15,
-          "fiber": 0.6,
-          "serving": 150,
-          "icon": "bowl",
-          "labels": [
-            "素食"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-11-8",
-          "name": "茉莉豆乳",
-          "price": 4.5,
-          "unit": "/杯",
-          "kcal": 55,
-          "protein": 2.4,
-          "fat": 1.8,
-          "carbs": 8,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "bowl",
-          "labels": [
-            "饮品",
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-11-9",
-          "name": "绿豆豆乳",
-          "price": 4,
-          "unit": "/杯",
-          "kcal": 55,
-          "protein": 2.4,
-          "fat": 1.8,
-          "carbs": 8,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "bowl",
-          "labels": [
-            "饮品",
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        },
-        {
-          "id": "wgong3-11-10",
-          "name": "西瓜豆乳换西梅芭乐",
-          "price": 4.5,
-          "unit": "/杯",
-          "kcal": 55,
-          "protein": 2.4,
-          "fat": 1.8,
-          "carbs": 8,
-          "fiber": 0.6,
-          "serving": 350,
-          "icon": "bowl",
-          "labels": [
-            "饮品",
-            "素食",
-            "低热量"
-          ],
-          "description": "原文如此。公三食堂价目牌；营养为按菜名估算。",
-          "source": "AI估算"
-        }
-      ]
-    },
-    {
-      "id": "wgong3-12",
-      "canteenId": "gong3",
-      "number": "",
-      "name": "自选称重",
-      "short": "按 50 克称重计价",
-      "description": "公三食堂自选称重台 · 每道菜屏幕公示营养（2026.11.26）",
-      "cover": "assets/new/n013.webp",
-      "position": "center 45%",
-      "gallery": [
-        "n013"
-      ],
-      "dishes": [
-        {
-          "id": "wgong3-12-1",
-          "name": "米饭",
-          "price": 0.12,
-          "unit": "/50g",
-          "kcal": 99,
-          "protein": 4,
-          "fat": 3,
-          "carbs": 14,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "rice",
-          "labels": [
-            "主食",
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-2",
-          "name": "风味里脊",
-          "price": 3.5,
-          "unit": "/50g",
-          "kcal": 144,
-          "protein": 8,
-          "fat": 8,
-          "carbs": 10,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-3",
-          "name": "佛手鸡蛋",
-          "price": 3,
-          "unit": "/50g",
-          "kcal": 115,
-          "protein": 7,
-          "fat": 7,
-          "carbs": 6,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-4",
-          "name": "花甲鸡",
-          "price": 3,
-          "unit": "/50g",
-          "kcal": 110,
-          "protein": 9,
-          "fat": 6,
-          "carbs": 5,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-5",
-          "name": "压锅豆腐",
-          "price": 1.54,
-          "unit": "/50g",
-          "kcal": 89,
-          "protein": 7,
-          "fat": 5,
-          "carbs": 4,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "leaf",
-          "labels": [
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-6",
-          "name": "清蒸巴沙鱼",
-          "price": 3.5,
-          "unit": "/50g",
-          "kcal": 46,
-          "protein": 10,
-          "fat": 0.5,
-          "carbs": 0.3,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-7",
-          "name": "杏仁脆鱼卷",
-          "price": 4,
-          "unit": "/50g",
-          "kcal": 144,
-          "protein": 8,
-          "fat": 8,
-          "carbs": 10,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-8",
-          "name": "金蒜焗猪扒粒",
-          "price": 3.2,
-          "unit": "/50g",
-          "kcal": 131,
-          "protein": 5,
-          "fat": 7,
-          "carbs": 12,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-9",
-          "name": "白灼秋葵",
-          "price": 1.85,
-          "unit": "/50g",
-          "kcal": 37,
-          "protein": 1,
-          "fat": 1,
-          "carbs": 6,
-          "fiber": 1.8,
-          "serving": 100,
-          "icon": "leaf",
-          "labels": [
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-10",
-          "name": "春笋小炒鸡",
-          "price": 3,
-          "unit": "/50g",
-          "kcal": 126,
-          "protein": 11,
-          "fat": 8,
-          "carbs": 2.5,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-11",
-          "name": "豆苗金针菇炒肉丝",
-          "price": 1.73,
-          "unit": "/50g",
-          "kcal": 80,
-          "protein": 7,
-          "fat": 4,
-          "carbs": 4,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-12",
-          "name": "奶香翅根",
-          "price": 3,
-          "unit": "/50g",
-          "kcal": 122,
-          "protein": 7,
-          "fat": 10,
-          "carbs": 1,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "bowl",
-          "labels": [],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-13",
-          "name": "荷塘小炒",
-          "price": 1.55,
-          "unit": "/50g",
-          "kcal": 45,
-          "protein": 3,
-          "fat": 1,
-          "carbs": 6,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "bowl",
-          "labels": [
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-14",
-          "name": "千禧西红柿",
-          "price": 0.83,
-          "unit": "/50g",
-          "kcal": 5,
-          "protein": 0.5,
-          "fat": 0.1,
-          "carbs": 0.5,
-          "fiber": 1.8,
-          "serving": 100,
-          "icon": "leaf",
-          "labels": [
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-15",
-          "name": "酸奶",
-          "price": 1.3,
-          "unit": "/50g",
-          "kcal": 56,
-          "protein": 0,
-          "fat": 4,
-          "carbs": 5,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "bowl",
-          "labels": [
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-16",
-          "name": "杂粮饭",
-          "price": 0.25,
-          "unit": "/50g",
-          "kcal": 118,
-          "protein": 10,
-          "fat": 2,
-          "carbs": 15,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "rice",
-          "labels": [
-            "主食",
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-17",
-          "name": "清炒蒿子秆",
-          "price": 1.1,
-          "unit": "/50g",
-          "kcal": 17,
-          "protein": 1.2,
-          "fat": 0.2,
-          "carbs": 2.5,
-          "fiber": 1.8,
-          "serving": 100,
-          "icon": "leaf",
-          "labels": [
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-18",
-          "name": "口味毛肚",
-          "price": 7.6,
-          "unit": "/50g",
-          "kcal": 115,
-          "protein": 9,
-          "fat": 7,
-          "carbs": 4,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-19",
-          "name": "豉汁双鲜",
-          "price": 1.15,
-          "unit": "/50g",
-          "kcal": 61,
-          "protein": 3,
-          "fat": 1,
-          "carbs": 10,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "bowl",
-          "labels": [
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-20",
-          "name": "奶香芝士虾",
-          "price": 6,
-          "unit": "/50g",
-          "kcal": 295,
-          "protein": 18.7,
-          "fat": 15.64,
-          "carbs": 19.74,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [
-            "高蛋白"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-21",
-          "name": "紫苏羊肉",
-          "price": 5,
-          "unit": "/50g",
-          "kcal": 163,
-          "protein": 22,
-          "fat": 7,
-          "carbs": 3,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [
-            "高蛋白"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-22",
-          "name": "豉汁芦笋",
-          "price": 2.1,
-          "unit": "/50g",
-          "kcal": 91,
-          "protein": 3,
-          "fat": 7,
-          "carbs": 4,
-          "fiber": 1.8,
-          "serving": 100,
-          "icon": "leaf",
-          "labels": [
-            "素食",
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-23",
-          "name": "黑椒烤鸭腿",
-          "price": 2.6,
-          "unit": "/50g",
-          "kcal": 140,
-          "protein": 8,
-          "fat": 8,
-          "carbs": 9,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-24",
-          "name": "鲜虾萝卜汤",
-          "price": 6,
-          "unit": "/50g",
-          "kcal": 75,
-          "protein": 9,
-          "fat": 3,
-          "carbs": 3,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "bowl",
-          "labels": [
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-25",
-          "name": "花生菌菇煨玉尾",
-          "price": 8,
-          "unit": "/50g",
-          "kcal": 144,
-          "protein": 8,
-          "fat": 8,
-          "carbs": 10,
-          "fiber": 1.8,
-          "serving": 100,
-          "icon": "leaf",
-          "labels": [
-            "素食"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-26",
-          "name": "鲜米汁淮山炖羊肉",
-          "price": 7,
-          "unit": "/50g",
-          "kcal": 144,
-          "protein": 8,
-          "fat": 8,
-          "carbs": 10,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-27",
-          "name": "锅包肉",
-          "price": 2.6,
-          "unit": "/50g",
-          "kcal": 144,
-          "protein": 7,
-          "fat": 4,
-          "carbs": 20,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-28",
-          "name": "麻辣涮肚",
-          "price": 10,
-          "unit": "/50g",
-          "kcal": 144,
-          "protein": 8,
-          "fat": 8,
-          "carbs": 10,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-29",
-          "name": "山楂红烧肉",
-          "price": 4,
-          "unit": "/50g",
-          "kcal": 103,
-          "protein": 7,
-          "fat": 7,
-          "carbs": 3,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-30",
-          "name": "香辣虾",
-          "price": 6.15,
-          "unit": "/50g",
-          "kcal": 116,
-          "protein": 8,
-          "fat": 8,
-          "carbs": 3,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-31",
-          "name": "黑椒猪排",
-          "price": 4.5,
-          "unit": "/50g",
-          "kcal": 62,
-          "protein": 0,
-          "fat": 6,
-          "carbs": 2,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-32",
-          "name": "黑椒猪蹄",
-          "price": 4.8,
-          "unit": "/50g",
-          "kcal": 154,
-          "protein": 14,
-          "fat": 10,
-          "carbs": 2,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [
-            "高蛋白"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
-        },
-        {
-          "id": "wgong3-12-33",
-          "name": "鲜椒牛肉",
-          "price": 6,
-          "unit": "/50g",
-          "kcal": 67,
-          "protein": 3,
-          "fat": 3,
-          "carbs": 7,
-          "fiber": 0.6,
-          "serving": 100,
-          "icon": "meat",
-          "labels": [
-            "低热量"
-          ],
-          "description": "公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
-          "source": "窗口公示"
         }
       ]
     },
@@ -14795,6 +12086,2865 @@
           "source": "AI估算"
         }
       ]
+    },
+    {
+      "id": "wyan1-1",
+      "canteenId": "yan1",
+      "number": "",
+      "name": "扯面",
+      "short": "研一食堂 · 扯面价目表（价目牌拍摄于 2026.11.26）",
+      "description": "研一食堂 · 扯面价目表（价目牌拍摄于 2026.11.26）",
+      "cover": "assets/new/n001.webp",
+      "position": "center 40%",
+      "gallery": [
+        "n001"
+      ],
+      "dishes": [
+        {
+          "id": "wyan1-1-1",
+          "name": "香菇肉丝面",
+          "price": 10,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-1"
+        },
+        {
+          "id": "wyan1-1-2",
+          "name": "番茄牛肉面",
+          "price": 14,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-1"
+        },
+        {
+          "id": "wyan1-1-3",
+          "name": "西红柿鸡蛋面",
+          "price": 5,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-1"
+        },
+        {
+          "id": "wyan1-1-4",
+          "name": "油泼面",
+          "price": 8,
+          "unit": "/份",
+          "kcal": 130,
+          "protein": 5.5,
+          "fat": 2.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食",
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-1"
+        },
+        {
+          "id": "wyan1-1-5",
+          "name": "臊子面",
+          "price": 10,
+          "unit": "/份",
+          "kcal": 130,
+          "protein": 5.5,
+          "fat": 2.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食",
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-1"
+        },
+        {
+          "id": "wyan1-1-6",
+          "name": "鸡块板面",
+          "price": 10,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-1"
+        },
+        {
+          "id": "wyan1-1-7",
+          "name": "酸菜肥牛面",
+          "price": 12,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-1"
+        },
+        {
+          "id": "wyan1-1-8",
+          "name": "牛肉炸酱面",
+          "price": 12,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-1"
+        },
+        {
+          "id": "wyan1-1-9",
+          "name": "牛肉板面",
+          "price": 15,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-1"
+        },
+        {
+          "id": "wyan1-1-10",
+          "name": "红烧牛肉面",
+          "price": 15,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-1"
+        },
+        {
+          "id": "wyan1-1-11",
+          "name": "biangbiang面",
+          "price": 12,
+          "unit": "/份",
+          "kcal": 130,
+          "protein": 5.5,
+          "fat": 2.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食",
+            "素食"
+          ],
+          "description": "可换细面。研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-1"
+        }
+      ],
+      "windowId": "wyan1-1"
+    },
+    {
+      "id": "wyan1-2",
+      "canteenId": "yan1",
+      "number": "",
+      "name": "土豆粉 · 米线",
+      "short": "研一食堂 · 价目表（价目牌拍摄于 2026.11.26）",
+      "description": "研一食堂 · 价目表（价目牌拍摄于 2026.11.26）",
+      "cover": "assets/new/n002.webp",
+      "position": "center 40%",
+      "gallery": [
+        "n002"
+      ],
+      "dishes": [
+        {
+          "id": "wyan1-2-1",
+          "name": "鱼豆腐土豆粉",
+          "price": 10,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-2"
+        },
+        {
+          "id": "wyan1-2-2",
+          "name": "笋丝土豆粉",
+          "price": 10,
+          "unit": "/份",
+          "kcal": 130,
+          "protein": 5.5,
+          "fat": 2.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食",
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-2"
+        },
+        {
+          "id": "wyan1-2-3",
+          "name": "酸菜肉沫土豆粉",
+          "price": 10,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-2"
+        },
+        {
+          "id": "wyan1-2-4",
+          "name": "午餐肉土豆粉",
+          "price": 10,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-2"
+        },
+        {
+          "id": "wyan1-2-5",
+          "name": "小酥肉土豆粉",
+          "price": 13,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-2"
+        },
+        {
+          "id": "wyan1-2-6",
+          "name": "全家福土豆粉",
+          "price": 14,
+          "unit": "/份",
+          "kcal": 130,
+          "protein": 5.5,
+          "fat": 2.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食",
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-2"
+        },
+        {
+          "id": "wyan1-2-7",
+          "name": "酱牛肉土豆粉",
+          "price": 15,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-2"
+        },
+        {
+          "id": "wyan1-2-8",
+          "name": "虾饺米线",
+          "price": 13,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-2"
+        },
+        {
+          "id": "wyan1-2-9",
+          "name": "培根米线",
+          "price": 13,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-2"
+        },
+        {
+          "id": "wyan1-2-10",
+          "name": "鱼丸米线",
+          "price": 13,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-2"
+        },
+        {
+          "id": "wyan1-2-11",
+          "name": "肥牛米线",
+          "price": 14,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-2"
+        },
+        {
+          "id": "wyan1-2-12",
+          "name": "酱牛肉米线",
+          "price": 15,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-2"
+        }
+      ],
+      "windowId": "wyan1-2"
+    },
+    {
+      "id": "wyan1-3",
+      "canteenId": "yan1",
+      "number": "",
+      "name": "豆花",
+      "short": "研一食堂 · 新品推出（价目牌拍摄于 2026.11.26）",
+      "description": "研一食堂 · 新品推出（价目牌拍摄于 2026.11.26）",
+      "cover": "assets/new/n003.webp",
+      "position": "center 40%",
+      "gallery": [
+        "n003"
+      ],
+      "dishes": [
+        {
+          "id": "wyan1-3-1",
+          "name": "白糖豆花",
+          "price": 3,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 4,
+          "fat": 8,
+          "carbs": 34,
+          "fiber": 0.6,
+          "serving": 120,
+          "icon": "egg",
+          "labels": [
+            "甜品",
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-3"
+        },
+        {
+          "id": "wyan1-3-2",
+          "name": "木耳鸡蛋豆花",
+          "price": 4,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 4,
+          "fat": 8,
+          "carbs": 34,
+          "fiber": 0.6,
+          "serving": 120,
+          "icon": "egg",
+          "labels": [
+            "甜品"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-3"
+        },
+        {
+          "id": "wyan1-3-3",
+          "name": "桂花红糖蜂蜜豆花",
+          "price": 4,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 4,
+          "fat": 8,
+          "carbs": 34,
+          "fiber": 0.6,
+          "serving": 120,
+          "icon": "egg",
+          "labels": [
+            "甜品",
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-3"
+        },
+        {
+          "id": "wyan1-3-4",
+          "name": "奶香紫薯芋泥豆花",
+          "price": 4,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 4,
+          "fat": 8,
+          "carbs": 34,
+          "fiber": 0.6,
+          "serving": 120,
+          "icon": "egg",
+          "labels": [
+            "甜品"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-3"
+        },
+        {
+          "id": "wyan1-3-5",
+          "name": "四川芽菜肉沫豆花",
+          "price": 4.5,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 4,
+          "fat": 8,
+          "carbs": 34,
+          "fiber": 0.6,
+          "serving": 120,
+          "icon": "egg",
+          "labels": [
+            "甜品"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-3"
+        },
+        {
+          "id": "wyan1-3-6",
+          "name": "水果珍珠豆花",
+          "price": 5.5,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 4,
+          "fat": 8,
+          "carbs": 34,
+          "fiber": 0.6,
+          "serving": 120,
+          "icon": "egg",
+          "labels": [
+            "甜品",
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-3"
+        },
+        {
+          "id": "wyan1-3-7",
+          "name": "奶香蜜豆珍珠豆花",
+          "price": 5.5,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 4,
+          "fat": 8,
+          "carbs": 34,
+          "fiber": 0.6,
+          "serving": 120,
+          "icon": "egg",
+          "labels": [
+            "甜品"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-3"
+        }
+      ],
+      "windowId": "wyan1-3"
+    },
+    {
+      "id": "wyan1-4",
+      "canteenId": "yan1",
+      "number": "",
+      "name": "盖饭",
+      "short": "研一食堂 · 盖饭价目表（价目牌拍摄于 2026.11.26）",
+      "description": "研一食堂 · 盖饭价目表（价目牌拍摄于 2026.11.26）",
+      "cover": "assets/new/n004.webp",
+      "position": "center 40%",
+      "gallery": [
+        "n004"
+      ],
+      "dishes": [
+        {
+          "id": "wyan1-4-1",
+          "name": "麻婆豆腐鱿鱼饭",
+          "price": 13,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-4"
+        },
+        {
+          "id": "wyan1-4-2",
+          "name": "鲜香葱爆羔羊饭",
+          "price": 18,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-4"
+        },
+        {
+          "id": "wyan1-4-3",
+          "name": "可乐红烧肉饭",
+          "price": 15,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-4"
+        },
+        {
+          "id": "wyan1-4-4",
+          "name": "霸王鸡排饭",
+          "price": 10,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-4"
+        },
+        {
+          "id": "wyan1-4-5",
+          "name": "脆皮酥鸡饭",
+          "price": 10,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-4"
+        },
+        {
+          "id": "wyan1-4-6",
+          "name": "酱香肘子饭",
+          "price": 12,
+          "unit": "/份",
+          "kcal": 165,
+          "protein": 6,
+          "fat": 4.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食",
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-4"
+        },
+        {
+          "id": "wyan1-4-7",
+          "name": "小炒鸡肉饭",
+          "price": 13,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-4"
+        },
+        {
+          "id": "wyan1-4-8",
+          "name": "老干妈肥肠饭",
+          "price": 14,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-4"
+        },
+        {
+          "id": "wyan1-4-9",
+          "name": "西红柿牛腩饭",
+          "price": 14,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-4"
+        },
+        {
+          "id": "wyan1-4-10",
+          "name": "牛丼肥牛饭",
+          "price": 15,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-4"
+        },
+        {
+          "id": "wyan1-4-11",
+          "name": "小炒黄牛饭",
+          "price": 18,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-4"
+        }
+      ],
+      "windowId": "wyan1-4"
+    },
+    {
+      "id": "wyan1-5",
+      "canteenId": "yan1",
+      "number": "",
+      "name": "拌饭",
+      "short": "研一食堂 · 价目表（价目牌拍摄于 2026.11.26）",
+      "description": "研一食堂 · 价目表（价目牌拍摄于 2026.11.26）",
+      "cover": "assets/new/n005.webp",
+      "position": "center 40%",
+      "gallery": [
+        "n005"
+      ],
+      "dishes": [
+        {
+          "id": "wyan1-5-1",
+          "name": "黄咖喱鸡肉拌饭",
+          "price": 13,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-5"
+        },
+        {
+          "id": "wyan1-5-2",
+          "name": "酱香茄子拌饭",
+          "price": 10,
+          "unit": "/份",
+          "kcal": 165,
+          "protein": 6,
+          "fat": 4.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食",
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-5"
+        },
+        {
+          "id": "wyan1-5-3",
+          "name": "韩式鸡肉拌饭",
+          "price": 12,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-5"
+        },
+        {
+          "id": "wyan1-5-4",
+          "name": "湘味小炒肉拌饭",
+          "price": 13,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-5"
+        },
+        {
+          "id": "wyan1-5-5",
+          "name": "滑蛋肉片拌饭",
+          "price": 13,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-5"
+        },
+        {
+          "id": "wyan1-5-6",
+          "name": "黑椒薯仔猪颈饭",
+          "price": 14,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-5"
+        },
+        {
+          "id": "wyan1-5-7",
+          "name": "韩式炒烤五花肉拌饭",
+          "price": 15,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-5"
+        },
+        {
+          "id": "wyan1-5-8",
+          "name": "碴碴牛肉拌饭",
+          "price": 18,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-5"
+        }
+      ],
+      "windowId": "wyan1-5"
+    },
+    {
+      "id": "wyan1-6",
+      "canteenId": "yan1",
+      "number": "",
+      "name": "炒饭 · 炒河粉",
+      "short": "研一食堂 · 价目表（价目牌拍摄于 2026.11.26）",
+      "description": "研一食堂 · 价目表（价目牌拍摄于 2026.11.26）",
+      "cover": "assets/new/n006.webp",
+      "position": "center 40%",
+      "gallery": [
+        "n006"
+      ],
+      "dishes": [
+        {
+          "id": "wyan1-6-1",
+          "name": "火腿炒饭",
+          "price": 10,
+          "unit": "/份",
+          "kcal": 165,
+          "protein": 6,
+          "fat": 4.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食",
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-6"
+        },
+        {
+          "id": "wyan1-6-2",
+          "name": "酸豆角肉沫炒饭",
+          "price": 12,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-6"
+        },
+        {
+          "id": "wyan1-6-3",
+          "name": "蛋炒饭",
+          "price": 8,
+          "unit": "/份",
+          "kcal": 165,
+          "protein": 6,
+          "fat": 4.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-6"
+        },
+        {
+          "id": "wyan1-6-4",
+          "name": "扬州炒饭",
+          "price": 16,
+          "unit": "/份",
+          "kcal": 165,
+          "protein": 6,
+          "fat": 4.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食",
+            "素食"
+          ],
+          "description": "含：鲍鱼、火腿、香菇、虾仁、鸡蛋。研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-6"
+        },
+        {
+          "id": "wyan1-6-5",
+          "name": "港式菠萝炒饭",
+          "price": 14,
+          "unit": "/份",
+          "kcal": 165,
+          "protein": 6,
+          "fat": 4.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食",
+            "素食"
+          ],
+          "description": "含：菠萝、虾仁、葡萄干、鸡蛋。研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-6"
+        },
+        {
+          "id": "wyan1-6-6",
+          "name": "虾仁炒饭",
+          "price": 13,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-6"
+        },
+        {
+          "id": "wyan1-6-7",
+          "name": "牛肉炒饭",
+          "price": 13,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-6"
+        },
+        {
+          "id": "wyan1-6-8",
+          "name": "蛋炒饼",
+          "price": 8,
+          "unit": "/份",
+          "kcal": 250,
+          "protein": 6,
+          "fat": 8,
+          "carbs": 38,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-6"
+        },
+        {
+          "id": "wyan1-6-9",
+          "name": "鸡蛋炒河粉",
+          "price": 10,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-6"
+        },
+        {
+          "id": "wyan1-6-10",
+          "name": "牛肉炒河粉",
+          "price": 15,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-6"
+        },
+        {
+          "id": "wyan1-6-11",
+          "name": "鸡蛋炒方便面",
+          "price": 10,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-6"
+        }
+      ],
+      "windowId": "wyan1-6"
+    },
+    {
+      "id": "wyan1-7",
+      "canteenId": "yan1",
+      "number": "",
+      "name": "淮南牛肉汤",
+      "short": "研一食堂 · 淮南牛肉汤（价目牌拍摄于 2026.11.26）",
+      "description": "研一食堂 · 淮南牛肉汤（价目牌拍摄于 2026.11.26）",
+      "cover": "assets/new/n007.webp",
+      "position": "center 40%",
+      "gallery": [
+        "n007"
+      ],
+      "dishes": [
+        {
+          "id": "wyan1-7-1",
+          "name": "牛汤",
+          "price": 3,
+          "unit": "/份",
+          "kcal": 45,
+          "protein": 3,
+          "fat": 2,
+          "carbs": 4,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "bowl",
+          "labels": [
+            "汤",
+            "低热量"
+          ],
+          "description": "仅有汤。研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-7"
+        },
+        {
+          "id": "wyan1-7-2",
+          "name": "牛汤水晶粉",
+          "price": 5,
+          "unit": "/份",
+          "kcal": 45,
+          "protein": 3,
+          "fat": 2,
+          "carbs": 4,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "bowl",
+          "labels": [
+            "汤",
+            "主食",
+            "低热量"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-7"
+        },
+        {
+          "id": "wyan1-7-3",
+          "name": "牛汤方便面",
+          "price": 6,
+          "unit": "/份",
+          "kcal": 45,
+          "protein": 3,
+          "fat": 2,
+          "carbs": 4,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "bowl",
+          "labels": [
+            "汤",
+            "主食",
+            "低热量"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-7"
+        },
+        {
+          "id": "wyan1-7-4",
+          "name": "牛汤红薯粉",
+          "price": 7,
+          "unit": "/份",
+          "kcal": 45,
+          "protein": 3,
+          "fat": 2,
+          "carbs": 4,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "bowl",
+          "labels": [
+            "汤",
+            "主食",
+            "低热量"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-7"
+        },
+        {
+          "id": "wyan1-7-5",
+          "name": "牛杂",
+          "price": 2,
+          "unit": "/两",
+          "kcal": 220,
+          "protein": 16,
+          "fat": 15,
+          "carbs": 2,
+          "fiber": 0.6,
+          "serving": 140,
+          "icon": "meat",
+          "labels": [
+            "高蛋白"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-7"
+        },
+        {
+          "id": "wyan1-7-6",
+          "name": "牛肚",
+          "price": 6,
+          "unit": "/两",
+          "kcal": 220,
+          "protein": 16,
+          "fat": 15,
+          "carbs": 2,
+          "fiber": 0.6,
+          "serving": 140,
+          "icon": "meat",
+          "labels": [
+            "高蛋白"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-7"
+        },
+        {
+          "id": "wyan1-7-7",
+          "name": "牛肉",
+          "price": 9,
+          "unit": "/两",
+          "kcal": 220,
+          "protein": 16,
+          "fat": 15,
+          "carbs": 2,
+          "fiber": 0.6,
+          "serving": 140,
+          "icon": "meat",
+          "labels": [
+            "高蛋白"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-7"
+        },
+        {
+          "id": "wyan1-7-8",
+          "name": "油酥烧饼",
+          "price": 1,
+          "unit": "/个",
+          "kcal": 250,
+          "protein": 6,
+          "fat": 8,
+          "carbs": 38,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "rice",
+          "labels": [
+            "主食",
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-7"
+        },
+        {
+          "id": "wyan1-7-9",
+          "name": "小油菜",
+          "price": 2,
+          "unit": "/份",
+          "kcal": 45,
+          "protein": 2,
+          "fat": 1.5,
+          "carbs": 6,
+          "fiber": 1.8,
+          "serving": 150,
+          "icon": "leaf",
+          "labels": [
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-7"
+        },
+        {
+          "id": "wyan1-7-10",
+          "name": "油麦菜",
+          "price": 2,
+          "unit": "/份",
+          "kcal": 45,
+          "protein": 2,
+          "fat": 1.5,
+          "carbs": 6,
+          "fiber": 1.8,
+          "serving": 150,
+          "icon": "leaf",
+          "labels": [
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-7"
+        }
+      ],
+      "windowId": "wyan1-7"
+    },
+    {
+      "id": "wyan1-8",
+      "canteenId": "yan1",
+      "number": "",
+      "name": "龙虾饭 · 焗饭",
+      "short": "研一食堂 · 龙虾饭 · 焗饭（价目牌拍摄于 2026.11.26）",
+      "description": "研一食堂 · 龙虾饭 · 焗饭（价目牌拍摄于 2026.11.26）",
+      "cover": "assets/new/n008.webp",
+      "position": "center 40%",
+      "gallery": [
+        "n008"
+      ],
+      "dishes": [
+        {
+          "id": "wyan1-8-1",
+          "name": "龙虾饭",
+          "price": 23,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "麻辣/蒜香。研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-8"
+        },
+        {
+          "id": "wyan1-8-2",
+          "name": "咸蛋黄龙虾饭",
+          "price": 25,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-8"
+        },
+        {
+          "id": "wyan1-8-3",
+          "name": "海肠捞饭",
+          "price": 16,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-8"
+        },
+        {
+          "id": "wyan1-8-4",
+          "name": "日式牛肉饭",
+          "price": 18,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-8"
+        },
+        {
+          "id": "wyan1-8-5",
+          "name": "牛排意面套餐",
+          "price": 18,
+          "unit": "/份",
+          "kcal": 185,
+          "protein": 10.5,
+          "fat": 6.5,
+          "carbs": 22,
+          "fiber": 0.6,
+          "serving": 400,
+          "icon": "noodles",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-8"
+        },
+        {
+          "id": "wyan1-8-6",
+          "name": "鲍鱼捞饭",
+          "price": 18,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-8"
+        },
+        {
+          "id": "wyan1-8-7",
+          "name": "番茄肥牛芝士焗饭",
+          "price": 18,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-8"
+        },
+        {
+          "id": "wyan1-8-8",
+          "name": "蘑菇培根芝士焗饭",
+          "price": 16,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "已划掉。研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-8"
+        },
+        {
+          "id": "wyan1-8-9",
+          "name": "奥尔良鸡肉焗饭",
+          "price": 15,
+          "unit": "/份",
+          "kcal": 220,
+          "protein": 11,
+          "fat": 8.5,
+          "carbs": 25,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "rice",
+          "labels": [
+            "主食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-8"
+        },
+        {
+          "id": "wyan1-8-10",
+          "name": "意式香草萌萌鸡",
+          "price": 13,
+          "unit": "/份",
+          "kcal": 180,
+          "protein": 17,
+          "fat": 11,
+          "carbs": 2,
+          "fiber": 0.6,
+          "serving": 150,
+          "icon": "meat",
+          "labels": [
+            "高蛋白"
+          ],
+          "description": "已划掉。研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-8"
+        }
+      ],
+      "windowId": "wyan1-8"
+    },
+    {
+      "id": "wyan1-9",
+      "canteenId": "yan1",
+      "number": "",
+      "name": "冰淇淋",
+      "short": "研一食堂 · 新品（价目牌拍摄于 2026.11.26）",
+      "description": "研一食堂 · 新品（价目牌拍摄于 2026.11.26）",
+      "cover": "assets/new/n009.webp",
+      "position": "center 40%",
+      "gallery": [
+        "n009"
+      ],
+      "dishes": [
+        {
+          "id": "wyan1-9-1",
+          "name": "脆皮黄豆冰淇淋",
+          "price": 4.5,
+          "unit": "/个",
+          "kcal": 220,
+          "protein": 4,
+          "fat": 8,
+          "carbs": 34,
+          "fiber": 0.6,
+          "serving": 120,
+          "icon": "egg",
+          "labels": [
+            "甜品",
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-9"
+        },
+        {
+          "id": "wyan1-9-2",
+          "name": "黄豆冰淇淋",
+          "price": 4,
+          "unit": "/个",
+          "kcal": 220,
+          "protein": 4,
+          "fat": 8,
+          "carbs": 34,
+          "fiber": 0.6,
+          "serving": 120,
+          "icon": "egg",
+          "labels": [
+            "甜品",
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-9"
+        },
+        {
+          "id": "wyan1-9-3",
+          "name": "脆皮黑豆冰淇淋",
+          "price": 5,
+          "unit": "/个",
+          "kcal": 220,
+          "protein": 4,
+          "fat": 8,
+          "carbs": 34,
+          "fiber": 0.6,
+          "serving": 120,
+          "icon": "egg",
+          "labels": [
+            "甜品",
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-9"
+        },
+        {
+          "id": "wyan1-9-4",
+          "name": "黑豆冰淇淋",
+          "price": 4.5,
+          "unit": "/个",
+          "kcal": 220,
+          "protein": 4,
+          "fat": 8,
+          "carbs": 34,
+          "fiber": 0.6,
+          "serving": 120,
+          "icon": "egg",
+          "labels": [
+            "甜品",
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-9"
+        }
+      ],
+      "windowId": "wyan1-9"
+    },
+    {
+      "id": "wyan1-10",
+      "canteenId": "yan1",
+      "number": "",
+      "name": "咖啡",
+      "short": "研一食堂 · 咖啡（价目牌拍摄于 2026.11.26）",
+      "description": "研一食堂 · 咖啡（价目牌拍摄于 2026.11.26）",
+      "cover": "assets/new/n010.webp",
+      "position": "center 40%",
+      "gallery": [
+        "n010"
+      ],
+      "dishes": [
+        {
+          "id": "wyan1-10-1",
+          "name": "美式",
+          "price": 5.9,
+          "unit": "/杯",
+          "kcal": 55,
+          "protein": 2.4,
+          "fat": 1.8,
+          "carbs": 8,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "bowl",
+          "labels": [
+            "饮品",
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-10"
+        },
+        {
+          "id": "wyan1-10-2",
+          "name": "橙C美式",
+          "price": 7.9,
+          "unit": "/杯",
+          "kcal": 55,
+          "protein": 2.4,
+          "fat": 1.8,
+          "carbs": 8,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "bowl",
+          "labels": [
+            "饮品",
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-10"
+        },
+        {
+          "id": "wyan1-10-3",
+          "name": "卡布奇诺",
+          "price": 8.9,
+          "unit": "/杯",
+          "kcal": 55,
+          "protein": 2.4,
+          "fat": 1.8,
+          "carbs": 8,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "bowl",
+          "labels": [
+            "饮品",
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-10"
+        },
+        {
+          "id": "wyan1-10-4",
+          "name": "香草拿铁",
+          "price": 9.9,
+          "unit": "/杯",
+          "kcal": 55,
+          "protein": 2.4,
+          "fat": 1.8,
+          "carbs": 8,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "bowl",
+          "labels": [
+            "饮品",
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-10"
+        },
+        {
+          "id": "wyan1-10-5",
+          "name": "焦糖拿铁",
+          "price": 9.9,
+          "unit": "/杯",
+          "kcal": 55,
+          "protein": 2.4,
+          "fat": 1.8,
+          "carbs": 8,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "bowl",
+          "labels": [
+            "饮品",
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-10"
+        },
+        {
+          "id": "wyan1-10-6",
+          "name": "榛果拿铁",
+          "price": 9.9,
+          "unit": "/杯",
+          "kcal": 55,
+          "protein": 2.4,
+          "fat": 1.8,
+          "carbs": 8,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "bowl",
+          "labels": [
+            "饮品",
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-10"
+        },
+        {
+          "id": "wyan1-10-7",
+          "name": "生椰拿铁",
+          "price": 10.9,
+          "unit": "/杯",
+          "kcal": 55,
+          "protein": 2.4,
+          "fat": 1.8,
+          "carbs": 8,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "bowl",
+          "labels": [
+            "饮品",
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-10"
+        },
+        {
+          "id": "wyan1-10-8",
+          "name": "燕麦拿铁",
+          "price": 10.9,
+          "unit": "/杯",
+          "kcal": 55,
+          "protein": 2.4,
+          "fat": 1.8,
+          "carbs": 8,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "bowl",
+          "labels": [
+            "饮品",
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-10"
+        },
+        {
+          "id": "wyan1-10-9",
+          "name": "功能型、护眼型",
+          "price": 1,
+          "unit": "/份",
+          "kcal": 140,
+          "protein": 7,
+          "fat": 5,
+          "carbs": 15,
+          "fiber": 0.6,
+          "serving": 150,
+          "icon": "bowl",
+          "labels": [
+            "素食"
+          ],
+          "description": "咖啡可加小料。研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-10"
+        },
+        {
+          "id": "wyan1-10-10",
+          "name": "舒压型",
+          "price": 2,
+          "unit": "/份",
+          "kcal": 140,
+          "protein": 7,
+          "fat": 5,
+          "carbs": 15,
+          "fiber": 0.6,
+          "serving": 150,
+          "icon": "bowl",
+          "labels": [
+            "素食"
+          ],
+          "description": "咖啡可加小料。研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-10"
+        },
+        {
+          "id": "wyan1-10-11",
+          "name": "免疫型",
+          "price": 1,
+          "unit": "/份",
+          "kcal": 140,
+          "protein": 7,
+          "fat": 5,
+          "carbs": 15,
+          "fiber": 0.6,
+          "serving": 150,
+          "icon": "bowl",
+          "labels": [
+            "素食"
+          ],
+          "description": "咖啡可加小料。研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-10"
+        }
+      ],
+      "windowId": "wyan1-10"
+    },
+    {
+      "id": "wyan1-11",
+      "canteenId": "yan1",
+      "number": "",
+      "name": "五谷豆浆",
+      "short": "研一食堂 · 五谷豆浆（价目牌拍摄于 2026.11.26）",
+      "description": "研一食堂 · 五谷豆浆（价目牌拍摄于 2026.11.26）",
+      "cover": "assets/new/n011.webp",
+      "position": "center 40%",
+      "gallery": [
+        "n011"
+      ],
+      "dishes": [
+        {
+          "id": "wyan1-11-1",
+          "name": "黄豆麦香浆",
+          "price": 2.5,
+          "unit": "/杯",
+          "kcal": 140,
+          "protein": 7,
+          "fat": 5,
+          "carbs": 15,
+          "fiber": 0.6,
+          "serving": 150,
+          "icon": "bowl",
+          "labels": [
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-11"
+        },
+        {
+          "id": "wyan1-11-2",
+          "name": "红豆薏米浆",
+          "price": 3,
+          "unit": "/杯",
+          "kcal": 55,
+          "protein": 2.4,
+          "fat": 1.8,
+          "carbs": 8,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "bowl",
+          "labels": [
+            "饮品",
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-11"
+        },
+        {
+          "id": "wyan1-11-3",
+          "name": "花生核桃露",
+          "price": 3,
+          "unit": "/杯",
+          "kcal": 140,
+          "protein": 7,
+          "fat": 5,
+          "carbs": 15,
+          "fiber": 0.6,
+          "serving": 150,
+          "icon": "bowl",
+          "labels": [
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-11"
+        },
+        {
+          "id": "wyan1-11-4",
+          "name": "紫薯山药浆",
+          "price": 2.5,
+          "unit": "/杯",
+          "kcal": 45,
+          "protein": 2,
+          "fat": 1.5,
+          "carbs": 6,
+          "fiber": 1.8,
+          "serving": 150,
+          "icon": "leaf",
+          "labels": [
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-11"
+        },
+        {
+          "id": "wyan1-11-5",
+          "name": "绿豆清凉浆",
+          "price": 2.5,
+          "unit": "/杯",
+          "kcal": 140,
+          "protein": 7,
+          "fat": 5,
+          "carbs": 15,
+          "fiber": 0.6,
+          "serving": 150,
+          "icon": "bowl",
+          "labels": [
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-11"
+        },
+        {
+          "id": "wyan1-11-6",
+          "name": "红枣养颜浆",
+          "price": 2.5,
+          "unit": "/杯",
+          "kcal": 140,
+          "protein": 7,
+          "fat": 5,
+          "carbs": 15,
+          "fiber": 0.6,
+          "serving": 150,
+          "icon": "bowl",
+          "labels": [
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-11"
+        },
+        {
+          "id": "wyan1-11-7",
+          "name": "三黑无糖浆",
+          "price": 2.5,
+          "unit": "/杯",
+          "kcal": 140,
+          "protein": 7,
+          "fat": 5,
+          "carbs": 15,
+          "fiber": 0.6,
+          "serving": 150,
+          "icon": "bowl",
+          "labels": [
+            "素食"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-11"
+        },
+        {
+          "id": "wyan1-11-8",
+          "name": "茉莉豆乳",
+          "price": 4.5,
+          "unit": "/杯",
+          "kcal": 55,
+          "protein": 2.4,
+          "fat": 1.8,
+          "carbs": 8,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "bowl",
+          "labels": [
+            "饮品",
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-11"
+        },
+        {
+          "id": "wyan1-11-9",
+          "name": "绿豆豆乳",
+          "price": 4,
+          "unit": "/杯",
+          "kcal": 55,
+          "protein": 2.4,
+          "fat": 1.8,
+          "carbs": 8,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "bowl",
+          "labels": [
+            "饮品",
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-11"
+        },
+        {
+          "id": "wyan1-11-10",
+          "name": "西瓜豆乳换西梅芭乐",
+          "price": 4.5,
+          "unit": "/杯",
+          "kcal": 55,
+          "protein": 2.4,
+          "fat": 1.8,
+          "carbs": 8,
+          "fiber": 0.6,
+          "serving": 350,
+          "icon": "bowl",
+          "labels": [
+            "饮品",
+            "素食",
+            "低热量"
+          ],
+          "description": "原文如此。研一食堂价目牌；营养为按菜名估算。",
+          "source": "AI估算",
+          "windowId": "wyan1-11"
+        }
+      ],
+      "windowId": "wyan1-11"
+    },
+    {
+      "id": "wyan1-12",
+      "canteenId": "yan1",
+      "number": "",
+      "name": "自选称重",
+      "short": "按 50 克称重计价",
+      "description": "研一食堂自选称重台 · 每道菜屏幕公示营养（2026.11.26）",
+      "cover": "assets/new/n013.webp",
+      "position": "center 45%",
+      "gallery": [
+        "n013"
+      ],
+      "dishes": [
+        {
+          "id": "wyan1-12-1",
+          "name": "米饭",
+          "price": 0.12,
+          "unit": "/50g",
+          "kcal": 99,
+          "protein": 4,
+          "fat": 3,
+          "carbs": 14,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "rice",
+          "labels": [
+            "主食",
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-2",
+          "name": "风味里脊",
+          "price": 3.5,
+          "unit": "/50g",
+          "kcal": 144,
+          "protein": 8,
+          "fat": 8,
+          "carbs": 10,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-3",
+          "name": "佛手鸡蛋",
+          "price": 3,
+          "unit": "/50g",
+          "kcal": 115,
+          "protein": 7,
+          "fat": 7,
+          "carbs": 6,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-4",
+          "name": "花甲鸡",
+          "price": 3,
+          "unit": "/50g",
+          "kcal": 110,
+          "protein": 9,
+          "fat": 6,
+          "carbs": 5,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-5",
+          "name": "压锅豆腐",
+          "price": 1.54,
+          "unit": "/50g",
+          "kcal": 89,
+          "protein": 7,
+          "fat": 5,
+          "carbs": 4,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "leaf",
+          "labels": [
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-6",
+          "name": "清蒸巴沙鱼",
+          "price": 3.5,
+          "unit": "/50g",
+          "kcal": 46,
+          "protein": 10,
+          "fat": 0.5,
+          "carbs": 0.3,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-7",
+          "name": "杏仁脆鱼卷",
+          "price": 4,
+          "unit": "/50g",
+          "kcal": 144,
+          "protein": 8,
+          "fat": 8,
+          "carbs": 10,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-8",
+          "name": "金蒜焗猪扒粒",
+          "price": 3.2,
+          "unit": "/50g",
+          "kcal": 131,
+          "protein": 5,
+          "fat": 7,
+          "carbs": 12,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-9",
+          "name": "白灼秋葵",
+          "price": 1.85,
+          "unit": "/50g",
+          "kcal": 37,
+          "protein": 1,
+          "fat": 1,
+          "carbs": 6,
+          "fiber": 1.8,
+          "serving": 100,
+          "icon": "leaf",
+          "labels": [
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-10",
+          "name": "春笋小炒鸡",
+          "price": 3,
+          "unit": "/50g",
+          "kcal": 126,
+          "protein": 11,
+          "fat": 8,
+          "carbs": 2.5,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-11",
+          "name": "豆苗金针菇炒肉丝",
+          "price": 1.73,
+          "unit": "/50g",
+          "kcal": 80,
+          "protein": 7,
+          "fat": 4,
+          "carbs": 4,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-12",
+          "name": "奶香翅根",
+          "price": 3,
+          "unit": "/50g",
+          "kcal": 122,
+          "protein": 7,
+          "fat": 10,
+          "carbs": 1,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "bowl",
+          "labels": [],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-13",
+          "name": "荷塘小炒",
+          "price": 1.55,
+          "unit": "/50g",
+          "kcal": 45,
+          "protein": 3,
+          "fat": 1,
+          "carbs": 6,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "bowl",
+          "labels": [
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-14",
+          "name": "千禧西红柿",
+          "price": 0.83,
+          "unit": "/50g",
+          "kcal": 5,
+          "protein": 0.5,
+          "fat": 0.1,
+          "carbs": 0.5,
+          "fiber": 1.8,
+          "serving": 100,
+          "icon": "leaf",
+          "labels": [
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-15",
+          "name": "酸奶",
+          "price": 1.3,
+          "unit": "/50g",
+          "kcal": 56,
+          "protein": 0,
+          "fat": 4,
+          "carbs": 5,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "bowl",
+          "labels": [
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-16",
+          "name": "杂粮饭",
+          "price": 0.25,
+          "unit": "/50g",
+          "kcal": 118,
+          "protein": 10,
+          "fat": 2,
+          "carbs": 15,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "rice",
+          "labels": [
+            "主食",
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-17",
+          "name": "清炒蒿子秆",
+          "price": 1.1,
+          "unit": "/50g",
+          "kcal": 17,
+          "protein": 1.2,
+          "fat": 0.2,
+          "carbs": 2.5,
+          "fiber": 1.8,
+          "serving": 100,
+          "icon": "leaf",
+          "labels": [
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-18",
+          "name": "口味毛肚",
+          "price": 7.6,
+          "unit": "/50g",
+          "kcal": 115,
+          "protein": 9,
+          "fat": 7,
+          "carbs": 4,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-19",
+          "name": "豉汁双鲜",
+          "price": 1.15,
+          "unit": "/50g",
+          "kcal": 61,
+          "protein": 3,
+          "fat": 1,
+          "carbs": 10,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "bowl",
+          "labels": [
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-20",
+          "name": "奶香芝士虾",
+          "price": 6,
+          "unit": "/50g",
+          "kcal": 295,
+          "protein": 18.7,
+          "fat": 15.64,
+          "carbs": 19.74,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [
+            "高蛋白"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-21",
+          "name": "紫苏羊肉",
+          "price": 5,
+          "unit": "/50g",
+          "kcal": 163,
+          "protein": 22,
+          "fat": 7,
+          "carbs": 3,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [
+            "高蛋白"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-22",
+          "name": "豉汁芦笋",
+          "price": 2.1,
+          "unit": "/50g",
+          "kcal": 91,
+          "protein": 3,
+          "fat": 7,
+          "carbs": 4,
+          "fiber": 1.8,
+          "serving": 100,
+          "icon": "leaf",
+          "labels": [
+            "素食",
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-23",
+          "name": "黑椒烤鸭腿",
+          "price": 2.6,
+          "unit": "/50g",
+          "kcal": 140,
+          "protein": 8,
+          "fat": 8,
+          "carbs": 9,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-24",
+          "name": "鲜虾萝卜汤",
+          "price": 6,
+          "unit": "/50g",
+          "kcal": 75,
+          "protein": 9,
+          "fat": 3,
+          "carbs": 3,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "bowl",
+          "labels": [
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-25",
+          "name": "花生菌菇煨玉尾",
+          "price": 8,
+          "unit": "/50g",
+          "kcal": 144,
+          "protein": 8,
+          "fat": 8,
+          "carbs": 10,
+          "fiber": 1.8,
+          "serving": 100,
+          "icon": "leaf",
+          "labels": [
+            "素食"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-26",
+          "name": "鲜米汁淮山炖羊肉",
+          "price": 7,
+          "unit": "/50g",
+          "kcal": 144,
+          "protein": 8,
+          "fat": 8,
+          "carbs": 10,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-27",
+          "name": "锅包肉",
+          "price": 2.6,
+          "unit": "/50g",
+          "kcal": 144,
+          "protein": 7,
+          "fat": 4,
+          "carbs": 20,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-28",
+          "name": "麻辣涮肚",
+          "price": 10,
+          "unit": "/50g",
+          "kcal": 144,
+          "protein": 8,
+          "fat": 8,
+          "carbs": 10,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-29",
+          "name": "山楂红烧肉",
+          "price": 4,
+          "unit": "/50g",
+          "kcal": 103,
+          "protein": 7,
+          "fat": 7,
+          "carbs": 3,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-30",
+          "name": "香辣虾",
+          "price": 6.15,
+          "unit": "/50g",
+          "kcal": 116,
+          "protein": 8,
+          "fat": 8,
+          "carbs": 3,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-31",
+          "name": "黑椒猪排",
+          "price": 4.5,
+          "unit": "/50g",
+          "kcal": 62,
+          "protein": 0,
+          "fat": 6,
+          "carbs": 2,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-32",
+          "name": "黑椒猪蹄",
+          "price": 4.8,
+          "unit": "/50g",
+          "kcal": 154,
+          "protein": 14,
+          "fat": 10,
+          "carbs": 2,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [
+            "高蛋白"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        },
+        {
+          "id": "wyan1-12-33",
+          "name": "鲜椒牛肉",
+          "price": 6,
+          "unit": "/50g",
+          "kcal": 67,
+          "protein": 3,
+          "fat": 3,
+          "carbs": 7,
+          "fiber": 0.6,
+          "serving": 100,
+          "icon": "meat",
+          "labels": [
+            "低热量"
+          ],
+          "description": "研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。",
+          "source": "窗口公示",
+          "windowId": "wyan1-12"
+        }
+      ],
+      "windowId": "wyan1-12"
     }
   ],
   "photos": [
