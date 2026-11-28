@@ -135,6 +135,13 @@
 
       <!-- 页面：窗口 -->
       <section class="page" data-page="windows" hidden>
+        <div class="top-strip">
+          <button class="top-collapse" id="toggleHeader" type="button" aria-expanded="true">
+            <svg class="icon"><use href="#i-down"/></svg><span>收起</span>
+          </button>
+          <span class="top-strip-name" id="topStripName">公一食堂</span>
+          <button class="top-strip-link" id="topSwitch" type="button">切换食堂</button>
+        </div>
         <section class="intro-section" id="pageHeader">
           <div class="intro-copy">
             <h1>窗口和菜单</h1>
@@ -143,12 +150,8 @@
           <div class="intro-actions">
             <button class="button button-quiet" id="galleryBtn" type="button"><svg class="icon"><use href="#i-image"/></svg><span>照片</span><b>84</b></button>
             <button class="icon-button" id="dataBtn" aria-label="营养数据说明" title="营养数据说明"><svg class="icon"><use href="#i-info"/></svg></button>
-            <button class="button button-quiet" id="switchCanteen" type="button">切换食堂</button>
-            <button class="button button-primary" id="toggleOptions" type="button" aria-expanded="true">
-              <span>收起选项</span><svg class="icon"><use href="#i-down"/></svg>
-            </button>
-            <button class="icon-button header-toggle" id="toggleHeader" type="button" aria-label="收起头部" aria-expanded="true" title="收起 / 展开头部">
-              <svg class="icon"><use href="#i-down"/></svg>
+            <button class="button button-primary" id="toggleOptions" type="button" aria-expanded="true" title="收起头部说明、搜索、选择窗口，只留菜品">
+              <span>简洁模式</span><svg class="icon"><use href="#i-down"/></svg>
             </button>
           </div>
         </section>

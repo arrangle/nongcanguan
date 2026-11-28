@@ -150,6 +150,8 @@ function renderDishes() {
   const canteenName = canteen ? (canteen.alias || canteen.name) : "";
   const intro = $("#introCanteen");
   if (intro) intro.textContent = canteen ? canteen.name : "食堂";
+  const strip = $("#topStripName");
+  if (strip) strip.textContent = canteen ? canteen.name : "食堂";
   $("#dishSectionTitle").textContent = state.query ? `“${state.query}”的搜索结果` : (state.filter === "all" ? "挑选菜品" : filters[state.filter].label);
   const active = getWindow(state.windowId);
   $("#dishResultCount").textContent = state.query

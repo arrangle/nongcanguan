@@ -477,12 +477,15 @@
   const collapsed = readCollapse();
 
   function applyCollapse() {
+    const compact = collapsed.options;
     const header = $('#pageHeader');
-    if (header) header.classList.toggle('compact', collapsed.header);
+    if (header) header.classList.toggle('compact', compact);
     const headerToggle = $('#toggleHeader');
     if (headerToggle) {
-      headerToggle.setAttribute('aria-expanded', String(!collapsed.header));
-      headerToggle.classList.toggle('is-collapsed', collapsed.header);
+      headerToggle.setAttribute('aria-expanded', String(!compact));
+      headerToggle.classList.toggle('is-collapsed', compact);
+      const label = headerToggle.querySelector('span');
+      if (label) label.textContent = compact ? '展开' : '收起';
     }
 
     const zone = $('#optionZone');
@@ -491,13 +494,18 @@
     if (toggle) {
       toggle.setAttribute('aria-expanded', String(!collapsed.options));
       const label = toggle.querySelector('span');
-      if (label) label.textContent = collapsed.options ? '展开选项' : '收起选项';
+      if (label) label.textContent = collapsed.options ? '恢复标准' : '简洁模式';
       toggle.classList.toggle('button-quiet', collapsed.options);
       toggle.classList.toggle('button-primary', !collapsed.options);
     }
 
     const layout = $('.dish-layout');
     if (layout) layout.classList.toggle('rail-collapsed', collapsed.rail);
+    const topSwitch = $('#topSwitch');
+    if (topSwitch) topSwitch.addEventListener('click', () => {
+      setPage('choose');
+      renderCanteenCards();
+    });
     const railToggle = $('#toggleFilterRail');
     if (railToggle) {
       railToggle.setAttribute('aria-expanded', String(!collapsed.rail));
@@ -516,7 +524,7 @@
     });
     const headerToggle = $('#toggleHeader');
     if (headerToggle) headerToggle.addEventListener('click', () => {
-      collapsed.header = !collapsed.header;
+      collapsed.options = !collapsed.options;
       saveCollapse(collapsed);
       applyCollapse();
     });
