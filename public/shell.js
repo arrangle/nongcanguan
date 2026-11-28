@@ -141,7 +141,7 @@
       return;
     }
     const groups = [
-      { title: '东校区', ids: ['gong1', 'gong2', 'gong3'] },
+      { title: '东校区', ids: ['gong1', 'gong2', 'gong3', 'yan1'] },
       { title: '西校区', ids: ['he1', 'he2', 'yi1', 'yi2', 'yi3'] },
     ];
     const byId = {};
@@ -165,7 +165,7 @@
   window.renderCanteenCards = renderCanteenCards;
 
   // ------------------------------------------------------------------ 侧栏食堂
-  const EAST = ['gong1', 'gong2', 'gong3'];
+  const EAST = ['gong1', 'gong2', 'gong3', 'yan1'];
   const WEST = ['he1', 'he2', 'yi1', 'yi2', 'yi3'];
 
   function renderCanteenSidebar() {

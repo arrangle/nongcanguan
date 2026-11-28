@@ -53,6 +53,12 @@
       "name": "颐园三层",
       "alias": "颐三",
       "status": "pending"
+    },
+    {
+      "id": "yan1",
+      "name": "研一食堂",
+      "alias": "研究生食堂一层",
+      "status": "online"
     }
   ],
   "windows": [
@@ -1421,7 +1427,7 @@
     },
     {
       "id": "wgong3-3",
-      "canteenId": "gong3",
+      "canteenId": "yan1",
       "number": "",
       "name": "豆花",
       "short": "公三食堂 · 新品推出（价目牌拍摄于 2026.11.26）",
@@ -2555,7 +2561,7 @@
     },
     {
       "id": "wgong3-9",
-      "canteenId": "gong3",
+      "canteenId": "yan1",
       "number": "",
       "name": "冰淇淋",
       "short": "公三食堂 · 新品（价目牌拍摄于 2026.11.26）",
@@ -2646,7 +2652,7 @@
     },
     {
       "id": "wgong3-10",
-      "canteenId": "gong3",
+      "canteenId": "yan1",
       "number": "",
       "name": "咖啡",
       "short": "公三食堂 · 咖啡（价目牌拍摄于 2026.11.26）",
@@ -2875,7 +2881,7 @@
     },
     {
       "id": "wgong3-11",
-      "canteenId": "gong3",
+      "canteenId": "yan1",
       "number": "",
       "name": "五谷豆浆",
       "short": "公三食堂 · 五谷豆浆（价目牌拍摄于 2026.11.26）",

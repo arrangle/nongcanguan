@@ -1,0 +1,182 @@
+[
+  {
+    "key": "noodle-soup",
+    "title": "Teochew rice noodle soup (潮州粿條).jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Teochew_rice_noodle_soup_%28%E6%BD%AE%E5%B7%9E%E7%B2%BF%E6%A2%9D%29.jpg/960px-Teochew_rice_noodle_soup_%28%E6%BD%AE%E5%B7%9E%E7%B2%BF%E6%A2%9D%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Teochew_rice_noodle_soup_(%E6%BD%AE%E5%B7%9E%E7%B2%BF%E6%A2%9D).jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "NeoBatfreak",
+    "src": "assets/dishes/noodle-soup.jpg"
+  },
+  {
+    "key": "fried-noodles",
+    "title": "Chinese Chow mein noodles in Po Toi.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Chinese_Chow_mein_noodles_in_Po_Toi.jpg/960px-Chinese_Chow_mein_noodles_in_Po_Toi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Chinese_Chow_mein_noodles_in_Po_Toi.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Peachyeung316",
+    "src": "assets/dishes/fried-noodles.jpg"
+  },
+  {
+    "key": "rice-bowl",
+    "title": "Steamed rice in bowl 01.jpg",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/7/77/Steamed_rice_in_bowl_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Steamed_rice_in_bowl_01.jpg",
+    "license": "CC0",
+    "artist": "Anna Frodesiak",
+    "src": "assets/dishes/rice-bowl.jpg"
+  },
+  {
+    "key": "fried-rice",
+    "title": "Pineapple fried rice at Banana Leaf in Milpitas, California.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Pineapple_fried_rice_at_Banana_Leaf_in_Milpitas%2C_California.jpg/960px-Pineapple_fried_rice_at_Banana_Leaf_in_Milpitas%2C_California.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Pineapple_fried_rice_at_Banana_Leaf_in_Milpitas,_California.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Grendelkhan",
+    "src": "assets/dishes/fried-rice.jpg"
+  },
+  {
+    "key": "dumplings",
+    "title": "Chinese dumplings (Jiaozi) (2196005904).jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Chinese_dumplings_%28Jiaozi%29_%282196005904%29.jpg/960px-Chinese_dumplings_%28Jiaozi%29_%282196005904%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Chinese_dumplings_(Jiaozi)_(2196005904).jpg",
+    "license": "CC BY 2.0",
+    "artist": "David Pursehouse from Kawasaki, Japan",
+    "src": "assets/dishes/dumplings.jpg"
+  },
+  {
+    "key": "baozi",
+    "title": "Nangua Baozi (chinese dumplings).jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Nangua_Baozi_%28chinese_dumplings%29.jpg/960px-Nangua_Baozi_%28chinese_dumplings%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Nangua_Baozi_(chinese_dumplings).jpg",
+    "license": "CC BY 2.0",
+    "artist": "J. Samuel Burner",
+    "src": "assets/dishes/baozi.jpg"
+  },
+  {
+    "key": "mapo-tofu",
+    "title": "Billyfoodmabodofu3.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Billyfoodmabodofu3.jpg/960px-Billyfoodmabodofu3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Billyfoodmabodofu3.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Archon6812",
+    "src": "assets/dishes/mapo-tofu.jpg"
+  },
+  {
+    "key": "tomato-egg",
+    "title": "Stir Fried Tomatoes with Scrambled Eggs.jpg",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/1/19/Stir_Fried_Tomatoes_with_Scrambled_Eggs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Stir_Fried_Tomatoes_with_Scrambled_Eggs.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "NNU-10-24100123",
+    "src": "assets/dishes/tomato-egg.jpg"
+  },
+  {
+    "key": "kung-pao",
+    "title": "Kung Pao chicken (western version) -1.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Kung_Pao_chicken_%28western_version%29_-1.jpg/960px-Kung_Pao_chicken_%28western_version%29_-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Kung_Pao_chicken_(western_version)_-1.jpg",
+    "license": "Public domain",
+    "artist": "Alexander Marks (aomarks)",
+    "src": "assets/dishes/kung-pao.jpg"
+  },
+  {
+    "key": "braised-pork",
+    "title": "紅燒肉 Braised pork in brown sauce.jpg",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/f4/%E7%B4%85%E7%87%92%E8%82%89_Braised_pork_in_brown_sauce.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:%E7%B4%85%E7%87%92%E8%82%89_Braised_pork_in_brown_sauce.jpg",
+    "license": "CC BY 2.0",
+    "artist": "FotoosVanRobin Photostream",
+    "src": "assets/dishes/braised-pork.jpg"
+  },
+  {
+    "key": "greens",
+    "title": "Stir Fried Cabbage and Bacon 培根高丽菜.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Stir_Fried_Cabbage_and_Bacon_%E5%9F%B9%E6%A0%B9%E9%AB%98%E4%B8%BD%E8%8F%9C.jpg/960px-Stir_Fried_Cabbage_and_Bacon_%E5%9F%B9%E6%A0%B9%E9%AB%98%E4%B8%BD%E8%8F%9C.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Stir_Fried_Cabbage_and_Bacon_%E5%9F%B9%E6%A0%B9%E9%AB%98%E4%B8%BD%E8%8F%9C.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Christopher",
+    "src": "assets/dishes/greens.jpg"
+  },
+  {
+    "key": "soup",
+    "title": "Chinese spoons.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Chinese_spoons.jpg/960px-Chinese_spoons.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Chinese_spoons.jpg",
+    "license": "Public domain",
+    "artist": "",
+    "src": "assets/dishes/soup.jpg"
+  },
+  {
+    "key": "congee",
+    "title": "Chinese rice congee.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Chinese_rice_congee.jpg/960px-Chinese_rice_congee.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Chinese_rice_congee.jpg",
+    "license": "CC BY-SA 2.5",
+    "artist": "Daiju Azuma",
+    "src": "assets/dishes/congee.jpg"
+  },
+  {
+    "key": "seafood",
+    "title": "Mashed pepper fish head.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Mashed_pepper_fish_head.jpg/960px-Mashed_pepper_fish_head.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Mashed_pepper_fish_head.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Christopher",
+    "src": "assets/dishes/seafood.jpg"
+  },
+  {
+    "key": "shrimp",
+    "title": "Noodle stir fry with chicken, shrimp, and broccoli (18471621051).jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Noodle_stir_fry_with_chicken%2C_shrimp%2C_and_broccoli_%2818471621051%29.jpg/960px-Noodle_stir_fry_with_chicken%2C_shrimp%2C_and_broccoli_%2818471621051%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Noodle_stir_fry_with_chicken,_shrimp,_and_broccoli_(18471621051).jpg",
+    "license": "CC BY 2.0",
+    "artist": "jeffreyw",
+    "src": "assets/dishes/shrimp.jpg"
+  },
+  {
+    "key": "dessert",
+    "title": "SZ 深圳 Shenzhen 龍華 Longhua 騰龍路 Tenglong Road 彩虹商場 Rainbow Shopping Mall shop food March 2024 R12S 01.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/SZ_%E6%B7%B1%E5%9C%B3_Shenzhen_%E9%BE%8D%E8%8F%AF_Longhua_%E9%A8%B0%E9%BE%8D%E8%B7%AF_Tenglong_Road_%E5%BD%A9%E8%99%B9%E5%95%86%E5%A0%B4_Rainbow_Shopping_Mall_shop_food_March_2024_R12S_01.jpg/960px-SZ_%E6%B7%B1%E5%9C%B3_Shenzhen_%E9%BE%8D%E8%8F%AF_Longhua_%E9%A8%B0%E9%BE%8D%E8%B7%AF_Tenglong_Road_%E5%BD%A9%E8%99%B9%E5%95%86%E5%A0%B4_Rainbow_Shopping_Mall_shop_food_March_2024_R12S_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:SZ_%E6%B7%B1%E5%9C%B3_Shenzhen_%E9%BE%8D%E8%8F%AF_Longhua_%E9%A8%B0%E9%BE%8D%E8%B7%AF_Tenglong_Road_%E5%BD%A9%E8%99%B9%E5%95%86%E5%A0%B4_Rainbow_Shopping_Mall_shop_food_March_2024_R12S_01.jpg",
+    "license": "CC0",
+    "artist": "WMaryLockmena Tcsa",
+    "src": "assets/dishes/dessert.jpg"
+  },
+  {
+    "key": "soy-milk",
+    "title": "Soy milk bottles.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Soy_milk_bottles.jpg/960px-Soy_milk_bottles.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Soy_milk_bottles.jpg",
+    "license": "Public domain",
+    "artist": "Love Krittaya",
+    "src": "assets/dishes/soy-milk.jpg"
+  },
+  {
+    "key": "coffee",
+    "title": "Cappuccino with latte art on Coffee Right in Brno, Brno-City District.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Cappuccino_with_latte_art_on_Coffee_Right_in_Brno%2C_Brno-City_District.jpg/960px-Cappuccino_with_latte_art_on_Coffee_Right_in_Brno%2C_Brno-City_District.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Cappuccino_with_latte_art_on_Coffee_Right_in_Brno,_Brno-City_District.jpg",
+    "license": "CC BY 3.0",
+    "artist": "Frettie",
+    "src": "assets/dishes/coffee.jpg"
+  },
+  {
+    "key": "roast-duck",
+    "title": "Peking duck by Mr Wabu in Beijing.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Peking_duck_by_Mr_Wabu_in_Beijing.jpg/960px-Peking_duck_by_Mr_Wabu_in_Beijing.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Peking_duck_by_Mr_Wabu_in_Beijing.jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "Mr Wabu",
+    "src": "assets/dishes/roast-duck.jpg"
+  },
+  {
+    "key": "pancake",
+    "title": "Bing zi (Chinese pancakes).jpg",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Bing_zi_%28Chinese_pancakes%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Bing_zi_(Chinese_pancakes).jpg",
+    "license": "CC BY 2.0",
+    "artist": "J. Samuel Burner",
+    "src": "assets/dishes/pancake.jpg"
+  }
+]

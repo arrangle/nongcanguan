@@ -40,17 +40,41 @@ const priceHTML = (d, large = false) => d.price === null
   ? `<span class="dish-price market">窗口时价</span>`
   : `<span class="dish-price${large ? " large" : ""}"><small>¥</small>${d.price}<small>${d.unit}</small></span>`;
 const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
-// 菜品配图：只有「菜名和图片明显对得上」才用示意图，其余用绿色底图占位。
-// 七张示意图来自公开素材（见 docs/图片来源.md），卡片上都标注「示意图」。
+// 菜品配图：来自 Wikimedia Commons 的自由许可照片（见 docs/图片来源.md）。
+// 只有菜名和图片明显对得上才配图，其余用绿色占位底图，不硬凑。
+const PHOTO_RULES = [
+  { key: 'coffee', re: /咖啡|拿铁|美式|卡布奇诺|摩卡/ },
+  { key: 'soy-milk', re: /豆浆|豆乳|米浆|五谷浆/ },
+  { key: 'dessert', re: /糖葫芦|冰淇淋|冰激凌|豆花|蛋糕|蛋挞|西米露|糖水|甜筒/ },
+  { key: 'congee', re: /粥|羹|糊/ },
+  { key: 'soup', re: /牛汤|羊肉汤|瓦罐汤|例汤|汤$/ },
+  { key: 'dumplings', re: /饺|馄饨|抄手|锅贴/ },
+  { key: 'baozi', re: /包子|花卷|馒头|窝头|馍/ },
+  { key: 'pancake', re: /饼|火烧|锅盔/ },
+  { key: 'fried-rice', re: /炒饭|蛋炒饭|扬州炒饭|菠萝炒饭/ },
+  { key: 'rice-bowl', re: /盖饭|拌饭|煲仔|焗饭|捞饭|米饭|焖饭|烩饭|饭$/ },
+  { key: 'fried-noodles', re: /炒面|炒河粉|炒粉|炒饼|干炒|炒方便面/ },
+  { key: 'noodle-soup', re: /面|粉|米线|河粉|馄饨汤/ },
+  { key: 'mapo-tofu', re: /麻婆|豆腐|豆干|腐竹/ },
+  { key: 'tomato-egg', re: /番茄|西红柿/ },
+  { key: 'kung-pao', re: /宫保|辣子鸡|鸡丁|鸡柳|鸡米花/ },
+  { key: 'braised-pork', re: /红烧肉|肘子|把子肉|东坡肉|扣肉|排骨|猪蹄/ },
+  { key: 'roast-duck', re: /烤鸭|烧鸭|酱鸭|鸭腿/ },
+  { key: 'shrimp', re: /虾/ },
+  { key: 'seafood', re: /鱼|蟹|贝|花甲|花蛤|鱿鱼|八爪|蛏|螺/ },
+  { key: 'greens', re: /青菜|时蔬|西兰花|菠菜|油菜|包菜|菜心|芥蓝|生菜|莴笋|豆角|荷兰豆|土豆丝|白菜|娃娃菜|蒿子秆|空心菜|芦笋|豆苗|秋葵/ },
+];
+
+const PHOTO_EXT = {
+  'mapo-tofu': '.jpg', 'rice-bowl': '.jpg', 'greens': '.jpg', 'soup': '.jpg',
+};
+
 function dishPhoto(d) {
-  const name = d.name || "";
-  if (/虾|蟹|贝|花甲|花蛤|鱿鱼|八爪|蛏/.test(name)) return { src: "assets/dishes/shrimp-vegetable-stir-fry.jpg", match: true };
-  if (/豆腐|豆花|麻婆/.test(name)) return { src: "assets/dishes/mapo-tofu.png", match: true };
-  if (/番茄|西红柿/.test(name) && /蛋/.test(name)) return { src: "assets/dishes/tomato-egg.jpg", match: true };
-  if (/鸡丁|宫保|鸡块|辣子鸡|鸡米花|鸡柳/.test(name)) return { src: "assets/dishes/kung-pao-chicken.jpg", match: true };
-  if (/炒面|炒河粉|炒粉|捞面|拌面|炒饼|炒饭/.test(name)) return { src: "assets/dishes/chow-mein.jpg", match: true };
-  if (/西兰花|芥蓝|菠菜|油菜|青菜|小白菜|包菜|菜花|菜心|蒿子秆|空心菜|生菜|莴笋|豆角|荷兰豆/.test(name)) return { src: "assets/dishes/vegetable-stir-fry.jpg", match: true };
-  return { src: "", match: false };
+  const name = d.name || '';
+  const hit = PHOTO_RULES.find((rule) => rule.re.test(name));
+  if (!hit) return { src: '', match: false };
+  const ext = PHOTO_EXT[hit.key] || '.jpg';
+  return { src: 'assets/dishes/' + hit.key + ext, match: true };
 }
 
 let tray = [];
@@ -125,14 +149,21 @@ function getVisibleDishes() {
 }
 
 function dishCard(d) {
+  const [color, tint] = iconStyles[d.icon] || iconStyles.bowl;
+  const photo = dishPhoto(d);
   const faved = typeof window.isFav === "function" && window.isFav(d.id);
   const tags = (d.labels || []).slice(0, 3);
   return `<article class="dish-card" data-dish="${d.id}" tabindex="0" role="button" aria-label="查看${d.name}营养详情">
+    <div class="dish-card-image ${photo.match ? "" : "placeholder"}" style="--dish-color:${color};--dish-tint:${tint}">
+      ${photo.match
+        ? `<img src="${photo.src}" alt="${d.name}示意图" loading="lazy"><span class="ph-badge">示意图</span>`
+        : `<span class="ph-icon">${icon(d.icon)}</span><span class="ph-text">暂无配图</span>`}
+      <button class="dish-fav ${faved ? "on" : ""}" type="button" data-fav="${d.id}" aria-pressed="${faved}" aria-label="收藏${d.name}">${icon("heart")}</button>
+    </div>
     <div class="dish-card-content">
       <div class="dish-card-top">
         <h3>${d.name}</h3>
         ${priceHTML(d)}
-        <button class="dish-fav ${faved ? "on" : ""}" type="button" data-fav="${d.id}" aria-pressed="${faved}" aria-label="收藏${d.name}">${icon("heart")}</button>
       </div>
       <div class="dish-meta">${d.source === "AI估算" ? "AI估算" : d.source} · ${round(d.kcal)} kcal/100g · 蛋白 ${one(d.protein)}g${state.query ? ` · ${d.window.number ? d.window.number + " 号窗口 · " : ""}${d.window.name}` : ""}</div>
       <div class="dish-tags">${tags.map((t) => `<span>${t}</span>`).join("")}</div>

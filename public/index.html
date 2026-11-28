@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#173f35">
   <meta name="description" content="农餐馆——中国农业大学餐厅窗口菜品与营养查询工具">
   <title>农餐馆 · 农大智慧餐厅</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23173f35'/%3E%3Cpath d='M14 30h36c0 12-7 20-18 20S14 42 14 30Z' fill='%23e5efb8'/%3E%3Cpath d='M22 24c8 0 14-5 17-12 3 9-2 16-12 17' fill='none' stroke='%23e5efb8' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="icon" href="assets/logo.png">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="features.css">
   <link rel="stylesheet" href="layout.css">
@@ -47,7 +47,7 @@
   <section class="entry" id="entryScreen" aria-label="欢迎页">
     <div class="entry-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
     <header class="entry-top">
-      <span class="entry-mark"><b>农餐馆</b><small>CAU FOOD GUIDE</small></span>
+      <span class="entry-mark"><img class="entry-logo" src="assets/logo.png" alt=""><span><b>农餐馆</b><small>CAU FOOD GUIDE</small></span></span>
       <button class="entry-admin" id="entryAdmin" type="button">管理员登录</button>
     </header>
 
@@ -86,7 +86,7 @@
   <div class="app" id="app" hidden>
     <aside class="sidenav" aria-label="食堂与功能导航">
       <a class="sidenav-brand" href="./" id="brandHome" aria-label="返回入口画面">
-        <span class="brand-mark"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 25h28c0 9-5 15-14 15S10 34 10 25Z"/><path d="M16 20c7 0 12-4 15-11 3 7-1 13-10 15"/></svg></span>
+        <img class="brand-logo" src="assets/logo.png" alt="农餐馆">
         <span><strong>农餐馆</strong><small>CAU FOOD GUIDE</small></span>
       </a>
 
@@ -127,7 +127,7 @@
           <div>
             <span class="section-index">01</span>
             <h2>选择食堂 <small>先选食堂，再看窗口和菜品</small></h2>
-            <p>东区公一、公三，西区和园一/二层、颐园一层已录入现场价目牌；其余食堂显示「待录入」。</p>
+            <p>东区公一、公三、研一，西区和园一/二层、颐园一层已录入现场价目牌；其余食堂显示「待录入」。</p>
           </div>
         </div>
         <div class="canteen-cards" id="canteenCards"></div>

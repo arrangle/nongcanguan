@@ -882,3 +882,39 @@ body { font-size: 14px; line-height: 1.65; letter-spacing: .01em; }
 .side-link { min-height: 32px; padding: 5px 8px; font-size: 12px; border-radius: 7px; }
 .side-child { font-size: 12px; min-height: 30px; padding: 4px 8px; }
 .sidenav-foot { padding-top: 10px; }
+
+/* 品牌 logo 图片 */
+.brand-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: 0 0 auto; }
+.entry-logo { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; }
+.entry-mark { display: flex; align-items: center; gap: 12px; }
+
+/* 整体字号上调一档（用户要求字体调大） */
+html { font-size: 16px; }
+body { font-size: 15.5px; line-height: 1.7; }
+.side-link { font-size: 13.5px; min-height: 34px; }
+.side-child { font-size: 13px; min-height: 32px; }
+.side-title { font-size: 11.5px; }
+.side-group { font-size: 11px; }
+.page-head h2 { font-size: 24px; }
+.page-head p { font-size: 12.5px; }
+.intro-copy h1 { font-size: 30px; }
+.intro-copy p { font-size: 13.5px; }
+.search-box input { font-size: 14px; }
+.window-strip .window-item-copy strong { font-size: 13.5px; }
+.window-strip .window-item-copy small { font-size: 10.5px; }
+.window-report { font-size: 12px; min-height: 32px; }
+.window-hero .window-hero-content h2 { font-size: 20px; }
+.window-hero .window-hero-content p { font-size: 11.5px; }
+.filter-rail .filter-tabs button { font-size: 13.5px; min-height: 38px; }
+.rail-sort select { font-size: 13px; height: 38px; }
+.dish-card-top h3 { font-size: 16.5px; }
+.dish-meta { font-size: 12px; }
+.dish-card .dish-tags span { font-size: 11px; }
+.dish-detail-button, .dish-add-button { font-size: 12px; min-height: 36px; }
+.canteen-card .cc-name { font-size: 15px; }
+.canteen-card .cc-alias, .canteen-card .cc-meta { font-size: 12px; }
+.top-strip-name, .top-strip-link { font-size: 12.5px; }
+.top-collapse { font-size: 12px; min-height: 32px; }
+.top-window select { font-size: 12.5px; }
+.tray-item-copy strong { font-size: 11px; }
+.muted { font-size: 12px; }
