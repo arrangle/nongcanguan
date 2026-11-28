@@ -886,7 +886,8 @@ body { font-size: 14px; line-height: 1.65; letter-spacing: .01em; }
 /* 品牌 logo 图片 */
 .brand-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: 0 0 auto; }
 .entry-logo { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; }
-.entry-mark { display: flex; align-items: center; gap: 12px; }
+.entry-mark { display: flex; flex-direction: row; align-items: center; gap: 12px; }
+.entry-mark > span { display: flex; flex-direction: column; gap: 2px; }
 
 /* 整体字号上调一档（用户要求字体调大） */
 html { font-size: 16px; }
