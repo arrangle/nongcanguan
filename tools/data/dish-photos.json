@@ -320,5 +320,17 @@
       "煎饼"
     ],
     "src": "assets/dishes/jianbing.jpg"
+  },
+  {
+    "key": "roujiamo",
+    "title": "Roujiamo-cn.jpg",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/d/da/Roujiamo-cn.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:Roujiamo-cn.jpg",
+    "license": "CC BY-SA 3.0",
+    "artist": "P. Xie",
+    "keywords": [
+      "肉夹馍"
+    ],
+    "src": "assets/dishes/roujiamo.jpg"
   }
 ]

@@ -47,7 +47,7 @@
     if (!page) return;
     currentPage = name;
     $$('.page[data-page]').forEach((node) => { node.hidden = node.getAttribute('data-page') !== name; });
-    $$('.nav-item[data-nav], .side-link[data-nav]').forEach((button) => {
+    $$('.nav-item[data-nav], .side-link[data-nav], .mn-item[data-nav]').forEach((button) => {
       const active = button.getAttribute('data-nav') === name;
       button.classList.toggle('active', active);
       if (active) button.setAttribute('aria-current', 'page');
@@ -55,6 +55,7 @@
     });
     if (name === 'records') renderRecords();
     if (name === 'rank') loadRank();
+    if (name === 'points' && typeof window.renderPointsPage === 'function') window.renderPointsPage();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 

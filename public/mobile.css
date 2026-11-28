@@ -1,0 +1,253 @@
+/* ================================================================
+   农餐馆 · 手机端适配
+   目标：单手能点、一屏能看、拍照上传方便
+   ================================================================ */
+
+/* ---------------- 平板 / 小笔记本 ---------------- */
+@media (max-width: 900px) {
+  :root { --mobile-nav-h: 60px; }
+
+  html { -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+  body { font-size: 15px; overflow-x: hidden; }
+  .stage, .page { max-width: 100%; }
+
+  /* 侧栏收成抽屉式隐藏，改用底部导航 */
+  .app { display: block; }
+  .sidenav { display: none; }
+  .stage { padding: 10px 12px calc(var(--mobile-nav-h) + 78px + env(safe-area-inset-bottom)); }
+
+  /* 底部导航 */
+  .mobile-nav {
+    display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+    background: rgba(255, 254, 249, .96);
+    border-top: 1px solid var(--line);
+    backdrop-filter: blur(12px);
+  }
+  .mn-item {
+    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px;
+    min-height: 48px; padding: 4px 0;
+    border: 0; border-radius: 12px; background: transparent;
+    color: #84938a; font-size: 11px;
+  }
+  .mn-item .icon { width: 21px; height: 21px; }
+  .mn-item.active { color: var(--green); font-weight: 600; background: #eef3e8; }
+  .mn-badge {
+    display: inline-block; min-width: 16px; margin-left: 2px; padding: 0 4px;
+    border-radius: 999px; background: var(--orange); color: #fff;
+    font-size: 9px; line-height: 15px; font-weight: 700;
+  }
+
+  /* 餐盘按钮抬到底部导航之上 */
+  .mobile-tray-button { bottom: calc(var(--mobile-nav-h) + 12px + env(safe-area-inset-bottom)); left: 12px; right: 12px; }
+  .mobile-tray-button strong { margin-left: auto; }
+
+  /* 顶部条吸顶，切换食堂/窗口常驻 */
+  .top-strip {
+    position: sticky; top: 0; z-index: 40;
+    margin: -10px -12px 6px; padding: 10px 12px;
+    background: rgba(250, 250, 245, .94);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(10px);
+    flex-wrap: nowrap; gap: 8px;
+  }
+  .top-strip-name { font-size: 14px; font-weight: 600; }
+  .top-window { flex: 1; min-width: 0; }
+  .top-window select { width: 100%; height: 34px; font-size: 13px; }
+  .top-collapse, .top-strip-link { min-height: 34px; }
+  .points-chip { margin-left: 0; min-height: 34px; }
+
+  /* 页面标题压缩 */
+  .page-head { gap: 10px; align-items: flex-start; flex-direction: column; }
+  .page-head h2 { font-size: 21px; }
+  .page-head p { font-size: 12.5px; }
+  .intro-section { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .intro-copy { width: 100%; }
+  .intro-copy h1 { font-size: 24px; line-height: 1.25; }
+  .intro-copy p { font-size: 12.5px; }
+  .intro-actions { width: 100%; justify-content: flex-start; gap: 8px; }
+  .intro-actions .button { min-height: 34px; padding: 0 12px; }
+
+  /* 窗口条：横向滑动 + 吸附 */
+  .window-strip {
+    display: grid; grid-auto-flow: column;
+    grid-auto-columns: 78%; gap: 10px;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    padding-bottom: 8px; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .window-strip::-webkit-scrollbar { display: none; }
+  .window-strip .window-item { scroll-snap-align: start; min-height: 78px; }
+  .window-strip .window-report { min-height: 34px; }
+
+  /* 筛选栏：改成横向胶囊，吸顶在顶部条下方 */
+  .dish-layout { grid-template-columns: minmax(0, 1fr); }
+  .filter-rail {
+    position: sticky; top: 54px; z-index: 30;
+    margin: 0 -12px 6px; padding: 8px 12px;
+    border: 0; border-bottom: 1px solid var(--line); border-radius: 0;
+    background: rgba(250, 250, 245, .95);
+    backdrop-filter: blur(8px);
+  }
+  .rail-head, .rail-title { display: none; }
+  .filter-rail .filter-tabs {
+    flex-direction: row; flex-wrap: nowrap; gap: 8px;
+    overflow-x: auto; scrollbar-width: none; padding-bottom: 2px;
+  }
+  .filter-rail .filter-tabs::-webkit-scrollbar { display: none; }
+  .filter-rail .filter-tabs button {
+    flex: 0 0 auto; width: auto; min-height: 36px; padding: 0 14px;
+    border: 1px solid var(--line); border-radius: 999px; background: var(--surface);
+    white-space: nowrap;
+  }
+  .filter-rail .filter-tabs button.active { border-color: var(--green); }
+  .rail-sort { display: none; }
+
+  /* 菜品卡：左图右文，一屏能看到 3~4 道 */
+  .dish-main .dish-grid { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .dish-card { flex-direction: row; padding: 0; border-radius: 14px; }
+  .dish-card-image { width: 104px; height: auto; min-height: 112px; flex: 0 0 auto; }
+  .dish-card-content { padding: 10px 12px; flex: 1; min-width: 0; }
+  .dish-card-top h3 { font-size: 16px; }
+  .dish-meta { font-size: 11.5px; }
+  .dish-card .dish-tags { display: none; }
+  .dish-card-bottom { padding-top: 8px; gap: 6px; }
+  .dish-detail-button, .dish-add-button { min-height: 38px; font-size: 12.5px; }
+  .dish-photo-btn { left: 6px; bottom: 6px; right: 6px; justify-content: center; min-height: 26px; padding: 0 6px; font-size: 10.5px; }
+  .dish-photo-btn.subtle { left: 6px; right: 6px; }
+  .dish-card .dish-fav { width: 28px; height: 28px; right: 6px; top: 6px; }
+
+  /* 弹窗：底部抽屉 */
+  dialog {
+    width: 100% !important; max-width: 100% !important;
+    max-height: 88vh; margin: auto auto 0;
+    border-radius: 20px 20px 0 0;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .photo-dialog, .queue-dialog, .data-dialog, .admin-dialog, .dish-dialog, .gallery-dialog { margin: auto auto 0; }
+
+  /* 按钮：手指好点 */
+  .button, .icon-button, .queue-submit, .log-meal { min-height: 44px; }
+  .icon-button { width: 44px; height: 44px; }
+
+  /* 积分中心 */
+  .points-hero { padding: 16px; gap: 12px; }
+  .ph-main strong { font-size: 38px; }
+  .ph-side { gap: 14px; }
+  .points-rules { grid-template-columns: minmax(0, 1fr); }
+  .ph-cta { width: 100%; }
+
+  /* 餐盘抽屉铺满 */
+  .tray-panel { width: 100%; max-width: 100%; }
+}
+
+/* ---------------- 手机 ---------------- */
+@media (max-width: 600px) {
+  .stage { padding: 8px 10px calc(var(--mobile-nav-h) + 74px + env(safe-area-inset-bottom)); }
+  .top-strip { margin: -8px -10px 6px; padding: 8px 10px; }
+  .filter-rail { margin: 0 -10px 6px; padding: 8px 10px; -webkit-overflow-scrolling: touch; }
+
+  .intro-copy h1 { font-size: 21px; }
+  .intro-actions .button span { font-size: 12px; }
+  .intro-actions .button b { display: none; }
+
+  .dish-card-image { width: 92px; }
+  .dish-card-top h3 { font-size: 15.5px; }
+  .dish-meta { font-size: 11px; }
+  .dish-detail-button { flex: 0 0 auto; padding: 0 10px; }
+  .dish-add-button { flex: 1; }
+
+  /* 搜索框 */
+  .search-box { width: 100%; }
+  .search-box kbd { display: none; }
+  .search-box input { font-size: 15px; height: 42px; }
+
+  /* 入口页 */
+  .entry-main h1 { font-size: 38px; }
+  .entry-eyebrow { font-size: 12px; }
+  .entry-action { min-height: 74px; }
+
+  /* 选择食堂 */
+  .canteen-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .canteen-card { padding: 12px; }
+  .cc-name { font-size: 14.5px; }
+
+  /* 表格类页面横向滚动 */
+  .records-table, .rank-list { overflow-x: auto; }
+
+  /* 上传弹窗 */
+  .photo-preview { min-height: 150px; }
+  .photo-actions { position: sticky; bottom: 0; padding-top: 10px; background: #fff; }
+
+  /* 积分 */
+  .points-hero { flex-direction: column; align-items: flex-start; }
+  .ph-side { width: 100%; justify-content: space-between; }
+  .points-event { padding: 10px 12px; }
+
+  /* 底部餐盘条 */
+  .mobile-tray-button { padding: 10px 14px; font-size: 12.5px; }
+}
+
+/* 横屏矮屏：少占高度 */
+@media (max-height: 520px) and (max-width: 900px) {
+  .mobile-nav { display: none; }
+  .stage { padding-bottom: 40px; }
+  .mobile-tray-button { bottom: 12px; }
+}
+
+/* 支持刘海屏 */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .mobile-nav { padding-bottom: calc(6px + env(safe-area-inset-bottom)); }
+}
+
+/* 小屏顶部条：只留最有用的几项 */
+@media (max-width: 600px) {
+  .top-strip { gap: 6px; }
+  .top-collapse { padding: 0 8px; }
+  .top-collapse span { display: none; }
+  .toggle-header-label { display: none; }
+  .top-strip-name { max-width: 74px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .top-strip-link { padding: 0 8px; }
+  .top-window > span { display: none; }
+  .points-chip { display: none; }
+}
+
+/* 餐盘悬浮条：缩成右侧小胶囊，别挡住菜品列表 */
+@media (max-width: 900px) {
+  .mobile-tray-button {
+    left: auto; right: 12px; bottom: calc(var(--mobile-nav-h) + 10px + env(safe-area-inset-bottom));
+    width: auto; min-width: 0; height: 46px; padding: 0 14px 0 12px;
+    border-radius: 999px; gap: 6px;
+  }
+  .mobile-tray-button span { display: none; }
+  .mobile-tray-button strong { font-size: 10px; }
+  .toast { bottom: calc(var(--mobile-nav-h) + 70px + env(safe-area-inset-bottom)); }
+
+  /* 手机上筛选栏已经是横向胶囊，收起按钮没意义 */
+  .rail-toggle { display: none; }
+}
+
+@media (max-width: 600px) {
+  /* 小屏只留最有用的顶部按钮 */
+  .intro-actions .icon-button { display: none; }
+  .dish-photo-btn { font-size: 10px; padding: 0 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .dish-photo-btn b { display: none; }
+  .dish-photo-btn::after { content: "+20"; margin-left: 2px; font-size: 9px; }
+  .dish-photo-btn.subtle::after { content: ""; }
+  .window-hero { padding: 12px; }
+  .window-hero .window-hero-content h2 { font-size: 17px; }
+}
+
+@media (max-width: 900px) {
+  /* 占位卡上的「暂无配图」会被上传按钮盖住，手机上直接交给按钮说明 */
+  .dish-card-image.placeholder .ph-text { display: none; }
+  .dish-card-image.placeholder .ph-icon { width: 44px; height: 44px; border-radius: 14px; margin-top: -14px; }
+  .page-head .button { align-self: flex-start; min-height: 36px; }
+}
+
+dialog .icon-button:focus-visible,
+.button:focus-visible,
+.mn-item:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}

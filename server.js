@@ -19,10 +19,16 @@ const DATA_DIR = path.join(ROOT, 'data');
 const MENU_FILE = process.env.MENU_FILE ? path.resolve(process.env.MENU_FILE) : path.join(DATA_DIR, 'menu.json');
 const DB_FILE = process.env.DB_FILE ? path.resolve(process.env.DB_FILE) : path.join(DATA_DIR, 'db.json');
 if (process.env.DB_FILE || process.env.MENU_FILE) fs.mkdirSync(path.dirname(DB_FILE), { recursive: true });
+const UPLOAD_DIR = path.join(path.dirname(DB_FILE), 'uploads');
+fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 const PORT = Number(process.env.PORT) || 3000;
 const ADMIN_CODE = process.env.ADMIN_CODE || '';
 
 const MAX_BODY = 256 * 1024;
+const MAX_PHOTO_BODY = 4 * 1024 * 1024; // base64 后会膨胀约 4/3，留足余量
+const MAX_PHOTO_BYTES = 2 * 1024 * 1024;
+const PHOTO_COOLDOWN_MS = 10 * 1000;
+const PHOTO_DAILY_LIMIT = 20;
 const QUEUE_WINDOW_MS = 20 * 60 * 1000; // 20 分钟内的上报参与聚合
 const REPORT_COOLDOWN_MS = 3 * 60 * 1000; // 同设备同窗口 3 分钟一次
 const REVIEW_OVERWRITE_MS = 24 * 60 * 60 * 1000;
@@ -74,7 +80,7 @@ reindex();
 
 // ---------------------------------------------------------------- 运行库
 function emptyDb() {
-  return { version: 1, createdAt: Date.now(), reviews: [], queueReports: [] };
+  return { version: 2, createdAt: Date.now(), reviews: [], queueReports: [], dishPhotos: {}, points: {} };
 }
 
 function loadDb() {
@@ -84,6 +90,10 @@ function loadDb() {
     if (!parsed || !Array.isArray(parsed.reviews) || !Array.isArray(parsed.queueReports)) {
       throw new Error('结构不合法');
     }
+    // 老数据平滑升级：补上图片库与积分表
+    if (!parsed.dishPhotos || typeof parsed.dishPhotos !== 'object') parsed.dishPhotos = {};
+    if (!parsed.points || typeof parsed.points !== 'object') parsed.points = {};
+    parsed.version = 2;
     return parsed;
   } catch (err) {
     if (fs.existsSync(DB_FILE)) console.error(`[数据] db.json 读取失败，将重建：${err.message}`);
@@ -197,6 +207,113 @@ function summary() {
   return { queues, ratings, stats: stats() };
 }
 
+// ---------------------------------------------------------------- 积分
+const POINT_RULES = [
+  { type: 'photo_first', label: '首次上传菜品实拍图', points: 20, dailyCap: 100, hint: '同一道菜只算一次，每天图片积分最多 100' },
+  { type: 'photo_more', label: '补充同一菜品的其它照片', points: 5, dailyCap: 100, hint: '这道菜已经有图时，再传一张算补充' },
+  { type: 'review', label: '点评一道菜', points: 5, dailyCap: 30, hint: '24 小时内重复评价同一道菜不重复计分' },
+  { type: 'queue', label: '上报一次窗口排队', points: 2, dailyCap: 20, hint: '同一窗口 3 分钟内只算一次' },
+];
+const RULE_BY_TYPE = new Map(POINT_RULES.map((r) => [r.type, r]));
+
+function dayKey(ts) {
+  const d = new Date(ts || Date.now());
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+function pointsRecord(deviceId) {
+  if (!db.points[deviceId]) db.points[deviceId] = { total: 0, events: [], days: {}, uploads: {} };
+  const rec = db.points[deviceId];
+  if (!Array.isArray(rec.events)) rec.events = [];
+  if (!rec.days || typeof rec.days !== 'object') rec.days = {};
+  if (!rec.uploads || typeof rec.uploads !== 'object') rec.uploads = {};
+  if (typeof rec.total !== 'number') rec.total = 0;
+  return rec;
+}
+
+function awardPoints(deviceId, type, detail) {
+  const rule = RULE_BY_TYPE.get(type);
+  const rec = pointsRecord(deviceId);
+  const day = dayKey();
+  const used = (rec.days[day] && rec.days[day][type]) || 0;
+  const gained = rule ? Math.max(0, Math.min(rule.points, rule.dailyCap - used)) : 0;
+  if (gained > 0) {
+    rec.total += gained;
+    rec.days[day] = rec.days[day] || {};
+    rec.days[day][type] = used + gained;
+    rec.events.push({ type, label: rule.label, points: gained, detail: cleanText(detail, 40), ts: Date.now() });
+    if (rec.events.length > 200) rec.events = rec.events.slice(-200);
+    const keep = Object.keys(rec.days).sort().slice(-30);
+    const trimmed = {};
+    for (const key of keep) trimmed[key] = rec.days[key];
+    rec.days = trimmed;
+  }
+  return { gained, total: rec.total, label: rule ? rule.label : '', capped: Boolean(rule) && gained === 0 };
+}
+
+function captureUploadCount(deviceId) {
+  const rec = pointsRecord(deviceId);
+  const day = dayKey();
+  return rec.uploads[day] || 0;
+}
+
+function bumpUploadCount(deviceId) {
+  const rec = pointsRecord(deviceId);
+  const day = dayKey();
+  rec.uploads[day] = (rec.uploads[day] || 0) + 1;
+  const keep = Object.keys(rec.uploads).sort().slice(-7);
+  const trimmed = {};
+  for (const key of keep) trimmed[key] = rec.uploads[key];
+  rec.uploads = trimmed;
+}
+
+function pointsView(deviceId) {
+  const rec = db.points[deviceId];
+  const day = dayKey();
+  const today = (rec && rec.days && rec.days[day]) || {};
+  const todayPoints = Object.values(today).reduce((sum, value) => sum + value, 0);
+  let contributors = 0;
+  let allPoints = 0;
+  for (const key of Object.keys(db.points)) {
+    const item = db.points[key];
+    if (item && item.total > 0) {
+      contributors += 1;
+      allPoints += item.total;
+    }
+  }
+  return {
+    deviceId,
+    total: rec ? rec.total : 0,
+    todayPoints,
+    today,
+    uploadsToday: captureUploadCount(deviceId),
+    uploadLimit: PHOTO_DAILY_LIMIT,
+    events: rec && Array.isArray(rec.events) ? rec.events.slice(-30).reverse() : [],
+    rules: POINT_RULES,
+    community: { contributors, allPoints, photos: Object.keys(db.dishPhotos).length },
+  };
+}
+
+// ---------------------------------------------------------------- 菜品图片
+const PHOTO_DATA_URL = /^data:image\/(jpeg|jpg|png|webp);base64,([A-Za-z0-9+/=]+)$/i;
+const photoLimits = new Map();
+
+function sniffImage(buf) {
+  if (buf.length > 3 && buf[0] === 0xff && buf[1] === 0xd8 && buf[2] === 0xff) return 'jpg';
+  if (buf.length > 8 && buf[0] === 0x89 && buf[1] === 0x50 && buf[2] === 0x4e && buf[3] === 0x47) return 'png';
+  if (buf.length > 12 && buf.toString('ascii', 0, 4) === 'RIFF' && buf.toString('ascii', 8, 12) === 'WEBP') return 'webp';
+  return null;
+}
+
+function photoView() {
+  const out = {};
+  for (const [dishId, photo] of Object.entries(db.dishPhotos || {})) {
+    if (!photo || !photo.file) continue;
+    out[dishId] = { src: '/uploads/' + photo.file, at: photo.at, by: photo.by || '热心同学' };
+  }
+  return out;
+}
+
 // ---------------------------------------------------------------- 工具
 function sendJson(res, status, body) {
   const payload = Buffer.from(JSON.stringify(body));
@@ -223,13 +340,14 @@ function fail(res, status, message, extra) {
   sendJson(res, status, Object.assign({ error: message }, extra || {}));
 }
 
-function readBody(req) {
+function readBody(req, limit) {
+  const max = limit || MAX_BODY;
   return new Promise((resolve, reject) => {
     let size = 0;
     const chunks = [];
     req.on('data', (chunk) => {
       size += chunk.length;
-      if (size > MAX_BODY) {
+      if (size > max) {
         reject(Object.assign(new Error('请求体过大'), { status: 400 }));
         req.destroy();
         return;
@@ -278,6 +396,61 @@ async function handleApi(req, res, pathname, query) {
     return sendJson(res, 200, stats());
   }
 
+  if (pathname === '/api/dish-photos' && method === 'GET') {
+    return sendJson(res, 200, { photos: photoView(), updatedAt: Date.now() });
+  }
+
+  if (pathname === '/api/points' && method === 'GET') {
+    const deviceId = cleanText(query.get('deviceId'), 80);
+    if (!deviceId) return fail(res, 400, '缺少设备标识');
+    return sendJson(res, 200, pointsView(deviceId));
+  }
+
+  if (pathname === '/api/dish-photo' && method === 'POST') {
+    const body = await readBody(req, MAX_PHOTO_BODY);
+    const dishId = String(body.dishId || '');
+    const deviceId = cleanText(body.deviceId, 80);
+    if (!dishIndex.has(dishId)) return fail(res, 400, '菜品不存在');
+    if (!deviceId) return fail(res, 400, '缺少设备标识');
+    const matched = PHOTO_DATA_URL.exec(String(body.dataUrl || ''));
+    if (!matched) return fail(res, 400, '只支持 JPG / PNG / WebP 图片');
+    const now = Date.now();
+    const last = photoLimits.get(deviceId) || 0;
+    if (now - last < PHOTO_COOLDOWN_MS) {
+      return fail(res, 429, '上传太密集啦，' + Math.ceil((PHOTO_COOLDOWN_MS - (now - last)) / 1000) + ' 秒后再试');
+    }
+    if (captureUploadCount(deviceId) >= PHOTO_DAILY_LIMIT) {
+      return fail(res, 429, `今天的上传次数（${PHOTO_DAILY_LIMIT} 张）用完啦，明天再来`);
+    }
+    const buf = Buffer.from(matched[2], 'base64');
+    if (buf.length < 8 * 1024) return fail(res, 400, '图片有点小，换一张清晰点儿的吧');
+    if (buf.length > MAX_PHOTO_BYTES) return fail(res, 400, '图片不能超过 2MB，建议先裁小一点');
+    const ext = sniffImage(buf);
+    if (!ext) return fail(res, 400, '这个文件看起来不是图片');
+    photoLimits.set(deviceId, now);
+    const hash = crypto.createHash('sha1').update(buf).digest('hex').slice(0, 16);
+    const file = `dish-${hash}.${ext}`;
+    fs.writeFileSync(path.join(UPLOAD_DIR, file), buf);
+    const existed = Boolean(db.dishPhotos[dishId]);
+    db.dishPhotos[dishId] = {
+      file,
+      at: now,
+      deviceId,
+      by: cleanText(body.by, 20) || '热心同学',
+    };
+    bumpUploadCount(deviceId);
+    const found = dishIndex.get(dishId);
+    const points = awardPoints(deviceId, existed ? 'photo_more' : 'photo_first', found ? found.dish.name : dishId);
+    persist();
+    return sendJson(res, 201, {
+      ok: true,
+      photo: { dishId, src: '/uploads/' + file, at: now, by: db.dishPhotos[dishId].by },
+      replaced: existed,
+      points,
+      pointsView: pointsView(deviceId),
+    });
+  }
+
   if (pathname === '/api/queues' && method === 'GET') {
     const now = Date.now();
     const items = windows.map((w) => ({
@@ -318,8 +491,9 @@ async function handleApi(req, res, pathname, query) {
       const keep = new Set(forWindow.slice(-200).map((r) => r.id));
       db.queueReports = db.queueReports.filter((r) => r.windowId !== windowId || keep.has(r.id));
     }
+    const points = awardPoints(deviceId, 'queue', (windowById.get(windowId) || {}).name || windowId);
     persist();
-    return sendJson(res, 201, { ok: true, entry, queue: queueView(windowId, now) });
+    return sendJson(res, 201, { ok: true, entry, queue: queueView(windowId, now), points });
   }
 
   const dishMatch = pathname.match(/^\/api\/dishes\/([^/]+)$/);
@@ -356,6 +530,7 @@ async function handleApi(req, res, pathname, query) {
     let review = db.reviews.find(
       (r) => r.dishId === id && r.deviceId === deviceId && now - r.ts < REVIEW_OVERWRITE_MS
     );
+    let points = { gained: 0, total: 0, label: '', capped: false };
     if (review) {
       Object.assign(review, { rating, text, author, ts: now });
     } else {
@@ -371,6 +546,7 @@ async function handleApi(req, res, pathname, query) {
         likedBy: [],
       };
       db.reviews.push(review);
+      points = awardPoints(deviceId, 'review', review.dishId);
     }
     persist();
     const reviews = db.reviews
@@ -378,7 +554,7 @@ async function handleApi(req, res, pathname, query) {
       .sort((a, b) => b.ts - a.ts)
       .slice(0, 50)
       .map(publicReview);
-    return sendJson(res, 201, { ok: true, review: publicReview(review), stats: dishStats(id), reviews });
+    return sendJson(res, 201, { ok: true, review: publicReview(review), stats: dishStats(id), reviews, points });
   }
 
   const likeMatch = pathname.match(/^\/api\/reviews\/([^/]+)\/like$/);
@@ -546,6 +722,15 @@ function sendFile(res, filePath) {
   });
 }
 
+// ---------------------------------------------------------------- 用户上传的菜品图
+function serveUpload(req, res, pathname) {
+  const name = pathname.slice('/uploads/'.length);
+  if (!/^[A-Za-z0-9][A-Za-z0-9._-]{0,80}$/.test(name) || name.includes('..')) return fail(res, 404, '资源不存在');
+  const filePath = path.join(UPLOAD_DIR, name);
+  if (!filePath.startsWith(UPLOAD_DIR + path.sep)) return fail(res, 403, '禁止访问');
+  return sendFile(res, filePath);
+}
+
 // ---------------------------------------------------------------- 服务
 const server = http.createServer((req, res) => {
   res.__gzip = /\bgzip\b/.test(req.headers['accept-encoding'] || '');
@@ -576,6 +761,8 @@ const server = http.createServer((req, res) => {
     });
     return;
   }
+
+  if (pathname.startsWith('/uploads/')) return serveUpload(req, res, pathname);
 
   if (req.method !== 'GET' && req.method !== 'HEAD') return fail(res, 405, '方法不允许');
   return serveStatic(req, res, pathname);

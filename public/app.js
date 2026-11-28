@@ -23,9 +23,13 @@ const filters = {
 const $ = selector => document.querySelector(selector);
 const $$ = selector => [...document.querySelectorAll(selector)];
 let allDishes = [];
-function rebuildIndexes() { allDishes = windows.flatMap(w => w.dishes.map(d => ({ ...d, window: w }))); }
+function rebuildIndexes() {
+  allDishes = windows.flatMap(w => w.dishes.map(d => ({ ...d, window: w })));
+  if (typeof buildPhotoAssignments === "function") buildPhotoAssignments();
+}
 const getWindow = id => windows.find(w => w.id === id);
 const getCanteen = id => canteens.find(c => c.id === id);
+window.getDishById = id => allDishes.find(d => d.id === id);
 const canteenWindows = () => windows.filter(w => w.canteenId === state.canteenId);
 const getDish = id => allDishes.find(d => d.id === id);
 const getPhoto = id => photoArchive.find(p => p.id === id);
@@ -99,15 +103,45 @@ const PHOTO_KEYWORDS = [
   { key: 'yu', words: ['鱼'] },
 ];
 
-function dishPhoto(d) {
-  const name = d.name || '';
+// 一张图只配一道菜：同一类关键词里挑「菜名最短、最具体」的那道，
+// 其余的菜一律显示绿色占位底图 + 上传按钮，避免同一张图反复出现。
+let photoAssignments = new Map(); // dishId -> src
+let uploadedPhotos = {}; // dishId -> { src, by, at }
+
+function buildPhotoAssignments() {
+  const assigned = new Map();
+  const used = new Set();
   for (const rule of PHOTO_KEYWORDS) {
-    if (!rule.words.some((w) => name.indexOf(w) > -1)) continue;
     const src = DISH_PHOTOS[rule.key];
-    if (src) return { src, match: true };
+    if (!src) continue;
+    let best = null;
+    for (const d of allDishes) {
+      if (used.has(d.id)) continue;
+      const name = d.name || '';
+      if (!rule.words.some((w) => name.indexOf(w) > -1)) continue;
+      if (!best || name.length < (best.name || '').length) best = d;
+    }
+    if (!best) continue;
+    used.add(best.id);
+    assigned.set(best.id, src);
   }
-  return { src: '', match: false };
+  photoAssignments = assigned;
+  return assigned;
 }
+
+function dishPhoto(d) {
+  const upload = uploadedPhotos[d.id];
+  if (upload && upload.src) return { src: upload.src, match: true, uploaded: true, by: upload.by };
+  const src = photoAssignments.get(d.id);
+  return src ? { src, match: true } : { src: '', match: false };
+}
+
+// 由 contribute.js 在拿到 /api/dish-photos 后回填
+window.setDishPhotos = (map) => {
+  uploadedPhotos = map || {};
+  if (window.__appBooted && allDishes.length) renderDishes();
+};
+window.getDishPhotoMap = () => uploadedPhotos;
 let tray = [];
 function restoreTray() {
   try {
@@ -184,11 +218,15 @@ function dishCard(d) {
   const photo = dishPhoto(d);
   const faved = typeof window.isFav === "function" && window.isFav(d.id);
   const tags = (d.labels || []).slice(0, 3);
+  const photoButton = photo.match
+    ? `<button class="dish-photo-btn subtle" type="button" data-photo="${d.id}" aria-label="给${d.name}换一张实拍图">换一张</button>`
+    : `<button class="dish-photo-btn" type="button" data-photo="${d.id}" aria-label="上传${d.name}的实拍图，得 20 积分">拍照上传 <b>+20</b></button>`;
   return `<article class="dish-card" data-dish="${d.id}" tabindex="0" role="button" aria-label="查看${d.name}营养详情">
     <div class="dish-card-image ${photo.match ? "" : "placeholder"}" style="--dish-color:${color};--dish-tint:${tint}">
       ${photo.match
-        ? `<img src="${photo.src}" alt="${d.name}示意图" loading="lazy"><span class="ph-badge">示意图</span>`
+        ? `<img src="${photo.src}" alt="${d.name}示意图" loading="lazy"><span class="ph-badge">${photo.uploaded ? "同学实拍" : "示意图"}</span>`
         : `<span class="ph-icon">${icon(d.icon)}</span><span class="ph-text">暂无配图</span>`}
+      ${photoButton}
       <button class="dish-fav ${faved ? "on" : ""}" type="button" data-fav="${d.id}" aria-pressed="${faved}" aria-label="收藏${d.name}">${icon("heart")}</button>
     </div>
     <div class="dish-card-content">
@@ -246,6 +284,7 @@ function renderDishDetail() {
   const d = getDish(state.detailDishId);
   if (!d) return;
   const w = d.window;
+  const photo = dishPhoto(d);
   const n = nutritionFor(d, state.detailFactor);
   const portionName = factor => factor === 0.5 ? "半份" : factor === 1.5 ? "1.5 份" : "标准份";
   const sourceText = d.source === "窗口公示"
@@ -262,6 +301,14 @@ function renderDishDetail() {
       <div class="detail-energy"><div><strong>${round(n.kcal)}</strong><span>kcal</span></div><small>当前份量能量</small></div>
       <div class="detail-macros"><div><span>蛋白质</span><strong>${one(n.protein)}<small>g</small></strong></div><div><span>碳水化合物</span><strong>${one(n.carbs)}<small>g</small></strong></div><div><span>脂肪</span><strong>${one(n.fat)}<small>g</small></strong></div><div><span>膳食纤维</span><strong>${one(n.fiber)}<small>g</small></strong></div></div>
       <div class="detail-source">${icon("info")}<span><b>${d.source}</b> · ${sourceText}</span></div>
+      <div class="detail-photo-row">
+        ${photo.match
+          ? `<img src="${photo.src}" alt="${d.name}实拍图" loading="lazy">`
+          : `<span class="detail-photo-empty">${icon("image")}还没有实拍图</span>`}
+        <div><b>${photo.match ? (photo.uploaded ? "同学上传的实拍" : "示意图") : "帮忙拍一张？"}</b>
+          <p>拍到菜品和窗口价牌更清楚；上传即可获得积分。</p></div>
+        <button class="detail-photo-btn" type="button" data-photo="${d.id}">${photo.match ? "换一张" : "拍照上传 +20"}</button>
+      </div>
       <button class="button button-primary detail-add" data-detail-add="${d.id}">${icon("plus")}加入今日餐盘 · ${round(n.kcal)} kcal</button>
     </div>
   </div>`;
@@ -397,6 +444,12 @@ $("#dishGrid").addEventListener("click", event => {
     if (typeof window.toggleFav === "function") window.toggleFav(favButton.dataset.fav);
     return;
   }
+  const photoButton = event.target.closest("[data-photo]");
+  if (photoButton) {
+    event.stopPropagation();
+    if (typeof window.openPhotoUpload === "function") window.openPhotoUpload(photoButton.dataset.photo);
+    return;
+  }
   const addButton = event.target.closest("[data-add]");
   if (addButton) {
     event.stopPropagation();
@@ -419,6 +472,11 @@ $("#dishDialogContent").addEventListener("click", event => {
   if (portion) {
     state.detailFactor = Number(portion.dataset.factor);
     renderDishDetail();
+    return;
+  }
+  const photo = event.target.closest("[data-photo]");
+  if (photo) {
+    if (typeof window.openPhotoUpload === "function") window.openPhotoUpload(photo.dataset.photo);
     return;
   }
   const add = event.target.closest("[data-detail-add]");
@@ -552,6 +610,7 @@ function boot() {
   renderFilterTabs();
   renderDishes();
   renderTray();
+  window.__appBooted = true;
 }
 
 document.addEventListener("DOMContentLoaded", async () => {

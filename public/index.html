@@ -10,9 +10,11 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="features.css">
   <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="mobile.css">
   <script src="app.js" defer></script>
   <script src="features.js" defer></script>
   <script src="shell.js" defer></script>
+  <script src="contribute.js" defer></script>
 </head>
 <body>
   <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -115,6 +117,11 @@
         <button class="side-link" data-nav="notice" type="button">公告</button>
       </nav>
 
+      <button class="points-card" id="pointsCard" type="button" data-nav="points">
+        <span class="points-card-top"><small>我的积分</small><b id="pointsCardValue">0</b></span>
+        <span class="points-card-hint">上传菜品实拍 · 点评 · 上报排队都能加分</span>
+      </button>
+
       <div class="sidenav-foot">
         <p>数据以窗口当日公示为准<br><span>现场价目牌 · 2026.11</span></p>
       </div>
@@ -146,6 +153,7 @@
             <svg class="icon"><use href="#i-down"/></svg>
           </label>
           <button class="top-strip-link" id="topSwitch" type="button">切换食堂</button>
+          <button class="points-chip" id="pointsChip" type="button" data-nav="points" aria-label="查看我的积分">积分 <b id="pointsChipValue">0</b></button>
         </div>
         <section class="intro-section" id="pageHeader">
           <div class="intro-copy">
@@ -315,6 +323,23 @@
         <div class="fav-list" id="favList"></div>
       </section>
 
+      <!-- 页面：积分中心 -->
+      <section class="page" data-page="points" hidden>
+        <div class="page-head">
+          <div>
+            <span class="section-index">08</span>
+            <h2>积分中心 <small>传数据，大家一起把菜单做准</small></h2>
+            <p>上传菜品实拍图、补充信息、点评菜品、上报排队都能加分。积分保存在本设备，不需要注册登录。</p>
+          </div>
+          <button class="button button-quiet" id="pointsRefresh" type="button">刷新</button>
+        </div>
+        <div class="points-hero" id="pointsHero"></div>
+        <h3 class="points-subtitle">怎么赚积分</h3>
+        <div class="points-rules" id="pointsRules"></div>
+        <h3 class="points-subtitle">最近的记录</h3>
+        <div class="points-history" id="pointsHistory"></div>
+      </section>
+
       <!-- 页面：排行榜 -->
       <section class="page" data-page="rank" hidden>
         <div class="page-head">
@@ -398,6 +423,14 @@
     </aside>
   </div>
 
+  <nav class="mobile-nav" id="mobileNav" aria-label="手机端导航">
+    <button class="mn-item active" data-nav="windows" type="button"><svg class="icon"><use href="#i-bowl"/></svg><span>菜品</span></button>
+    <button class="mn-item" data-nav="predict" type="button"><svg class="icon"><use href="#i-trend"/></svg><span>排队</span></button>
+    <button class="mn-item" data-nav="points" type="button"><svg class="icon"><use href="#i-plate"/></svg><span>积分<b class="mn-badge" id="pointsNavValue" hidden>0</b></span></button>
+    <button class="mn-item" data-nav="favorites" type="button"><svg class="icon"><use href="#i-heart"/></svg><span>收藏</span></button>
+    <button class="mn-item" data-nav="records" type="button"><svg class="icon"><use href="#i-calendar"/></svg><span>记录</span></button>
+  </nav>
+
   <button class="mobile-tray-button" id="mobileTrayBtn"><svg class="icon"><use href="#i-bowl"/></svg><span>今日餐盘</span><b id="mobileTrayCount">0</b><strong id="mobileTrayCalories">0 kcal</strong></button>
   <div class="drawer-backdrop" id="drawerBackdrop"></div>
   <div class="toast" id="toast" role="status" aria-live="polite"><svg class="icon"><use href="#i-check"/></svg><span></span></div>
@@ -443,6 +476,29 @@
       <li><b>04</b><div><h3>今日餐盘 · 参考份量换算</h3><p>每道菜设有参考食用克重，支持半份、标准份和 1.5 份切换，仅用于日常饮食参考。</p></div></li>
     </ol>
     <button class="button button-primary data-confirm" data-close="dataDialog">我知道了</button>
+  </dialog>
+
+  <dialog class="photo-dialog" id="photoDialog">
+    <div class="photo-head">
+      <div><span class="eyebrow">DISH PHOTO · 帮大家看见真菜</span><h2 id="photoDishName">上传菜品实拍</h2></div>
+      <button class="icon-button" data-close="photoDialog" aria-label="关闭"><svg class="icon"><use href="#i-close"/></svg></button>
+    </div>
+    <div class="photo-body">
+      <label class="photo-drop" id="photoDrop">
+        <input id="photoInput" type="file" accept="image/*" capture="environment" hidden>
+        <span class="photo-preview" id="photoPreview">
+          <svg class="icon"><use href="#i-image"/></svg>
+          <strong>拍照 / 从相册选择</strong>
+          <small>拍到菜品和窗口价牌，画面清楚就好</small>
+        </span>
+      </label>
+      <p class="photo-tip" id="photoTip">首次上传这道菜 +20 积分，之后补充 +5；每天最多 20 张。</p>
+      <p class="photo-status" id="photoStatus" hidden></p>
+      <div class="photo-actions">
+        <button class="button button-quiet" type="button" data-close="photoDialog">取消</button>
+        <button class="button button-primary" id="photoSubmit" type="button" disabled>上传并领积分</button>
+      </div>
+    </div>
   </dialog>
 
   <dialog class="admin-dialog" id="adminDialog">

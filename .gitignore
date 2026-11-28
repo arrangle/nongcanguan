@@ -7,3 +7,4 @@ data/*.tmp
 .test-server*.log
 project.private.config.json
 .idea/
+data/uploads/
