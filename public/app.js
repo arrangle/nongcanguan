@@ -90,6 +90,7 @@ function renderWindowList() {
   const empty = $("#windowEmpty");
   if (empty) empty.hidden = list.length !== 0;
   if (typeof window.decorateWindows === "function") window.decorateWindows();
+  if (typeof window.renderTopWindows === "function") window.renderTopWindows();
 }
 
 function renderWindowHero() {

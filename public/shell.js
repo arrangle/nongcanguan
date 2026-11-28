@@ -119,6 +119,19 @@
     } catch (_) { /* 后端未启动时静默 */ }
   }
 
+  // ------------------------------------------------------------------ 顶部「切换窗口」
+  function renderTopWindows() {
+    const select = $('#topWindowSelect');
+    if (!select || typeof windows === 'undefined' || !Array.isArray(windows)) return;
+    const list = windows.filter((w) => w.canteenId === state.canteenId);
+    select.innerHTML = list.map((w) =>
+      '<option value="' + w.id + '"' + (w.id === state.windowId ? ' selected' : '') + '>' +
+        (w.number ? w.number + ' 号 · ' : '') + esc(w.name) +
+      '</option>'
+    ).join('');
+  }
+  window.renderTopWindows = renderTopWindows;
+
   // ------------------------------------------------------------------ 选择食堂（二级入口）
   function renderCanteenCards() {
     const host = $('#canteenCards');
@@ -501,6 +514,10 @@
 
     const layout = $('.dish-layout');
     if (layout) layout.classList.toggle('rail-collapsed', collapsed.rail);
+    const topWindowSelect = $('#topWindowSelect');
+    if (topWindowSelect) topWindowSelect.addEventListener('change', (event) => {
+      if (typeof selectWindow === 'function') selectWindow(event.target.value);
+    });
     const topSwitch = $('#topSwitch');
     if (topSwitch) topSwitch.addEventListener('click', () => {
       setPage('choose');
@@ -640,6 +657,7 @@
 
     renderCanteenSidebar();
     renderCanteenCards();
+    renderTopWindows();
     document.addEventListener('click', (event) => {
       const item = event.target.closest('#canteenEast [data-canteen], #canteenWest [data-canteen]');
       if (item) {
