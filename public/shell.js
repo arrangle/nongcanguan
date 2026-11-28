@@ -466,8 +466,8 @@
   function readCollapse() {
     try {
       const value = JSON.parse(localStorage.getItem(COLLAPSE_KEY) || '{}');
-      return { options: Boolean(value.options), rail: Boolean(value.rail) };
-    } catch (_) { return { options: false, rail: false }; }
+      return { options: Boolean(value.options), rail: Boolean(value.rail), header: Boolean(value.header) };
+    } catch (_) { return { options: false, rail: false, header: false }; }
   }
 
   function saveCollapse(state) {
@@ -477,6 +477,14 @@
   const collapsed = readCollapse();
 
   function applyCollapse() {
+    const header = $('#pageHeader');
+    if (header) header.classList.toggle('compact', collapsed.header);
+    const headerToggle = $('#toggleHeader');
+    if (headerToggle) {
+      headerToggle.setAttribute('aria-expanded', String(!collapsed.header));
+      headerToggle.classList.toggle('is-collapsed', collapsed.header);
+    }
+
     const zone = $('#optionZone');
     if (zone) zone.hidden = collapsed.options;
     const toggle = $('#toggleOptions');
@@ -503,6 +511,12 @@
     const toggle = $('#toggleOptions');
     if (toggle) toggle.addEventListener('click', () => {
       collapsed.options = !collapsed.options;
+      saveCollapse(collapsed);
+      applyCollapse();
+    });
+    const headerToggle = $('#toggleHeader');
+    if (headerToggle) headerToggle.addEventListener('click', () => {
+      collapsed.header = !collapsed.header;
       saveCollapse(collapsed);
       applyCollapse();
     });

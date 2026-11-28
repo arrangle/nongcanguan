@@ -135,7 +135,7 @@
 
       <!-- 页面：窗口 -->
       <section class="page" data-page="windows" hidden>
-        <section class="intro-section">
+        <section class="intro-section" id="pageHeader">
           <div class="intro-copy">
             <h1>窗口和菜单</h1>
             <p><span id="introCanteen">公一食堂</span> · 看菜价、菜品和当前排队情况</p>
@@ -146,6 +146,9 @@
             <button class="button button-quiet" id="switchCanteen" type="button">切换食堂</button>
             <button class="button button-primary" id="toggleOptions" type="button" aria-expanded="true">
               <span>收起选项</span><svg class="icon"><use href="#i-down"/></svg>
+            </button>
+            <button class="icon-button header-toggle" id="toggleHeader" type="button" aria-label="收起头部" aria-expanded="true" title="收起 / 展开头部">
+              <svg class="icon"><use href="#i-down"/></svg>
             </button>
           </div>
         </section>
