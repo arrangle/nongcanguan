@@ -136,6 +136,14 @@ async function waitForPort(timeoutMs = 15000) {
     await wait(700);
     await shot('05-rank');
 
+    await evaluate("document.querySelector('[data-nav=\"peaks\"]').click(), true");
+    await wait(1200);
+    await shot('05b-peaks');
+
+    await evaluate("document.querySelector('[data-nav=\"favorites\"]').click(), true");
+    await wait(600);
+    await shot('05c-favorites');
+
     await evaluate("document.querySelector('[data-nav=\"more\"]').click(), true");
     await wait(500);
     await shot('06-more');

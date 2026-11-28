@@ -90,23 +90,30 @@
         <span><strong>农餐馆</strong><small>CAU FOOD GUIDE</small></span>
       </a>
 
-      <p class="side-title">食堂导航</p>
-      <button class="side-link active" data-nav="windows" type="button" aria-current="page">全部菜品</button>
-      <button class="side-link" data-nav="rank" type="button">人气榜</button>
+      <nav class="side-section" aria-label="浏览">
+        <p class="side-title">浏览</p>
+        <button class="side-link active" data-nav="windows" type="button" aria-current="page">全部菜品</button>
+        <button class="side-link" data-nav="rank" type="button">人气榜</button>
+        <button class="side-link" data-nav="peaks" type="button">高峰预测</button>
+        <button class="side-link" data-nav="favorites" type="button">我的收藏</button>
+      </nav>
 
-      <p class="side-group">东校区</p>
-      <div class="side-canteens" id="canteenEast"></div>
+      <nav class="side-section" aria-label="食堂导航">
+        <p class="side-title">食堂导航</p>
+        <p class="side-group">东校区</p>
+        <div class="side-canteens" id="canteenEast"></div>
+        <p class="side-group">西校区</p>
+        <div class="side-canteens" id="canteenWest"></div>
+      </nav>
 
-      <p class="side-group">西校区</p>
-      <div class="side-canteens" id="canteenWest"></div>
-
-      <div class="side-divider"></div>
-      <button class="side-link" data-nav="predict" type="button">为你推荐</button>
-      <button class="side-link" data-nav="more" type="button">其他功能</button>
-      <button class="side-link" data-nav="records" type="button">饮食记录</button>
-      <button class="side-link" data-nav="account" type="button">个人账户</button>
-      <button class="side-link" data-nav="about" type="button">数据说明</button>
-      <button class="side-link" data-nav="notice" type="button">公告</button>
+      <nav class="side-section" aria-label="工具">
+        <p class="side-title">工具</p>
+        <button class="side-link" data-nav="predict" type="button">为你推荐</button>
+        <button class="side-link" data-nav="more" type="button">其他功能</button>
+        <button class="side-link" data-nav="records" type="button">饮食记录</button>
+        <button class="side-link" data-nav="about" type="button">数据说明</button>
+        <button class="side-link" data-nav="notice" type="button">公告</button>
+      </nav>
 
       <div class="sidenav-foot">
         <div class="mini-stats">
@@ -120,7 +127,7 @@
     <main class="stage">
       <header class="stage-top">
         <div class="stage-actions">
-          <button class="button button-quiet" id="galleryBtn" type="button"><svg class="icon"><use href="#i-image"/></svg><span>现场菜单</span><b>14</b></button>
+          <button class="button button-quiet" id="galleryBtn" type="button"><svg class="icon"><use href="#i-image"/></svg><span>照片</span><b>84</b></button>
           <button class="icon-button" id="dataBtn" aria-label="营养数据说明" title="营养数据说明"><svg class="icon"><use href="#i-info"/></svg></button>
         </div>
       </header>
@@ -167,7 +174,7 @@
             <h2 id="windowHeroName">低脂美食新风尚</h2>
             <p id="windowHeroDescription"></p>
           </div>
-          <button class="photo-button" id="windowPhotoBtn" type="button"><svg class="icon"><use href="#i-image"/></svg>查看现场菜单</button>
+          <button class="photo-button" id="windowPhotoBtn" type="button"><svg class="icon"><use href="#i-image"/></svg>查看照片</button>
         </div>
 
         <div class="dish-list-heading">
@@ -247,6 +254,33 @@
         </div>
         <div class="records-table" id="recordsTable"></div>
         <p class="records-ai" id="recordsAi"></p>
+      </section>
+
+      <!-- 页面：高峰预测 -->
+      <section class="page" data-page="peaks" hidden>
+        <div class="page-head">
+          <div>
+            <span class="section-index">06</span>
+            <h2>高峰预测 <small>哪个时段最挤</small></h2>
+            <p>根据同学上报的排队记录，按小时汇总平均等待时间；样本不足时给出用餐时段的经验参考。</p>
+          </div>
+        </div>
+        <div class="peak-summary" id="peakSummary"></div>
+        <div class="peak-chart" id="peakChart"></div>
+        <p class="peak-note" id="peakNote"></p>
+      </section>
+
+      <!-- 页面：我的收藏 -->
+      <section class="page" data-page="favorites" hidden>
+        <div class="page-head">
+          <div>
+            <span class="section-index">07</span>
+            <h2>我的收藏</h2>
+            <p>在菜品卡右上角点心形即可收藏，收藏只保存在这台设备。</p>
+          </div>
+          <button class="button button-quiet" id="favClear" type="button">清空收藏</button>
+        </div>
+        <div class="fav-list" id="favList"></div>
       </section>
 
       <!-- 页面：排行榜 -->

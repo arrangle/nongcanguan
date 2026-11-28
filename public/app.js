@@ -40,26 +40,17 @@ const priceHTML = (d, large = false) => d.price === null
   ? `<span class="dish-price market">窗口时价</span>`
   : `<span class="dish-price${large ? " large" : ""}"><small>¥</small>${d.price}<small>${d.unit}</small></span>`;
 const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
-// 菜品示意图：没有逐道菜实拍，按菜名/类别映射到 7 张示意图，卡片上标注「示意图」
-const DISH_PHOTOS = {
-  meat: ["kung-pao-chicken", "chicken-stir-fry"],
-  egg: ["tomato-egg"],
-  leaf: ["vegetable-stir-fry", "shrimp-vegetable-stir-fry"],
-  noodles: ["chow-mein"],
-  rice: ["mapo-tofu"],
-  bowl: ["shrimp-vegetable-stir-fry", "vegetable-stir-fry"],
-};
+// 菜品配图：只有「菜名和图片明显对得上」才用示意图，其余用绿色底图占位。
+// 七张示意图来自公开素材（见 docs/图片来源.md），卡片上都标注「示意图」。
 function dishPhoto(d) {
-  if (/虾|蟹|贝|花甲/.test(d.name)) return "assets/dishes/shrimp-vegetable-stir-fry.jpg";
-  if (/豆腐/.test(d.name)) return "assets/dishes/mapo-tofu.png";
-  if (/番茄|西红柿|鸡蛋|蛋炒/.test(d.name)) return "assets/dishes/tomato-egg.jpg";
-  if (/面|粉|米线/.test(d.name)) return "assets/dishes/chow-mein.jpg";
-  if (/饭/.test(d.name)) return "assets/dishes/mapo-tofu.png";
-  if (/鸡|鸭/.test(d.name)) return "assets/dishes/kung-pao-chicken.jpg";
-  if (/牛|羊|猪|肉/.test(d.name)) return "assets/dishes/chicken-stir-fry.jpg";
-  const pool = DISH_PHOTOS[d.icon] || DISH_PHOTOS.bowl;
-  const pick = pool[Math.abs(d.name.length + d.name.charCodeAt(0)) % pool.length];
-  return "assets/dishes/" + pick + (pick === "mapo-tofu" ? ".png" : ".jpg");
+  const name = d.name || "";
+  if (/虾|蟹|贝|花甲|花蛤|鱿鱼|八爪|蛏/.test(name)) return { src: "assets/dishes/shrimp-vegetable-stir-fry.jpg", match: true };
+  if (/豆腐|豆花|麻婆/.test(name)) return { src: "assets/dishes/mapo-tofu.png", match: true };
+  if (/番茄|西红柿/.test(name) && /蛋/.test(name)) return { src: "assets/dishes/tomato-egg.jpg", match: true };
+  if (/鸡丁|宫保|鸡块|辣子鸡|鸡米花|鸡柳/.test(name)) return { src: "assets/dishes/kung-pao-chicken.jpg", match: true };
+  if (/炒面|炒河粉|炒粉|捞面|拌面|炒饼|炒饭/.test(name)) return { src: "assets/dishes/chow-mein.jpg", match: true };
+  if (/西兰花|芥蓝|菠菜|油菜|青菜|小白菜|包菜|菜花|菜心|蒿子秆|空心菜|生菜|莴笋|豆角|荷兰豆/.test(name)) return { src: "assets/dishes/vegetable-stir-fry.jpg", match: true };
+  return { src: "", match: false };
 }
 
 let tray = [];
@@ -135,10 +126,10 @@ function getVisibleDishes() {
 function dishCard(d) {
   const [color, tint] = iconStyles[d.icon] || iconStyles.bowl;
   const faved = typeof window.isFav === "function" && window.isFav(d.id);
+  const photo = dishPhoto(d);
   return `<article class="dish-card" data-dish="${d.id}" tabindex="0" role="button" aria-label="查看${d.name}营养详情" style="--dish-color:${color};--dish-tint:${tint}">
-    <div class="dish-card-image">
-      <img src="${dishPhoto(d)}" alt="${d.name}菜品示意图" loading="lazy">
-      <span>菜品示意图</span>
+    <div class="dish-card-image ${photo.match ? "" : "placeholder"}" style="--dish-color:${color};--dish-tint:${tint}">
+      ${photo.match ? `<img src="${photo.src}" alt="${d.name}示意配图" loading="lazy"><span class="ph-badge">示意图</span>` : `<span class="ph-icon">${icon(d.icon)}</span><span class="ph-text">暂无配图</span>`}
       <button class="dish-fav ${faved ? "on" : ""}" type="button" data-fav="${d.id}" aria-pressed="${faved}" aria-label="收藏${d.name}">${icon("heart")}</button>
     </div>
     <div class="dish-card-content">

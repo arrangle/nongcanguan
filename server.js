@@ -400,6 +400,39 @@ async function handleApi(req, res, pathname, query) {
     return sendJson(res, 200, { ok: true, likes: review.likes, liked: true });
   }
 
+  if (pathname === '/api/peaks' && method === 'GET') {
+    // 按小时聚合历史排队上报，给出「什么时段最挤」「现在去是否划算」
+    const days = Math.min(90, Math.max(1, Number(query.get('days')) || 60));
+    const since = Date.now() - days * 24 * 3600 * 1000;
+    const buckets = new Map();
+    for (let hour = 6; hour <= 21; hour += 1) buckets.set(hour, { hour, reports: 0, people: 0, waitMin: 0 });
+    let sample = 0;
+    for (const report of db.queueReports) {
+      if (!report || report.ts < since) continue;
+      const hour = new Date(report.ts).getHours();
+      if (hour < 6 || hour > 21) continue;
+      const bucket = buckets.get(hour);
+      bucket.reports += 1;
+      bucket.people += Number(report.people) || 0;
+      bucket.waitMin += Math.round((Number(report.people) || 0) * 0.4);
+      sample += 1;
+    }
+    const hours = [...buckets.values()].map((b) => ({
+      hour: b.hour,
+      reports: b.reports,
+      avgPeople: b.reports ? Math.round((b.people / b.reports) * 10) / 10 : 0,
+      avgWait: b.reports ? Math.round(b.waitMin / b.reports) : 0,
+    }));
+    const ranked = hours.filter((h) => h.reports > 0).sort((a, b) => b.avgWait - a.avgWait);
+    return sendJson(res, 200, {
+      days,
+      sample,
+      hours,
+      peak: ranked.length ? ranked[0] : null,
+      quietest: ranked.length ? ranked[ranked.length - 1] : null,
+    });
+  }
+
   if (pathname === '/api/leaderboard' && method === 'GET') {
     const type = query.get('type') || 'rating';
     if (type === 'empty') {

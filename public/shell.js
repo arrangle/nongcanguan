@@ -68,6 +68,8 @@
       return;
     }
     if (name === 'account') { setPage('records'); return; }
+    if (name === 'peaks') { setPage('peaks'); renderPeaks(); return; }
+    if (name === 'favorites') { setPage('favorites'); renderFavorites(); return; }
     setPage(name);
   }
 
@@ -94,8 +96,15 @@
     });
     const meta = $('#windowQueueMeta');
     if (meta) {
-      const s2 = (summary && summary.stats) || {};
-      meta.textContent = '每分钟更新 · 今日 ' + (s2.reportsToday || 0) + ' 次上报';
+      const queues = summary.queues || {};
+      const current = (typeof state !== 'undefined' && state.windowId) ? queues[state.windowId] : null;
+      const list = Object.keys(queues).map((id) => queues[id]).filter((q) => q && !q.stale);
+      const best = list.sort((a, b) => a.waitMin - b.waitMin)[0];
+      let text;
+      if (current && !current.stale) text = '当前窗口 ' + current.people + ' 人 · 约 ' + current.waitMin + ' 分钟';
+      else if (best) text = '最空 ' + best.people + ' 人 · 约 ' + best.waitMin + ' 分钟';
+      else text = '暂无上报 · 点下方「上报排队」帮大家一把';
+      meta.textContent = text;
     }
   }
   window.decorateWindows = decorateWindows;
@@ -120,13 +129,25 @@
     const paint = (hostId, ids) => {
       const host = document.getElementById(hostId);
       if (!host) return;
+      const canteenList = (typeof windows === 'undefined' || !Array.isArray(windows)) ? [] : windows;
       host.innerHTML = ids.filter((id) => byId[id]).map((id) => {
         const c = byId[id];
         const online = c.status === 'online';
-        const active = (typeof state !== 'undefined' && state.canteenId === id) ? ' active' : '';
-        return '<button class="side-link side-child' + active + (online ? '' : ' pending') + '" type="button" data-canteen="' + id + '">' +
+        const isActive = (typeof state !== 'undefined' && state.canteenId === id);
+        let html = '<button class="side-link side-child' + (isActive ? ' active' : '') + (online ? '' : ' pending') + '" type="button" data-canteen="' + id + '">' +
           esc(c.name) + (online ? '<small>已录入</small>' : '<small>待录入</small>') +
         '</button>';
+        if (isActive && online) {
+          const items = canteenList.filter((w) => w.canteenId === id);
+          html += '<div class="side-windows">' + items.map((w) =>
+            '<button class="side-window' + (typeof state !== 'undefined' && state.windowId === w.id ? ' active' : '') + '" type="button" data-window="' + w.id + '">' +
+              '<span class="sw-num">' + (w.number || '·') + '</span>' +
+              '<span class="sw-name">' + esc(w.name) + '</span>' +
+              '<span class="sw-count">' + w.dishes.length + '</span>' +
+            '</button>'
+          ).join('') + '</div>';
+        }
+        return html;
       }).join('');
     };
     paint('canteenEast', EAST);
@@ -291,6 +312,75 @@
       avgProtein.toFixed(0) + 'g，' + vegMeals + ' 餐有蔬菜。' + tips.join('；') + '。（按本地记录规则生成）</span>';
   }
 
+  // ------------------------------------------------------------------ 高峰预测
+  const BASELINE = { 7: 2, 8: 4, 11: 6, 12: 9, 13: 5, 17: 5, 18: 8, 19: 4 };
+
+  async function renderPeaks() {
+    const host = $('#peakChart');
+    const summaryHost = $('#peakSummary');
+    const noteHost = $('#peakNote');
+    if (!host) return;
+    host.innerHTML = '<p class="peak-loading">正在读取排队记录…</p>';
+    let data = null;
+    try {
+      const response = await fetch('/api/peaks?days=60', { cache: 'no-store' });
+      data = await response.json();
+    } catch (_) { data = null; }
+    if (!data || !Array.isArray(data.hours)) {
+      host.innerHTML = '<p class="peak-loading">高峰数据加载失败，请确认后端已启动。</p>';
+      return;
+    }
+    const real = data.sample >= 8;
+    const hours = data.hours.map((h) => ({
+      hour: h.hour,
+      value: real ? h.avgWait : (BASELINE[h.hour] || 0),
+      reports: h.reports,
+      avgPeople: h.avgPeople,
+    }));
+    const max = Math.max.apply(null, hours.map((h) => h.value).concat([1]));
+    const peak = hours.slice().sort((a, b) => b.value - a.value)[0];
+    host.innerHTML = hours.map((h) => {
+      const height = Math.max(4, Math.round((h.value / max) * 100));
+      const isPeak = peak && h.hour === peak.hour && h.value > 0;
+      return '<div class="peak-col' + (isPeak ? ' peak' : '') + '">' +
+        '<div class="peak-bar-wrap"><div class="peak-bar" style="height:' + height + '%"></div></div>' +
+        '<div class="peak-hour">' + h.hour + ':00</div>' +
+        '<div class="peak-val">' + (real ? (h.value ? h.value + ' 分钟' : '—') : (h.value ? h.value + ' 分' : '—')) + '</div>' +
+      '</div>';
+    }).join('');
+
+    if (summaryHost) {
+      summaryHost.innerHTML = real
+        ? '<div class="peak-kpi"><b>' + peak.hour + ':00–' + (peak.hour + 1) + ':00</b><span>最挤时段</span></div>' +
+          '<div class="peak-kpi"><b>' + Math.round(peak.value) + ' 分钟</b><span>平均等待</span></div>' +
+          '<div class="peak-kpi"><b>' + data.sample + ' 次</b><span>近 ' + data.days + ' 天上报</span></div>'
+        : '<div class="peak-kpi"><b>' + peak.hour + ':00–' + (peak.hour + 1) + ':00</b><span>经验高峰</span></div>' +
+          '<div class="peak-kpi"><b>样本不足</b><span>已累计 ' + data.sample + ' 次上报</span></div>';
+    }
+    if (noteHost) {
+      noteHost.textContent = real
+        ? '柱高为各小时的平均等待时间（按每 20 分钟窗口内的上报中位数统计）。数据来自同学的真实上报，最近 ' + data.days + ' 天共 ' + data.sample + ' 条。'
+        : '目前只有 ' + data.sample + ' 条上报，还不足以统计。图为食堂用餐时段的经验曲线（早 7–8 点、午 11–13 点、晚 17–19 点），多报几次就会换成真实数据。';
+    }
+  }
+
+  // ------------------------------------------------------------------ 我的收藏
+  function renderFavorites() {
+    const host = $('#favList');
+    if (!host) return;
+    const items = [...favorites].map((id) => (typeof getDish === 'function' ? getDish(id) : null)).filter(Boolean);
+    if (!items.length) {
+      host.innerHTML = '<p class="fav-empty">还没有收藏。在菜品卡右上角点一下心形即可收藏。</p>';
+      return;
+    }
+    host.innerHTML = items.map((d) => '<article class="fav-item" data-fav-open="' + d.id + '">' +
+        '<div class="fav-copy"><strong>' + esc(d.name) + '</strong>' +
+        '<small>' + (d.window && d.window.number ? esc(d.window.number) + ' 号窗口 · ' : '') + esc(d.window ? d.window.name : '') +
+        ' · ' + Math.round(d.kcal) + ' kcal/100g</small></div>' +
+        '<button class="fav-remove" type="button" data-fav-remove="' + d.id + '">取消收藏</button>' +
+      '</article>').join('');
+  }
+
   // ------------------------------------------------------------------ 排行榜
   let rankLoaded = false;
 
@@ -385,6 +475,31 @@
         openGallery();
         return;
       }
+
+      const favRemove = event.target.closest('[data-fav-remove]');
+      if (favRemove) {
+        const id = favRemove.getAttribute('data-fav-remove');
+        favorites.delete(id);
+        saveFavorites();
+        renderFavorites();
+        if (typeof openDish === 'function') { /* 保持页面 */ }
+        toast('已取消收藏');
+        return;
+      }
+
+      const favOpen = event.target.closest('[data-fav-open]');
+      if (favOpen && typeof openDish === 'function') {
+        openDish(favOpen.getAttribute('data-fav-open'));
+        return;
+      }
+
+      if (event.target.closest('#favClear')) {
+        favorites.clear();
+        saveFavorites();
+        renderFavorites();
+        toast('收藏已清空');
+        return;
+      }
     });
 
     $('#searchInput') && $('#searchInput').addEventListener('input', (event) => {
@@ -411,6 +526,12 @@
     document.addEventListener('click', (event) => {
       const item = event.target.closest('#canteenEast [data-canteen], #canteenWest [data-canteen]');
       if (item) setTimeout(renderCanteenSidebar, 60);
+      const win = event.target.closest('#canteenEast [data-window], #canteenWest [data-window]');
+      if (win && typeof selectWindow === 'function') {
+        setPage('windows');
+        selectWindow(win.getAttribute('data-window'));
+        setTimeout(renderCanteenSidebar, 80);
+      }
     }, true);
 
     loadSummary();
