@@ -183,16 +183,6 @@
         let html = '<button class="side-link side-child' + (isActive ? ' active' : '') + (online ? '' : ' pending') + '" type="button" data-canteen="' + id + '">' +
           esc(c.name) + (online ? '<small>已录入</small>' : '<small>待录入</small>') +
         '</button>';
-        if (isActive && online) {
-          const items = canteenList.filter((w) => w.canteenId === id);
-          html += '<div class="side-windows">' + items.map((w) =>
-            '<button class="side-window' + (typeof state !== 'undefined' && state.windowId === w.id ? ' active' : '') + '" type="button" data-window="' + w.id + '">' +
-              '<span class="sw-num">' + (w.number || '·') + '</span>' +
-              '<span class="sw-name">' + esc(w.name) + '</span>' +
-              '<span class="sw-count">' + w.dishes.length + '</span>' +
-            '</button>'
-          ).join('') + '</div>';
-        }
         return html;
       }).join('');
     };
