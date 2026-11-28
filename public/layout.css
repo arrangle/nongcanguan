@@ -781,3 +781,18 @@ body { font-size: 14px; line-height: 1.65; letter-spacing: .01em; }
 
 .dish-layout.rail-collapsed { grid-template-columns: minmax(0, 1fr); }
 .dish-layout.rail-collapsed .filter-rail { display: none; }
+
+/* 顶区：标题行操作 + 可收起的选项区 */
+.intro-section { align-items: center; gap: 18px; padding-bottom: 8px; }
+.intro-actions { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
+.intro-actions .button { min-height: 38px; }
+.intro-actions .icon-button { width: 38px; height: 38px; }
+#toggleOptions .icon { width: 14px; height: 14px; transition: transform .2s ease; }
+#toggleOptions[aria-expanded="true"] .icon { transform: rotate(180deg); }
+.option-zone { display: block; }
+.option-zone[hidden] { display: none; }
+.option-zone .toolbar { margin-top: 4px; }
+@media (max-width: 900px) {
+  .intro-actions { flex-wrap: wrap; }
+  .intro-actions .button span { font-size: 12px; }
+}

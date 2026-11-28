@@ -466,8 +466,8 @@
   function readCollapse() {
     try {
       const value = JSON.parse(localStorage.getItem(COLLAPSE_KEY) || '{}');
-      return { windows: Boolean(value.windows), rail: Boolean(value.rail) };
-    } catch (_) { return { windows: false, rail: false }; }
+      return { options: Boolean(value.options), rail: Boolean(value.rail) };
+    } catch (_) { return { options: false, rail: false }; }
   }
 
   function saveCollapse(state) {
@@ -477,12 +477,15 @@
   const collapsed = readCollapse();
 
   function applyCollapse() {
-    const panel = $('.window-panel');
-    if (panel) panel.classList.toggle('collapsed', collapsed.windows);
-    const toggle = $('#toggleWindowPanel');
+    const zone = $('#optionZone');
+    if (zone) zone.hidden = collapsed.options;
+    const toggle = $('#toggleOptions');
     if (toggle) {
-      toggle.setAttribute('aria-expanded', String(!collapsed.windows));
-      toggle.querySelector('span').textContent = collapsed.windows ? '展开' : '收起';
+      toggle.setAttribute('aria-expanded', String(!collapsed.options));
+      const label = toggle.querySelector('span');
+      if (label) label.textContent = collapsed.options ? '展开选项' : '收起选项';
+      toggle.classList.toggle('button-quiet', collapsed.options);
+      toggle.classList.toggle('button-primary', !collapsed.options);
     }
 
     const layout = $('.dish-layout');
@@ -490,15 +493,16 @@
     const railToggle = $('#toggleFilterRail');
     if (railToggle) {
       railToggle.setAttribute('aria-expanded', String(!collapsed.rail));
-      railToggle.querySelector('span').textContent = collapsed.rail ? '筛选' : '收起筛选';
+      const label = railToggle.querySelector('span');
+      if (label) label.textContent = collapsed.rail ? '筛选' : '收起筛选';
     }
   }
 
   function bindCollapse() {
     applyCollapse();
-    const windowToggle = $('#toggleWindowPanel');
-    if (windowToggle) windowToggle.addEventListener('click', () => {
-      collapsed.windows = !collapsed.windows;
+    const toggle = $('#toggleOptions');
+    if (toggle) toggle.addEventListener('click', () => {
+      collapsed.options = !collapsed.options;
       saveCollapse(collapsed);
       applyCollapse();
     });

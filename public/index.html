@@ -121,13 +121,6 @@
     </aside>
 
     <main class="stage">
-      <header class="stage-top">
-        <div class="stage-actions">
-          <button class="button button-quiet" id="galleryBtn" type="button"><svg class="icon"><use href="#i-image"/></svg><span>照片</span><b>84</b></button>
-          <button class="icon-button" id="dataBtn" aria-label="营养数据说明" title="营养数据说明"><svg class="icon"><use href="#i-info"/></svg></button>
-        </div>
-      </header>
-
       <!-- 页面：选择食堂（二级入口） -->
       <section class="page" data-page="choose" hidden>
         <div class="page-head">
@@ -144,13 +137,20 @@
       <section class="page" data-page="windows" hidden>
         <section class="intro-section">
           <div class="intro-copy">
-            <p class="eyebrow" id="introCanteen">公一食堂</p>
             <h1>窗口和菜单</h1>
-            <p>看菜价、菜品和当前排队情况。</p>
+            <p><span id="introCanteen">公一食堂</span> · 看菜价、菜品和当前排队情况</p>
           </div>
-          <button class="button button-quiet" id="switchCanteen" type="button">切换食堂</button>
+          <div class="intro-actions">
+            <button class="button button-quiet" id="galleryBtn" type="button"><svg class="icon"><use href="#i-image"/></svg><span>照片</span><b>84</b></button>
+            <button class="icon-button" id="dataBtn" aria-label="营养数据说明" title="营养数据说明"><svg class="icon"><use href="#i-info"/></svg></button>
+            <button class="button button-quiet" id="switchCanteen" type="button">切换食堂</button>
+            <button class="button button-primary" id="toggleOptions" type="button" aria-expanded="true">
+              <span>收起选项</span><svg class="icon"><use href="#i-down"/></svg>
+            </button>
+          </div>
         </section>
 
+        <div class="option-zone" id="optionZone">
         <section class="toolbar" aria-label="菜品搜索">
           <label class="search-box" for="searchInput">
             <svg class="icon"><use href="#i-search"/></svg>
@@ -163,12 +163,7 @@
         <section class="window-panel" aria-label="窗口目录">
           <div class="panel-heading">
             <div><span class="section-index">窗口</span><h2>选择窗口</h2></div>
-            <div class="panel-head-right">
-              <span class="queue-updated" id="windowQueueMeta">排队数据加载中</span>
-              <button class="panel-toggle" id="toggleWindowPanel" type="button" aria-expanded="true">
-                <span>收起</span><svg class="icon"><use href="#i-down"/></svg>
-              </button>
-            </div>
+            <span class="queue-updated" id="windowQueueMeta">排队数据加载中</span>
           </div>
           <div class="window-strip" id="windowList" role="tablist" aria-label="窗口选择"></div>
           <p class="window-empty" id="windowEmpty" hidden>这个食堂的窗口还没录入，先看看公一、公三、和园或颐园的现场价目牌。</p>
@@ -183,13 +178,11 @@
           </div>
           <button class="photo-button" id="windowPhotoBtn" type="button"><svg class="icon"><use href="#i-image"/></svg>查看照片</button>
         </div>
+        </div>
 
         <div class="dish-layout">
           <aside class="filter-rail" aria-label="筛选与排序">
-            <div class="rail-head">
-              <p class="rail-title">筛选</p>
-              <button class="rail-collapse" id="collapseFilterRail" type="button" aria-label="收起筛选栏">收起</button>
-            </div>
+            <div class="rail-head"><p class="rail-title">筛选</p></div>
             <div class="filter-tabs" id="filterTabs" role="group" aria-label="营养筛选">
               <button class="active" data-filter="all">全部菜品</button>
               <button data-filter="light"><svg class="icon"><use href="#i-leaf"/></svg>轻盈低脂</button>
