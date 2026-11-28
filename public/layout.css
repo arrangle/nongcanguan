@@ -668,3 +668,89 @@ body { font-size: 14px; line-height: 1.65; letter-spacing: .01em; }
   position: static; padding: 0; background: none;
   color: #4c6b56; font-size: 11px; letter-spacing: .5px;
 }
+
+/* ================================================================
+   二级入口（选择食堂）+ 左侧筛选栏 + 纯文字菜品卡
+   ================================================================ */
+
+/* 选择食堂 */
+.canteen-cards { display: flex; flex-direction: column; gap: 18px; }
+.canteen-group-title {
+  margin-bottom: 8px; color: #7d8c82;
+  font-size: 12px; font-weight: 600; letter-spacing: 1px;
+}
+.canteen-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+.canteen-card {
+  position: relative; padding: 16px 16px 14px; text-align: left;
+  display: flex; flex-direction: column; gap: 3px;
+  border: 1px solid var(--line); border-radius: 16px; background: var(--surface);
+  transition: .18s ease; cursor: pointer;
+}
+.canteen-card:hover { border-color: #b9c7b5; transform: translateY(-2px); box-shadow: var(--shadow-soft); }
+.canteen-card.pending { opacity: .55; cursor: not-allowed; }
+.canteen-card.pending:hover { transform: none; box-shadow: none; }
+.cc-name { color: var(--green); font-size: 16px; font-weight: 700; }
+.cc-alias { color: var(--muted); font-size: 11px; }
+.cc-meta { margin-top: 6px; color: #6c7f73; font-size: 11px; }
+.cc-go {
+  position: absolute; right: 14px; top: 16px;
+  color: var(--green-2); font-size: 11px; font-weight: 600;
+}
+.canteen-loading { padding: 30px 0; color: var(--muted); font-size: 12px; }
+
+/* 菜品区：左筛选栏 + 右列表 */
+.dish-layout { display: grid; grid-template-columns: 172px minmax(0, 1fr); gap: 16px; align-items: start; margin-top: 6px; }
+.filter-rail {
+  padding: 14px 12px; border: 1px solid var(--line); border-radius: 16px;
+  background: var(--surface); position: sticky; top: 16px;
+}
+.rail-title { padding: 0 2px 6px; color: #8d9a91; font-size: 10.5px; font-weight: 700; letter-spacing: 1.4px; }
+.rail-title + .filter-tabs { margin-bottom: 12px; }
+.filter-rail .filter-tabs {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 0; border: 0; background: transparent; overflow: visible;
+}
+.filter-rail .filter-tabs button {
+  flex: none; width: 100%; justify-content: flex-start;
+  min-height: 36px; padding: 0 10px; border-radius: 9px;
+  color: #5f7267; font-size: 12.5px;
+}
+.filter-rail .filter-tabs button:hover { background: #eef2e9; }
+.filter-rail .filter-tabs button.active { background: var(--green); color: #fff; box-shadow: none; }
+.rail-sort { display: flex; align-items: center; }
+.rail-sort select {
+  width: 100%; height: 36px; padding: 0 26px 0 10px;
+  border: 1px solid var(--line); border-radius: 9px; background: var(--surface);
+  color: #4f6358; font-size: 12px;
+}
+.rail-sort .icon { position: absolute; right: 8px; width: 13px; pointer-events: none; }
+.rail-sort { position: relative; }
+
+.dish-main { min-width: 0; }
+.dish-main .dish-list-heading { padding: 0 2px 10px; }
+.dish-main .dish-grid { grid-template-columns: repeat(auto-fill, minmax(224px, 1fr)); gap: 10px; }
+
+/* 纯文字菜品卡（暂不显示菜品照片） */
+.dish-card { padding: 14px 16px; min-height: 0; border-radius: 14px; }
+.dish-card-top { display: flex; align-items: flex-start; gap: 8px; }
+.dish-card-top h3 { flex: 1; min-width: 0; color: var(--green); font-size: 15px; font-weight: 650; line-height: 1.4; }
+.dish-card-top .dish-price { flex: 0 0 auto; margin-top: 1px; }
+.dish-card-top .dish-fav {
+  position: static; flex: 0 0 auto; width: 28px; height: 28px;
+  margin-left: 2px; border-radius: 9px;
+}
+.dish-card .dish-meta { margin-top: 6px; font-size: 11px; }
+.dish-card .dish-tags { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 5px; }
+.dish-card .dish-tags span {
+  padding: 3px 7px; border: 1px solid #e6eae1; border-radius: 6px;
+  color: #7a887e; font-size: 10px;
+}
+.dish-card .dish-card-bottom { margin-top: 12px; padding-top: 10px; border-top: 1px solid #eef1e9; }
+.dish-card .rating-badge { position: static; margin-left: auto; }
+
+@media (max-width: 1100px) {
+  .dish-layout { grid-template-columns: 1fr; }
+  .filter-rail { position: static; }
+  .filter-rail .filter-tabs { flex-direction: row; flex-wrap: wrap; }
+  .filter-rail .filter-tabs button { width: auto; }
+}

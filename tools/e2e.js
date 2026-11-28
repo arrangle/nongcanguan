@@ -156,7 +156,15 @@ async function waitForPort(timeoutMs = 15000) {
     await screenshot('00-entry');
     await evaluate('document.querySelector("#entryEnter").click(), true');
     await waitFor('document.querySelector("#app") && !document.querySelector("#app").hidden', '进入主界面');
-    await new Promise((r) => setTimeout(r, 500));
+    await new Promise((r) => setTimeout(r, 800));
+
+    // 二级入口：选择食堂
+    await waitFor('!!document.querySelector("[data-choose]")', '选择食堂卡片');
+    const chooseCount = await evaluate('document.querySelectorAll("[data-choose]").length');
+    record('选择食堂（二级入口）', chooseCount >= 4, chooseCount + ' 个食堂可选');
+    await screenshot('01b-choose');
+    await evaluate('document.querySelector("[data-choose=gong1]").click(), true');
+    await new Promise((r) => setTimeout(r, 700));
 
     const overflow = await evaluate('document.documentElement.scrollWidth - document.documentElement.clientWidth');
     record('无横向溢出', overflow <= 1, `宽度 ${WIDTH}px，溢出 ${overflow}px`);

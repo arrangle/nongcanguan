@@ -116,10 +116,6 @@
       </nav>
 
       <div class="sidenav-foot">
-        <div class="mini-stats">
-          <span><b id="statWindows">—</b>窗口</span>
-          <span><b id="statDishes">—</b>菜品</span>
-        </div>
         <p>数据以窗口当日公示为准<br><span>现场价目牌 · 2026.11</span></p>
       </div>
     </aside>
@@ -132,24 +128,30 @@
         </div>
       </header>
 
+      <!-- 页面：选择食堂（二级入口） -->
+      <section class="page" data-page="choose" hidden>
+        <div class="page-head">
+          <div>
+            <span class="section-index">01</span>
+            <h2>选择食堂 <small>先选食堂，再看窗口和菜品</small></h2>
+            <p>东区公一、公三，西区和园一/二层、颐园一层已录入现场价目牌；其余食堂显示「待录入」。</p>
+          </div>
+        </div>
+        <div class="canteen-cards" id="canteenCards"></div>
+      </section>
+
       <!-- 页面：窗口 -->
-      <section class="page" data-page="windows">
+      <section class="page" data-page="windows" hidden>
         <section class="intro-section">
           <div class="intro-copy">
             <p class="eyebrow" id="introCanteen">公一食堂</p>
             <h1>窗口和菜单</h1>
             <p>看菜价、菜品和当前排队情况。</p>
           </div>
-          <div class="intro-stats" aria-label="菜单统计">
-            <div><strong id="statWindowsTop">—</strong><span>窗口</span></div>
-            <i></i>
-            <div><strong id="statDishesTop">—</strong><span>已录入菜品</span></div>
-            <i></i>
-            <div><strong>100<em>g</em></strong><span>统一营养口径</span></div>
-          </div>
+          <button class="button button-quiet" id="switchCanteen" type="button">切换食堂</button>
         </section>
 
-        <section class="toolbar" aria-label="菜品搜索与筛选">
+        <section class="toolbar" aria-label="菜品搜索">
           <label class="search-box" for="searchInput">
             <svg class="icon"><use href="#i-search"/></svg>
             <input id="searchInput" type="search" autocomplete="off" placeholder="搜索菜品，比如“鸡胸肉”或“肠粉”">
@@ -177,24 +179,39 @@
           <button class="photo-button" id="windowPhotoBtn" type="button"><svg class="icon"><use href="#i-image"/></svg>查看照片</button>
         </div>
 
-        <div class="dish-list-heading">
-          <div><span class="section-index">03</span><div><h2 id="dishSectionTitle">挑选菜品</h2><p id="dishResultCount"></p></div></div>
-          <label class="sort-select">排序<span><select id="sortSelect" aria-label="菜品排序"><option value="default">窗口顺序</option><option value="calories">热量从低到高</option><option value="protein">蛋白质优先</option><option value="price">价格从低到高</option></select><svg class="icon"><use href="#i-down"/></svg></span></label>
-        </div>
+        <div class="dish-layout">
+          <aside class="filter-rail" aria-label="筛选与排序">
+            <p class="rail-title">筛选</p>
+            <div class="filter-tabs" id="filterTabs" role="group" aria-label="营养筛选">
+              <button class="active" data-filter="all">全部菜品</button>
+              <button data-filter="light"><svg class="icon"><use href="#i-leaf"/></svg>轻盈低脂</button>
+              <button data-filter="protein"><svg class="icon"><use href="#i-meat"/></svg>高蛋白</button>
+              <button data-filter="veg">清爽素食</button>
+              <button data-filter="staple">主食面点</button>
+            </div>
+            <p class="rail-title">排序</p>
+            <label class="sort-select rail-sort">
+              <select id="sortSelect" aria-label="菜品排序">
+                <option value="default">窗口顺序</option>
+                <option value="calories">热量从低到高</option>
+                <option value="protein">蛋白质优先</option>
+                <option value="price">价格从低到高</option>
+              </select>
+              <svg class="icon"><use href="#i-down"/></svg>
+            </label>
+          </aside>
 
-        <div class="filter-tabs" id="filterTabs" role="group" aria-label="营养筛选">
-          <button class="active" data-filter="all">全部菜品</button>
-          <button data-filter="light"><svg class="icon"><use href="#i-leaf"/></svg>轻盈低脂</button>
-          <button data-filter="protein"><svg class="icon"><use href="#i-meat"/></svg>高蛋白</button>
-          <button data-filter="veg">清爽素食</button>
-          <button data-filter="staple">主食面点</button>
-        </div>
-
-        <div class="dish-grid" id="dishGrid"></div>
-        <div class="empty-state" id="emptyState" hidden>
-          <span><svg class="icon"><use href="#i-search"/></svg></span>
-          <h3>没有找到这道菜品</h3><p>换个关键词，或清除当前营养筛选试试。</p>
-          <button class="button button-primary" id="resetFilters" type="button">清除筛选</button>
+          <div class="dish-main">
+            <div class="dish-list-heading">
+              <div><span class="section-index">03</span><div><h2 id="dishSectionTitle">挑选菜品</h2><p id="dishResultCount"></p></div></div>
+            </div>
+            <div class="dish-grid" id="dishGrid"></div>
+            <div class="empty-state" id="emptyState" hidden>
+              <span><svg class="icon"><use href="#i-search"/></svg></span>
+              <h3>没有找到这道菜品</h3><p>换个关键词，或清除当前营养筛选试试。</p>
+              <button class="button button-primary" id="resetFilters" type="button">清除筛选</button>
+            </div>
+          </div>
         </div>
       </section>
 

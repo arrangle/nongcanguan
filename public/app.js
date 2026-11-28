@@ -124,17 +124,17 @@ function getVisibleDishes() {
 }
 
 function dishCard(d) {
-  const [color, tint] = iconStyles[d.icon] || iconStyles.bowl;
   const faved = typeof window.isFav === "function" && window.isFav(d.id);
-  const photo = dishPhoto(d);
-  return `<article class="dish-card" data-dish="${d.id}" tabindex="0" role="button" aria-label="查看${d.name}营养详情" style="--dish-color:${color};--dish-tint:${tint}">
-    <div class="dish-card-image ${photo.match ? "" : "placeholder"}" style="--dish-color:${color};--dish-tint:${tint}">
-      ${photo.match ? `<img src="${photo.src}" alt="${d.name}示意配图" loading="lazy"><span class="ph-badge">示意图</span>` : `<span class="ph-icon">${icon(d.icon)}</span><span class="ph-text">暂无配图</span>`}
-      <button class="dish-fav ${faved ? "on" : ""}" type="button" data-fav="${d.id}" aria-pressed="${faved}" aria-label="收藏${d.name}">${icon("heart")}</button>
-    </div>
+  const tags = (d.labels || []).slice(0, 3);
+  return `<article class="dish-card" data-dish="${d.id}" tabindex="0" role="button" aria-label="查看${d.name}营养详情">
     <div class="dish-card-content">
-      <div class="dish-card-title"><h3>${d.name}</h3>${priceHTML(d)}</div>
+      <div class="dish-card-top">
+        <h3>${d.name}</h3>
+        ${priceHTML(d)}
+        <button class="dish-fav ${faved ? "on" : ""}" type="button" data-fav="${d.id}" aria-pressed="${faved}" aria-label="收藏${d.name}">${icon("heart")}</button>
+      </div>
       <div class="dish-meta">${d.source === "AI估算" ? "AI估算" : d.source} · ${round(d.kcal)} kcal/100g · 蛋白 ${one(d.protein)}g${state.query ? ` · ${d.window.number ? d.window.number + " 号窗口 · " : ""}${d.window.name}` : ""}</div>
+      <div class="dish-tags">${tags.map((t) => `<span>${t}</span>`).join("")}</div>
       <div class="dish-card-bottom">
         <button class="dish-detail-button" type="button" data-open="${d.id}">营养详情</button>
         <button class="dish-add-button" type="button" data-add="${d.id}" aria-label="将${d.name}加入餐盘">＋ 加入餐盘</button>
@@ -158,10 +158,6 @@ function renderDishes() {
       ? `${active.number ? active.number + " 号窗口 · " : active.name + " · "}${items.length} 道菜品 · 营养按每100g展示`
       : "该食堂暂未录入窗口";
   $("#dishGrid").innerHTML = items.map(dishCard).join("");
-  const topWindows = $("#statWindowsTop");
-  const topDishes = $("#statDishesTop");
-  if (topWindows) topWindows.textContent = canteenWindows().length;
-  if (topDishes) topDishes.textContent = inCanteenCount();
   $("#dishGrid").hidden = items.length === 0;
   $("#emptyState").hidden = items.length !== 0;
 }
@@ -470,6 +466,7 @@ function selectCanteen(id) {
   if (search) search.value = "";
   renderCanteenNav();
   if (typeof window.renderCanteenSidebar === "function") window.renderCanteenSidebar();
+  if (typeof window.renderCanteenCards === "function") window.renderCanteenCards();
   renderWindowList();
   renderWindowHero();
   renderFilterTabs();
@@ -478,9 +475,13 @@ function selectCanteen(id) {
 
 function boot() {
   restoreTray();
-  $("#statWindows").textContent = windows.length;
-  $("#statDishes").textContent = allDishes.length;
+  const statWindows = $("#statWindows");
+  const statDishes = $("#statDishes");
+  if (statWindows) statWindows.textContent = windows.length;
+  if (statDishes) statDishes.textContent = allDishes.length;
   renderCanteenNav();
+  if (typeof window.renderCanteenSidebar === "function") window.renderCanteenSidebar();
+  if (typeof window.renderCanteenCards === "function") window.renderCanteenCards();
   renderWindowList();
   renderWindowHero();
   renderFilterTabs();

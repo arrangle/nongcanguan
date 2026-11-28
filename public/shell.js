@@ -68,6 +68,7 @@
       return;
     }
     if (name === 'account') { setPage('records'); return; }
+    if (name === 'choose') { setPage('choose'); renderCanteenCards(); return; }
     if (name === 'peaks') { setPage('peaks'); renderPeaks(); return; }
     if (name === 'favorites') { setPage('favorites'); renderFavorites(); return; }
     setPage(name);
@@ -117,6 +118,38 @@
       decorateWindows();
     } catch (_) { /* 后端未启动时静默 */ }
   }
+
+  // ------------------------------------------------------------------ 选择食堂（二级入口）
+  function renderCanteenCards() {
+    const host = $('#canteenCards');
+    if (!host) return;
+    if (typeof canteens === 'undefined' || !Array.isArray(canteens) || !canteens.length) {
+      host.innerHTML = '<p class="canteen-loading">正在读取食堂列表…</p>';
+      return;
+    }
+    const groups = [
+      { title: '东校区', ids: ['gong1', 'gong2', 'gong3'] },
+      { title: '西校区', ids: ['he1', 'he2', 'yi1', 'yi2', 'yi3'] },
+    ];
+    const byId = {};
+    canteens.forEach((c) => { byId[c.id] = c; });
+    host.innerHTML = groups.map((group) => {
+      const cards = group.ids.filter((id) => byId[id]).map((id) => {
+        const c = byId[id];
+        const online = c.status === 'online';
+        const count = (typeof windows !== 'undefined' && Array.isArray(windows))
+          ? windows.filter((w) => w.canteenId === id).length : 0;
+        return '<button class="canteen-card' + (online ? '' : ' pending') + '" type="button" data-choose="' + id + '"' + (online ? '' : ' disabled') + '>' +
+          '<span class="cc-name">' + esc(c.name) + '</span>' +
+          '<span class="cc-alias">' + esc(c.alias || '') + '</span>' +
+          '<span class="cc-meta">' + (online ? count + ' 个窗口' : '待录入') + '</span>' +
+          '<span class="cc-go">' + (online ? '进入 ›' : '') + '</span>' +
+        '</button>';
+      }).join('');
+      return '<div class="canteen-group"><p class="canteen-group-title">' + group.title + '</p><div class="canteen-grid">' + cards + '</div></div>';
+    }).join('');
+  }
+  window.renderCanteenCards = renderCanteenCards;
 
   // ------------------------------------------------------------------ 侧栏食堂
   const EAST = ['gong1', 'gong2', 'gong3'];
@@ -433,9 +466,9 @@
       const button = event.target.closest('[data-entry]');
       if (!button) return;
       const action = button.getAttribute('data-entry');
-      if (action === 'enter') enterApp('windows');
+      if (action === 'enter') enterApp('choose');
       if (action === 'import') toast('导入功能暂未开放：菜单由管理员统一维护');
-      if (action === 'new') { enterApp('windows'); toast('已为这台设备开始新的本地记录'); }
+      if (action === 'new') { enterApp('choose'); toast('已为这台设备开始新的本地记录'); }
     });
 
     $('#entryBox') && $('#entryBox').addEventListener('click', () => {
@@ -444,7 +477,7 @@
       if (draw) draw.click();
     });
     $('#entryPredict') && $('#entryPredict').addEventListener('click', () => enterApp('predict'));
-    $('#entryEnter') && $('#entryEnter').addEventListener('click', () => enterApp('windows'));
+    $('#entryEnter') && $('#entryEnter').addEventListener('click', () => enterApp('choose'));
     $('#entryAdmin') && $('#entryAdmin').addEventListener('click', () => {
       const dialog = $('#adminDialog');
       if (dialog) dialog.showModal();
@@ -518,14 +551,33 @@
     bind();
     let entered = false;
     try { entered = sessionStorage.getItem(ENTRY_KEY) === '1'; } catch (_) {}
-    if (entered) enterApp('windows');
+    if (entered) enterApp('choose');
     else showEntry();
     setTimeout(renderCanteenSidebar, 400);
 
     renderCanteenSidebar();
+    renderCanteenCards();
     document.addEventListener('click', (event) => {
       const item = event.target.closest('#canteenEast [data-canteen], #canteenWest [data-canteen]');
-      if (item) setTimeout(renderCanteenSidebar, 60);
+      if (item) {
+        setTimeout(renderCanteenSidebar, 60);
+        setPage('windows');
+      }
+      const choose = event.target.closest('[data-choose]');
+      if (choose && typeof selectCanteen === 'function') {
+        selectCanteen(choose.getAttribute('data-choose'));
+        setPage('windows');
+        renderCanteenCards();
+        setTimeout(renderCanteenSidebar, 80);
+        return;
+      }
+
+      if (event.target.closest('#switchCanteen')) {
+        setPage('choose');
+        renderCanteenCards();
+        return;
+      }
+
       const win = event.target.closest('#canteenEast [data-window], #canteenWest [data-window]');
       if (win && typeof selectWindow === 'function') {
         setPage('windows');
