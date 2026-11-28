@@ -47,7 +47,7 @@
     if (!page) return;
     currentPage = name;
     $$('.page[data-page]').forEach((node) => { node.hidden = node.getAttribute('data-page') !== name; });
-    $$('.nav-item[data-nav]').forEach((button) => {
+    $$('.nav-item[data-nav], .side-link[data-nav]').forEach((button) => {
       const active = button.getAttribute('data-nav') === name;
       button.classList.toggle('active', active);
       if (active) button.setAttribute('aria-current', 'page');
@@ -67,6 +67,7 @@
       if (dialog) dialog.showModal();
       return;
     }
+    if (name === 'account') { setPage('records'); return; }
     setPage(name);
   }
 
@@ -83,14 +84,19 @@
 
   function decorateWindows() {
     if (!summary) return;
-    $$('.win-q[data-qslot]').forEach((slot) => {
-      const queue = (summary.queues || {})[slot.getAttribute('data-qslot')] || null;
+    $$('[data-window-queue]').forEach((slot) => {
+      const queue = (summary.queues || {})[slot.getAttribute('data-window-queue')] || null;
       const lv = levelOf(queue);
-      slot.className = 'win-q ' + lv.cls;
+      slot.className = 'window-queue ' + lv.cls;
       slot.textContent = queue && !queue.stale
         ? lv.text + ' · ' + queue.people + ' 人'
         : lv.text;
     });
+    const meta = $('#windowQueueMeta');
+    if (meta) {
+      const s2 = (summary && summary.stats) || {};
+      meta.textContent = '每分钟更新 · 今日 ' + (s2.reportsToday || 0) + ' 次上报';
+    }
   }
   window.decorateWindows = decorateWindows;
 
@@ -102,6 +108,31 @@
       decorateWindows();
     } catch (_) { /* 后端未启动时静默 */ }
   }
+
+  // ------------------------------------------------------------------ 侧栏食堂
+  const EAST = ['gong1', 'gong2', 'gong3'];
+  const WEST = ['he1', 'he2', 'yi1', 'yi2', 'yi3'];
+
+  function renderCanteenSidebar() {
+    if (typeof canteens === 'undefined' || !Array.isArray(canteens) || !canteens.length) return;
+    const byId = {};
+    canteens.forEach((c) => { byId[c.id] = c; });
+    const paint = (hostId, ids) => {
+      const host = document.getElementById(hostId);
+      if (!host) return;
+      host.innerHTML = ids.filter((id) => byId[id]).map((id) => {
+        const c = byId[id];
+        const online = c.status === 'online';
+        const active = (typeof state !== 'undefined' && state.canteenId === id) ? ' active' : '';
+        return '<button class="side-link side-child' + active + (online ? '' : ' pending') + '" type="button" data-canteen="' + id + '">' +
+          esc(c.name) + (online ? '<small>已录入</small>' : '<small>待录入</small>') +
+        '</button>';
+      }).join('');
+    };
+    paint('canteenEast', EAST);
+    paint('canteenWest', WEST);
+  }
+  window.renderCanteenSidebar = renderCanteenSidebar;
 
   // ------------------------------------------------------------------ 收藏
   let favorites = new Set();
@@ -374,6 +405,13 @@
     try { entered = sessionStorage.getItem(ENTRY_KEY) === '1'; } catch (_) {}
     if (entered) enterApp('windows');
     else showEntry();
+    setTimeout(renderCanteenSidebar, 400);
+
+    renderCanteenSidebar();
+    document.addEventListener('click', (event) => {
+      const item = event.target.closest('#canteenEast [data-canteen], #canteenWest [data-canteen]');
+      if (item) setTimeout(renderCanteenSidebar, 60);
+    }, true);
 
     loadSummary();
     setInterval(loadSummary, 60000);

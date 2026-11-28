@@ -278,8 +278,8 @@
         if (!badge) {
           badge = document.createElement('span');
           badge.className = 'rating-badge';
-          const top = card.querySelector('.dish-card-top');
-          if (top) top.appendChild(badge);
+          const host = card.querySelector('.dish-card-image') || card.querySelector('.dish-card-top');
+          if (host) host.appendChild(badge);
         }
         badge.textContent = `★ ${Number(stat.rating).toFixed(1)} · ${stat.reviewCount}`;
       } else if (badge) {
@@ -405,7 +405,7 @@
     host.innerHTML = `<div class="meal-items">${plannerMeal.map((dish) => {
       const ratio = (dish.serving || 250) / 100;
       return `<article class="meal-item">
-        <span class="meal-item-window">${esc(dish.window.number)} 号 · ${esc(dish.window.name)}</span>
+        <span class="meal-item-window">${dish.window.number ? esc(dish.window.number) + ' 号 · ' : ''}${esc(dish.window.name)}</span>
         <h3>${esc(dish.name)}</h3>
         <p>${Math.round(dish.kcal * ratio)} kcal · 蛋白质 ${(dish.protein * ratio).toFixed(1)}g</p>
       </article>`;

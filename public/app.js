@@ -40,6 +40,27 @@ const priceHTML = (d, large = false) => d.price === null
   ? `<span class="dish-price market">窗口时价</span>`
   : `<span class="dish-price${large ? " large" : ""}"><small>¥</small>${d.price}<small>${d.unit}</small></span>`;
 const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
+// 菜品示意图：没有逐道菜实拍，按菜名/类别映射到 7 张示意图，卡片上标注「示意图」
+const DISH_PHOTOS = {
+  meat: ["kung-pao-chicken", "chicken-stir-fry"],
+  egg: ["tomato-egg"],
+  leaf: ["vegetable-stir-fry", "shrimp-vegetable-stir-fry"],
+  noodles: ["chow-mein"],
+  rice: ["mapo-tofu"],
+  bowl: ["shrimp-vegetable-stir-fry", "vegetable-stir-fry"],
+};
+function dishPhoto(d) {
+  if (/虾|蟹|贝|花甲/.test(d.name)) return "assets/dishes/shrimp-vegetable-stir-fry.jpg";
+  if (/豆腐/.test(d.name)) return "assets/dishes/mapo-tofu.png";
+  if (/番茄|西红柿|鸡蛋|蛋炒/.test(d.name)) return "assets/dishes/tomato-egg.jpg";
+  if (/面|粉|米线/.test(d.name)) return "assets/dishes/chow-mein.jpg";
+  if (/饭/.test(d.name)) return "assets/dishes/mapo-tofu.png";
+  if (/鸡|鸭/.test(d.name)) return "assets/dishes/kung-pao-chicken.jpg";
+  if (/牛|羊|猪|肉/.test(d.name)) return "assets/dishes/chicken-stir-fry.jpg";
+  const pool = DISH_PHOTOS[d.icon] || DISH_PHOTOS.bowl;
+  const pick = pool[Math.abs(d.name.length + d.name.charCodeAt(0)) % pool.length];
+  return "assets/dishes/" + pick + (pick === "mapo-tofu" ? ".png" : ".jpg");
+}
 
 let tray = [];
 function restoreTray() {
@@ -62,19 +83,19 @@ function showToast(message) {
 function renderWindowList() {
   const list = canteenWindows();
   $("#windowList").innerHTML = list.map(w => `
-    <div class="window-item ${w.id === state.windowId ? "active" : ""}" data-window="${w.id}" role="tab" tabindex="0" aria-selected="${w.id === state.windowId ? "true" : "false"}">
-      <div class="window-item-title">
-        ${w.number ? `<b class="window-number">${w.number}</b>` : ""}
-        <strong>${w.name}</strong>
-      </div>
-      <small class="window-item-sub">${w.short}</small>
-      <span class="win-q" data-qslot="${w.id}">排队数据读取中</span>
-      <div class="win-actions">
-        <button type="button" data-report="${w.id}" title="上报当前排队人数">排队</button>
-        <button type="button" data-gallery-win="${w.id}" title="查看这个窗口的现场菜单">拍照</button>
-      </div>
+    <div class="window-item ${w.id === state.windowId ? "active" : ""}">
+      <button class="window-select" type="button" data-window="${w.id}" aria-current="${w.id === state.windowId ? "true" : "false"}">
+        <span class="window-number">${w.number || ""}</span>
+        <span class="window-item-copy">
+          <strong>${w.name}</strong>
+          <small>${w.short}</small>
+          <small class="window-queue" data-window-queue="${w.id}">排队数据读取中</small>
+        </span>
+      </button>
+      <button class="window-report" type="button" data-report="${w.id}" title="上报当前排队人数">上报排队</button>
     </div>`).join("");
-  $("#windowCount").textContent = list.length;
+  const countBadge = $("#windowCount");
+  if (countBadge) countBadge.textContent = list.length;
   const empty = $("#windowEmpty");
   if (empty) empty.hidden = list.length !== 0;
   if (typeof window.decorateWindows === "function") window.decorateWindows();
@@ -113,17 +134,21 @@ function getVisibleDishes() {
 
 function dishCard(d) {
   const [color, tint] = iconStyles[d.icon] || iconStyles.bowl;
-  const visibleLabels = d.labels.filter(label => !["主食", "素食", "高蛋白"].includes(label)).slice(0, 2);
-  if (d.kcal <= 120 && !visibleLabels.includes("低热量")) visibleLabels.push("低热量");
   const faved = typeof window.isFav === "function" && window.isFav(d.id);
   return `<article class="dish-card" data-dish="${d.id}" tabindex="0" role="button" aria-label="查看${d.name}营养详情" style="--dish-color:${color};--dish-tint:${tint}">
-    <div class="dish-card-top"><span class="dish-icon">${icon(d.icon)}</span><span class="source-badge ${d.source === "AI估算" ? "estimated" : ""}">${d.source}</span></div>
-    <button class="dish-fav ${faved ? "on" : ""}" type="button" data-fav="${d.id}" aria-pressed="${faved}" aria-label="收藏${d.name}">${icon("heart")}</button>
-    <div class="dish-card-title"><h3>${d.name}</h3>${priceHTML(d)}</div>
-    <p class="dish-description">${d.description}</p>
-    <div class="dish-tags">${visibleLabels.map(label => `<span>${label}</span>`).join("")}</div>
-    ${state.query ? `<div class="dish-window-chip">${d.window.number ? d.window.number + " 号窗口 · " : ""}${d.window.name}</div>` : ""}
-    <div class="dish-card-bottom"><div><div class="dish-energy"><strong>${round(d.kcal)}</strong><span>kcal / 100g</span></div><p class="dish-protein">蛋白质 <b>${one(d.protein)}g</b> · 脂肪 ${one(d.fat)}g</p></div><button class="add-dish" data-add="${d.id}" aria-label="将${d.name}加入今日餐盘" title="加入今日餐盘">${icon("plus")}</button></div>
+    <div class="dish-card-image">
+      <img src="${dishPhoto(d)}" alt="${d.name}菜品示意图" loading="lazy">
+      <span>菜品示意图</span>
+      <button class="dish-fav ${faved ? "on" : ""}" type="button" data-fav="${d.id}" aria-pressed="${faved}" aria-label="收藏${d.name}">${icon("heart")}</button>
+    </div>
+    <div class="dish-card-content">
+      <div class="dish-card-title"><h3>${d.name}</h3>${priceHTML(d)}</div>
+      <div class="dish-meta">${d.source === "AI估算" ? "AI估算" : d.source} · ${round(d.kcal)} kcal/100g · 蛋白 ${one(d.protein)}g${state.query ? ` · ${d.window.number ? d.window.number + " 号窗口 · " : ""}${d.window.name}` : ""}</div>
+      <div class="dish-card-bottom">
+        <button class="dish-detail-button" type="button" data-open="${d.id}">营养详情</button>
+        <button class="dish-add-button" type="button" data-add="${d.id}" aria-label="将${d.name}加入餐盘">＋ 加入餐盘</button>
+      </div>
+    </div>
   </article>`;
 }
 
@@ -132,6 +157,8 @@ function renderDishes() {
   $("#windowHero").classList.toggle("search-active", Boolean(state.query));
   const canteen = getCanteen(state.canteenId);
   const canteenName = canteen ? (canteen.alias || canteen.name) : "";
+  const intro = $("#introCanteen");
+  if (intro) intro.textContent = canteen ? canteen.name : "食堂";
   $("#dishSectionTitle").textContent = state.query ? `“${state.query}”的搜索结果` : (state.filter === "all" ? "挑选菜品" : filters[state.filter].label);
   const active = getWindow(state.windowId);
   $("#dishResultCount").textContent = state.query
@@ -140,6 +167,10 @@ function renderDishes() {
       ? `${active.number ? active.number + " 号窗口 · " : active.name + " · "}${items.length} 道菜品 · 营养按每100g展示`
       : "该食堂暂未录入窗口";
   $("#dishGrid").innerHTML = items.map(dishCard).join("");
+  const topWindows = $("#statWindowsTop");
+  const topDishes = $("#statDishesTop");
+  if (topWindows) topWindows.textContent = canteenWindows().length;
+  if (topDishes) topDishes.textContent = inCanteenCount();
   $("#dishGrid").hidden = items.length === 0;
   $("#emptyState").hidden = items.length !== 0;
 }
@@ -302,6 +333,12 @@ $("#resetFilters").addEventListener("click", () => {
 });
 
 $("#dishGrid").addEventListener("click", event => {
+  const openButton = event.target.closest("[data-open]");
+  if (openButton) {
+    event.stopPropagation();
+    openDish(openButton.dataset.open);
+    return;
+  }
   const favButton = event.target.closest("[data-fav]");
   if (favButton) {
     event.stopPropagation();
@@ -354,7 +391,10 @@ $("#clearTray").addEventListener("click", () => {
   showToast("今日餐盘已清空");
 });
 
-$$('[data-canteen]').forEach(button => button.addEventListener("click", () => selectCanteen(button.dataset.canteen)));
+document.addEventListener("click", event => {
+  const button = event.target.closest("[data-canteen]");
+  if (button) selectCanteen(button.dataset.canteen);
+});
 
 $("#galleryBtn").addEventListener("click", () => openGallery());
 $("#windowPhotoBtn").addEventListener("click", () => openGallery(getWindow(state.windowId).gallery));
@@ -438,6 +478,7 @@ function selectCanteen(id) {
   const search = $("#searchInput");
   if (search) search.value = "";
   renderCanteenNav();
+  if (typeof window.renderCanteenSidebar === "function") window.renderCanteenSidebar();
   renderWindowList();
   renderWindowHero();
   renderFilterTabs();

@@ -163,7 +163,7 @@ async function waitForPort(timeoutMs = 15000) {
 
     // 0.1 窗口条：先出现，带排队角标
     await waitFor('document.querySelectorAll("#windowList .window-item").length === 6', '窗口条渲染');
-    const stripQueue = await evaluate('document.querySelector(".win-q[data-qslot]") ? document.querySelector(".win-q[data-qslot]").textContent.trim() : ""');
+    const stripQueue = await evaluate('(function(){ const el = document.querySelector("[data-window-queue]"); return el ? el.textContent.trim() : ""; })()');
     record('窗口条与排队角标', Boolean(stripQueue), stripQueue);
 
     // 1. 菜品目录
@@ -203,8 +203,8 @@ async function waitForPort(timeoutMs = 15000) {
       return true;
     })()`);
     await waitFor('document.querySelectorAll(".review-item").length >= 1', '点评发布后渲染', 12000);
-    const reviewShown = await evaluate(`document.querySelector('.review-item p') ? document.querySelector('.review-item p').textContent : ''`);
-    record('发布点评', reviewShown === reviewText, reviewShown);
+    const reviewShown = await evaluate(`(function(){ const list = [...document.querySelectorAll('.review-item p')].map(p => p.textContent); return list.find(t => t === ${JSON.stringify('端到端测试：肉给得足，咸淡正好')}) || list.join(' | '); })()`);
+    record('发布点评', reviewShown === '端到端测试：肉给得足，咸淡正好', reviewShown.slice(0, 60));
 
     // 6. 评分徽章同步（先搜索到该菜品，卡片才会进入 DOM）
     await evaluate(`(function(){ const i=document.querySelector('#searchInput'); i.value='宫保鸡丁'; i.dispatchEvent(new Event('input',{bubbles:true})); return true; })()`);

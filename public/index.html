@@ -52,7 +52,7 @@
     </header>
 
     <div class="entry-main">
-      <p class="entry-eyebrow">公一食堂 · 6 个窗口 · 43 道菜</p>
+      <p class="entry-eyebrow">6 个食堂 · 61 个窗口 · 748 道菜</p>
       <h1>今天也要<br><em>好好吃饭</em></h1>
       <p class="entry-sub">主人，今天想吃点啥呢？</p>
 
@@ -71,7 +71,7 @@
 
       <div class="entry-foot">
         <button class="entry-enter" id="entryEnter" type="button">直接进入</button>
-        <span>现场菜单拍摄于 2026.11.21 · 营养来源逐项标注</span>
+        <span>现场价目牌拍摄于 2026.11 · 营养来源逐项标注</span>
       </div>
     </div>
 
@@ -84,65 +84,41 @@
 
   <!-- ========== 主界面 ========== -->
   <div class="app" id="app" hidden>
-    <aside class="sidenav" aria-label="主导航">
+    <aside class="sidenav" aria-label="食堂与功能导航">
       <a class="sidenav-brand" href="./" id="brandHome" aria-label="返回入口画面">
         <span class="brand-mark"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 25h28c0 9-5 15-14 15S10 34 10 25Z"/><path d="M16 20c7 0 12-4 15-11 3 7-1 13-10 15"/></svg></span>
         <span><strong>农餐馆</strong><small>CAU FOOD GUIDE</small></span>
       </a>
 
-      <nav class="nav-group" aria-label="主要板块">
-        <button class="nav-item" data-nav="limited" type="button">限定</button>
-        <button class="nav-item active" data-nav="windows" type="button" aria-current="page">窗口</button>
-        <button class="nav-item" data-nav="notice" type="button">公告</button>
-      </nav>
+      <p class="side-title">食堂导航</p>
+      <button class="side-link active" data-nav="windows" type="button" aria-current="page">全部菜品</button>
+      <button class="side-link" data-nav="rank" type="button">人气榜</button>
 
-      <div class="campus">
-        <p class="campus-title">校区</p>
-        <div class="campus-block">
-          <span class="campus-area">东区</span>
-          <div class="campus-list">
-            <button class="campus-item is-on" data-canteen="gong1" type="button">公一</button>
-            <button class="campus-item" data-canteen="gong2" type="button">公二</button>
-            <button class="campus-item" data-canteen="gong3" type="button">公三</button>
-          </div>
-        </div>
-        <div class="campus-block">
-          <span class="campus-area">西区</span>
-          <div class="campus-list">
-            <button class="campus-item" data-canteen="yi1" type="button">颐一</button>
-            <button class="campus-item" data-canteen="yi2" type="button">颐二</button>
-            <button class="campus-item" data-canteen="yi3" type="button">颐三</button>
-            <button class="campus-item" data-canteen="he1" type="button">和一</button>
-            <button class="campus-item" data-canteen="he2" type="button">和二</button>
-          </div>
-        </div>
-      </div>
+      <p class="side-group">东校区</p>
+      <div class="side-canteens" id="canteenEast"></div>
 
-      <nav class="nav-group nav-group-secondary" aria-label="工具">
-        <button class="nav-item" data-nav="mail" type="button">食贸信箱</button>
-        <button class="nav-item" data-nav="about" type="button">说明</button>
-        <button class="nav-item" data-nav="rank" type="button">排行榜</button>
-        <button class="nav-item" data-nav="more" type="button">其他功能</button>
-        <button class="nav-item" data-nav="records" type="button">个人记录</button>
-        <button class="nav-item" data-nav="predict" type="button">预测</button>
-      </nav>
+      <p class="side-group">西校区</p>
+      <div class="side-canteens" id="canteenWest"></div>
+
+      <div class="side-divider"></div>
+      <button class="side-link" data-nav="predict" type="button">为你推荐</button>
+      <button class="side-link" data-nav="more" type="button">其他功能</button>
+      <button class="side-link" data-nav="records" type="button">饮食记录</button>
+      <button class="side-link" data-nav="account" type="button">个人账户</button>
+      <button class="side-link" data-nav="about" type="button">数据说明</button>
+      <button class="side-link" data-nav="notice" type="button">公告</button>
 
       <div class="sidenav-foot">
         <div class="mini-stats">
-          <span><b id="statWindows">6</b>窗口</span>
-          <span><b id="statDishes">43</b>菜品</span>
+          <span><b id="statWindows">—</b>窗口</span>
+          <span><b id="statDishes">—</b>菜品</span>
         </div>
-        <p>公一食堂 · 东区<br><span>数据以窗口当日公示为准</span></p>
+        <p>数据以窗口当日公示为准<br><span>现场价目牌 · 2026.11</span></p>
       </div>
     </aside>
 
     <main class="stage">
       <header class="stage-top">
-        <label class="search-box" for="searchInput">
-          <svg class="icon"><use href="#i-search"/></svg>
-          <input id="searchInput" type="search" autocomplete="off" placeholder="搜索菜品，比如“鸡胸肉”或“肠粉”">
-          <kbd>⌘ K</kbd>
-        </label>
         <div class="stage-actions">
           <button class="button button-quiet" id="galleryBtn" type="button"><svg class="icon"><use href="#i-image"/></svg><span>现场菜单</span><b>14</b></button>
           <button class="icon-button" id="dataBtn" aria-label="营养数据说明" title="营养数据说明"><svg class="icon"><use href="#i-info"/></svg></button>
@@ -151,33 +127,51 @@
 
       <!-- 页面：窗口 -->
       <section class="page" data-page="windows">
-        <div class="page-head">
-          <div>
-            <span class="section-index">01</span>
-            <h2>窗口 <small>先出现</small></h2>
-            <p>先看哪个窗口不排队，再看它今天有什么菜。</p>
+        <section class="intro-section">
+          <div class="intro-copy">
+            <p class="eyebrow" id="introCanteen">公一食堂</p>
+            <h1>窗口和菜单</h1>
+            <p>看菜价、菜品和当前排队情况。</p>
           </div>
-          <span class="count-badge" id="windowCount">6</span>
-        </div>
+          <div class="intro-stats" aria-label="菜单统计">
+            <div><strong id="statWindowsTop">—</strong><span>窗口</span></div>
+            <i></i>
+            <div><strong id="statDishesTop">—</strong><span>已录入菜品</span></div>
+            <i></i>
+            <div><strong>100<em>g</em></strong><span>统一营养口径</span></div>
+          </div>
+        </section>
 
-        <div class="window-strip" id="windowList" role="tablist" aria-label="窗口选择"></div>
-        <p class="window-empty" id="windowEmpty" hidden>这个食堂的窗口还没录入，先看看公一、公三、和园或颐园的现场价目牌。</p>
+        <section class="toolbar" aria-label="菜品搜索与筛选">
+          <label class="search-box" for="searchInput">
+            <svg class="icon"><use href="#i-search"/></svg>
+            <input id="searchInput" type="search" autocomplete="off" placeholder="搜索菜品，比如“鸡胸肉”或“肠粉”">
+            <kbd>⌘ K</kbd>
+          </label>
+          <div class="toolbar-note"><span class="status-dot"></span>实拍价目牌数字化 <span class="divider">/</span> 营养来源可溯源</div>
+        </section>
+
+        <section class="window-panel" aria-label="窗口目录">
+          <div class="panel-heading">
+            <div><span class="section-index">窗口</span><h2>选择窗口</h2></div>
+            <span class="queue-updated" id="windowQueueMeta">排队数据加载中</span>
+          </div>
+          <div class="window-strip" id="windowList" role="tablist" aria-label="窗口选择"></div>
+          <p class="window-empty" id="windowEmpty" hidden>这个食堂的窗口还没录入，先看看公一、公三、和园或颐园的现场价目牌。</p>
+        </section>
 
         <div class="window-hero" id="windowHero">
-          <img id="windowHeroImage" src="assets/photos/04.webp" alt="公一食堂18号低脂轻食窗口实拍">
-          <div class="window-hero-shade"></div>
+          <img id="windowHeroImage" src="assets/photos/04.webp" alt="窗口现场照片">
           <div class="window-hero-content">
-            <div><span class="window-label" id="windowHeroLabel">WINDOW 18</span><h2 id="windowHeroName">低脂美食新风尚</h2><p id="windowHeroDescription"></p></div>
-            <button class="photo-button" id="windowPhotoBtn" type="button"><svg class="icon"><use href="#i-image"/></svg>查看现场菜单</button>
+            <span class="window-label" id="windowHeroLabel">WINDOW 18</span>
+            <h2 id="windowHeroName">低脂美食新风尚</h2>
+            <p id="windowHeroDescription"></p>
           </div>
+          <button class="photo-button" id="windowPhotoBtn" type="button"><svg class="icon"><use href="#i-image"/></svg>查看现场菜单</button>
         </div>
 
-        <div class="page-head page-head-sub">
-          <div>
-            <span class="section-index">02</span>
-            <h2 id="dishSectionTitle">菜品 <small>后出现</small></h2>
-            <p id="dishResultCount"></p>
-          </div>
+        <div class="dish-list-heading">
+          <div><span class="section-index">03</span><div><h2 id="dishSectionTitle">挑选菜品</h2><p id="dishResultCount"></p></div></div>
           <label class="sort-select">排序<span><select id="sortSelect" aria-label="菜品排序"><option value="default">窗口顺序</option><option value="calories">热量从低到高</option><option value="protein">蛋白质优先</option><option value="price">价格从低到高</option></select><svg class="icon"><use href="#i-down"/></svg></span></label>
         </div>
 

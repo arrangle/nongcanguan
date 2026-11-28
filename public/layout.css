@@ -413,3 +413,136 @@
 /* 卡片是列方向 flex，子元素要撑满宽度（覆盖 styles.css 的 align-items:center） */
 .window-strip .window-item { align-items: stretch; }
 .window-strip .window-item .win-q { align-self: flex-start; }
+
+/* ================================================================
+   排版优化版：侧栏 + 窗口面板 + 紧凑窗口信息 + 菜品图片卡
+   ================================================================ */
+
+/* 侧栏更窄、更像目录 */
+.app { grid-template-columns: 188px minmax(0, 1fr) 306px; }
+.sidenav { padding: 22px 10px 18px; gap: 6px; }
+.side-title { padding: 0 10px 6px; color: #a2ada4; font-size: 10px; font-weight: 700; letter-spacing: 2px; }
+.side-group { padding: 14px 10px 4px; color: #8b978e; font-size: 10px; letter-spacing: 1px; }
+.side-divider { height: 1px; margin: 10px 8px; background: var(--line); }
+.side-canteens { display: flex; flex-direction: column; gap: 2px; }
+.side-link {
+  width: 100%; min-height: 38px; padding: 8px 10px;
+  display: flex; align-items: center; gap: 6px;
+  border: 0; border-radius: 10px; background: transparent;
+  color: #4f6358; font-size: 13px; text-align: left; transition: .16s ease;
+}
+.side-link:hover { background: #e9eee6; }
+.side-link.active { background: #e3ebe0; color: var(--green); font-weight: 700; }
+.side-link small { margin-left: auto; color: #698572; font-size: 10px; }
+.side-link.pending { opacity: .55; }
+.side-child { padding-left: 10px; }
+
+/* 窗口面板：卡片 + 标题行 */
+.window-panel {
+  padding: 16px 16px 12px; border: 1px solid var(--line); border-radius: 18px;
+  background: var(--surface); position: static;
+}
+.window-panel .panel-heading {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 0 2px 12px; border-bottom: 1px solid var(--line);
+}
+.window-panel .panel-heading h2 { color: var(--green); font-size: 15px; }
+.queue-updated { color: var(--muted); font-size: 10px; white-space: nowrap; }
+
+/* 窗口条：卡片 + 上报排队 */
+.window-strip { display: flex; gap: 10px; overflow-x: auto; padding: 12px 2px 2px; }
+.window-strip::-webkit-scrollbar { height: 6px; }
+.window-strip .window-item {
+  flex: 0 0 auto; width: 196px; padding: 10px;
+  display: flex; flex-direction: column; gap: 8px;
+  border: 1px solid var(--line); border-radius: 14px; background: var(--surface);
+  transition: .18s ease;
+}
+.window-strip .window-item:hover { border-color: #bcc8b9; }
+.window-strip .window-item.active { border-color: var(--green); box-shadow: 0 0 0 2px rgba(23,63,53,.08); }
+.window-select {
+  display: flex; align-items: flex-start; gap: 8px; width: 100%;
+  padding: 0; border: 0; background: transparent; text-align: left;
+}
+.window-strip .window-number {
+  width: 28px; height: 28px; flex: 0 0 auto; display: grid; place-items: center;
+  border: 1px solid var(--line); border-radius: 9px; background: #f8f9f3;
+  color: #607368; font-family: Georgia, serif; font-size: 12px;
+}
+.window-strip .window-item.active .window-number { background: var(--green); border-color: var(--green); color: var(--lime); }
+.window-strip .window-item-copy { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.window-strip .window-item-copy strong { overflow: hidden; color: #2b473c; font-size: 12px; font-weight: 650; white-space: nowrap; text-overflow: ellipsis; }
+.window-strip .window-item-copy small { overflow: hidden; color: #98a29b; font-size: 9px; white-space: nowrap; text-overflow: ellipsis; }
+.window-queue { color: #78877d !important; font-variant-numeric: tabular-nums; }
+.window-queue.low { color: #2c6651 !important; }
+.window-queue.mid { color: #b05a2e !important; }
+.window-queue.high { color: #a33a2a !important; }
+.window-report {
+  min-height: 30px; border: 1px solid var(--line); border-radius: 9px;
+  background: var(--surface-soft); color: #5f7267; font-size: 11px; transition: .16s ease;
+}
+.window-report:hover { border-color: var(--green); background: var(--green); color: #fff; }
+.window-strip .window-item.active .window-report { border-color: var(--green); background: var(--green-3); color: var(--green); }
+
+/* 紧凑窗口信息条：小图 + 文字 */
+.window-hero {
+  min-height: 88px; height: auto; margin-top: 14px; padding: 14px 16px;
+  display: flex; align-items: center; gap: 14px;
+  border: 1px solid var(--line); border-radius: 16px; background: var(--surface);
+  box-shadow: none; overflow: visible;
+}
+.window-hero > img {
+  width: 64px; height: 64px; flex: 0 0 auto; border-radius: 12px;
+  object-fit: cover; object-position: center 40%;
+}
+.window-hero .window-hero-content { position: static; padding: 0; display: block; color: var(--green); flex: 1; min-width: 0; }
+.window-hero .window-label {
+  display: inline-flex; margin-bottom: 4px; padding: 2px 6px;
+  border: 1px solid var(--line); border-radius: 5px; background: #f3f5ee;
+  color: #6b7d72; font-size: 8px; font-weight: 700; letter-spacing: 1px;
+}
+.window-hero .window-hero-content h2 { color: var(--green); font-size: 18px; }
+.window-hero .window-hero-content p { margin-top: 4px; color: var(--muted); font-size: 10.5px; line-height: 1.55; }
+.window-hero .photo-button {
+  position: static; flex: 0 0 auto; padding: 8px 10px;
+  border: 1px solid var(--line); background: var(--surface-soft); color: var(--green-2); font-size: 10px;
+}
+.window-hero .photo-button:hover { border-color: var(--green); background: var(--green-3); }
+
+/* 菜品卡：图片 + 内容 + 两个按钮 */
+.dish-grid { grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); gap: 12px; }
+.dish-card {
+  min-height: 0; padding: 0; display: flex; flex-direction: column;
+  overflow: hidden; cursor: pointer;
+}
+.dish-card::after { display: none; }
+.dish-card-image { height: 140px; position: relative; overflow: hidden; background: #e7e9e1; }
+.dish-card-image img { width: 100%; height: 100%; object-fit: cover; }
+.dish-card-image > span {
+  position: absolute; left: 10px; bottom: 10px; padding: 3px 7px; border-radius: 6px;
+  background: rgba(24, 48, 38, .68); color: #fff; font-size: 9px;
+}
+.dish-card .dish-fav {
+  position: absolute; right: 10px; top: 10px; bottom: auto;
+  width: 30px; height: 30px; border-radius: 10px; background: rgba(255, 254, 249, .92);
+}
+.dish-card-content { padding: 12px 14px 13px; display: flex; flex-direction: column; flex: 1; }
+.dish-card-title { margin-top: 0; display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.dish-card-title h3 { color: #29473d; font-size: 14px; line-height: 1.4; font-weight: 700; }
+.dish-meta { margin-top: 5px; color: #8b978e; font-size: 9.5px; line-height: 1.5; }
+.dish-card-bottom { margin-top: auto; padding-top: 12px; display: flex; gap: 8px; }
+.dish-detail-button, .dish-add-button {
+  flex: 1; min-height: 34px; border-radius: 9px; font-size: 11px; transition: .16s ease;
+}
+.dish-detail-button { border: 1px solid var(--line); background: var(--surface); color: var(--green-2); }
+.dish-detail-button:hover { border-color: var(--green); }
+.dish-add-button { border: 1px solid var(--green); background: var(--green); color: #fff; }
+.dish-add-button:hover { background: #225647; }
+.dish-card .rating-badge { position: absolute; left: 10px; top: 10px; margin: 0; background: rgba(255,254,249,.92); }
+
+@media (max-width: 1360px) { .app { grid-template-columns: 176px minmax(0, 1fr) 288px; } }
+@media (max-width: 900px) {
+  .side-title, .side-group, .side-divider { display: none; }
+  .side-canteens { flex-direction: row; flex-wrap: wrap; }
+  .window-hero > img { width: 52px; height: 52px; }
+}
