@@ -1,0 +1,35 @@
+/* 农餐馆 · 动效样式（配合 motion.js） */
+
+/* 详情弹层做容器变形时，先关掉 CSS 里的入场动画，避免两套动画打架 */
+dialog.is-morphing {
+  animation: none !important;
+  will-change: transform, opacity;
+}
+dialog.is-morphing #dishDialogContent { will-change: opacity, transform; }
+
+/* 从菜品卡飞向餐盘的缩略图 */
+.fly-thumb {
+  position: fixed;
+  z-index: 90;
+  border-radius: 14px;
+  background-color: #cfe0c7;
+  background-position: center;
+  box-shadow: 0 10px 26px rgba(23, 63, 53, .28);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+/* 系统开启「减少动态效果」时不播放任何飞行动效 */
+@media (prefers-reduced-motion: reduce) {
+  .fly-thumb { display: none; }
+}
+
+/* 遮罩：变形过程中先淡一点，动画结束时再平滑加深 */
+dialog[open]::backdrop {
+  opacity: 1;
+  transition: opacity .24s ease;
+}
+dialog.is-morphing::backdrop {
+  opacity: .45;
+  animation: none !important;
+}

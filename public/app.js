@@ -435,7 +435,9 @@ $("#dishGrid").addEventListener("click", event => {
   const openButton = event.target.closest("[data-open]");
   if (openButton) {
     event.stopPropagation();
-    openDish(openButton.dataset.open);
+    const sourceCard = openButton.closest(".dish-card");
+    if (typeof window.openDishMorph === "function") window.openDishMorph(openButton.dataset.open, sourceCard);
+    else openDish(openButton.dataset.open);
     return;
   }
   const favButton = event.target.closest("[data-fav]");
@@ -453,17 +455,22 @@ $("#dishGrid").addEventListener("click", event => {
   const addButton = event.target.closest("[data-add]");
   if (addButton) {
     event.stopPropagation();
+    if (typeof window.flyToTray === "function") window.flyToTray(addButton.closest(".dish-card"));
     addDish(addButton.dataset.add);
     return;
   }
   const card = event.target.closest("[data-dish]");
-  if (card) openDish(card.dataset.dish);
+  if (card) {
+    if (typeof window.openDishMorph === "function") window.openDishMorph(card.dataset.dish, card);
+    else openDish(card.dataset.dish);
+  }
 });
 
 $("#dishGrid").addEventListener("keydown", event => {
   if ((event.key === "Enter" || event.key === " ") && event.target.matches("[data-dish]")) {
     event.preventDefault();
-    openDish(event.target.dataset.dish);
+    if (typeof window.openDishMorph === "function") window.openDishMorph(event.target.dataset.dish, event.target);
+    else openDish(event.target.dataset.dish);
   }
 });
 
