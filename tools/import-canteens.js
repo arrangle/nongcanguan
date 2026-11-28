@@ -8,7 +8,7 @@
  *  - 有窗口号的，按窗口号建窗口；
  *  - 没有窗口号但有明确档口主题的，按主题建窗口（number 留空，名字用主题）；
  *  - 纸质告示、广告屏等无法归属的，放进该食堂的「未分窗口」；
- *  - 公三自选菜（称重台）单独一个窗口「自选称重」，营养用屏幕上公示的值。
+ *  - 研一自选菜（称重台）单独一个窗口「自选称重」，营养用屏幕上公示的值。
  *
  * 图片：hello/ 下的现场照片统一转成 public/assets/new/*.webp，作为窗口封面与相册。
  *
@@ -27,86 +27,12 @@ const OUT_ASSETS = path.join(ROOT, 'public', 'assets', 'new');
 const FFMPEG = 'C:\\Users\\arrangle\\AppData\\Local\\Temp\\ffmpeg.exe';
 
 const read = (name) => JSON.parse(fs.readFileSync(path.join(DATA, name), 'utf8'));
-const gong3Windows = read('gong3-windows.json');
-const gong3Zixuan = read('gong3-zixuan.json');
+const yan1Windows = read('yan1-windows.json');
+const yan1Zixuan = read('yan1-zixuan.json');
 const he = read('he.json');
 const yi = read('yi.json');
 
-// ---------------------------------------------------------------- 营养估算
-// 先判定「主料属于哪一类」，肉菜面饭分开算，避免「肉丝面」被当成纯肉
-const DRINK = { k: /咖啡|拿铁|美式|卡布奇诺|橙C|豆浆|米浆|豆乳|酸奶|奶茶|果汁|豆乳/, kcal: 55, p: 2.4, f: 1.8, c: 8, serving: 350, icon: 'bowl', tag: '饮品' };
-const DESSERT = { k: /冰淇淋|雪糕|糖葫芦|豆花|西米露|汤圆|蛋糕|蛋挞|面包|三明治|麻花|枣糕/, kcal: 220, p: 4, f: 8, c: 34, serving: 120, icon: 'egg', tag: '甜品' };
-const CONGEE = { k: /粥|羹/, kcal: 50, p: 1.6, f: 0.7, c: 9.5, serving: 350, icon: 'bowl', tag: '汤' };
-const SOUP = { k: /汤(?!饺|圆)/, kcal: 45, p: 3, f: 2, c: 4, serving: 400, icon: 'bowl', tag: '汤' };
-const RICE = { k: /炒饭|拌饭|盖饭|捞饭|焗饭|煲仔|焖饭|米饭|杂粮饭|烩饭|饭/, kcal: 165, p: 6, f: 4.5, c: 25, serving: 350, icon: 'rice', tag: '主食' };
-const NOODLE = { k: /面|粉|米线|馄饨|饺|馍/, kcal: 130, p: 5.5, f: 2.5, c: 22, serving: 400, icon: 'noodles', tag: '主食' };
-const BREAD = { k: /饼|馒头|花卷|包子|窝头|糕|粽子|烧饼/, kcal: 250, p: 6, f: 8, c: 38, serving: 100, icon: 'rice', tag: '主食' };
-const SEAFOOD = { k: /虾|鱼|蟹|贝|花甲|鱿鱼|八爪|蚝|蛏/, kcal: 110, p: 17, f: 3.5, c: 2, serving: 150, icon: 'meat' };
-const POULTRY = { k: /鸡|鸭/, kcal: 180, p: 17, f: 11, c: 2, serving: 150, icon: 'meat' };
-const REDMEAT = { k: /牛|羊|猪|肉|排骨|肘|里脊|肠|培根|腊|肚|腰|肝|血旺/, kcal: 220, p: 16, f: 15, c: 2, serving: 140, icon: 'meat' };
-const EGG = { k: /蛋/, kcal: 145, p: 12, f: 9.5, c: 2, serving: 120, icon: 'egg' };
-const TOFU = { k: /豆腐|豆干|腐竹|千张|豆皮/, kcal: 90, p: 8, f: 5, c: 3, serving: 150, icon: 'leaf' };
-const VEG = { k: /菜|瓜|笋|菇|藕|茄|萝卜|豆角|西兰花|菠菜|芹|青椒|番茄|西红柿|玉米|山药|南瓜|木耳|秋葵|蒿|芥蓝|芦笋|包菜|白菜|豇豆|莴笋|豆芽|冬瓜|芋/, kcal: 45, p: 2, f: 1.5, c: 6, serving: 150, icon: 'leaf' };
-const FALLBACK = { kcal: 140, p: 7, f: 5, c: 15, serving: 150, icon: 'bowl' };
-
-const MEAT_WORDS = /肉|鸡|鸭|牛|羊|猪|鱼|虾|蟹|肠|培根|腊|肚|肝/;
-
-function estimate(name) {
-  let base = DRINK.k.test(name) ? DRINK
-    : DESSERT.k.test(name) ? DESSERT
-    : CONGEE.k.test(name) ? CONGEE
-    : SOUP.k.test(name) ? SOUP
-    : RICE.k.test(name) ? RICE
-    : NOODLE.k.test(name) ? NOODLE
-    : BREAD.k.test(name) ? BREAD
-    : SEAFOOD.k.test(name) ? SEAFOOD
-    : POULTRY.k.test(name) ? POULTRY
-    : REDMEAT.k.test(name) ? REDMEAT
-    : EGG.k.test(name) ? EGG
-    : TOFU.k.test(name) ? TOFU
-    : VEG.k.test(name) ? VEG
-    : FALLBACK;
-
-  let p = base.p;
-  let f = base.f;
-  let kcal = base.kcal;
-  // 面/饭里带肉，按加了肉估
-  const staple = base === RICE || base === NOODLE;
-  if (staple && MEAT_WORDS.test(name)) {
-    p += 5;
-    f += 4;
-    kcal += 55;
-  }
-  return {
-    kcal: Math.round(kcal),
-    protein: Math.round(p * 10) / 10,
-    fat: Math.round(f * 10) / 10,
-    carbs: Math.round(base.c * 10) / 10,
-    fiber: base === VEG ? 1.8 : 0.6,
-    serving: base.serving,
-    icon: base.icon,
-    tag: base.tag || '',
-  };
-}
-
-// ---------------------------------------------------------------- 单位
-function normalizeUnit(unitText) {
-  const text = String(unitText || '').trim();
-  const match = text.match(/元\s*\/\s*(.+)$/);
-  if (!match) return '/份';
-  const tail = match[1].trim();
-  return tail ? '/' + tail : '/份';
-}
-
-function labelsFor(name, est, tag) {
-  const labels = [];
-  if (tag) labels.push(tag);
-  if (/(饭|面|粉|饼|馒头|花卷|包子|粥)/.test(name)) labels.push('主食');
-  if (est.protein >= 12) labels.push('高蛋白');
-  if (!/(肉|鸡|鸭|牛|羊|猪|鱼|虾|蟹|肠|培根|腊|蛋|奶|里脊|排骨|肚|腰|肝|血|丸|蹄|翅|爪|骨)/.test(name)) labels.push('素食');
-  if (est.kcal <= 120) labels.push('低热量');
-  return [...new Set(labels)].slice(0, 3);
-}
+const { estimate, labelsFor, normalizeUnit } = require('./lib/nutrition');
 
 // ---------------------------------------------------------------- 图片
 let photoSeq = 0;
@@ -207,34 +133,34 @@ function addWindow({ canteenId, canteenName, number, name, description, photo, i
   });
 }
 
-// ---------------- 公三：12 张窗口价目牌（无窗口号，按主题命名）
+// ---------------- 研一：12 张窗口价目牌（无窗口号，按主题命名）
 const GONG3_THEMES = [
   '扯面', '土豆粉 · 米线', '豆花', '盖饭', '拌饭', '炒饭 · 炒河粉',
   '淮南牛肉汤', '龙虾饭 · 焗饭', '冰淇淋', '咖啡', '五谷豆浆', '饮品小食',
 ];
 
-gong3Windows.forEach((entry, index) => {
+yan1Windows.forEach((entry, index) => {
   if (entry.unreadable) return;
   const caption = entry.cardTitle || GONG3_THEMES[index] || '窗口价目牌';
-  const photo = photoFor('公三食堂', srcPath('公三照片/窗口', entry.photo), caption);
+  const photo = photoFor('研一食堂', srcPath('研一照片/窗口', entry.photo), caption);
   addWindow({
-    canteenId: 'gong3',
-    canteenName: '公三食堂',
+    canteenId: 'yan1',
+    canteenName: '研一食堂',
     number: '',
     name: GONG3_THEMES[index] || caption,
-    description: '公三食堂 · ' + caption + '（价目牌拍摄于 2026.11.26）',
+    description: '研一食堂 · ' + caption + '（价目牌拍摄于 2026.11.26）',
     photo,
     items: entry.items || [],
-    sourceLabel: '公三食堂价目牌',
+    sourceLabel: '研一食堂价目牌',
   });
 });
 
-// ---------------- 公三：自选称重（屏幕公示营养）
+// ---------------- 研一：自选称重（屏幕公示营养）
 const zixuanItems = [];
 let zixuanPhoto = null;
-gong3Zixuan.forEach((entry) => {
+yan1Zixuan.forEach((entry) => {
   if (entry.unreadable || !entry.name) return;
-  const photo = photoFor('公三食堂', srcPath('公三照片/自选', entry.photo), entry.name);
+  const photo = photoFor('研一食堂', srcPath('研一照片/自选', entry.photo), entry.name);
   if (!zixuanPhoto && photo) zixuanPhoto = photo;
   const protein = typeof entry.protein === 'number' ? entry.protein : 0;
   const carbs = typeof entry.carbs === 'number' ? entry.carbs : 0;
@@ -251,7 +177,7 @@ gong3Zixuan.forEach((entry) => {
 (function addZixuan() {
   if (!zixuanItems.length) return;
   windowSeq += 1;
-  const id = 'wgong3-' + windowSeq;
+  const id = 'wyan1-' + windowSeq;
   const dishes = [];
   const seen = new Set();
   zixuanItems.forEach((item) => {
@@ -272,17 +198,17 @@ gong3Zixuan.forEach((entry) => {
       serving: 100,
       icon: est.icon,
       labels: labelsFor(item.name, { protein: z.protein, kcal: z.kcal }, ''),
-      description: '公三食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。',
+      description: '研一食堂自选称重台，按 50 克计价；营养为称重台屏幕公示值（按每 100 克换算），钠显示为 0 可能是未录入。',
       source: '窗口公示',
     });
   });
   newWindows.push({
     id,
-    canteenId: 'gong3',
+    canteenId: 'yan1',
     number: '',
     name: '自选称重',
     short: '按 50 克称重计价',
-    description: '公三食堂自选称重台 · 每道菜屏幕公示营养（2026.11.26）',
+    description: '研一食堂自选称重台 · 每道菜屏幕公示营养（2026.11.26）',
     cover: zixuanPhoto ? zixuanPhoto.src : 'assets/photos/04.webp',
     position: 'center 45%',
     gallery: zixuanPhoto ? [zixuanPhoto.id] : [],
@@ -337,7 +263,7 @@ yi.forEach((entry) => {
 const menu = JSON.parse(fs.readFileSync(MENU_FILE, 'utf8'));
 
 const canteenDefs = [
-  { id: 'gong3', name: '公三食堂', alias: '公寓三食堂', status: 'online' },
+  { id: 'yan1', name: '研一食堂', alias: '研究生食堂一层', status: 'online' },
   { id: 'he1', name: '和园一层', alias: '和一', status: 'online' },
   { id: 'he2', name: '和园二层', alias: '和二', status: 'online' },
   { id: 'yi1', name: '颐园一层', alias: '颐一', status: 'online' },
@@ -350,15 +276,12 @@ canteenDefs.forEach((def) => {
   if (existing) Object.assign(existing, def);
   else menu.canteens.push(def);
 });
-// 公三从「待录入」改为已上线
-const gong3 = menu.canteens.find((c) => c.id === 'gong3');
-if (gong3) gong3.status = 'online';
 
 // 去掉旧的同名窗口（可重复运行）
-const managedCanteens = new Set(['gong3', 'he1', 'he2', 'yi1']);
+const managedCanteens = new Set(['yan1', 'he1', 'he2', 'yi1']);
 menu.windows = menu.windows.filter((w) => !managedCanteens.has(w.canteenId));
 menu.photos = (menu.photos || []).filter((p) => !/^n\d{3}$/.test(p.id));
-const canteenOrder = ['gong1', 'gong3', 'he1', 'he2', 'yi1'];
+const canteenOrder = ['gong1', 'yan1', 'he1', 'he2', 'yi1'];
 newWindows.sort((a, b) => {
   const ca = canteenOrder.indexOf(a.canteenId);
   const cb = canteenOrder.indexOf(b.canteenId);
@@ -373,7 +296,7 @@ menu.photos = menu.photos.concat(
 
 menu.dataDate = '2026-11-26';
 menu.nutritionNote =
-  '公一 18 号窗口录入自现场公示表；公三自选称重台为屏幕公示值；其余窗口的价目来自现场价目牌，营养为按菜名估算。';
+  '公一 18 号窗口录入自现场公示表；研一自选称重台为屏幕公示值；其余窗口的价目来自现场价目牌，营养为按菜名估算。';
 
 fs.writeFileSync(MENU_FILE, JSON.stringify(menu, null, 2) + '\n');
 

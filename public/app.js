@@ -596,6 +596,39 @@ function selectCanteen(id) {
   renderDishes();
 }
 
+// 入口页与公告里的数字都从菜单现算，避免每次录数据都要改一遍 HTML
+function renderDataStats() {
+  const online = canteens.filter(c => c.status === "online");
+  const pending = canteens.filter(c => c.status !== "online");
+  const countWindows = id => windows.filter(w => w.canteenId === id).length;
+  const countDishes = id => allDishes.filter(d => d.window.canteenId === id).length;
+
+  const stats = document.querySelector("#entryStats");
+  if (stats) stats.textContent = `${online.length} 个食堂已录入 · ${windows.length} 个窗口 · ${allDishes.length} 道菜`;
+
+  const galleryCount = document.querySelector("#galleryBtn b");
+  if (galleryCount && photoArchive.length) galleryCount.textContent = photoArchive.length;
+
+  const intro = document.querySelector("#chooseIntro");
+  if (intro) {
+    const eastIds = ["gong1", "gong2", "gong3", "yan1"];
+    const east = online.filter(c => eastIds.includes(c.id)).map(c => c.name.replace("食堂", "")).join("、");
+    const west = online.filter(c => !eastIds.includes(c.id)).map(c => c.name).join("、");
+    intro.textContent = `东区${east}，西区${west}已录入现场价目牌；${pending.map(c => c.name).join("、")}显示「待录入」。`;
+  }
+
+  const onlineTitle = document.querySelector("#noticeOnlineTitle");
+  const onlineBody = document.querySelector("#noticeOnlineBody");
+  if (onlineTitle) onlineTitle.textContent = `已录入 ${online.length} 个食堂`;
+  if (onlineBody) {
+    onlineBody.textContent = online
+      .map(c => `${c.name} ${countWindows(c.id)} 窗口 ${countDishes(c.id)} 道`)
+      .join("、") + "；菜名与价格以窗口当日公示为准。";
+  }
+  const pendingTitle = document.querySelector("#noticePendingTitle");
+  if (pendingTitle) pendingTitle.textContent = `${pending.map(c => c.name).join("、")}待录入`;
+}
+
 function boot() {
   restoreTray();
   const statWindows = $("#statWindows");
@@ -610,6 +643,7 @@ function boot() {
   renderFilterTabs();
   renderDishes();
   renderTray();
+  renderDataStats();
   window.__appBooted = true;
 }
 

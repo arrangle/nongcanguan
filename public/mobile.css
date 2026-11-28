@@ -251,3 +251,9 @@ dialog .icon-button:focus-visible,
   outline: 2px solid var(--green);
   outline-offset: 2px;
 }
+
+/* 入口画面还没进 App 时不显示底部导航 */
+@media (max-width: 900px) {
+  .entry:not([hidden]) ~ .mobile-nav,
+  .entry:not([hidden]) ~ .mobile-tray-button { display: none; }
+}
